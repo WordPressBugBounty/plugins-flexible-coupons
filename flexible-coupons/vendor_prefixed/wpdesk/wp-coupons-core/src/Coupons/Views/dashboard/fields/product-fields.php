@@ -1,0 +1,38 @@
+<?php
+
+namespace FlexibleCouponsVendor;
+
+/**
+ * Custom fields template.
+ *
+ * This template can be used in simple product PDF coupon settings or variations.
+ */
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
+$params = isset($params) ? (array) $params : [];
+/**
+ * @var PostMeta $meta
+ */
+$meta = $params['post_meta'];
+$post_id = $params['post_id'];
+$is_premium = $params['is_premium'];
+$product_fields = $params['product_fields'];
+$custom_attributes = $params['custom_attributes'];
+$is_pl = 'pl_PL' === \get_locale();
+$utm = '?utm_source=flexible-coupons-product-edition&amp;utm_medium=link&amp;utm_campaign=flexible-coupons-pro';
+$pro_url = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/' . $utm : 'https://www.wpdesk.net/products/flexible-coupons-woocommerce/' . $utm;
+$loop_id = isset($params['loop']) ? '_variation' . $params['loop'] : '';
+$loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
+$parent_id = isset($params['parent_id']) ? $params['parent_id'] : null;
+foreach ($product_fields->get() as $id => $product_field) {
+    if (isset($product_field['can_disable']) && \true === $product_field['can_disable']) {
+        $default = !$is_premium ? 'no' : 'yes';
+        echo '<div class="checkbox-wrapper">';
+        echo '<div class="checkbox-wrapper-left">';
+        \woocommerce_wp_checkbox(['id' => $id . $loop_id, 'name' => $id . $loop_name, 'value' => \esc_attr($meta->get_private($post_id, $id, $meta->get_private($parent_id, $id, $default))), 'label' => $product_field['title'], 'desc_tip' => \true, 'description' => \esc_html__('Show or hide this field in product page.', 'flexible-coupons'), 'wrapper_class' => !$is_premium ? 'read-only' : '', 'custom_attributes' => $custom_attributes]);
+        echo '</div>';
+        echo '<div class="checkbox-wrapper-right">';
+        \woocommerce_wp_checkbox(['id' => $id . '_required' . $loop_id, 'name' => $id . '_required' . $loop_name, 'value' => \esc_attr($meta->get_private($post_id, $id . '_required', $meta->get_private($parent_id, $id . '_required', $default))), 'label' => \esc_html__('Required', 'flexible-coupons'), 'desc_tip' => \true, 'description' => \esc_html__('If checked field will be set as required.', 'flexible-coupons'), 'wrapper_class' => !$is_premium ? 'read-only' : '', 'custom_attributes' => $custom_attributes]);
+        echo '</div>';
+        echo '</div>';
+    }
+}

@@ -1,0 +1,217 @@
+#coupons-editor .inside {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+#coupons-editor {
+    border: 0;
+    background-color: transparent;
+}
+
+#coupons-editor .handlediv,
+#coupons-editor h2.hndle {
+    display: none;
+}
+
+#coupons-editor .inside {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+}
+
+#post-body-content {
+    margin-bottom: 10px;
+}
+
+.publishing-actions-box {
+    padding: 10px;
+    border-bottom: 1px solid #EEE;
+    text-align: right;
+    position: relative;
+}
+
+.publishing-actions-box .black-box {
+    background-color: #23282d;
+    width: 100px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.publishing-actions-box .process_save {
+    position: relative;
+    margin-right: 10px;
+}
+
+.publishing-actions-box .process_save .spinner {
+    float: none;
+}
+
+.generated-coupons {
+    margin: 10px 0;
+}
+
+.generated-coupons a {
+    text-decoration: none;
+}
+
+.generated-coupons > div {
+    padding: 5px 0;
+}
+
+.has-been-used {
+    color: green;
+}
+
+.fc-options-group {
+    float: none;
+    width: 724px;
+    max-width: 724px
+}
+
+.fc-options-group .short {
+    width: 80% !important;
+}
+
+.checkbox-wrapper-right label {
+    padding-right: 10px;
+}
+
+.fc-options-group::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.fc-custom-fields-group {
+    width: 640px;
+    max-width: 640px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+}
+
+.checkbox-wrapper-left {
+    flex: 50%;
+}
+
+.checkbox-wrapper-right {
+    flex: 20%;
+    text-align: right;
+}
+
+.woocommerce_options_panel .checkbox-wrapper-right label {
+    text-align: right;
+    padding: 0 10px 0 0;
+    margin: 0 0 0 -160px;
+}
+
+#woocommerce-coupon-data ul.wc-tabs li a::before {
+    content: "\f524" !important;
+}
+
+.flexible_coupon_recipient_name_required_field label {
+    padding: 0 10px;
+}
+
+#woocommerce-product-data ul.wc-tabs li.pdfcoupons_tab a::before {
+    content: "\f524";
+}
+
+#woocommerce-product-data ul.wc-tabs li.hide {
+    display: none !important;
+}
+
+p.expiring-date-own {
+    display: none;
+}
+
+.show_if_simple_delay,
+.show_if_fixed_date_delay,
+.show_if_pdf_coupon,
+.show_if_variation_manage_coupons,
+.show_if_variation_manage_prefix {
+    display: none;
+}
+
+.fc-options-group label, .fc-options-group legend {
+    float: left;
+    width: 150px;
+    padding: 0;
+    margin: 0 0 0 -162px;
+}
+
+.fc-options-group p.form-field {
+    padding: 5px 20px 5px 162px !important;
+    clear: both;
+}
+
+.fc-options-group input,
+.fc-options-group textarea,
+.fc-options-group select {
+    float: left;
+}
+
+.woocommerce_variable_attributes .fc_variation_base_on {
+    float: none;
+}
+
+#pdfcoupon_product_data_variation {
+    border-bottom: 1px solid #eee;
+}
+
+.editor-right-menu {
+    width: 240px;
+}
+
+.editor-right-menu .editor-menu-image {
+    overflow-y: auto !important;
+    height: 100vh;
+}
+
+.form-table td.header-column {
+    padding: 20px 10px 20px 0;
+}
+
+.field-clone-wrapper {
+	margin: 0 0 2px;
+}
+
+.field-clone-element-container .field-clone-wrapper .add-email-field {
+	display: none;
+	cursor: pointer;
+}
+.field-clone-element-container .field-clone-wrapper:first-child .add-email-field {
+	display: inline-block;
+}
+
+.field-clone-element-container .field-clone-wrapper:first-child .remove-email-field {
+	display: none;
+}
+
+.field-clone-element-container .field-clone-wrapper .remove-email-field {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.form-table .form-table-field {
+    width: 230px;
+}
+
+a.pro-link {
+    color: #FF9743;
+}
+
+a.docs-link {
+    color: #734a93;
+}
+
+a.sending-link {
+    color: #a3339f;
+}
+
+.marketing-content {
+    font-weight: bold;
+}
