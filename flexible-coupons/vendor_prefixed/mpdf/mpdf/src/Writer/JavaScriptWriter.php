@@ -15,7 +15,7 @@ final class JavaScriptWriter
      * @var \Mpdf\Writer\BaseWriter
      */
     private $writer;
-    public function __construct(\FlexibleCouponsVendor\Mpdf\Mpdf $mpdf, \FlexibleCouponsVendor\Mpdf\Writer\BaseWriter $writer)
+    public function __construct(Mpdf $mpdf, BaseWriter $writer)
     {
         $this->mpdf = $mpdf;
         $this->writer = $writer;

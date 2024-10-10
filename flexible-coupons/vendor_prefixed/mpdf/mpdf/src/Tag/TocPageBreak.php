@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class TocPageBreak extends \FlexibleCouponsVendor\Mpdf\Tag\FormFeed
+class TocPageBreak extends FormFeed
 {
     public function open($attr, &$ahtml, &$ihtml)
     {

@@ -7,7 +7,7 @@ namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
  *
  * @package WPDesk\Forms
  */
-abstract class NoValueField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+abstract class NoValueField extends BasicField
 {
     public function get_name()
     {

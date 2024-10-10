@@ -29,16 +29,16 @@ class Items
     /**
      * @return array
      */
-    private function default_object_data() : array
+    private function default_object_data(): array
     {
         return ['title' => '', 'width' => '', 'realWidth' => '', 'height' => '', 'realHeight' => '', 'top' => '', 'left' => '', 'rotate' => '0', 'url' => '', 'type' => 'image', 'rotateAngle' => 'image', 'textAlign' => 'left'];
     }
     /**
      * @return string
      */
-    private function rtl_dir() : string
+    private function rtl_dir(): string
     {
-        if (\is_rtl()) {
+        if (is_rtl()) {
             return 'dir = "rtl"';
         }
         return '';
@@ -50,7 +50,7 @@ class Items
      *
      * @return string
      */
-    private function get_image_html(array $object) : string
+    private function get_image_html(array $object): string
     {
         $styles = '
 		transform: rotate(' . $object['rotateAngle'] . 'deg);
@@ -71,7 +71,7 @@ class Items
      *
      * @return string
      */
-    private function get_text_html(array $object) : string
+    private function get_text_html(array $object): string
     {
         $color = '#000';
         if (isset($object['color']['r'])) {
@@ -87,7 +87,7 @@ class Items
 		color: ' . $color . ';
 		width: ' . $object['width'] . 'px;
 		height: ' . $object['height'] . 'px';
-        return '<' . $object['tag'] . ' ' . $this->rtl_dir() . ' style="' . $styles . '">' . \nl2br($object['text']) . '</' . $object['tag'] . '>';
+        return '<' . $object['tag'] . ' ' . $this->rtl_dir() . ' style="' . $styles . '">' . nl2br($object['text']) . '</' . $object['tag'] . '>';
     }
     /**
      * Sanitize font name. All font names must be lowecase.
@@ -96,20 +96,20 @@ class Items
      *
      * @return string
      */
-    private function sanitize_font_name(string $font_name) : string
+    private function sanitize_font_name(string $font_name): string
     {
-        return \strtolower(\trim(\str_replace(['+', ' '], '', $font_name)));
+        return strtolower(trim(str_replace(['+', ' '], '', $font_name)));
     }
     /**
      * @return string
      *
      * @throws Exception Throw if object type is invalid.
      */
-    public function get_html() : string
+    public function get_html(): string
     {
         $objects = '';
         foreach ($this->objects as $object) {
-            $object = \wp_parse_args($object, $this->default_object_data());
+            $object = wp_parse_args($object, $this->default_object_data());
             switch ($object['type']) {
                 case 'image':
                     $objects .= $this->get_image_html($object);
@@ -121,7 +121,7 @@ class Items
                     $objects .= \apply_filters('core/pdf/items/get_qr_code_html', $object);
                     break;
                 default:
-                    throw new \Exception('Unknown object passed from editor');
+                    throw new Exception('Unknown object passed from editor');
             }
         }
         return $objects;

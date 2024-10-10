@@ -11,7 +11,7 @@ use FlexibleCouponsVendor\Symfony\Component\Console\Output\OutputInterface;
  *
  * @package WPDesk\Codeception\Command
  */
-class GeneratePluginActivation extends \FlexibleCouponsVendor\Codeception\Command\GenerateTest implements \FlexibleCouponsVendor\Codeception\CustomCommandInterface
+class GeneratePluginActivation extends GenerateTest implements CustomCommandInterface
 {
     /**
      * Get codeception command description.
@@ -40,7 +40,7 @@ class GeneratePluginActivation extends \FlexibleCouponsVendor\Codeception\Comman
      */
     protected function getGenerator($config, $class)
     {
-        return new \FlexibleCouponsVendor\WPDesk\Codeception\Command\AcceptanceTestGenerator($config, $class);
+        return new AcceptanceTestGenerator($config, $class);
     }
     /**
      * Execute command.
@@ -50,7 +50,7 @@ class GeneratePluginActivation extends \FlexibleCouponsVendor\Codeception\Comman
      *
      * @return void
      */
-    public function execute(\FlexibleCouponsVendor\Symfony\Component\Console\Input\InputInterface $input, \FlexibleCouponsVendor\Symfony\Component\Console\Output\OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $suite = $input->getArgument('suite');
         $class = $input->getArgument('class');

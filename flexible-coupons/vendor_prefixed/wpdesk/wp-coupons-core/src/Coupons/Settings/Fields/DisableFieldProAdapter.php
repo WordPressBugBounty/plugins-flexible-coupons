@@ -22,14 +22,14 @@ class DisableFieldProAdapter
     /**
      * @param Field $field
      */
-    public function __construct(string $name, \FlexibleCouponsVendor\WPDesk\Forms\Field $field)
+    public function __construct(string $name, Field $field)
     {
         $this->name = $name;
         $this->field = $field;
     }
     public function get_field()
     {
-        if (!\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\CouponsIntegration::is_pro()) {
+        if (!CouponsIntegration::is_pro()) {
             $this->field->set_disabled();
             $this->field->set_readonly();
             return $this->field;

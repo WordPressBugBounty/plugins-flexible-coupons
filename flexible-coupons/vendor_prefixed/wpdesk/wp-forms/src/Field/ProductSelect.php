@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class ProductSelect extends \FlexibleCouponsVendor\WPDesk\Forms\Field\SelectField
+class ProductSelect extends SelectField
 {
     public function __construct()
     {

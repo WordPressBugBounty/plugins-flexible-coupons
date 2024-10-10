@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Forms\Sanitizer;
 
 use FlexibleCouponsVendor\WPDesk\Forms\Sanitizer;
-class CallableSanitizer implements \FlexibleCouponsVendor\WPDesk\Forms\Sanitizer
+class CallableSanitizer implements Sanitizer
 {
     private $callable;
     public function __construct($callable)
@@ -12,6 +12,6 @@ class CallableSanitizer implements \FlexibleCouponsVendor\WPDesk\Forms\Sanitizer
     }
     public function sanitize($value)
     {
-        return \call_user_func($this->callable, $value);
+        return call_user_func($this->callable, $value);
     }
 }

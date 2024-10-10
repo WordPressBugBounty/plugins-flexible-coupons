@@ -7,7 +7,7 @@ use FlexibleCouponsVendor\WPDesk\Plugin\Flow\Initialization\InitializationStrate
 /**
  * Can decide if strategy is for free plugin or paid plugin
  */
-class SimpleFactory implements \FlexibleCouponsVendor\WPDesk\Plugin\Flow\Initialization\InitializationFactory
+class SimpleFactory implements InitializationFactory
 {
     /** @var bool */
     private $free;
@@ -28,8 +28,8 @@ class SimpleFactory implements \FlexibleCouponsVendor\WPDesk\Plugin\Flow\Initial
     public function create_initialization_strategy(\FlexibleCouponsVendor\WPDesk_Plugin_Info $info)
     {
         if ($this->free) {
-            return new \FlexibleCouponsVendor\WPDesk\Plugin\Flow\Initialization\Simple\SimpleFreeStrategy($info);
+            return new SimpleFreeStrategy($info);
         }
-        return new \FlexibleCouponsVendor\WPDesk\Plugin\Flow\Initialization\Simple\SimplePaidStrategy($info);
+        return new SimplePaidStrategy($info);
     }
 }

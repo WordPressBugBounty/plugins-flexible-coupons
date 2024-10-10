@@ -14,7 +14,7 @@ use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ShortcodeData;
  *
  * @package WPDesk\Library\WPCoupons\Shortcodes
  */
-class ShortcodeDataContainer implements \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ShortcodeData
+class ShortcodeDataContainer implements ShortcodeData
 {
     /**
      * @var WC_Order
@@ -43,42 +43,42 @@ class ShortcodeDataContainer implements \FlexibleCouponsVendor\WPDesk\Library\Co
     /**
      * @param WC_Order $order
      */
-    public function set_order(\WC_Order $order)
+    public function set_order(WC_Order $order)
     {
         $this->order = $order;
     }
     /**
      * @return WC_Order
      */
-    public function get_order() : \WC_Order
+    public function get_order(): WC_Order
     {
         return $this->order;
     }
     /**
      * @param WC_Order_Item $order
      */
-    public function set_item(\WC_Order_Item $item)
+    public function set_item(WC_Order_Item $item)
     {
         $this->item = $item;
     }
     /**
      * @return WC_Order_Item
      */
-    public function get_item() : \WC_Order_Item
+    public function get_item(): WC_Order_Item
     {
         return $this->item;
     }
     /**
      * @param WC_Product $product
      */
-    public function set_product(\WC_Product $product)
+    public function set_product(WC_Product $product)
     {
         $this->product = $product;
     }
     /**
      * @return WC_Product
      */
-    public function get_product() : \WC_Product
+    public function get_product(): WC_Product
     {
         return $this->product;
     }
@@ -94,7 +94,7 @@ class ShortcodeDataContainer implements \FlexibleCouponsVendor\WPDesk\Library\Co
      *
      * @return array
      */
-    public function get_product_fields_values() : array
+    public function get_product_fields_values(): array
     {
         return $this->product_field_values;
     }
@@ -110,21 +110,21 @@ class ShortcodeDataContainer implements \FlexibleCouponsVendor\WPDesk\Library\Co
      *
      * @return WC_Coupon
      */
-    public function set_coupon(\WC_Coupon $coupon) : \WC_Coupon
+    public function set_coupon(WC_Coupon $coupon): WC_Coupon
     {
         return $this->coupon = $coupon;
     }
     /**
      * @return WC_Coupon
      */
-    public function get_coupon() : \WC_Coupon
+    public function get_coupon(): WC_Coupon
     {
         return $this->coupon;
     }
     /**
      * @return string
      */
-    public function get_coupon_code() : string
+    public function get_coupon_code(): string
     {
         return $this->coupon_code;
     }

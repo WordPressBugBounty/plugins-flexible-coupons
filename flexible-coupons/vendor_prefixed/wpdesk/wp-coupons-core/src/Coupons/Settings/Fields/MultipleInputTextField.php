@@ -8,7 +8,7 @@ use FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField;
  *
  * @package WPDesk\Library\WPCoupons\Settings\Fields
  */
-class MultipleInputTextField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class MultipleInputTextField extends BasicField
 {
     public function __construct()
     {

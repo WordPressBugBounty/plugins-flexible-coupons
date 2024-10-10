@@ -17,14 +17,14 @@ use FlexibleCouponsVendor\Monolog\Logger;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ChromePHPFormatter implements \FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface
+class ChromePHPFormatter implements FormatterInterface
 {
     /**
      * Translates Monolog log levels to Wildfire levels.
      *
      * @var array<int, 'log'|'info'|'warn'|'error'>
      */
-    private $logLevels = [\FlexibleCouponsVendor\Monolog\Logger::DEBUG => 'log', \FlexibleCouponsVendor\Monolog\Logger::INFO => 'info', \FlexibleCouponsVendor\Monolog\Logger::NOTICE => 'info', \FlexibleCouponsVendor\Monolog\Logger::WARNING => 'warn', \FlexibleCouponsVendor\Monolog\Logger::ERROR => 'error', \FlexibleCouponsVendor\Monolog\Logger::CRITICAL => 'error', \FlexibleCouponsVendor\Monolog\Logger::ALERT => 'error', \FlexibleCouponsVendor\Monolog\Logger::EMERGENCY => 'error'];
+    private $logLevels = [Logger::DEBUG => 'log', Logger::INFO => 'info', Logger::NOTICE => 'info', Logger::WARNING => 'warn', Logger::ERROR => 'error', Logger::CRITICAL => 'error', Logger::ALERT => 'error', Logger::EMERGENCY => 'error'];
     /**
      * {@inheritDoc}
      */
@@ -43,8 +43,8 @@ class ChromePHPFormatter implements \FlexibleCouponsVendor\Monolog\Formatter\For
         if ($record['extra']) {
             $message['extra'] = $record['extra'];
         }
-        if (\count($message) === 1) {
-            $message = \reset($message);
+        if (count($message) === 1) {
+            $message = reset($message);
         }
         return [$record['channel'], $message, $backtrace, $this->logLevels[$record['level']]];
     }

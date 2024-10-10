@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class Header extends \FlexibleCouponsVendor\WPDesk\Forms\Field\NoValueField
+class Header extends NoValueField
 {
     public function __construct()
     {

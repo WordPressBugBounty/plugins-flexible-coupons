@@ -11,7 +11,7 @@ use FlexibleCouponsVendor\Composer\Plugin\PluginInterface;
  *
  * @package WPDesk\Composer\Codeception
  */
-class Plugin implements \FlexibleCouponsVendor\Composer\Plugin\PluginInterface, \FlexibleCouponsVendor\Composer\Plugin\Capable
+class Plugin implements PluginInterface, Capable
 {
     /**
      * @var Composer
@@ -21,7 +21,7 @@ class Plugin implements \FlexibleCouponsVendor\Composer\Plugin\PluginInterface, 
      * @var IOInterface
      */
     private $io;
-    public function activate(\FlexibleCouponsVendor\Composer\Composer $composer, \FlexibleCouponsVendor\Composer\IO\IOInterface $io)
+    public function activate(Composer $composer, IOInterface $io)
     {
         $this->composer = $composer;
         $this->io = $io;
@@ -29,7 +29,7 @@ class Plugin implements \FlexibleCouponsVendor\Composer\Plugin\PluginInterface, 
     /**
      * @inheritDoc
      */
-    public function deactivate(\FlexibleCouponsVendor\Composer\Composer $composer, \FlexibleCouponsVendor\Composer\IO\IOInterface $io)
+    public function deactivate(Composer $composer, IOInterface $io)
     {
         $this->composer = $composer;
         $this->io = $io;
@@ -37,13 +37,13 @@ class Plugin implements \FlexibleCouponsVendor\Composer\Plugin\PluginInterface, 
     /**
      * @inheritDoc
      */
-    public function uninstall(\FlexibleCouponsVendor\Composer\Composer $composer, \FlexibleCouponsVendor\Composer\IO\IOInterface $io)
+    public function uninstall(Composer $composer, IOInterface $io)
     {
         $this->composer = $composer;
         $this->io = $io;
     }
     public function getCapabilities()
     {
-        return [\FlexibleCouponsVendor\Composer\Plugin\Capability\CommandProvider::class => \FlexibleCouponsVendor\WPDesk\Composer\Codeception\CommandProvider::class];
+        return [\FlexibleCouponsVendor\Composer\Plugin\Capability\CommandProvider::class => CommandProvider::class];
     }
 }

@@ -2,14 +2,14 @@
 
 namespace FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin;
 
-interface HookableCollection extends \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+interface HookableCollection extends Hookable
 {
     /**
      * Add hookable object.
      *
      * @param Hookable|HookablePluginDependant $hookable_object Hookable object.
      */
-    public function add_hookable(\FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable $hookable_object);
+    public function add_hookable(Hookable $hookable_object);
     /**
      * Get hookable instance.
      *

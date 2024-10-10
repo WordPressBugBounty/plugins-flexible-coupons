@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\CrossReference;
@@ -13,7 +13,7 @@ use FlexibleCouponsVendor\setasign\Fpdi\PdfParser\PdfParserException;
 /**
  * Exception used by the CrossReference and Reader classes.
  */
-class CrossReferenceException extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\PdfParserException
+class CrossReferenceException extends PdfParserException
 {
     /**
      * @var int

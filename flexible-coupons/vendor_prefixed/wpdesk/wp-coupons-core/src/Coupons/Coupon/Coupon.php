@@ -27,7 +27,7 @@ class Coupon
     /**
      * @param PostMeta $post_meta
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $post_meta, $settings)
+    public function __construct(PostMeta $post_meta, $settings)
     {
         $this->post_meta = $post_meta;
         $this->settings = $settings;
@@ -43,30 +43,30 @@ class Coupon
      * @return int|false
      * @throws Exception
      */
-    public function insert(\WC_Order_Item $item, string $coupon_code, array $product_fields_values, int $order_id)
+    public function insert(WC_Order_Item $item, string $coupon_code, array $product_fields_values, int $order_id)
     {
-        $coupon = new \WC_Coupon();
-        if ($item instanceof \WC_Order_Item_Product) {
+        $coupon = new WC_Coupon();
+        if ($item instanceof WC_Order_Item_Product) {
             $amount = $this->get_price_from_oder_item($item);
             $coupon->set_code($coupon_code);
-            $coupon->set_date_created(\current_time('mysql'));
-            $product_id = \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item);
+            $coupon->set_date_created(current_time('mysql'));
+            $product_id = Helper::get_product_id($item);
             if (!$this->is_never_expiring($product_id)) {
                 $expiry_date = $this->get_coupon_expiring_date($product_id);
                 $coupon->set_date_expires($expiry_date);
             }
-            $coupon->set_description(\implode(', ', $product_fields_values));
-            if ('yes' !== $this->post_meta->get_private(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item), 'flexible_coupon_remove_usage_limit')) {
+            $coupon->set_description(implode(', ', $product_fields_values));
+            if ('yes' !== $this->post_meta->get_private(Helper::get_product_id($item), 'flexible_coupon_remove_usage_limit')) {
                 $coupon->set_usage_limit(1);
             }
-            if ('yes' === $this->post_meta->get_private(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item), 'flexible_coupon_product_free_shipping')) {
+            if ('yes' === $this->post_meta->get_private(Helper::get_product_id($item), 'flexible_coupon_product_free_shipping')) {
                 $coupon->set_free_shipping(\true);
             }
-            $product_ids = $this->post_meta->get_private(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item), 'flexible_coupon_product_ids');
+            $product_ids = $this->post_meta->get_private(Helper::get_product_id($item), 'flexible_coupon_product_ids');
             if (!empty($product_ids)) {
                 $coupon->set_product_ids($product_ids);
             }
-            $product_categories = $this->post_meta->get_private(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item), 'flexible_coupon_product_categories');
+            $product_categories = $this->post_meta->get_private(Helper::get_product_id($item), 'flexible_coupon_product_categories');
             if (!empty($product_categories)) {
                 $coupon->set_product_categories($product_categories);
             }
@@ -78,8 +78,8 @@ class Coupon
              *
              * @since 1.2.4
              */
-            $coupon = \apply_filters('fcpdf/core/coupon/before/create', $coupon, $order_id);
-            if ($coupon instanceof \WC_Coupon) {
+            $coupon = apply_filters('fcpdf/core/coupon/before/create', $coupon, $order_id);
+            if ($coupon instanceof WC_Coupon) {
                 $coupon = $coupon->save();
             } else {
                 throw new \Exception('Failed to save coupon. Check before filter! ');
@@ -93,7 +93,7 @@ class Coupon
      *
      * @return int
      */
-    public function get_coupon_expiring_time(int $product_id) : int
+    public function get_coupon_expiring_time(int $product_id): int
     {
         $product_expiring = $this->post_meta->get_private($product_id, 'flexible_coupon_expiring_date', self::DEFAULT_EXPIRING_TIME);
         $product_expiring_own = (int) $this->post_meta->get_private($product_id, 'flexible_coupon_expiring_date_own', self::DEFAULT_EXPIRING_TIME);
@@ -111,7 +111,7 @@ class Coupon
      *
      * @return bool
      */
-    private function is_never_expiring(int $product_id) : bool
+    private function is_never_expiring(int $product_id): bool
     {
         $expiring = $this->post_meta->get_private($product_id, 'flexible_coupon_expiring_date', self::DEFAULT_EXPIRING_TIME);
         return $expiring !== 'own' && 0 === (int) $expiring;
@@ -131,8 +131,8 @@ class Coupon
          *
          * @since 1.2.4
          */
-        $date = \date('Y-m-d', \strtotime('NOW +' . $product_expiring . ' days'));
-        return \apply_filters('fcpdf/core/coupon/expiry', $date);
+        $date = date('Y-m-d', strtotime('NOW +' . $product_expiring . ' days'));
+        return apply_filters('fcpdf/core/coupon/expiry', $date);
         //phpcs:ignore
     }
     /**
@@ -140,7 +140,7 @@ class Coupon
      *
      * @return float
      */
-    private function get_price_from_oder_item(\WC_Order_Item_Product $order_item) : float
+    private function get_price_from_oder_item(WC_Order_Item_Product $order_item): float
     {
         $product_id = $order_item->get_product_id();
         $variation_id = $order_item->get_variation_id();
@@ -152,11 +152,11 @@ class Coupon
             $item_price += (float) $order_item->get_total_tax();
         }
         if ($this->settings->get_fallback('coupon_regular_price') === 'yes') {
-            $product = \wc_get_product($product_id);
+            $product = wc_get_product($product_id);
             if ((float) $product->get_regular_price() > 0) {
                 $item_price = $product->get_regular_price();
             }
         }
-        return \wc_format_decimal($item_price, \wc_get_price_decimals());
+        return wc_format_decimal($item_price, wc_get_price_decimals());
     }
 }

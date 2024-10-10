@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class SubmitField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\NoValueField
+class SubmitField extends NoValueField
 {
     public function get_template_name()
     {

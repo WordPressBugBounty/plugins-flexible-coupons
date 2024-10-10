@@ -46,7 +46,7 @@ class ShortCodeReplacer
         foreach ($this->shortcode_values as $key => $value) {
             $this->add_replacement($key, $value);
         }
-        $this->add_replacement('url', \get_site_url());
+        $this->add_replacement('url', get_site_url());
     }
     /**
      * @param string           $shortcode   Short code name. Add without [].
@@ -54,12 +54,12 @@ class ShortCodeReplacer
      */
     public function add_replacement(string $shortcode, $replacement)
     {
-        $this->replacements['/\\[' . \sanitize_key($shortcode) . '\\]/i'] = $replacement;
+        $this->replacements['/\[' . sanitize_key($shortcode) . '\]/i'] = $replacement;
     }
     /**
      * @return array
      */
-    private function get_replacements() : array
+    private function get_replacements(): array
     {
         /**
          * Add your own shortcodes to replace.
@@ -67,17 +67,17 @@ class ShortCodeReplacer
          * @param array $replacements     Exists replacements.
          * @param array $shortcode_values Shortcode values.
          */
-        return (array) \apply_filters('flexible_coupons_shortcode_replacements', $this->replacements, $this->shortcode_values);
+        return (array) apply_filters('flexible_coupons_shortcode_replacements', $this->replacements, $this->shortcode_values);
     }
     /**
      * @param string $content
      *
      * @return string
      */
-    public function replace_shortcodes(string $content = '') : string
+    public function replace_shortcodes(string $content = ''): string
     {
         if (!empty($this->get_replacements())) {
-            return (string) \preg_replace(\array_keys($this->get_replacements()), \array_values($this->get_replacements()), $content);
+            return (string) preg_replace(array_keys($this->get_replacements()), array_values($this->get_replacements()), $content);
         }
         return $content;
     }

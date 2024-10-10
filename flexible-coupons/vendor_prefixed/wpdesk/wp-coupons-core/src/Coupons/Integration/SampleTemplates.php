@@ -29,28 +29,28 @@ class SampleTemplates
     /**
      * @return string
      */
-    private function get_assets_images_url() : string
+    private function get_assets_images_url(): string
     {
-        return \trailingslashit(\plugin_dir_url(__DIR__)) . 'assets/images/';
+        return trailingslashit(plugin_dir_url(__DIR__)) . 'assets/images/';
     }
     /**
      * @return string
      */
-    private function get_templates_dir() : string
+    private function get_templates_dir(): string
     {
-        return \trailingslashit(\plugin_dir_path(__DIR__)) . 'Templates/';
+        return trailingslashit(plugin_dir_path(__DIR__)) . 'Templates/';
     }
     /**
      * @param array $template
      *
      * @return array
      */
-    private function find_and_replace_shortcodes(array $template) : array
+    private function find_and_replace_shortcodes(array $template): array
     {
         if (isset($template[self::EDITOR_AREA_OBJECTS_KEY])) {
             foreach ($template[self::EDITOR_AREA_OBJECTS_KEY] as $object_id => $object) {
                 if (isset($object['url'])) {
-                    $object['url'] = \str_replace('{plugin_assets_url}', $this->get_assets_images_url(), $object['url']);
+                    $object['url'] = str_replace('{plugin_assets_url}', $this->get_assets_images_url(), $object['url']);
                 }
                 $template[self::EDITOR_AREA_OBJECTS_KEY][$object_id] = $object;
             }
@@ -62,15 +62,15 @@ class SampleTemplates
      */
     public function create()
     {
-        if (\get_option('flexible_coupons_sample_templates') !== 'yes') {
+        if (get_option('flexible_coupons_sample_templates') !== 'yes') {
             foreach ($this->get_sample_template_objects() as $template) {
                 $filepath = $this->get_templates_dir() . $template . '.php';
-                if (!\file_exists($filepath)) {
+                if (!file_exists($filepath)) {
                     continue;
                 }
                 $this->insert_post($filepath);
             }
-            \add_option('flexible_coupons_sample_templates', 'yes');
+            add_option('flexible_coupons_sample_templates', 'yes');
         }
     }
     /**
@@ -78,19 +78,19 @@ class SampleTemplates
      */
     private function insert_post(string $filepath)
     {
-        $template_data = (include $filepath);
-        $title = $template_data['title'] ?? \esc_html__('Sample template', 'flexible-coupons');
-        $post_args = ['ID' => 0, 'post_title' => $title, 'post_name' => \sanitize_title($title), 'post_status' => 'publish', 'post_type' => $this->post_type_name];
-        $post_id = \wp_insert_post($post_args);
+        $template_data = include $filepath;
+        $title = $template_data['title'] ?? esc_html__('Sample template', 'flexible-coupons');
+        $post_args = ['ID' => 0, 'post_title' => $title, 'post_name' => sanitize_title($title), 'post_status' => 'publish', 'post_type' => $this->post_type_name];
+        $post_id = wp_insert_post($post_args);
         unset($template_data['title']);
-        \update_post_meta($post_id, '_editor_data', $this->find_and_replace_shortcodes($template_data));
+        update_post_meta($post_id, '_editor_data', $this->find_and_replace_shortcodes($template_data));
     }
     /**
      * Get sample templates.
      *
      * @return string[]
      */
-    private function get_sample_template_objects() : array
+    private function get_sample_template_objects(): array
     {
         return ['Cooking', 'Ties', 'Ebook', 'Travel'];
     }

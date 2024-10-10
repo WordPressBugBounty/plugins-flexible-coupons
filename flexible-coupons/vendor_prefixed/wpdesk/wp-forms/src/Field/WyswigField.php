@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class WyswigField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class WyswigField extends BasicField
 {
     public function __construct()
     {

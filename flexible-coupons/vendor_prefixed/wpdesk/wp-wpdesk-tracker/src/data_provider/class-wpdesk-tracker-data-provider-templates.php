@@ -14,7 +14,7 @@ namespace FlexibleCouponsVendor;
 if (!\defined('ABSPATH')) {
     exit;
 }
-if (!\class_exists('FlexibleCouponsVendor\\WPDesk_Tracker_Data_Provider_Templates')) {
+if (!\class_exists('FlexibleCouponsVendor\WPDesk_Tracker_Data_Provider_Templates')) {
     /**
      * Class WPDesk_Tracker_Data_Provider_Templates
      */

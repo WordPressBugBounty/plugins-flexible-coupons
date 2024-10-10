@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfReader;
@@ -57,7 +57,7 @@ class Page
      * @param PdfIndirectObject $page
      * @param PdfParser $parser
      */
-    public function __construct(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfIndirectObject $page, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\PdfParser $parser)
+    public function __construct(PdfIndirectObject $page, PdfParser $parser)
     {
         $this->pageObject = $page;
         $this->parser = $parser;
@@ -82,7 +82,7 @@ class Page
     public function getPageDictionary()
     {
         if ($this->pageDictionary === null) {
-            $this->pageDictionary = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($this->getPageObject(), $this->parser));
+            $this->pageDictionary = PdfDictionary::ensure(PdfType::resolve($this->getPageObject(), $this->parser));
         }
         return $this->pageDictionary;
     }
@@ -106,12 +106,12 @@ class Page
         if ($inherited && \in_array($name, $inheritedKeys, \true)) {
             if ($this->inheritedAttributes === null) {
                 $this->inheritedAttributes = [];
-                $inheritedKeys = \array_filter($inheritedKeys, function ($key) use($dict) {
+                $inheritedKeys = \array_filter($inheritedKeys, function ($key) use ($dict) {
                     return !isset($dict->value[$key]);
                 });
                 if (\count($inheritedKeys) > 0) {
-                    $parentDict = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($dict, 'Parent'), $this->parser);
-                    while ($parentDict instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary) {
+                    $parentDict = PdfType::resolve(PdfDictionary::get($dict, 'Parent'), $this->parser);
+                    while ($parentDict instanceof PdfDictionary) {
                         foreach ($inheritedKeys as $index => $key) {
                             if (isset($parentDict->value[$key])) {
                                 $this->inheritedAttributes[$key] = $parentDict->value[$key];
@@ -120,7 +120,7 @@ class Page
                         }
                         /** @noinspection NotOptimalIfConditionsInspection */
                         if (isset($parentDict->value['Parent']) && \count($inheritedKeys) > 0) {
-                            $parentDict = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($parentDict, 'Parent'), $this->parser);
+                            $parentDict = PdfType::resolve(PdfDictionary::get($parentDict, 'Parent'), $this->parser);
                         } else {
                             break;
                         }
@@ -147,7 +147,7 @@ class Page
         if ($rotation === null) {
             return 0;
         }
-        $rotation = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($rotation, $this->parser))->value % 360;
+        $rotation = PdfNumeric::ensure(PdfType::resolve($rotation, $this->parser))->value % 360;
         if ($rotation < 0) {
             $rotation += 360;
         }
@@ -164,22 +164,22 @@ class Page
      * @throws CrossReferenceException
      * @see PageBoundaries
      */
-    public function getBoundary($box = \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::CROP_BOX, $fallback = \true)
+    public function getBoundary($box = PageBoundaries::CROP_BOX, $fallback = \true)
     {
         $value = $this->getAttribute($box);
         if ($value !== null) {
-            return \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\DataStructure\Rectangle::byPdfArray($value, $this->parser);
+            return Rectangle::byPdfArray($value, $this->parser);
         }
         if ($fallback === \false) {
             return \false;
         }
         switch ($box) {
-            case \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::BLEED_BOX:
-            case \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::TRIM_BOX:
-            case \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::ART_BOX:
-                return $this->getBoundary(\FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::CROP_BOX, \true);
-            case \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::CROP_BOX:
-                return $this->getBoundary(\FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::MEDIA_BOX, \true);
+            case PageBoundaries::BLEED_BOX:
+            case PageBoundaries::TRIM_BOX:
+            case PageBoundaries::ART_BOX:
+                return $this->getBoundary(PageBoundaries::CROP_BOX, \true);
+            case PageBoundaries::CROP_BOX:
+                return $this->getBoundary(PageBoundaries::MEDIA_BOX, \true);
         }
         return \false;
     }
@@ -193,7 +193,7 @@ class Page
      * @throws PdfTypeException
      * @throws CrossReferenceException
      */
-    public function getWidthAndHeight($box = \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::CROP_BOX, $fallback = \true)
+    public function getWidthAndHeight($box = PageBoundaries::CROP_BOX, $fallback = \true)
     {
         $boundary = $this->getBoundary($box, $fallback);
         if ($boundary === \false) {
@@ -215,25 +215,25 @@ class Page
     public function getContentStream()
     {
         $dict = $this->getPageDictionary();
-        $contents = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($dict, 'Contents'), $this->parser);
-        if ($contents instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNull) {
+        $contents = PdfType::resolve(PdfDictionary::get($dict, 'Contents'), $this->parser);
+        if ($contents instanceof PdfNull) {
             return '';
         }
-        if ($contents instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray) {
+        if ($contents instanceof PdfArray) {
             $result = [];
             foreach ($contents->value as $content) {
-                $content = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($content, $this->parser);
-                if (!$content instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfStream) {
+                $content = PdfType::resolve($content, $this->parser);
+                if (!$content instanceof PdfStream) {
                     continue;
                 }
                 $result[] = $content->getUnfilteredStream();
             }
             return \implode("\n", $result);
         }
-        if ($contents instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfStream) {
+        if ($contents instanceof PdfStream) {
             return $contents->getUnfilteredStream();
         }
-        throw new \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PdfReaderException('Array or stream expected.', \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PdfReaderException::UNEXPECTED_DATA_TYPE);
+        throw new PdfReaderException('Array or stream expected.', PdfReaderException::UNEXPECTED_DATA_TYPE);
     }
     /**
      * Get information of all external links on this page.
@@ -243,56 +243,56 @@ class Page
      *
      * @return array
      */
-    public function getExternalLinks($box = \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PageBoundaries::CROP_BOX)
+    public function getExternalLinks($box = PageBoundaries::CROP_BOX)
     {
         try {
             $dict = $this->getPageDictionary();
-            $annotations = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($dict, 'Annots'), $this->parser);
-        } catch (\FlexibleCouponsVendor\setasign\Fpdi\FpdiException $e) {
+            $annotations = PdfType::resolve(PdfDictionary::get($dict, 'Annots'), $this->parser);
+        } catch (FpdiException $e) {
             return [];
         }
-        if (!$annotations instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray) {
+        if (!$annotations instanceof PdfArray) {
             return [];
         }
         $links = [];
         foreach ($annotations->value as $entry) {
             try {
-                $annotation = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($entry, $this->parser);
-                $value = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($annotation, 'Subtype'), $this->parser);
-                if (!$value instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfName || $value->value !== 'Link') {
+                $annotation = PdfType::resolve($entry, $this->parser);
+                $value = PdfType::resolve(PdfDictionary::get($annotation, 'Subtype'), $this->parser);
+                if (!$value instanceof PdfName || $value->value !== 'Link') {
                     continue;
                 }
-                $dest = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($annotation, 'Dest'), $this->parser);
-                if (!$dest instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNull) {
+                $dest = PdfType::resolve(PdfDictionary::get($annotation, 'Dest'), $this->parser);
+                if (!$dest instanceof PdfNull) {
                     continue;
                 }
-                $action = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($annotation, 'A'), $this->parser);
-                if (!$action instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary) {
+                $action = PdfType::resolve(PdfDictionary::get($annotation, 'A'), $this->parser);
+                if (!$action instanceof PdfDictionary) {
                     continue;
                 }
-                $actionType = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($action, 'S'), $this->parser);
-                if (!$actionType instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfName || $actionType->value !== 'URI') {
+                $actionType = PdfType::resolve(PdfDictionary::get($action, 'S'), $this->parser);
+                if (!$actionType instanceof PdfName || $actionType->value !== 'URI') {
                     continue;
                 }
-                $uri = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($action, 'URI'), $this->parser);
-                if ($uri instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfString) {
-                    $uriValue = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfString::unescape($uri->value);
-                } elseif ($uri instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfHexString) {
+                $uri = PdfType::resolve(PdfDictionary::get($action, 'URI'), $this->parser);
+                if ($uri instanceof PdfString) {
+                    $uriValue = PdfString::unescape($uri->value);
+                } elseif ($uri instanceof PdfHexString) {
                     $uriValue = \hex2bin($uri->value);
                 } else {
                     continue;
                 }
-                $rect = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($annotation, 'Rect'), $this->parser);
-                if (!$rect instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray || \count($rect->value) !== 4) {
+                $rect = PdfType::resolve(PdfDictionary::get($annotation, 'Rect'), $this->parser);
+                if (!$rect instanceof PdfArray || count($rect->value) !== 4) {
                     continue;
                 }
-                $rect = \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\DataStructure\Rectangle::byPdfArray($rect, $this->parser);
+                $rect = Rectangle::byPdfArray($rect, $this->parser);
                 if ($rect->getWidth() === 0 || $rect->getHeight() === 0) {
                     continue;
                 }
                 $bbox = $this->getBoundary($box);
                 $rotation = $this->getRotation();
-                $gs = new \FlexibleCouponsVendor\setasign\Fpdi\GraphicsState();
+                $gs = new GraphicsState();
                 $gs->translate(-$bbox->getLlx(), -$bbox->getLly());
                 $gs->rotate($bbox->getLlx(), $bbox->getLly(), -$rotation);
                 switch ($rotation) {
@@ -306,16 +306,16 @@ class Page
                         $gs->translate(0, -$bbox->getHeight());
                         break;
                 }
-                $normalizedRect = \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\DataStructure\Rectangle::byVectors($gs->toUserSpace(new \FlexibleCouponsVendor\setasign\Fpdi\Math\Vector($rect->getLlx(), $rect->getLly())), $gs->toUserSpace(new \FlexibleCouponsVendor\setasign\Fpdi\Math\Vector($rect->getUrx(), $rect->getUry())));
-                $quadPoints = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($annotation, 'QuadPoints'), $this->parser);
+                $normalizedRect = Rectangle::byVectors($gs->toUserSpace(new Vector($rect->getLlx(), $rect->getLly())), $gs->toUserSpace(new Vector($rect->getUrx(), $rect->getUry())));
+                $quadPoints = PdfType::resolve(PdfDictionary::get($annotation, 'QuadPoints'), $this->parser);
                 $normalizedQuadPoints = [];
-                if ($quadPoints instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray) {
-                    $quadPointsCount = \count($quadPoints->value);
+                if ($quadPoints instanceof PdfArray) {
+                    $quadPointsCount = count($quadPoints->value);
                     if ($quadPointsCount % 8 === 0) {
                         for ($i = 0; $i + 1 < $quadPointsCount; $i += 2) {
-                            $x = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($quadPoints->value[$i], $this->parser));
-                            $y = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($quadPoints->value[$i + 1], $this->parser));
-                            $v = $gs->toUserSpace(new \FlexibleCouponsVendor\setasign\Fpdi\Math\Vector($x->value, $y->value));
+                            $x = PdfNumeric::ensure(PdfType::resolve($quadPoints->value[$i], $this->parser));
+                            $y = PdfNumeric::ensure(PdfType::resolve($quadPoints->value[$i + 1], $this->parser));
+                            $v = $gs->toUserSpace(new Vector($x->value, $y->value));
                             $normalizedQuadPoints[] = $v->getX();
                             $normalizedQuadPoints[] = $v->getY();
                         }
@@ -327,9 +327,9 @@ class Page
                 // Indirect references are a problem when writing the output in FPDF
                 // because FPDF uses pre-calculated object numbers while FPDI creates
                 // them at runtime.
-                $annotation = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::flatten($annotation, $this->parser);
+                $annotation = PdfType::flatten($annotation, $this->parser);
                 $links[] = ['rect' => $normalizedRect, 'quadPoints' => $normalizedQuadPoints, 'uri' => $uriValue, 'pdfObject' => $annotation];
-            } catch (\FlexibleCouponsVendor\setasign\Fpdi\FpdiException $e) {
+            } catch (FpdiException $e) {
                 continue;
             }
         }

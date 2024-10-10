@@ -26,5 +26,5 @@ interface Shortcode
      *
      * @return string
      */
-    public function get_value(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ShortcodeData $shortcode_data);
+    public function get_value(ShortcodeData $shortcode_data);
 }

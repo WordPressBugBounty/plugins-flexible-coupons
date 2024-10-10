@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Toc extends \FlexibleCouponsVendor\Mpdf\Tag\Tag
+class Toc extends Tag
 {
     public function open($attr, &$ahtml, &$ihtml)
     {

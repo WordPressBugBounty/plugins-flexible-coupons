@@ -31,7 +31,7 @@ use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings;
  *
  * @package WPDesk\Library\WPCoupons
  */
-class CouponsIntegration implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable, \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableCollection
+class CouponsIntegration implements Hookable, HookableCollection
 {
     use HookableParent;
     /**
@@ -59,12 +59,17 @@ class CouponsIntegration implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\
      */
     private static $is_pro = \false;
     /**
+     * @var string
+     */
+    private string $plugin_version;
+    /**
      * @var GenerateCoupon
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorIntegration $editor)
+    public function __construct(EditorIntegration $editor, string $plugin_version)
     {
         $this->editor = $editor;
-        $this->set_product_fields(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\NullProductFields());
+        $this->set_product_fields(new NullProductFields());
+        $this->plugin_version = $plugin_version;
     }
     public static function set_pro()
     {
@@ -73,82 +78,85 @@ class CouponsIntegration implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\
     /**
      * @return bool
      */
-    public static function is_pro() : bool
+    public static function is_pro(): bool
     {
         return self::$is_pro;
     }
     /**
      * @return LoggerInterface
      */
-    protected function get_logger() : \Psr\Log\LoggerInterface
+    protected function get_logger(): LoggerInterface
     {
-        return new \Psr\Log\NullLogger();
+        return new NullLogger();
     }
     /**
      * @return Renderer
      */
-    protected function get_renderer() : \FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer
+    protected function get_renderer(): Renderer
     {
-        $resolver = new \FlexibleCouponsVendor\WPDesk\View\Resolver\ChainResolver();
-        $resolver->appendResolver(new \FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver(\trailingslashit(__DIR__) . 'Views/dashboard'));
-        $resolver->appendResolver(new \FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver(\trailingslashit(__DIR__) . 'Views/editor'));
-        return new \FlexibleCouponsVendor\WPDesk\View\Renderer\SimplePhpRenderer($resolver);
+        $resolver = new ChainResolver();
+        $resolver->appendResolver(new DirResolver(trailingslashit(__DIR__) . 'Views/dashboard'));
+        $resolver->appendResolver(new DirResolver(trailingslashit(__DIR__) . 'Views/editor'));
+        return new SimplePhpRenderer($resolver);
     }
     /**
      * @param ProductFields $product_fields
      */
-    public function set_product_fields(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields $product_fields)
+    public function set_product_fields(ProductFields $product_fields)
     {
         $this->product_fields = $product_fields;
     }
     /**
      * @return ProductFields
      */
-    protected function get_product_fields() : \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields
+    protected function get_product_fields(): ProductFields
     {
         return $this->product_fields;
     }
     /**
      * @return Shortcode[]
      */
-    protected function shortcodes_definition() : array
+    protected function shortcodes_definition(): array
     {
-        return [new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Shortcodes\CouponCode(), new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Shortcodes\CouponValue()];
+        return [new Shortcodes\CouponCode(), new Shortcodes\CouponValue()];
     }
-    protected function get_persistence() : \FlexibleCouponsVendor\WPDesk\Persistence\Adapter\WordPress\WordpressOptionsContainer
+    protected function get_persistence(): WordpressOptionsContainer
     {
-        return new \FlexibleCouponsVendor\WPDesk\Persistence\Adapter\WordPress\WordpressOptionsContainer('flexible_coupons_');
+        return new WordpressOptionsContainer('flexible_coupons_');
     }
-    private function get_shortcodes_definition() : array
+    private function get_shortcodes_definition(): array
     {
-        return \apply_filters('fc/core/shortcodes/definition', $this->shortcodes_definition());
+        return apply_filters('fc/core/shortcodes/definition', $this->shortcodes_definition());
+    }
+    public static function get_assets_url(): string
+    {
+        return plugins_url('Coupons/assets', __DIR__);
     }
     /**
-     *
      * @return void
      */
     public function hooks()
     {
-        $post_meta = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta();
+        $post_meta = new PostMeta();
         $logger = $this->get_logger();
         $persistence = $this->get_persistence();
         $renderer = $this->get_renderer();
         $product_fields = $this->get_product_fields();
         $shortcodes = $this->get_shortcodes_definition();
-        $pdf = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\PDF($this->editor, $this->get_renderer(), $product_fields, $post_meta, $shortcodes);
-        $download = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\Download($pdf, $post_meta);
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Assets($this->editor->get_post_type(), $shortcodes));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Cart\Cart($product_fields, $post_meta, $persistence, $logger));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\MyAccount($renderer, $post_meta));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Order\MakeOrder($post_meta));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Order\OrderMetaBox($renderer, $post_meta));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Coupon\GenerateCoupon($renderer, $product_fields, $persistence, $post_meta, $logger));
+        $pdf = new PDF\PDF($this->editor, $this->get_renderer(), $product_fields, $post_meta, $shortcodes);
+        $download = new PDF\Download($pdf, $post_meta);
+        $this->add_hookable(new Integration\Assets($this->editor->get_post_type(), $shortcodes));
+        $this->add_hookable(new Cart\Cart($product_fields, $post_meta, $persistence, $logger));
+        $this->add_hookable(new Integration\MyAccount($renderer, $post_meta));
+        $this->add_hookable(new Order\MakeOrder($post_meta));
+        $this->add_hookable(new Order\OrderMetaBox($renderer, $post_meta));
+        $this->add_hookable(new Coupon\GenerateCoupon($renderer, $product_fields, $persistence, $post_meta, $logger));
         $this->add_hookable($download);
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\SettingsForm($persistence, $renderer));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\ProductEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\ProductVariationEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\SaveProductSimpleData($product_fields, $post_meta));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\SaveProductVariationData($product_fields, $post_meta));
-        \do_action('fc/core/init', new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PluginAccess($renderer, $logger, $persistence, $pdf, $download, $shortcodes, $post_meta, $product_fields));
+        $this->add_hookable(new Settings\SettingsForm($persistence, $renderer));
+        $this->add_hookable(new Product\ProductEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
+        $this->add_hookable(new Product\ProductVariationEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
+        $this->add_hookable(new Product\SaveProductSimpleData($product_fields, $post_meta));
+        $this->add_hookable(new Product\SaveProductVariationData($product_fields, $post_meta));
+        do_action('fc/core/init', new PluginAccess($renderer, $logger, $persistence, $pdf, $download, $shortcodes, $post_meta, $product_fields, $this->plugin_version));
     }
 }

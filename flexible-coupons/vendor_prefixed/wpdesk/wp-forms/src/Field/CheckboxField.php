@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class CheckboxField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class CheckboxField extends BasicField
 {
     const VALUE_TRUE = 'yes';
     const VALUE_FALSE = 'no';

@@ -2,6 +2,6 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Nav extends \FlexibleCouponsVendor\Mpdf\Tag\BlockTag
+class Nav extends BlockTag
 {
 }

@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class WooSelect extends \FlexibleCouponsVendor\WPDesk\Forms\Field\SelectField
+class WooSelect extends SelectField
 {
     public function __construct()
     {

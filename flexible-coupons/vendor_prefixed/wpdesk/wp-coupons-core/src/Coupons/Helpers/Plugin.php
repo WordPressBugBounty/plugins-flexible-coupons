@@ -16,22 +16,26 @@ class Plugin
      *
      * @return bool
      */
-    public static function is_active(string $plugin) : bool
+    public static function is_active(string $plugin): bool
     {
-        if (\function_exists('is_plugin_active_for_network')) {
-            if (\is_plugin_active_for_network($plugin)) {
+        if (function_exists('is_plugin_active_for_network')) {
+            if (is_plugin_active_for_network($plugin)) {
                 return \true;
             }
         }
-        return \in_array($plugin, (array) \get_option('active_plugins', []));
+        return in_array($plugin, (array) get_option('active_plugins', []));
     }
     /**
      * Is Advanced Sending for Flexible Coupons plugin active.
      *
      * @return bool
      */
-    public static function is_fcs_pro_addon_enabled() : bool
+    public static function is_fcs_pro_addon_enabled(): bool
     {
         return self::is_active('flexible-coupons-sending/flexible-coupons-sending.php');
+    }
+    public static function is_fc_multiple_pdfs_pro_addon_enabled(): bool
+    {
+        return self::is_active('flexible-coupons-multiple-pdfs/flexible-coupons-multiple-pdfs.php');
     }
 }

@@ -8,7 +8,7 @@ use FlexibleCouponsVendor\WPDesk\Forms\Field;
  *
  * @package WPDesk\Library\WPCoupons\Settings\Fields
  */
-class WysiwygField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\WyswigField
+class WysiwygField extends Field\WyswigField
 {
     /**
      * @return string
@@ -20,7 +20,7 @@ class WysiwygField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\WyswigField
     /**
      * @return false
      */
-    public function should_override_form_template() : bool
+    public function should_override_form_template(): bool
     {
         return \false;
     }

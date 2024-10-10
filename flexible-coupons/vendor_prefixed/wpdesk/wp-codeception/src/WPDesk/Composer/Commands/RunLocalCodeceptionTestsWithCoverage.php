@@ -12,7 +12,7 @@ use FlexibleCouponsVendor\Symfony\Component\Yaml\Yaml;
  *
  * @package WPDesk\Composer\Codeception\Commands
  */
-class RunLocalCodeceptionTestsWithCoverage extends \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\RunCodeceptionTests
+class RunLocalCodeceptionTestsWithCoverage extends RunCodeceptionTests
 {
     use LocalCodeceptionTrait;
     /**
@@ -21,7 +21,7 @@ class RunLocalCodeceptionTestsWithCoverage extends \FlexibleCouponsVendor\WPDesk
     protected function configure()
     {
         parent::configure();
-        $this->setName('run-local-codeception-tests-with-coverage')->setDescription('Run local codeception tests.')->setDefinition(array(new \FlexibleCouponsVendor\Symfony\Component\Console\Input\InputArgument(self::SINGLE, \FlexibleCouponsVendor\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Name of Single test to run.', ' ')));
+        $this->setName('run-local-codeception-tests-with-coverage')->setDescription('Run local codeception tests.')->setDefinition(array(new InputArgument(self::SINGLE, InputArgument::OPTIONAL, 'Name of Single test to run.', ' ')));
     }
     /**
      * Execute command.
@@ -31,7 +31,7 @@ class RunLocalCodeceptionTestsWithCoverage extends \FlexibleCouponsVendor\WPDesk
      *
      * @return int 0 if everything went fine, or an error code
      */
-    protected function execute(\FlexibleCouponsVendor\Symfony\Component\Console\Input\InputInterface $input, \FlexibleCouponsVendor\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $configuration = $this->getWpDeskConfiguration();
         $this->prepareWpConfig($output, $configuration);

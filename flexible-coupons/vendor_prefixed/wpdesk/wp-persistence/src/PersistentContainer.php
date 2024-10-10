@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
  *
  * @package WPDesk\Persistence
  */
-interface PersistentContainer extends \Psr\Container\ContainerInterface
+interface PersistentContainer extends ContainerInterface
 {
     /**
      * Similar to ::get but throws no exception when element has not been found.
@@ -44,5 +44,5 @@ interface PersistentContainer extends \Psr\Container\ContainerInterface
     /**
      * @inheritDoc
      */
-    public function has($id) : bool;
+    public function has($id): bool;
 }

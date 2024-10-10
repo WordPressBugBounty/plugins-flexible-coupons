@@ -119,7 +119,7 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 		parent::hooks();
 
 		$editor = new RegisterEditor( self::EDITOR_POST_TYPE );
-		$coupon = new CouponIntegration( $editor, $this->logger );
+		$coupon = new CouponIntegration( $editor, $this->plugin_info->get_version() );
 		$this->add_hookable( $editor );
 		$this->add_hookable( $coupon );
 		$this->add_hookable( new RegisterEmails( $this->plugin_info ) );

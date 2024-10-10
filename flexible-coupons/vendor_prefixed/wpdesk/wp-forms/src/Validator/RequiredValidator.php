@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Forms\Validator;
 
 use FlexibleCouponsVendor\WPDesk\Forms\Validator;
-class RequiredValidator implements \FlexibleCouponsVendor\WPDesk\Forms\Validator
+class RequiredValidator implements Validator
 {
     public function is_valid($value)
     {

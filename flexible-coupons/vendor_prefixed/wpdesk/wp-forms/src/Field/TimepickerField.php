@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class TimepickerField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class TimepickerField extends BasicField
 {
     /**
      * @inheritDoc

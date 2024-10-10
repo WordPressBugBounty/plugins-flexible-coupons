@@ -2,6 +2,6 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class FieldSet extends \FlexibleCouponsVendor\Mpdf\Tag\BlockTag
+class FieldSet extends BlockTag
 {
 }

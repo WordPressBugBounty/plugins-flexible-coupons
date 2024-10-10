@@ -8,7 +8,7 @@ use FlexibleCouponsVendor\Codeception\Lib\Generator\Test;
  *
  * @package WPDesk\Codeception\Command
  */
-class WooCommerceTestGenerator extends \FlexibleCouponsVendor\Codeception\Lib\Generator\Test
+class WooCommerceTestGenerator extends Test
 {
     protected $template = <<<EOF
 <?php {{namespace}}

@@ -15,28 +15,39 @@ $classes = $field->has_classes() ? 'class="' . $field->get_classes() . '"' : '';
 <?php 
 if ($field->has_label()) {
     ?>
-	<h<?php 
+	<h
+	<?php 
     echo (int) $header_size;
-    ?> <?php 
+    ?>
+	 <?php 
     echo $classes;
-    ?>><?php 
+    ?>
+	>
+	<?php 
     echo \esc_html($field->get_label());
-    ?></h<?php 
+    ?>
+	</h
+	<?php 
     echo (int) $header_size;
-    ?>>
-<?php 
+    ?>
+	>
+	<?php 
 }
 ?>
 
 <?php 
 if ($field->has_description()) {
     ?>
-	<p <?php 
+	<p 
+	<?php 
     echo $classes;
-    ?>><?php 
+    ?>
+	>
+	<?php 
     echo \wp_kses_post($field->get_description());
-    ?></p>
-<?php 
+    ?>
+	</p>
+	<?php 
 }
 ?>
 	</td>

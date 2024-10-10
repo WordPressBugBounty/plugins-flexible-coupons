@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
 use FlexibleCouponsVendor\WPDesk\Forms\Sanitizer\TextFieldSanitizer;
-class HiddenField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class HiddenField extends BasicField
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class HiddenField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
     }
     public function get_sanitizer()
     {
-        return new \FlexibleCouponsVendor\WPDesk\Forms\Sanitizer\TextFieldSanitizer();
+        return new TextFieldSanitizer();
     }
     public function get_template_name()
     {

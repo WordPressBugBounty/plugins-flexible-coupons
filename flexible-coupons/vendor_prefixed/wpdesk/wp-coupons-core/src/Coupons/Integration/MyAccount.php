@@ -8,7 +8,7 @@ use FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer;
 /**
  * Displays documents on my account.
  */
-class MyAccount implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class MyAccount implements Hookable
 {
     const PRODUCT_TYPE = 'wpdesk_pdf_coupons';
     /**
@@ -23,7 +23,7 @@ class MyAccount implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Ho
      * @param Renderer $renderer
      * @param PostMeta $postmeta
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer $renderer, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $postmeta)
+    public function __construct(Renderer $renderer, PostMeta $postmeta)
     {
         $this->renderer = $renderer;
         $this->postmeta = $postmeta;
@@ -33,7 +33,7 @@ class MyAccount implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Ho
      */
     public function hooks()
     {
-        \add_action('woocommerce_view_order', [$this, 'view_documents']);
+        add_action('woocommerce_view_order', [$this, 'view_documents']);
     }
     /**
      * @param int $order_id
@@ -42,7 +42,7 @@ class MyAccount implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Ho
      */
     public function view_documents(int $order_id)
     {
-        $order = \wc_get_order($order_id);
+        $order = wc_get_order($order_id);
         $data = [];
         $items = $order->get_items();
         foreach ($items as $item) {
@@ -60,10 +60,10 @@ class MyAccount implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Ho
             if (!$coupon_id) {
                 $coupon_id = (int) $order->get_meta('_' . $meta_coupon_name);
             }
-            $coupon = new \WC_Coupon($coupon_id);
+            $coupon = new WC_Coupon($coupon_id);
             $coupon_data = $this->postmeta->get_private($coupon_id, 'fcpdf_coupon_data', []);
             $coupon_code = $coupon->get_id() ? $coupon->get_code() : '';
-            $download_url = $coupon->get_id() ? \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::make_coupon_url($coupon_data) : '';
+            $download_url = $coupon->get_id() ? Helper::make_coupon_url($coupon_data) : '';
             if ($download_url && $coupon_code) {
                 $data[] = ['product_name' => $item->get_name(), 'coupon_code' => $coupon_code, 'coupon_is_used' => $this->is_coupon_limit_reached($coupon), 'download_url' => $download_url];
             }
@@ -76,7 +76,7 @@ class MyAccount implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Ho
      *
      * @return bool
      */
-    private function is_coupon_limit_reached(\WC_Coupon $coupon) : bool
+    private function is_coupon_limit_reached(WC_Coupon $coupon): bool
     {
         return $coupon->get_usage_limit() > 0 && $coupon->get_usage_count() >= $coupon->get_usage_limit();
     }

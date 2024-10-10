@@ -2,6 +2,6 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Small extends \FlexibleCouponsVendor\Mpdf\Tag\InlineTag
+class Small extends InlineTag
 {
 }

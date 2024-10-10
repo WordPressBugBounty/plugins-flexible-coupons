@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Th extends \FlexibleCouponsVendor\Mpdf\Tag\Td
+class Th extends Td
 {
     public function close(&$ahtml, &$ihtml)
     {

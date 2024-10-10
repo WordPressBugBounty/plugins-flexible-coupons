@@ -2,10 +2,10 @@
 
 Contributors: wpdesk,piotrpo,marcinkolanko,amisiewicz
 Donate link: https://flexiblecoupons.net/products/flexible-coupons-woocommerce
-Tags: gift cards, woocommerce gift cards, vouchers, woocommerce coupon, voucher
+Tags: gift card, voucher, coupon, pdf ticket, qr code
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.9.14
+Stable tag: 1.10.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -475,6 +475,13 @@ Yes 😊.
 57. A QR code generator and scanner for your beautiful PDF gift cards, vouchers, and tickets in WooCommerce (PRO add-on).
 
 == Changelog ==
+
+= 1.10.0 - 2024-10-10 =
+* Added support for WooCommerce 9.4
+* Added support for 2.0 core library
+
+= 1.9.15 - 2024-09-07 =
+* Added support for WooCommerce 9.3
 
 = 1.9.14 - 2024-08-27 =
 * Fixed Logger

@@ -53,7 +53,7 @@ echo $style;
 	</p>
 
 	<div class="fc-options-group">
-	<?php 
+		<?php 
 \wp_nonce_field($nonce_action, $nonce_name);
 $renderer->output_render('fields/disable-pdf-coupon', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
 $renderer->output_render('fields/product-template', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'product_templates' => $product_templates]);
@@ -72,6 +72,30 @@ if (!$is_premium) {
     echo '</p>';
 }
 $renderer->output_render('fields/coupon-code-enable', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+?>
+		<div class="fc-options-group fc-custom-fields-group fc-multiple-pdfs-options-wrapper">
+		<?php 
+$is_multiple_pdfs = Plugin::is_fc_multiple_pdfs_pro_addon_enabled();
+if (!$is_multiple_pdfs) {
+    echo '<p class="form-field marketing-content">';
+    \printf(
+        /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
+        \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below', 'flexible-coupons'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcmpdf_link()) . '&utm_content=&utm_content=edit-product'),
+        '</a>'
+    );
+    echo '</p>';
+}
+$renderer->output_render('fields/multiple-pdfs/multiple-coupons-enable', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings, 'loop' => $loop]);
+?>
+			<div class="fc-options-group fc-custom-fields-group fc-multiple-pdfs-advanced-options">
+				<?php 
+$renderer->output_render('fields/multiple-pdfs/multiple-coupons-send-to-first-email', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings, 'loop' => $loop]);
+$renderer->output_render('fields/multiple-pdfs/multiple-coupons-forms-limit', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings, 'loop' => $loop]);
+?>
+			</div>
+		</div>
+		<?php 
 $style = 'display: none;';
 $is_enabled = 'yes' === $post_meta->get_private($post_id, 'flexible_coupon_coupon_code', $post_meta->get_private($parent_id, 'flexible_coupon_coupon_code', 'no'));
 if ($is_enabled) {
@@ -94,18 +118,18 @@ $renderer->output_render('fields/product-fields', ['post_meta' => $post_meta, 'p
 	<div class="fc-options-group">
 		<?php 
 $renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes]);
-$is_sending = \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Plugin::is_fcs_pro_addon_enabled();
+$is_sending = Plugin::is_fcs_pro_addon_enabled();
 if (!$is_sending) {
     echo '<p class="form-field marketing-content">';
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Links::get_fcs_link()) . '&utm_content=&utm_content=edit-variations'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link()) . '&utm_content=&utm_content=edit-variations'),
         '</a>'
     );
     echo '</p>';
 }
-$renderer->output_render('fields/delay-type', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending, 'loop' => $loop]);
+$renderer->output_render('fields/delay-type', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending, 'is_variation' => \true, 'loop' => $loop]);
 ?>
 		<div class="show_if_simple_delay">
 			<?php 
@@ -118,7 +142,7 @@ $renderer->output_render('fields/delay-value', ['post_meta' => $post_meta, 'post
 $renderer->output_render('fields/delay-fixed-date', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending, 'loop' => $loop]);
 ?>
 		</div>
-			<?php 
+		<?php 
 $renderer->output_render('fields/expiring-date', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop]);
 $renderer->output_render('fields/expiring-date-own', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop]);
 $renderer->output_render('fields/free-shipping', ['post_meta' => $post_meta, 'post_id' => $post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop]);

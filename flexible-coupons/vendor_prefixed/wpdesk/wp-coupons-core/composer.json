@@ -20,7 +20,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "7.3.33"
+            "php": "7.4.33"
         },
         "allow-plugins": {
             "dealerdirect\/phpcodesniffer-composer-installer": true,
@@ -30,7 +30,7 @@
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.4",
         "ext-json": "*",
         "mpdf\/mpdf": "v8.0.10",
         "psr\/log": "^1.1.0",
@@ -45,7 +45,7 @@
     "require-dev": {
         "10up\/wp_mock": "*",
         "mockery\/mockery": "*",
-        "phpunit\/phpunit": "<7",
+        "phpunit\/phpunit": "^9",
         "wp-coding-standards\/wpcs": "^2.3.0",
         "squizlabs\/php_codesniffer": "^3.0.2"
     },

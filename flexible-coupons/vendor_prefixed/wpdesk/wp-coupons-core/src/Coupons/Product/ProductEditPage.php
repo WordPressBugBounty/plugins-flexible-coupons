@@ -17,7 +17,7 @@ use FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer;
  *
  * @package WPDesk\Library\WPCoupons\Integration
  */
-class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class ProductEditPage implements Hookable
 {
     const NONCE_NAME = 'flexible_coupons_nonce';
     const NONCE_ACTION = 'save_fields';
@@ -50,7 +50,7 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
      * @param PostMeta                  $post_meta
      * @param string                    $editor_post_type
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Persistence\Adapter\WordPress\WordpressOptionsContainer $settings, \FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer $renderer, \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields $product_fields, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $post_meta, string $editor_post_type)
+    public function __construct(WordpressOptionsContainer $settings, Renderer $renderer, ProductFields $product_fields, PostMeta $post_meta, string $editor_post_type)
     {
         $this->settings = $settings;
         $this->renderer = $renderer;
@@ -63,10 +63,10 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
      */
     public function hooks()
     {
-        \add_filter('product_type_options', [$this, 'add_product_type_filter']);
-        \add_action('save_post_product', [$this, 'update_product_type'], 10);
-        \add_action('woocommerce_product_data_tabs', [$this, 'add_product_tab_action']);
-        \add_action('woocommerce_product_data_panels', [$this, 'add_product_general_data_field']);
+        add_filter('product_type_options', [$this, 'add_product_type_filter']);
+        add_action('save_post_product', [$this, 'update_product_type'], 10);
+        add_action('woocommerce_product_data_tabs', [$this, 'add_product_tab_action']);
+        add_action('woocommerce_product_data_panels', [$this, 'add_product_general_data_field']);
     }
     /**
      * Add custom tab to edit product page.
@@ -75,12 +75,12 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
      *
      * @return array
      */
-    public function add_product_tab_action($tabs) : array
+    public function add_product_tab_action($tabs): array
     {
         foreach ($tabs as $tab_id => $tab) {
             $new_tabs[$tab_id] = $tab;
             if ($tab_id === 'general') {
-                $new_tabs[self::TAB_KEY] = ['label' => \esc_html__('PDF Coupon', 'flexible-coupons'), 'target' => 'pdfcoupon_product_data', 'class' => ['hide_if_grouped', 'hide_if_external', 'hide_if_coupon_disabled', 'hide'], 'priority' => 12];
+                $new_tabs[self::TAB_KEY] = ['label' => esc_html__('PDF Coupon', 'flexible-coupons'), 'target' => 'pdfcoupon_product_data', 'class' => ['hide_if_grouped', 'hide_if_external', 'hide_if_coupon_disabled', 'hide'], 'priority' => 12];
             }
         }
         return $new_tabs;
@@ -101,9 +101,9 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
      *
      * @return array
      */
-    public function add_product_type_filter(array $types) : array
+    public function add_product_type_filter(array $types): array
     {
-        $types['wpdesk_pdf_coupons'] = ['id' => self::PRODUCT_COUPON_SLUG, 'wrapper_class' => 'show_if_simple', 'label' => \esc_html__('PDF Coupon', 'flexible-coupons'), 'description' => \esc_html__('Convert this product to PDF Coupon', 'flexible-coupons'), 'default' => 'no'];
+        $types['wpdesk_pdf_coupons'] = ['id' => self::PRODUCT_COUPON_SLUG, 'wrapper_class' => 'show_if_simple', 'label' => esc_html__('PDF Coupon', 'flexible-coupons'), 'description' => esc_html__('Convert this product to PDF Coupon', 'flexible-coupons'), 'default' => 'no'];
         return $types;
     }
     /**
@@ -113,7 +113,7 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
      */
     public function update_product_type(int $product_id)
     {
-        if (isset($_POST[self::NONCE_NAME]) && \wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION)) {
+        if (isset($_POST[self::NONCE_NAME]) && wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION)) {
             $this->post_meta->update_private($product_id, self::PRODUCT_COUPON_SLUG, isset($_POST[self::PRODUCT_COUPON_SLUG]) ? 'yes' : 'no');
             //phpcs:ignore
         }
@@ -121,10 +121,10 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
     /**
      * @return array
      */
-    private function get_coupons_templates_options() : array
+    private function get_coupons_templates_options(): array
     {
         $items = [];
-        $posts = \get_posts(['post_type' => $this->editor_post_type, 'post_status' => 'publish', 'posts_per_page' => '-1']);
+        $posts = get_posts(['post_type' => $this->editor_post_type, 'post_status' => 'publish', 'posts_per_page' => '-1']);
         foreach ($posts as $post) {
             $items[$post->ID] = $post->post_title;
         }
@@ -133,7 +133,7 @@ class ProductEditPage implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plu
     /**
      * @return array|string[]
      */
-    public function get_field_attributes() : array
+    public function get_field_attributes(): array
     {
         if (!$this->product_fields->is_premium()) {
             $attributes = ['readonly' => 'readonly', 'disabled' => 'disabled'];

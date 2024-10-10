@@ -4,7 +4,7 @@ namespace FlexibleCouponsVendor\WPDesk\Tracker;
 
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableCollection;
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableParent;
-class OptInOptOut implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableCollection
+class OptInOptOut implements HookableCollection
 {
     use HookableParent;
     /**
@@ -41,10 +41,10 @@ class OptInOptOut implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\
      */
     public function create_objects()
     {
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Tracker\PluginActionLinks($this->plugin_file, $this->plugin_slug, $this->shop_url));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Tracker\OptInPage($this->plugin_file, $this->plugin_slug));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Tracker\OptOut($this->plugin_slug, $this->plugin_name));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Tracker\Assets($this->plugin_slug));
+        $this->add_hookable(new PluginActionLinks($this->plugin_file, $this->plugin_slug, $this->shop_url));
+        $this->add_hookable(new OptInPage($this->plugin_file, $this->plugin_slug));
+        $this->add_hookable(new OptOut($this->plugin_slug, $this->plugin_name));
+        $this->add_hookable(new Assets($this->plugin_slug));
     }
     public function hooks()
     {

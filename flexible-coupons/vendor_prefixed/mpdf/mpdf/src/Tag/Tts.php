@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Tts extends \FlexibleCouponsVendor\Mpdf\Tag\SubstituteTag
+class Tts extends SubstituteTag
 {
     public function open($attr, &$ahtml, &$ihtml)
     {

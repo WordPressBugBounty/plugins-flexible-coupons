@@ -20,11 +20,11 @@ class PDFWrapper
     /**
      * @return array
      */
-    private function get_fonts_data() : array
+    private function get_fonts_data(): array
     {
-        $default_font_config = (new \FlexibleCouponsVendor\Mpdf\Config\FontVariables())->getDefaults();
+        $default_font_config = (new FontVariables())->getDefaults();
         $default_font_data = $default_font_config['fontdata'];
-        $fonts_data = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\FontsData();
+        $fonts_data = new FontsData();
         $fonts_data->set_font('lato', 'Lato');
         $fonts_data->set_font_without_italic('nunito', 'Nunito');
         $fonts_data->set_font_without_italic('rubik', 'Rubik');
@@ -49,14 +49,14 @@ class PDFWrapper
          *
          * @since 1.4.0
          */
-        return (array) \apply_filters('fcpdf/core/fonts/data', $fonts, $default_font_data, $fonts_data);
+        return (array) apply_filters('fcpdf/core/fonts/data', $fonts, $default_font_data, $fonts_data);
     }
     /**
      * @return array
      */
-    private function get_fonts_dir() : array
+    private function get_fonts_dir(): array
     {
-        $default_font_dir = [\trailingslashit(\dirname(__FILE__, 4)) . 'assets/fonts/'];
+        $default_font_dir = [trailingslashit(dirname(__FILE__, 4)) . 'assets/fonts/'];
         /**
          * Define your own font directory or add to an existing one.
          *
@@ -64,21 +64,21 @@ class PDFWrapper
          *
          * @since 1.4.0
          */
-        return (array) \apply_filters('fcpdf/core/fonts/dir', $default_font_dir);
+        return (array) apply_filters('fcpdf/core/fonts/dir', $default_font_dir);
     }
     /**
      * @param EditorAreaProperties $editor_data
      */
-    public function set_editor_data(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorAreaProperties $editor_data)
+    public function set_editor_data(EditorAreaProperties $editor_data)
     {
         $this->editor_data = $editor_data;
     }
     /**
      * @return string
      */
-    private function get_temp_dir() : string
+    private function get_temp_dir(): string
     {
-        $upload_dir = \wp_upload_dir();
+        $upload_dir = wp_upload_dir();
         /**
          * Define own tmp dir for mpdf.
          *
@@ -86,8 +86,8 @@ class PDFWrapper
          *
          * @since 1.5.0
          */
-        $temp_dir = \apply_filters('fcpdf/core/mpdf/tmp', \trailingslashit($upload_dir['basedir']) . 'flexible-coupons/tmp/');
-        \wp_mkdir_p($temp_dir);
+        $temp_dir = apply_filters('fcpdf/core/mpdf/tmp', trailingslashit($upload_dir['basedir']) . 'flexible-coupons/tmp/');
+        wp_mkdir_p($temp_dir);
         return $temp_dir;
     }
     /**
@@ -95,7 +95,7 @@ class PDFWrapper
      */
     private function get_config()
     {
-        $config = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\Config();
+        $config = new Config();
         $config->set_format($this->editor_data->get_format());
         $config->set_orientation($this->editor_data->get_orientation());
         $config->set_font_data($this->get_fonts_data());
@@ -111,7 +111,7 @@ class PDFWrapper
          *
          * @since 1.5.0
          */
-        return (array) \apply_filters('fcpdf/core/mpdf/config', $config->get());
+        return (array) apply_filters('fcpdf/core/mpdf/config', $config->get());
     }
     /**
      * @param string $html
@@ -121,11 +121,11 @@ class PDFWrapper
      */
     public function render($html)
     {
-        $mpdf = new \FlexibleCouponsVendor\Mpdf\Mpdf($this->get_config());
+        $mpdf = new Mpdf($this->get_config());
         // sometimes clients has problem displaying images, becouse of ssl certificate (not trusted)
         $mpdf->curlAllowUnsafeSslRequests = \true;
         $mpdf->pdf_version = '1.5';
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('', \FlexibleCouponsVendor\Mpdf\Output\Destination::STRING_RETURN);
+        return $mpdf->Output('', Destination::STRING_RETURN);
     }
 }

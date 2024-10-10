@@ -13,16 +13,16 @@ use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields;
  *
  * @package WPDesk\Library\WPCoupons\Integration
  */
-class NullProductFields implements \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields
+class NullProductFields implements ProductFields
 {
     /**
      * @return array
      */
-    public function get() : array
+    public function get(): array
     {
         return [];
     }
-    public function is_premium() : bool
+    public function is_premium(): bool
     {
         return \false;
     }

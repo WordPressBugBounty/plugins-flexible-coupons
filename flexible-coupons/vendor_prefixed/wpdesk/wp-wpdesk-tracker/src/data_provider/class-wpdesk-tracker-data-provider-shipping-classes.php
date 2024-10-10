@@ -14,7 +14,7 @@ namespace FlexibleCouponsVendor;
 if (!\defined('ABSPATH')) {
     exit;
 }
-if (!\class_exists('FlexibleCouponsVendor\\WPDesk_Tracker_Data_Provider_Shipping_Classes')) {
+if (!\class_exists('FlexibleCouponsVendor\WPDesk_Tracker_Data_Provider_Shipping_Classes')) {
     /**
      * Class WPDesk_Tracker_Data_Provider_Shipping_Classes
      */

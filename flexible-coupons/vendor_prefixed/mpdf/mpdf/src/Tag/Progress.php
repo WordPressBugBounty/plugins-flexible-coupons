@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Progress extends \FlexibleCouponsVendor\Mpdf\Tag\Meter
+class Progress extends Meter
 {
     protected function makeSVG($type, $value, $max, $min, $optimum, $low, $high)
     {

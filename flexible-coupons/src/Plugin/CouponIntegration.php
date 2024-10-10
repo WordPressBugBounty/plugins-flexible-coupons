@@ -9,8 +9,6 @@ namespace WPDesk\FlexibleCoupons;
 
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorIntegration;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\CouponsIntegration;
-use Psr\Log\LoggerInterface;
-
 /**
  * This class extends coupons library. Library is a free version of coupons.
  *
@@ -20,10 +18,10 @@ class CouponIntegration extends CouponsIntegration {
 
 	/**
 	 * @param EditorIntegration $editor Editor integration.
-	 * @param LoggerInterface   $logger Logger.
+	 * @param string            $plugin_version
 	 */
-	public function __construct( EditorIntegration $editor, LoggerInterface $logger ) {
-		parent::__construct( $editor );
+	public function __construct( EditorIntegration $editor, string $plugin_version ) {
+		parent::__construct( $editor, $plugin_version );
 		$this->set_product_fields( new ProductFieldsDefinition() );
 	}
 

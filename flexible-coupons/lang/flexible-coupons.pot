@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible PDF Coupons for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.9.14\n"
+"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-coupons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-27T12:04:55+00:00\n"
+"POT-Creation-Date: 2024-10-10T07:11:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-coupons\n"
@@ -111,7 +111,7 @@ msgstr ""
 
 #: src/Plugin/Plugin.php:164
 #: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:198
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:48
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:49
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/settings-menu-page-html.php:11
 msgid "Settings"
 msgstr ""
@@ -307,46 +307,52 @@ msgstr ""
 msgid "Always use the regular price of the product for the coupon value."
 msgstr ""
 
-#: src/Views/emails/coupon.php:10
-#: src/Views/emails/plain/coupon.php:18
+#. translators: %s: Customer full name.
+#: src/Views/emails/coupon.php:25
+#: src/Views/emails/plain/coupon.php:27
 msgid "Hi %s,"
 msgstr ""
 
-#: src/Views/emails/coupon.php:12
-#: src/Views/emails/plain/coupon.php:22
-msgid "In response to an order %s placed %s, we are sending you a coupon for shopping in our shop."
+#. translators: %1$s: Order number. %2$s: Order date.
+#: src/Views/emails/coupon.php:34
+#: src/Views/emails/plain/coupon.php:35
+msgid "In response to an order %1$s placed %2$s, we are sending you a coupon for shopping in our shop."
 msgstr ""
 
-#: src/Views/emails/coupon.php:14
+#: src/Views/emails/coupon.php:41
 msgid "Download PDF with the coupon &raquo;"
 msgstr ""
 
-#: src/Views/emails/coupon.php:17
-#: src/Views/emails/plain/coupon.php:32
+#. translators: %s: Coupon code.
+#: src/Views/emails/coupon.php:48
+#: src/Views/emails/plain/coupon.php:57
 msgid "Coupon code: %s"
 msgstr ""
 
-#: src/Views/emails/coupon.php:18
-#: src/Views/emails/plain/coupon.php:33
+#. translators: %s: Coupon value.
+#: src/Views/emails/coupon.php:57
+#: src/Views/emails/plain/coupon.php:66
 msgid "Coupon value: %s"
 msgstr ""
 
-#: src/Views/emails/coupon.php:20
-#: src/Views/emails/plain/coupon.php:35
+#. translators: %s: Coupon expiry date.
+#: src/Views/emails/coupon.php:67
+#: src/Views/emails/plain/coupon.php:76
 msgid "Expiry date: %s"
 msgstr ""
 
-#: src/Views/emails/coupon.php:24
-#: src/Views/emails/plain/coupon.php:41
+#: src/Views/emails/coupon.php:75
+#: src/Views/emails/plain/coupon.php:85
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Helpers/EmailStrings.php:17
 msgid "Thanks for reading!"
 msgstr ""
 
-#: src/Views/emails/plain/coupon.php:26
+#. translators: %s: Coupon URL.
+#: src/Views/emails/plain/coupon.php:45
 msgid "Download PDF with the coupon from: %s"
 msgstr ""
 
-#: src/Views/emails/plain/coupon.php:30
+#: src/Views/emails/plain/coupon.php:52
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Helpers/EmailStrings.php:17
 msgid "Coupon information"
 msgstr ""
@@ -616,12 +622,12 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:292
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:291
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-order-coupon-generated.php:35
 msgid "Download"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:304
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:302
 msgid "More info"
 msgstr ""
 
@@ -630,40 +636,40 @@ msgid "Support"
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:477
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:484
 msgid "<strong>%s</strong>  is required field."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:487
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:494
 msgid "<strong>%1$s</strong>  is to short. Minimum length: %2$d."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:497
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:504
 msgid "<strong>%1$s</strong>  is to long. Maximum length: %2$d."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:507
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:514
 msgid "<strong>%s</strong>  has invalid email."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:517
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:524
 msgid "<strong>%s</strong> has an invalid date."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:527
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:534
 msgid "<strong>%s</strong> has a date from the past."
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/GenerateCoupon.php:261
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/GenerateCoupon.php:323
 msgid "Cannot generate coupon. Unknown order ID or item ID"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/GenerateCoupon.php:270
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/GenerateCoupon.php:332
 msgid "Cannot generate coupon"
 msgstr ""
 
@@ -714,7 +720,7 @@ msgstr ""
 msgid "Download PDF coupon"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Order/OrderMetaBox.php:76
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Order/OrderMetaBox.php:83
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/ProductEditPage.php:83
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/ProductEditPage.php:106
 msgid "PDF Coupon"
@@ -736,7 +742,7 @@ msgstr ""
 msgid "Convert this product to PDF Coupon"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:79
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:85
 msgid "Your settings have been saved."
 msgstr ""
 
@@ -797,8 +803,8 @@ msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:46
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:69
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:102
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:91
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:126
 msgid "Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below"
 msgstr ""
 
@@ -1018,6 +1024,30 @@ msgstr ""
 msgid "Products for which the coupon will be used. Do not select any to apply to all products."
 msgstr ""
 
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/multiple-pdfs/multiple-coupons-enable.php:29
+msgid "Split coupons by product quantity"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/multiple-pdfs/multiple-coupons-enable.php:29
+msgid "Enable this option to split coupons as different products in cart."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/multiple-pdfs/multiple-coupons-forms-limit.php:30
+msgid "Limit recipient forms per product"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/multiple-pdfs/multiple-coupons-forms-limit.php:30
+msgid "Enter the maximum number of recipient forms on the product page."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/multiple-pdfs/multiple-coupons-send-to-first-email.php:29
+msgid "Send coupons to first recipient"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/multiple-pdfs/multiple-coupons-send-to-first-email.php:29
+msgid "Enable this option to send all bought coupons to email of first recipient. This option disables email field for other recipients."
+msgstr ""
+
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/product-fields.php:31
 msgid "Show or hide this field in product page."
 msgstr ""
@@ -1062,8 +1092,14 @@ msgstr ""
 msgid "Product name:"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-order-coupon.php:31
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-order-coupon.php:33
 msgid "Generate coupon"
+msgstr ""
+
+#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:57
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:83
+msgid "Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/settings-menu-page-html.php:21

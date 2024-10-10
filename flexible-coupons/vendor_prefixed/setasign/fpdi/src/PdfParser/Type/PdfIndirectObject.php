@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type;
@@ -15,7 +15,7 @@ use FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Tokenizer;
 /**
  * Class representing an indirect object
  */
-class PdfIndirectObject extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType
+class PdfIndirectObject extends PdfType
 {
     /**
      * Parses an indirect object from a tokenizer, parser and stream-reader.
@@ -28,7 +28,7 @@ class PdfIndirectObject extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\T
      * @return self|false
      * @throws PdfTypeException
      */
-    public static function parse($objectNumber, $objectGenerationNumber, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\PdfParser $parser, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Tokenizer $tokenizer, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\StreamReader $reader)
+    public static function parse($objectNumber, $objectGenerationNumber, PdfParser $parser, Tokenizer $tokenizer, StreamReader $reader)
     {
         $value = $parser->readValue();
         if ($value === \false) {
@@ -36,7 +36,7 @@ class PdfIndirectObject extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\T
         }
         $nextToken = $tokenizer->getNextToken();
         if ($nextToken === 'stream') {
-            $value = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfStream::parse($value, $reader, $parser);
+            $value = PdfStream::parse($value, $reader, $parser);
         } elseif ($nextToken !== \false) {
             $tokenizer->pushStack($nextToken);
         }
@@ -54,7 +54,7 @@ class PdfIndirectObject extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\T
      * @param PdfType $value
      * @return self
      */
-    public static function create($objectNumber, $generationNumber, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType $value)
+    public static function create($objectNumber, $generationNumber, PdfType $value)
     {
         $v = new self();
         $v->objectNumber = (int) $objectNumber;
@@ -71,7 +71,7 @@ class PdfIndirectObject extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\T
      */
     public static function ensure($indirectObject)
     {
-        return \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::ensureType(self::class, $indirectObject, 'Indirect object expected.');
+        return PdfType::ensureType(self::class, $indirectObject, 'Indirect object expected.');
     }
     /**
      * The object number.

@@ -16,7 +16,7 @@ use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
  *
  * @package WPDesk\Library\WPCoupons\Integration
  */
-class SaveProductVariationData implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class SaveProductVariationData implements Hookable
 {
     const NONCE_NAME = 'flexible_coupons_nonce';
     const NONCE_ACTION = 'save_fields';
@@ -33,7 +33,7 @@ class SaveProductVariationData implements \FlexibleCouponsVendor\WPDesk\PluginBu
      * @param ProductFields $product_fields Product fields.
      * @param PostMeta      $post_meta      Post meta container.
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields $product_fields, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $post_meta)
+    public function __construct(ProductFields $product_fields, PostMeta $post_meta)
     {
         $this->post_meta = $post_meta;
         $this->product_fields = $product_fields;
@@ -43,7 +43,7 @@ class SaveProductVariationData implements \FlexibleCouponsVendor\WPDesk\PluginBu
      */
     public function hooks()
     {
-        \add_action('woocommerce_save_product_variation', [$this, 'save_product_coupons_field'], 10, 2);
+        add_action('woocommerce_save_product_variation', [$this, 'save_product_coupons_field'], 10, 2);
     }
     /**
      * Save product data.
@@ -53,7 +53,7 @@ class SaveProductVariationData implements \FlexibleCouponsVendor\WPDesk\PluginBu
      */
     public function save_product_coupons_field($variation_id, $i)
     {
-        if (isset($_POST[self::NONCE_NAME]) && \wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION)) {
+        if (isset($_POST[self::NONCE_NAME]) && wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION)) {
             $variation_id = (int) $variation_id;
             $base_on = $this->post_data('fc_variation_base_on_variation', $i, '');
             $disable_pdf = $this->post_data('fc_disable_pdf_variation', $i, '');
@@ -65,7 +65,7 @@ class SaveProductVariationData implements \FlexibleCouponsVendor\WPDesk\PluginBu
                  *
                  * @since 1.5.9
                  */
-                \do_action('fc/core/product/variation/save', $variation_id, $i, $this);
+                do_action('fc/core/product/variation/save', $variation_id, $i, $this);
             }
             $this->post_meta->update_private($variation_id, 'flexible_coupon_disable_pdf', $disable_pdf);
             $this->post_meta->update_private($variation_id, 'flexible_coupon_variation_base_on', $base_on);
@@ -81,7 +81,7 @@ class SaveProductVariationData implements \FlexibleCouponsVendor\WPDesk\PluginBu
     public function post_data(string $key, int $i, $default = null)
     {
         if (isset($_REQUEST[$key][$i])) {
-            return \wp_unslash($_REQUEST[$key][$i]);
+            return wp_unslash($_REQUEST[$key][$i]);
         }
         return $default;
     }

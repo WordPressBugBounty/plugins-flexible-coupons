@@ -8,7 +8,7 @@ use FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField;
  *
  * @package WPDesk\Library\WPCoupons\Settings\Fields
  */
-class LinkField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class LinkField extends BasicField
 {
     public function __construct()
     {
@@ -25,7 +25,7 @@ class LinkField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
     /**
      * @return true
      */
-    public function should_override_form_template() : bool
+    public function should_override_form_template(): bool
     {
         return \true;
     }

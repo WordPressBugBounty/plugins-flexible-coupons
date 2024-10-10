@@ -16,12 +16,12 @@ namespace FlexibleCouponsVendor\Monolog\Handler;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
-abstract class Handler implements \FlexibleCouponsVendor\Monolog\Handler\HandlerInterface
+abstract class Handler implements HandlerInterface
 {
     /**
      * {@inheritDoc}
      */
-    public function handleBatch(array $records) : void
+    public function handleBatch(array $records): void
     {
         foreach ($records as $record) {
             $this->handle($record);
@@ -30,7 +30,7 @@ abstract class Handler implements \FlexibleCouponsVendor\Monolog\Handler\Handler
     /**
      * {@inheritDoc}
      */
-    public function close() : void
+    public function close(): void
     {
     }
     public function __destruct()

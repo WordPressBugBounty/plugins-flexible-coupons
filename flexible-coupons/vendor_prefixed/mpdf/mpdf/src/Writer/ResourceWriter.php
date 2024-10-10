@@ -56,7 +56,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
-    public function __construct(\FlexibleCouponsVendor\Mpdf\Mpdf $mpdf, \FlexibleCouponsVendor\Mpdf\Writer\BaseWriter $writer, \FlexibleCouponsVendor\Mpdf\Writer\ColorWriter $colorWriter, \FlexibleCouponsVendor\Mpdf\Writer\FontWriter $fontWriter, \FlexibleCouponsVendor\Mpdf\Writer\ImageWriter $imageWriter, \FlexibleCouponsVendor\Mpdf\Writer\FormWriter $formWriter, \FlexibleCouponsVendor\Mpdf\Writer\OptionalContentWriter $optionalContentWriter, \FlexibleCouponsVendor\Mpdf\Writer\BackgroundWriter $backgroundWriter, \FlexibleCouponsVendor\Mpdf\Writer\BookmarkWriter $bookmarkWriter, \FlexibleCouponsVendor\Mpdf\Writer\MetadataWriter $metadataWriter, \FlexibleCouponsVendor\Mpdf\Writer\JavaScriptWriter $javaScriptWriter, \Psr\Log\LoggerInterface $logger)
+    public function __construct(Mpdf $mpdf, BaseWriter $writer, ColorWriter $colorWriter, FontWriter $fontWriter, ImageWriter $imageWriter, FormWriter $formWriter, OptionalContentWriter $optionalContentWriter, BackgroundWriter $backgroundWriter, BookmarkWriter $bookmarkWriter, MetadataWriter $metadataWriter, JavaScriptWriter $javaScriptWriter, LoggerInterface $logger)
     {
         $this->mpdf = $mpdf;
         $this->writer = $writer;
@@ -73,7 +73,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
     }
     public function writeResources()
     {
-        if ($this->mpdf->hasOC || \count($this->mpdf->layers)) {
+        if ($this->mpdf->hasOC || count($this->mpdf->layers)) {
             $this->optionalContentWriter->writeOptionalContentGroups();
         }
         $this->mpdf->_putextgstates();
@@ -87,7 +87,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
         $this->backgroundWriter->writeShaders();
         $this->backgroundWriter->writePatterns();
         // Resource dictionary
-        $this->mpdf->offsets[2] = \strlen($this->mpdf->buffer);
+        $this->mpdf->offsets[2] = strlen($this->mpdf->buffer);
         $this->writer->write('2 0 obj');
         $this->writer->write('<</ProcSet [/PDF /Text /ImageB /ImageC /ImageI]');
         $this->writer->write('/Font <<');
@@ -104,14 +104,14 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
             }
         }
         $this->writer->write('>>');
-        if (\count($this->mpdf->spotColors)) {
+        if (count($this->mpdf->spotColors)) {
             $this->writer->write('/ColorSpace <<');
             foreach ($this->mpdf->spotColors as $color) {
                 $this->writer->write('/CS' . $color['i'] . ' ' . $color['n'] . ' 0 R');
             }
             $this->writer->write('>>');
         }
-        if (\count($this->mpdf->extgstates)) {
+        if (count($this->mpdf->extgstates)) {
             $this->writer->write('/ExtGState <<');
             foreach ($this->mpdf->extgstates as $k => $extgstate) {
                 if (isset($extgstate['trans'])) {
@@ -123,7 +123,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
             $this->writer->write('>>');
         }
         /* -- BACKGROUNDS -- */
-        if ($this->mpdf->gradients !== null && \count($this->mpdf->gradients) > 0) {
+        if ($this->mpdf->gradients !== null && count($this->mpdf->gradients) > 0) {
             // mPDF 5.7.3
             $this->writer->write('/Shading <<');
             foreach ($this->mpdf->gradients as $id => $grad) {
@@ -140,7 +140,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
             */
         }
         /* -- END BACKGROUNDS -- */
-        if (\count($this->mpdf->images) || \count($this->mpdf->formobjects) || \count($this->mpdf->getImportedPages())) {
+        if (count($this->mpdf->images) || count($this->mpdf->formobjects) || count($this->mpdf->getImportedPages())) {
             $this->writer->write('/XObject <<');
             foreach ($this->mpdf->images as $image) {
                 $this->writer->write('/I' . $image['i'] . ' ' . $image['n'] . ' 0 R');
@@ -156,7 +156,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
             $this->writer->write('>>');
         }
         /* -- BACKGROUNDS -- */
-        if (\count($this->mpdf->patterns)) {
+        if (count($this->mpdf->patterns)) {
             $this->writer->write('/Pattern <<');
             foreach ($this->mpdf->patterns as $k => $patterns) {
                 $this->writer->write('/P' . $k . ' ' . $patterns['n'] . ' 0 R');
@@ -164,12 +164,12 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
             $this->writer->write('>>');
         }
         /* -- END BACKGROUNDS -- */
-        if ($this->mpdf->hasOC || \count($this->mpdf->layers)) {
+        if ($this->mpdf->hasOC || count($this->mpdf->layers)) {
             $this->writer->write('/Properties <<');
             if ($this->mpdf->hasOC) {
                 $this->writer->write('/OC1 ' . $this->mpdf->n_ocg_print . ' 0 R /OC2 ' . $this->mpdf->n_ocg_view . ' 0 R /OC3 ' . $this->mpdf->n_ocg_hidden . ' 0 R ');
             }
-            if (\count($this->mpdf->layers)) {
+            if (count($this->mpdf->layers)) {
                 foreach ($this->mpdf->layers as $id => $layer) {
                     $this->writer->write('/ZI' . $id . ' ' . $layer['n'] . ' 0 R');
                 }
@@ -197,7 +197,7 @@ final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
      *
      * @return void
      */
-    public function setLogger(\Psr\Log\LoggerInterface $logger)
+    public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
     }

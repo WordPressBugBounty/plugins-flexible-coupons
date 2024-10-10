@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type;
@@ -12,7 +12,7 @@ namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type;
 /**
  * Class representing an indirect object reference
  */
-class PdfIndirectObjectReference extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType
+class PdfIndirectObjectReference extends PdfType
 {
     /**
      * Helper method to create an instance.
@@ -37,7 +37,7 @@ class PdfIndirectObjectReference extends \FlexibleCouponsVendor\setasign\Fpdi\Pd
      */
     public static function ensure($value)
     {
-        return \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::ensureType(self::class, $value, 'Indirect reference value expected.');
+        return PdfType::ensureType(self::class, $value, 'Indirect reference value expected.');
     }
     /**
      * The generation number.

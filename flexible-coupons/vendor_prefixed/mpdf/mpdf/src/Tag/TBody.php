@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class TBody extends \FlexibleCouponsVendor\Mpdf\Tag\Tag
+class TBody extends Tag
 {
     public function open($attr, &$ahtml, &$ihtml)
     {

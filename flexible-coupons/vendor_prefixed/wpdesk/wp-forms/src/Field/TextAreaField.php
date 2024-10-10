@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class TextAreaField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class TextAreaField extends BasicField
 {
     public function __construct()
     {

@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class NewColumn extends \FlexibleCouponsVendor\Mpdf\Tag\Tag
+class NewColumn extends Tag
 {
     public function open($attr, &$ahtml, &$ihtml)
     {

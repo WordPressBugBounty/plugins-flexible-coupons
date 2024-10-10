@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfReader\DataStructure;
@@ -48,16 +48,16 @@ class Rectangle
      * @throws CrossReferenceException
      * @throws PdfParserException
      */
-    public static function byPdfArray($array, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\PdfParser $parser)
+    public static function byPdfArray($array, PdfParser $parser)
     {
-        $array = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($array, $parser), 4)->value;
-        $ax = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($array[0], $parser))->value;
-        $ay = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($array[1], $parser))->value;
-        $bx = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($array[2], $parser))->value;
-        $by = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($array[3], $parser))->value;
+        $array = PdfArray::ensure(PdfType::resolve($array, $parser), 4)->value;
+        $ax = PdfNumeric::ensure(PdfType::resolve($array[0], $parser))->value;
+        $ay = PdfNumeric::ensure(PdfType::resolve($array[1], $parser))->value;
+        $bx = PdfNumeric::ensure(PdfType::resolve($array[2], $parser))->value;
+        $by = PdfNumeric::ensure(PdfType::resolve($array[3], $parser))->value;
         return new self($ax, $ay, $bx, $by);
     }
-    public static function byVectors(\FlexibleCouponsVendor\setasign\Fpdi\Math\Vector $ll, \FlexibleCouponsVendor\setasign\Fpdi\Math\Vector $ur)
+    public static function byVectors(Vector $ll, Vector $ur)
     {
         return new self($ll->getX(), $ll->getY(), $ur->getX(), $ur->getY());
     }
@@ -146,11 +146,11 @@ class Rectangle
      */
     public function toPdfArray()
     {
-        $array = new \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray();
-        $array->value[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::create($this->llx);
-        $array->value[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::create($this->lly);
-        $array->value[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::create($this->urx);
-        $array->value[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::create($this->ury);
+        $array = new PdfArray();
+        $array->value[] = PdfNumeric::create($this->llx);
+        $array->value[] = PdfNumeric::create($this->lly);
+        $array->value[] = PdfNumeric::create($this->urx);
+        $array->value[] = PdfNumeric::create($this->ury);
         return $array;
     }
 }

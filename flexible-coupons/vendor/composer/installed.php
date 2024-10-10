@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'wpdesk/flexible-coupons',
-        'pretty_version' => '1.9.14',
-        'version' => '1.9.14.0',
-        'reference' => '592e41e2becec0db8b1aff56e6953ae8c75ff176',
+        'pretty_version' => '1.10.0',
+        'version' => '1.10.0.0',
+        'reference' => 'cf11f7dbfdcbfe528da5448000717418af18a779',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(
-            'pretty_version' => 'v1.30.0',
-            'version' => '1.30.0.0',
-            'reference' => '0424dff1c58f028c451efff2045f5d92410bd540',
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => 'a3cc8b044a6ea513310cbd48ef7333b384945638',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
@@ -56,9 +56,9 @@
             'dev_requirement' => false,
         ),
         'wpdesk/flexible-coupons' => array(
-            'pretty_version' => '1.9.14',
-            'version' => '1.9.14.0',
-            'reference' => '592e41e2becec0db8b1aff56e6953ae8c75ff176',
+            'pretty_version' => '1.10.0',
+            'version' => '1.10.0.0',
+            'reference' => 'cf11f7dbfdcbfe528da5448000717418af18a779',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

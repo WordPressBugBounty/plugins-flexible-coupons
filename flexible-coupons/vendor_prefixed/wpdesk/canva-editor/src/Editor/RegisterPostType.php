@@ -13,7 +13,7 @@ use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
  *
  * @package WPDesk\FlexibleCouponsPDF\Integration
  */
-class RegisterPostType implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class RegisterPostType implements Hookable
 {
     /**
      * @var string
@@ -41,7 +41,7 @@ class RegisterPostType implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Pl
      */
     public function hooks()
     {
-        \add_action('init', [$this, 'register_post_type_action']);
+        add_action('init', [$this, 'register_post_type_action']);
     }
     /**
      * Get post type args.
@@ -50,15 +50,15 @@ class RegisterPostType implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Pl
      */
     protected function get_post_type_args()
     {
-        $labels = ['name' => \_x('Editor', 'post type general name', 'flexible-coupons'), 'singular_name' => \_x('Editor', 'post type singular name', 'flexible-coupons'), 'menu_name' => \_x('Editor', 'admin menu', 'flexible-coupons'), 'name_admin_bar' => \_x('Editor', 'add new on admin bar', 'flexible-coupons')];
-        $args = ['labels' => $labels, 'description' => \__('Manage editor templates.', 'flexible-coupons')];
-        return \wp_parse_args($this->post_type_args, $args);
+        $labels = ['name' => _x('Editor', 'post type general name', 'flexible-coupons'), 'singular_name' => _x('Editor', 'post type singular name', 'flexible-coupons'), 'menu_name' => _x('Editor', 'admin menu', 'flexible-coupons'), 'name_admin_bar' => _x('Editor', 'add new on admin bar', 'flexible-coupons')];
+        $args = ['labels' => $labels, 'description' => __('Manage editor templates.', 'flexible-coupons')];
+        return wp_parse_args($this->post_type_args, $args);
     }
     /**
      * @return void
      */
     public function register_post_type_action()
     {
-        \register_post_type($this->post_type_name, $this->get_post_type_args());
+        register_post_type($this->post_type_name, $this->get_post_type_args());
     }
 }

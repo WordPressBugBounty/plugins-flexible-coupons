@@ -25,11 +25,11 @@ interface FormattableHandlerInterface
      * @param  FormatterInterface $formatter
      * @return HandlerInterface   self
      */
-    public function setFormatter(\FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface $formatter) : \FlexibleCouponsVendor\Monolog\Handler\HandlerInterface;
+    public function setFormatter(FormatterInterface $formatter): HandlerInterface;
     /**
      * Gets the formatter.
      *
      * @return FormatterInterface
      */
-    public function getFormatter() : \FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface;
+    public function getFormatter(): FormatterInterface;
 }

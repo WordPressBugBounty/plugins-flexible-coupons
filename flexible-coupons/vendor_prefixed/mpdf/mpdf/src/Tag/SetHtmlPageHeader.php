@@ -2,6 +2,6 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class SetHtmlPageHeader extends \FlexibleCouponsVendor\Mpdf\Tag\SetHtmlPageFooter
+class SetHtmlPageHeader extends SetHtmlPageFooter
 {
 }

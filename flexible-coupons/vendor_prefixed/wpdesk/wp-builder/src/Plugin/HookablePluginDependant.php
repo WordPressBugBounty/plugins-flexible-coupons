@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin;
 
-interface HookablePluginDependant extends \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+interface HookablePluginDependant extends Hookable
 {
     /**
      * Set Plugin.
@@ -11,7 +11,7 @@ interface HookablePluginDependant extends \FlexibleCouponsVendor\WPDesk\PluginBu
      *
      * @return null
      */
-    public function set_plugin(\FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\AbstractPlugin $plugin);
+    public function set_plugin(AbstractPlugin $plugin);
     /**
      * Get plugin.
      *

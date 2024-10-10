@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class Pre extends \FlexibleCouponsVendor\Mpdf\Tag\BlockTag
+class Pre extends BlockTag
 {
     public function open($attr, &$ahtml, &$ihtml)
     {

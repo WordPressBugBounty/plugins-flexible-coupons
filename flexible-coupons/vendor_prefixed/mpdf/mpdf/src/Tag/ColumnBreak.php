@@ -2,6 +2,6 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class ColumnBreak extends \FlexibleCouponsVendor\Mpdf\Tag\NewColumn
+class ColumnBreak extends NewColumn
 {
 }

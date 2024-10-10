@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\Tcpdf;
@@ -43,7 +43,7 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
      *
      * @string
      */
-    const VERSION = '2.6.0';
+    const VERSION = '2.6.1';
     /**
      * A counter for template ids.
      *
@@ -162,9 +162,9 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
             while (($objectNumber = \array_pop($this->objectsToCopy[$readerId])) !== null) {
                 try {
                     $object = $parser->getIndirectObject($objectNumber);
-                } catch (\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException $e) {
-                    if ($e->getCode() === \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\CrossReference\CrossReferenceException::OBJECT_NOT_FOUND) {
-                        $object = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfIndirectObject::create($objectNumber, 0, new \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNull());
+                } catch (CrossReferenceException $e) {
+                    if ($e->getCode() === CrossReferenceException::OBJECT_NOT_FOUND) {
+                        $object = PdfIndirectObject::create($objectNumber, 0, new PdfNull());
                     } else {
                         throw $e;
                     }
@@ -216,28 +216,28 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
      * @param PdfType $value
      * @throws PdfTypeException
      */
-    protected function writePdfType(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType $value)
+    protected function writePdfType(PdfType $value)
     {
         if (!$this->encrypted) {
             $this->fpdiWritePdfType($value);
             return;
         }
-        if ($value instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfString) {
-            $string = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfString::unescape($value->value);
+        if ($value instanceof PdfString) {
+            $string = PdfString::unescape($value->value);
             $string = $this->_encrypt_data($this->currentObjectNumber, $string);
-            $value->value = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfString::escape($string);
-        } elseif ($value instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfHexString) {
-            $filter = new \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter\AsciiHex();
+            $value->value = PdfString::escape($string);
+        } elseif ($value instanceof PdfHexString) {
+            $filter = new AsciiHex();
             $string = $filter->decode($value->value);
             $string = $this->_encrypt_data($this->currentObjectNumber, $string);
             $value->value = $filter->encode($string, \true);
-        } elseif ($value instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfStream) {
+        } elseif ($value instanceof PdfStream) {
             $stream = $value->getStream();
             $stream = $this->_encrypt_data($this->currentObjectNumber, $stream);
             $dictionary = $value->value;
-            $dictionary->value['Length'] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::create(\strlen($stream));
-            $value = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfStream::create($dictionary, $stream);
-        } elseif ($value instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfIndirectObject) {
+            $dictionary->value['Length'] = PdfNumeric::create(\strlen($stream));
+            $value = PdfStream::create($dictionary, $stream);
+        } elseif ($value instanceof PdfIndirectObject) {
             /**
              * @var PdfIndirectObject $value
              */
@@ -264,10 +264,10 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
         $parser = $this->getPdfReader($importedPage['readerId'])->getParser();
         if ($this->inxobj) {
             // store parameters for later use on template
-            $lastAnnotationKey = \count($this->xobjects[$this->xobjid]['annotations']) - 1;
+            $lastAnnotationKey = count($this->xobjects[$this->xobjid]['annotations']) - 1;
             $lastAnnotationOpt =& $this->xobjects[$this->xobjid]['annotations'][$lastAnnotationKey]['opt'];
         } else {
-            $lastAnnotationKey = \count($this->PageAnnots[$this->page]) - 1;
+            $lastAnnotationKey = count($this->PageAnnots[$this->page]) - 1;
             $lastAnnotationOpt =& $this->PageAnnots[$this->page][$lastAnnotationKey]['opt'];
         }
         // ensure we have a default value - otherwise TCPDF will set it to 4 throughout
@@ -278,33 +278,33 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
             try {
                 switch ($key) {
                     case 'BS':
-                        $value = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::ensure($value);
+                        $value = PdfDictionary::ensure($value);
                         $bs = [];
                         if (isset($value->value['W'])) {
-                            $bs['w'] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($value->value['W'])->value;
+                            $bs['w'] = PdfNumeric::ensure($value->value['W'])->value;
                         }
                         if (isset($value->value['S'])) {
-                            $bs['s'] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfName::ensure($value->value['S'])->value;
+                            $bs['s'] = PdfName::ensure($value->value['S'])->value;
                         }
                         if (isset($value->value['D'])) {
                             $d = [];
-                            foreach (\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure($value->value['D'])->value as $item) {
-                                $d[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($item)->value;
+                            foreach (PdfArray::ensure($value->value['D'])->value as $item) {
+                                $d[] = PdfNumeric::ensure($item)->value;
                             }
                             $bs['d'] = $d;
                         }
                         $lastAnnotationOpt['bs'] = $bs;
                         break;
                     case 'Border':
-                        $borderArray = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure($value)->value;
-                        if (\count($borderArray) < 3) {
+                        $borderArray = PdfArray::ensure($value)->value;
+                        if (count($borderArray) < 3) {
                             continue 2;
                         }
-                        $border = [\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($borderArray[0])->value, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($borderArray[1])->value, \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($borderArray[2])->value];
+                        $border = [PdfNumeric::ensure($borderArray[0])->value, PdfNumeric::ensure($borderArray[1])->value, PdfNumeric::ensure($borderArray[2])->value];
                         if (isset($borderArray[3])) {
                             $dashArray = [];
-                            foreach (\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure($borderArray[3])->value as $item) {
-                                $dashArray[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($item)->value;
+                            foreach (PdfArray::ensure($borderArray[3])->value as $item) {
+                                $dashArray[] = PdfNumeric::ensure($item)->value;
                             }
                             $border[] = $dashArray;
                         }
@@ -312,10 +312,10 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
                         break;
                     case 'C':
                         $c = [];
-                        $colors = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($value, $parser))->value;
-                        $m = \count($colors) === 4 ? 100 : 255;
+                        $colors = PdfArray::ensure(PdfType::resolve($value, $parser))->value;
+                        $m = count($colors) === 4 ? 100 : 255;
                         foreach ($colors as $item) {
-                            $c[] = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($item)->value * $m;
+                            $c[] = PdfNumeric::ensure($item)->value * $m;
                         }
                         $lastAnnotationOpt['c'] = $c;
                         break;
@@ -327,7 +327,7 @@ class Fpdi extends \FlexibleCouponsVendor\TCPDF
                         break;
                 }
                 // let's silence invalid/not supported values
-            } catch (\FlexibleCouponsVendor\setasign\Fpdi\FpdiException $e) {
+            } catch (FpdiException $e) {
                 continue;
             }
         }

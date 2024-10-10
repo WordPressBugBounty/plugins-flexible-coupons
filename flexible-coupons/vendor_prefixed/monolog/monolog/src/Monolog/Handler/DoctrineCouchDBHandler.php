@@ -20,11 +20,11 @@ use FlexibleCouponsVendor\Doctrine\CouchDB\CouchDBClient;
  *
  * @author Markus Bachmann <markus.bachmann@bachi.biz>
  */
-class DoctrineCouchDBHandler extends \FlexibleCouponsVendor\Monolog\Handler\AbstractProcessingHandler
+class DoctrineCouchDBHandler extends AbstractProcessingHandler
 {
     /** @var CouchDBClient */
     private $client;
-    public function __construct(\FlexibleCouponsVendor\Doctrine\CouchDB\CouchDBClient $client, $level = \FlexibleCouponsVendor\Monolog\Logger::DEBUG, bool $bubble = \true)
+    public function __construct(CouchDBClient $client, $level = Logger::DEBUG, bool $bubble = \true)
     {
         $this->client = $client;
         parent::__construct($level, $bubble);
@@ -32,12 +32,12 @@ class DoctrineCouchDBHandler extends \FlexibleCouponsVendor\Monolog\Handler\Abst
     /**
      * {@inheritDoc}
      */
-    protected function write(array $record) : void
+    protected function write(array $record): void
     {
         $this->client->postDocument($record['formatted']);
     }
-    protected function getDefaultFormatter() : \FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface
+    protected function getDefaultFormatter(): FormatterInterface
     {
-        return new \FlexibleCouponsVendor\Monolog\Formatter\NormalizerFormatter();
+        return new NormalizerFormatter();
     }
 }

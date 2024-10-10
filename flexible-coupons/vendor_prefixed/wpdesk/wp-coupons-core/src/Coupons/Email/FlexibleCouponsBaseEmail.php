@@ -4,14 +4,14 @@ namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Email;
 
 use WC_Email;
 use PHPMailer\PHPMailer\PHPMailer;
-use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\Email;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Data\Email\EmailMeta;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Exception\EmailException;
 /**
  * Base email template.
  *
  * @package WPDesk\Library\WPCoupons\Email
  */
-class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\Email
+class FlexibleCouponsBaseEmail extends WC_Email implements Email
 {
     const SLUG = 'FlexibleCouponsEmail';
     const SLUG_RECIPIENT = 'FlexibleCouponsRecipientEmail';
@@ -22,7 +22,7 @@ class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVend
     /**
      * Coupon meta data.
      *
-     * @var array
+     * @var EmailMeta
      */
     protected $meta;
     /**
@@ -40,22 +40,22 @@ class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVend
      *
      * @return string
      */
-    public function get_content_html() : string
+    public function get_content_html(): string
     {
-        \ob_start();
-        \wc_get_template($this->template_html, ['order' => $this->object, 'email_heading' => $this->get_heading(), 'meta' => $this->meta, 'email' => $this->customer_email, 'order_number' => $this->object->get_order_number(), 'date_order' => $this->get_date_order(), 'sent_to_admin' => \false, 'plain_text' => \false], '', $this->template_base);
-        return \ob_get_clean();
+        ob_start();
+        wc_get_template($this->template_html, ['order' => $this->object, 'email_heading' => $this->get_heading(), 'meta' => $this->meta, 'email' => $this->customer_email, 'order_number' => $this->object->get_order_number(), 'date_order' => $this->get_date_order(), 'sent_to_admin' => \false, 'plain_text' => \false], '', $this->template_base);
+        return ob_get_clean();
     }
     /**
      * Get plain content.
      *
      * @return string
      */
-    public function get_content_plain() : string
+    public function get_content_plain(): string
     {
-        \ob_start();
-        \wc_get_template($this->template_plain, ['order' => $this->object, 'email_heading' => $this->get_heading(), 'meta' => $this->meta, 'email' => $this->customer_email, 'order_number' => $this->object->get_order_number(), 'date_order' => $this->get_date_order(), 'sent_to_admin' => \false, 'plain_text' => \true], '', $this->template_base);
-        return \ob_get_clean();
+        ob_start();
+        wc_get_template($this->template_plain, ['order' => $this->object, 'email_heading' => $this->get_heading(), 'meta' => $this->meta, 'email' => $this->customer_email, 'order_number' => $this->object->get_order_number(), 'date_order' => $this->get_date_order(), 'sent_to_admin' => \false, 'plain_text' => \true], '', $this->template_base);
+        return ob_get_clean();
     }
     /**
      * Initialise Settings Form Fields
@@ -64,18 +64,19 @@ class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVend
      */
     public function init_form_fields()
     {
-        $this->form_fields = ['subject' => ['title' => \esc_html__('Subject', 'woocommerce'), 'type' => 'text', 'placeholder' => $this->subject, 'default' => ''], 'heading' => ['title' => \esc_html__('Email Heading', 'woocommerce'), 'type' => 'text', 'placeholder' => $this->heading, 'default' => ''], 'email_type' => ['title' => \esc_html__('Email type', 'woocommerce'), 'type' => 'select', 'description' => \esc_html__('Choose which format of email to send.', 'woocommerce'), 'default' => 'html', 'class' => 'email_type', 'options' => ['plain' => \esc_html__('Plain text', 'woocommerce'), 'html' => \esc_html__('HTML', 'woocommerce'), 'multipart' => \esc_html__('Multipart', 'woocommerce')]]];
+        $this->form_fields = ['subject' => ['title' => esc_html__('Subject', 'woocommerce'), 'type' => 'text', 'placeholder' => $this->subject, 'default' => ''], 'heading' => ['title' => esc_html__('Email Heading', 'woocommerce'), 'type' => 'text', 'placeholder' => $this->heading, 'default' => ''], 'email_type' => ['title' => esc_html__('Email type', 'woocommerce'), 'type' => 'select', 'description' => esc_html__('Choose which format of email to send.', 'woocommerce'), 'default' => 'html', 'class' => 'email_type', 'options' => ['plain' => esc_html__('Plain text', 'woocommerce'), 'html' => esc_html__('HTML', 'woocommerce'), 'multipart' => esc_html__('Multipart', 'woocommerce')]]];
     }
     /**
-     * @param int   $order_id
-     * @param array $meta
+     * @param int $order_id
+     * @param EmailMeta $meta
+     *
      * @return bool success
      */
-    public function send_mail($order_id, $meta)
+    public function send_mail($order_id, EmailMeta $meta)
     {
         $order = \wc_get_order(\absint($order_id));
         if (!$order instanceof \WC_Order) {
-            throw new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Exception\EmailException('Order not found');
+            throw new EmailException('Order not found');
         }
         $this->object = $order;
         $this->meta = $meta;
@@ -90,20 +91,23 @@ class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVend
         }
         $this->setup_placeholders();
         $this->setup_locale();
+        // TODO: Check if it is necessary
         \add_action('phpmailer_init', [$this, 'add_string_attachments']);
         $result = $this->send($recipient, $this->get_subject(), $this->get_content(), $this->get_headers(), []);
+        // TODO: Check if it is necessary
         \remove_action('phpmailer_init', [$this, 'add_string_attachments']);
         $this->restore_locale();
         return $result;
     }
     protected function setup_placeholders()
     {
-        $this->placeholders = \array_merge(['{order_date}' => $this->get_date_order(), '{order_number}' => $this->object->get_order_number()], $this->placeholders);
+        $this->placeholders = array_merge(['{order_date}' => $this->get_date_order(), '{order_number}' => $this->object->get_order_number()], $this->placeholders);
     }
     /**
      * A filter function which adds string attachments to the email.
      *
      * @param \PHPMailer $phpmailer
+     *
      * @return void
      */
     public function add_string_attachments($phpmailer)
@@ -116,7 +120,7 @@ class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVend
             return;
         }
         foreach ($string_attachments as $attachment) {
-            $phpmailer->addStringAttachment($attachment['content'], $attachment['fileName']);
+            $phpmailer->addStringAttachment($attachment['pdf']['content'], $attachment['pdf']['fileName']);
         }
     }
     /**
@@ -126,11 +130,11 @@ class FlexibleCouponsBaseEmail extends \WC_Email implements \FlexibleCouponsVend
      *
      * @return string[]
      */
-    protected function get_string_attachments() : array
+    protected function get_string_attachments(): array
     {
         return [];
     }
-    protected function get_date_order() : string
+    protected function get_date_order(): string
     {
         return \date_i18n(\wc_date_format(), $this->object->get_date_created() ? $this->object->get_date_created()->getTimestamp() : \current_time('timestamp'));
     }

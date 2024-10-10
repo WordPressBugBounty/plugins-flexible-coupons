@@ -2,13 +2,13 @@
 
 namespace FlexibleCouponsVendor\Mpdf;
 
-class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
+class TTFontFileAnalysis extends TTFontFile
 {
     // Used to get font information from files in directory
     function extractCoreInfo($file, $TTCfontID = 0)
     {
         $this->filename = $file;
-        $this->fh = \fopen($file, 'rb');
+        $this->fh = fopen($file, 'rb');
         if (!$this->fh) {
             throw new \FlexibleCouponsVendor\Mpdf\MpdfException('ERROR - Can\'t open file ' . $file);
         }
@@ -32,7 +32,7 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
             if ($TTCfontID > 0) {
                 $this->version = $version = $this->read_ulong();
                 // TTC Header version now
-                if (!\in_array($version, [0x10000, 0x20000])) {
+                if (!in_array($version, [0x10000, 0x20000])) {
                     throw new \FlexibleCouponsVendor\Mpdf\MpdfException("ERROR - NOT ADDED as Error parsing TrueType Collection: version=" . $version . " - " . $file);
                 }
             } else {
@@ -47,7 +47,7 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
             // TTFont version again now
             $this->readTableDirectory(\false);
         } else {
-            if (!\in_array($version, [0x10000, 0x74727565])) {
+            if (!in_array($version, [0x10000, 0x74727565])) {
                 throw new \FlexibleCouponsVendor\Mpdf\MpdfException("ERROR - NOT ADDED as Not a TrueType font: version=" . $version . " - " . $file);
             }
             $this->readTableDirectory(\false);
@@ -122,8 +122,8 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
         $numRecords = $this->read_ushort();
         $string_data_offset = $name_offset + $this->read_ushort();
         $names = [1 => '', 2 => '', 3 => '', 4 => '', 6 => ''];
-        $K = \array_keys($names);
-        $nameCount = \count($names);
+        $K = array_keys($names);
+        $nameCount = count($names);
         for ($i = 0; $i < $numRecords; $i++) {
             $platformId = $this->read_ushort();
             $encodingId = $this->read_ushort();
@@ -131,7 +131,7 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
             $nameId = $this->read_ushort();
             $length = $this->read_ushort();
             $offset = $this->read_ushort();
-            if (!\in_array($nameId, $K)) {
+            if (!in_array($nameId, $K)) {
                 continue;
             }
             $N = '';
@@ -146,7 +146,7 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
                 $N = '';
                 while ($length > 0) {
                     $char = $this->read_ushort();
-                    $N .= \chr($char);
+                    $N .= chr($char);
                     $length -= 1;
                 }
                 $this->_pos = $opos;
@@ -167,11 +167,11 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
             }
         }
         if ($names[6]) {
-            $psName = \preg_replace('/ /', '-', $names[6]);
+            $psName = preg_replace('/ /', '-', $names[6]);
         } elseif ($names[4]) {
-            $psName = \preg_replace('/ /', '-', $names[4]);
+            $psName = preg_replace('/ /', '-', $names[4]);
         } elseif ($names[1]) {
-            $psName = \preg_replace('/ /', '-', $names[1]);
+            $psName = preg_replace('/ /', '-', $names[1]);
         } else {
             $psName = '';
         }
@@ -224,10 +224,10 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
             $sFamily = $sF >> 8;
             $this->_pos += 10;
             //PANOSE = 10 byte length
-            $panose = \fread($this->fh, 10);
+            $panose = fread($this->fh, 10);
             $this->panose = [];
-            for ($p = 0; $p < \strlen($panose); $p++) {
-                $this->panose[] = \ord($panose[$p]);
+            for ($p = 0; $p < strlen($panose); $p++) {
+                $this->panose[] = ord($panose[$p]);
             }
             $this->skip(20);
             $fsSelection = $this->read_short();
@@ -416,9 +416,9 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
         }
         // Use PANOSE
         if ($panose) {
-            $bFamilyType = \ord($panose[0]);
+            $bFamilyType = ord($panose[0]);
             if ($bFamilyType == 2) {
-                $bSerifStyle = \ord($panose[1]);
+                $bSerifStyle = ord($panose[1]);
                 if (!$ftype) {
                     if ($bSerifStyle > 1 && $bSerifStyle < 11) {
                         $ftype = 'serif';
@@ -426,7 +426,7 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
                         $ftype = 'sans';
                     }
                 }
-                $bProportion = \ord($panose[3]);
+                $bProportion = ord($panose[3]);
                 if ($bProportion == 9 || $bProportion == 1) {
                     $ftype = 'mono';
                 }
@@ -435,7 +435,7 @@ class TTFontFileAnalysis extends \FlexibleCouponsVendor\Mpdf\TTFontFile
                 $ftype = 'cursive';
             }
         }
-        \fclose($this->fh);
+        fclose($this->fh);
         return [$this->familyName, $bold, $italic, $ftype, $TTCfontID, $rtl, $indic, $cjk, $sip, $smp, $puaag, $pua, $unAGlyphs];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class ImageInputField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class ImageInputField extends BasicField
 {
     public function __construct()
     {

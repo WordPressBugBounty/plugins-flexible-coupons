@@ -17,7 +17,7 @@ use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableParent;
  *
  * @package WPDesk\Library\WPCanvaEditor
  */
-abstract class EditorImplementation implements \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorIntegration, \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable, \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableCollection
+abstract class EditorImplementation implements EditorIntegration, Hookable, HookableCollection
 {
     use HookableParent;
     const EDITOR_POST_META = '_editor_data';
@@ -37,10 +37,10 @@ abstract class EditorImplementation implements \FlexibleCouponsVendor\WPDesk\Lib
      */
     public function hooks()
     {
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCanvaEditor\RegisterPostType($this->get_post_type(), $this->post_type_args_definition()));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCanvaEditor\CustomizeEditPage($this->get_post_type()));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCanvaEditor\Assets($this->get_post_type()));
-        $this->add_hookable(new \FlexibleCouponsVendor\WPDesk\Library\WPCanvaEditor\AjaxHandler($this->get_post_type()));
+        $this->add_hookable(new RegisterPostType($this->get_post_type(), $this->post_type_args_definition()));
+        $this->add_hookable(new CustomizeEditPage($this->get_post_type()));
+        $this->add_hookable(new Assets($this->get_post_type()));
+        $this->add_hookable(new AjaxHandler($this->get_post_type()));
         $this->hooks_on_hookable_objects();
     }
     /**
@@ -64,7 +64,7 @@ abstract class EditorImplementation implements \FlexibleCouponsVendor\WPDesk\Lib
      *
      * @return array
      */
-    protected abstract function post_type_args_definition();
+    abstract protected function post_type_args_definition();
     /**
      * @return string
      */
@@ -79,7 +79,7 @@ abstract class EditorImplementation implements \FlexibleCouponsVendor\WPDesk\Lib
      */
     public function get_post_meta($post_id)
     {
-        return \get_post_meta($post_id, self::EDITOR_POST_META, \true);
+        return get_post_meta($post_id, self::EDITOR_POST_META, \true);
     }
     /**
      * @param int $post_id
@@ -88,6 +88,6 @@ abstract class EditorImplementation implements \FlexibleCouponsVendor\WPDesk\Lib
      */
     public function get_area_properties($post_id)
     {
-        return new \FlexibleCouponsVendor\WPDesk\Library\WPCanvaEditor\AreaProperties($this->get_post_meta($post_id));
+        return new AreaProperties($this->get_post_meta($post_id));
     }
 }

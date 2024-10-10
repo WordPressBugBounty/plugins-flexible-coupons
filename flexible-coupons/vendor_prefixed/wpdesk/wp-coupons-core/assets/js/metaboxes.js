@@ -6,28 +6,28 @@ jQuery(function ($) {
         field: $('#wpdesk_pdf_coupons'),
 
         requiredFields: function () {
-            let left_checkboxes = $( '.checkbox-wrapper-left input' );
-            if ( left_checkboxes.length ) {
-                left_checkboxes.each( function () {
-                    let checked = $( this ).prop( 'checked' );
-                    let required_fields = $( this ).closest( '.checkbox-wrapper' ).find( '.checkbox-wrapper-right' );
-                    if ( checked ) {
+            let left_checkboxes = $('.checkbox-wrapper-left input');
+            if (left_checkboxes.length) {
+                left_checkboxes.each(function () {
+                    let checked = $(this).prop('checked');
+                    let required_fields = $(this).closest('.checkbox-wrapper').find('.checkbox-wrapper-right');
+                    if (checked) {
                         required_fields.show();
                     } else {
                         required_fields.hide();
                     }
-                } );
+                });
 
-                left_checkboxes.click( function () {
-                    let checked = $( this ).prop( 'checked' );
-                    let required_field = $( this ).closest( '.checkbox-wrapper' ).find( '.checkbox-wrapper-right' );
-                    if ( checked ) {
+                left_checkboxes.click(function () {
+                    let checked = $(this).prop('checked');
+                    let required_field = $(this).closest('.checkbox-wrapper').find('.checkbox-wrapper-right');
+                    if (checked) {
                         required_field.show();
                     } else {
                         required_field.hide();
-                        required_field.find( 'input' ).prop( 'checked', false );
+                        required_field.find('input').prop('checked', false);
                     }
-                } )
+                })
 
             }
         },
@@ -39,10 +39,10 @@ jQuery(function ($) {
             let coupon_panel = $('.pdfcoupon_product_data');
             let virtual_field = $('#_virtual');
             let attribute_tab = $('li.attribute_tab');
-            let tab_if = $( '.hide_if_coupon_disabled');
+            let tab_if = $('.hide_if_coupon_disabled');
 
-            $( 'input#_virtual' ).on( 'change', function() {
-                let is_pdf_coupon = field.is( ':checked' );
+            $('input#_virtual').on('change', function () {
+                let is_pdf_coupon = field.is(':checked');
                 if (!is_pdf_coupon) {
                     coupon_tab.hide();
                     coupon_panel.hide();
@@ -54,7 +54,7 @@ jQuery(function ($) {
                     if ($(this).is(':checked')) {
                         coupon_tab.show();
                         coupon_panel.show();
-                        $('.show_if_pdf_coupon').show().find( '.fc_variation_base_on' ).trigger( 'change' );
+                        $('.show_if_pdf_coupon').show().find('.fc_variation_base_on').trigger('change');
                         tab_if.removeClass('hide');
                     } else {
                         general_tab.click();
@@ -69,7 +69,7 @@ jQuery(function ($) {
                 if (field.is(':checked')) {
                     coupon_tab.show();
                     coupon_panel.show();
-                    $('.show_if_pdf_coupon').show().find( '.fc_variation_base_on' ).trigger( 'change' );
+                    $('.show_if_pdf_coupon').show().find('.fc_variation_base_on').trigger('change');
                     tab_if.removeClass('hide');
                 }
             }
@@ -107,87 +107,87 @@ jQuery(function ($) {
 
         },
 
-        expiringOwnField: function() {
-            let parent_field = $( 'select.expiring-date-select' );
-            if( parent_field.length && parent_field.val() === 'own' ) {
-                $('.expiring-date-own' ).show();
+        expiringOwnField: function () {
+            let parent_field = $('select.expiring-date-select');
+            if (parent_field.length && parent_field.val() === 'own') {
+                $('.expiring-date-own').show();
             } else {
-                $('.expiring-date-own' ).hide();
+                $('.expiring-date-own').hide();
             }
 
-            parent_field.change( function() {
-                if( $( this).val() === 'own' ) {
-                    $('.expiring-date-own' ).show();
+            parent_field.change(function () {
+                if ($(this).val() === 'own') {
+                    $('.expiring-date-own').show();
                 } else {
-                    $('.expiring-date-own' ).hide();
+                    $('.expiring-date-own').hide();
                 }
             })
         },
 
         /** Settings for simple product */
-        manageSimpleCouponCodePrefix: function() {
-            $( this ).closest( '.woocommerce_options_panel' ).find( '.show_if_variation_manage_prefix' ).hide();
-            if ( $( this ).is( ':checked' ) ) {
-                $( this ).closest( '.woocommerce_options_panel' ).find( '.show_if_variation_manage_prefix' ).show();
+        manageSimpleCouponCodePrefix: function () {
+            $(this).closest('.woocommerce_options_panel').find('.show_if_variation_manage_prefix').hide();
+            if ($(this).is(':checked')) {
+                $(this).closest('.woocommerce_options_panel').find('.show_if_variation_manage_prefix').show();
             }
         },
 
-        initSimpleCouponCodeCheckbox: function() {
-            let wrapper = $( '.woocommerce_options_panel' );
-            let input = $( '.woocommerce_options_panel input.fc_coupon_own_code' );
-            wrapper.on( 'change', 'input.fc_coupon_own_code', this.manageSimpleCouponCodePrefix );
-            if( input.is( ':checked' ) ) {
-                input.closest( '.woocommerce_options_panel' ).find( '.show_if_variation_manage_prefix' ).show();
+        initSimpleCouponCodeCheckbox: function () {
+            let wrapper = $('.woocommerce_options_panel');
+            let input = $('.woocommerce_options_panel input.fc_coupon_own_code');
+            wrapper.on('change', 'input.fc_coupon_own_code', this.manageSimpleCouponCodePrefix);
+            if (input.is(':checked')) {
+                input.closest('.woocommerce_options_panel').find('.show_if_variation_manage_prefix').show();
             }
         },
 
 
         /** Settings for variable product */
-        manageVariableCouponsCodePrefix: function() {
-            $( this ).closest( '.woocommerce_variation' ).find( '.show_if_variation_manage_coupons' ).hide();
-            if ( $( this ).is( ':checked' ) ) {
-                $( this ).closest( '.woocommerce_variation' ).find( '.show_if_variation_manage_coupons' ).show();
+        manageVariableCouponsCodePrefix: function () {
+            $(this).closest('.woocommerce_variation').find('.show_if_variation_manage_coupons').hide();
+            if ($(this).is(':checked')) {
+                $(this).closest('.woocommerce_variation').find('.show_if_variation_manage_coupons').show();
             }
         },
 
-        manageVariablePrefix: function() {
-            $( this ).closest( '.woocommerce_variation' ).find( '.show_if_variation_manage_prefix' ).hide();
-            if ( $( this ).is( ':checked' ) ) {
-                $( this ).closest( '.woocommerce_variation' ).find( '.show_if_variation_manage_prefix' ).show();
+        manageVariablePrefix: function () {
+            $(this).closest('.woocommerce_variation').find('.show_if_variation_manage_prefix').hide();
+            if ($(this).is(':checked')) {
+                $(this).closest('.woocommerce_variation').find('.show_if_variation_manage_prefix').show();
             }
         },
 
-        manageDisablePDF: function() {
-            let is_checked = $( this ).is( ':checked' );
-            $( this ).closest( '.woocommerce_variation' )
-                .find( '.show_if_variation_manage_coupons' )
-                .find( 'input, select' )
-                .not( '.fc_disable_pdf_coupon' )
-                .prop( 'disabled', is_checked );
+        manageDisablePDF: function () {
+            let is_checked = $(this).is(':checked');
+            $(this).closest('.woocommerce_variation')
+                .find('.show_if_variation_manage_coupons')
+                .find('input, select')
+                .not('.fc_disable_pdf_coupon')
+                .prop('disabled', is_checked);
         },
 
-        initVariableCheckbox: function() {
+        initVariableCheckbox: function () {
             let _this = this;
-            let wrapper = $( '#variable_product_options' );
-            wrapper.on( 'change', 'input.fc_variation_base_on', this.manageVariableCouponsCodePrefix );
-            wrapper.on( 'change', 'input.fc_coupon_own_code', this.manageVariablePrefix );
-            wrapper.on( 'change', 'input.fc_disable_pdf_coupon', this.manageDisablePDF );
+            let wrapper = $('#variable_product_options');
+            wrapper.on('change', 'input.fc_variation_base_on', this.manageVariableCouponsCodePrefix);
+            wrapper.on('change', 'input.fc_coupon_own_code', this.manageVariablePrefix);
+            wrapper.on('change', 'input.fc_disable_pdf_coupon', this.manageDisablePDF);
 
-            $('body').on('woocommerce_variations_loaded woocommerce_variations_added', function(){
-                let is_checked = $( this ).find( '#wpdesk_pdf_coupons' ).prop( 'checked' );
-                if( is_checked ) {
-                    let variation_box = $( this ).find( '#variable_product_options' );
-                    variation_box.find( '.show_if_pdf_coupon' ).show();
-                    $( 'input.fc_disable_pdf_coupon' ).trigger( 'change' );
+            $('body').on('woocommerce_variations_loaded woocommerce_variations_added', function () {
+                let is_checked = $(this).find('#wpdesk_pdf_coupons').prop('checked');
+                if (is_checked) {
+                    let variation_box = $(this).find('#variable_product_options');
+                    variation_box.find('.show_if_pdf_coupon').show();
+                    $('input.fc_disable_pdf_coupon').trigger('change');
                 }
 
                 _this.expiringOwnField();
                 _this.requiredFields();
 
-                let parent_fields = $( '.woocommerce_variation' ).find( 'select.expiring-date-select' );
+                let parent_fields = $('.woocommerce_variation').find('select.expiring-date-select');
                 parent_fields.each(function () {
-                    let _select = $( this );
-                    if( _select.val() === 'own' ) {
+                    let _select = $(this);
+                    if (_select.val() === 'own') {
                         _select.parent().next().show();
                     } else {
                         _select.parent().next().hide();
@@ -197,33 +197,33 @@ jQuery(function ($) {
             });
         },
 
-        handleDelaySendingFields: function(select) {
+        handleDelaySendingFields: function (select) {
             let select_wrapper = select.parent().parent();
             select_wrapper.find('.show_if_simple_delay, .show_if_fixed_date_delay').hide();
 
-            if ( ! select.length ) {
+            if (!select.length) {
                 return;
             }
-            if ( select.val() === 'simple_delay' ) {
-                select_wrapper.find( '.show_if_simple_delay' ).show();
-            } else if ( select.val() === 'fixed_date_delay' ) {
-                select_wrapper.find( '.show_if_fixed_date_delay' ).show();
+            if (select.val() === 'simple_delay') {
+                select_wrapper.find('.show_if_simple_delay').show();
+            } else if (select.val() === 'fixed_date_delay') {
+                select_wrapper.find('.show_if_fixed_date_delay').show();
             }
         },
 
-        initDelaySendingFields: function() {
-            const simple_product_select = $( '.woocommerce_options_panel select.fcs-delay-type' );
-            simple_product_select.on( 'change', () => this.handleDelaySendingFields( simple_product_select ) );
-            simple_product_select.trigger( 'change' );
+        initDelaySendingFields: function () {
+            const simple_product_select = $('.woocommerce_options_panel select.fcs-delay-type');
+            simple_product_select.on('change', () => this.handleDelaySendingFields(simple_product_select));
+            simple_product_select.trigger('change');
 
-			$('body').on( 'woocommerce_variations_loaded woocommerce_variations_added', function() {
-				const variations_select_fields = $( '.woocommerce_variation' ).find( 'select.fcs-delay-type' );
-				variations_select_fields.each(function () {
-                    let variable_product_select = $( this );
-					variable_product_select.on( 'change', () => FCMetaboxes.handleDelaySendingFields( variable_product_select ) );
-					variable_product_select.trigger( 'change' );
-				});
-			});
+            $('body').on('woocommerce_variations_loaded woocommerce_variations_added', function () {
+                const variations_select_fields = $('.woocommerce_variation').find('select.fcs-delay-type');
+                variations_select_fields.each(function () {
+                    let variable_product_select = $(this);
+                    variable_product_select.on('change', () => FCMetaboxes.handleDelaySendingFields(variable_product_select));
+                    variable_product_select.trigger('change');
+                });
+            });
         },
     };
 
@@ -233,4 +233,28 @@ jQuery(function ($) {
     FCMetaboxes.initVariableCheckbox();
     FCMetaboxes.initSimpleCouponCodeCheckbox();
     FCMetaboxes.initDelaySendingFields();
+
+    function toggleFCMultiplePDFOptions( $checkboxElement ) {
+        let $closestWrapper = $checkboxElement.closest('.fc-multiple-pdfs-options-wrapper');
+        $closestWrapper.each(function () {
+            let $closestCheckbox = $(this).find('.fc_multiple_pdf_enable');
+            let isChecked = $closestCheckbox.is(':checked');
+            if(isChecked) {
+                $(this).find('.fc-multiple-pdfs-advanced-options').show();
+            } else {
+                $(this).find('.fc-multiple-pdfs-advanced-options').hide();
+            }
+        });
+
+    }
+
+    jQuery(document).on('change', '.fc_multiple_pdf_enable', function () {
+        toggleFCMultiplePDFOptions( jQuery(this) );
+    });
+
+    jQuery('body').on('woocommerce_variations_loaded woocommerce_variations_added', function () {
+        toggleFCMultiplePDFOptions( jQuery('.fc_multiple_pdf_enable') );
+    });
+
+    toggleFCMultiplePDFOptions( jQuery('.fc_multiple_pdf_enable') );
 });

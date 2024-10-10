@@ -12,5 +12,4 @@ if (!\defined('ABSPATH')) {
 include \dirname(__FILE__, 5) . '/assets/js/notice.js';
 ?>
 </script>
-<style>.wpdesk-notice-gutenberg { display: none; }</style>
 <?php 

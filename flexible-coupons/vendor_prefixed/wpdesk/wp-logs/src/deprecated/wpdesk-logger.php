@@ -5,7 +5,7 @@ namespace FlexibleCouponsVendor;
 if (!\defined('ABSPATH')) {
     exit;
 }
-if (!\class_exists('FlexibleCouponsVendor\\WPDesk_Logger')) {
+if (!\class_exists('FlexibleCouponsVendor\WPDesk_Logger')) {
     /**
      * @deprecated Only for backward compatibility. Please use injected Logger compatible with PSR
      */

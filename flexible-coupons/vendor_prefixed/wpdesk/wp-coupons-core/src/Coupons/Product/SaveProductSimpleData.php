@@ -16,7 +16,7 @@ use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
  *
  * @package WPDesk\Library\WPCoupons\Integration
  */
-class SaveProductSimpleData implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class SaveProductSimpleData implements Hookable
 {
     const NONCE_NAME = 'flexible_coupons_nonce';
     const NONCE_ACTION = 'save_fields';
@@ -33,7 +33,7 @@ class SaveProductSimpleData implements \FlexibleCouponsVendor\WPDesk\PluginBuild
      * @param ProductFields $product_fields Product fields.
      * @param PostMeta      $post_meta      Post meta container.
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields $product_fields, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $post_meta)
+    public function __construct(ProductFields $product_fields, PostMeta $post_meta)
     {
         $this->post_meta = $post_meta;
         $this->product_fields = $product_fields;
@@ -43,7 +43,7 @@ class SaveProductSimpleData implements \FlexibleCouponsVendor\WPDesk\PluginBuild
      */
     public function hooks()
     {
-        \add_action('woocommerce_process_product_meta', [$this, 'save_product_coupons_field'], 10, 2);
+        add_action('woocommerce_process_product_meta', [$this, 'save_product_coupons_field'], 10, 2);
     }
     /**
      * @param string $key
@@ -54,7 +54,7 @@ class SaveProductSimpleData implements \FlexibleCouponsVendor\WPDesk\PluginBuild
     public function post_data(string $key, $default = null)
     {
         if (isset($_REQUEST[$key])) {
-            return \wp_unslash($_REQUEST[$key]);
+            return wp_unslash($_REQUEST[$key]);
         }
         return $default;
     }
@@ -65,7 +65,7 @@ class SaveProductSimpleData implements \FlexibleCouponsVendor\WPDesk\PluginBuild
      */
     public function save_product_coupons_field(int $product_id)
     {
-        if (isset($_POST[self::NONCE_NAME]) && \wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION) && $product_id) {
+        if (isset($_POST[self::NONCE_NAME]) && wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION) && $product_id) {
             $this->save_public_fields($product_id);
             $this->save_premium_fields($product_id);
             /**
@@ -73,7 +73,7 @@ class SaveProductSimpleData implements \FlexibleCouponsVendor\WPDesk\PluginBuild
              *
              * @since 1.5.9
              */
-            \do_action('fc/core/product/simple/save', $product_id, $this);
+            do_action('fc/core/product/simple/save', $product_id, $this);
         }
     }
     /**

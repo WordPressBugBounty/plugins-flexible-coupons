@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
 use FlexibleCouponsVendor\WPDesk\Forms\Sanitizer\TextFieldSanitizer;
-class DatePickerField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class DatePickerField extends BasicField
 {
     public function __construct()
     {
@@ -15,7 +15,7 @@ class DatePickerField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicFie
     }
     public function get_sanitizer()
     {
-        return new \FlexibleCouponsVendor\WPDesk\Forms\Sanitizer\TextFieldSanitizer();
+        return new TextFieldSanitizer();
     }
     public function get_template_name()
     {

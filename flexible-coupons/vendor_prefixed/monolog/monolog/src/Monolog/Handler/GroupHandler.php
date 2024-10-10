@@ -20,7 +20,7 @@ use FlexibleCouponsVendor\Monolog\ResettableInterface;
  *
  * @phpstan-import-type Record from \Monolog\Logger
  */
-class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implements \FlexibleCouponsVendor\Monolog\Handler\ProcessableHandlerInterface, \FlexibleCouponsVendor\Monolog\ResettableInterface
+class GroupHandler extends Handler implements ProcessableHandlerInterface, ResettableInterface
 {
     use ProcessableHandlerTrait;
     /** @var HandlerInterface[] */
@@ -34,7 +34,7 @@ class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implem
     public function __construct(array $handlers, bool $bubble = \true)
     {
         foreach ($handlers as $handler) {
-            if (!$handler instanceof \FlexibleCouponsVendor\Monolog\Handler\HandlerInterface) {
+            if (!$handler instanceof HandlerInterface) {
                 throw new \InvalidArgumentException('The first argument of the GroupHandler must be an array of HandlerInterface instances.');
             }
         }
@@ -44,7 +44,7 @@ class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implem
     /**
      * {@inheritDoc}
      */
-    public function isHandling(array $record) : bool
+    public function isHandling(array $record): bool
     {
         foreach ($this->handlers as $handler) {
             if ($handler->isHandling($record)) {
@@ -56,7 +56,7 @@ class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implem
     /**
      * {@inheritDoc}
      */
-    public function handle(array $record) : bool
+    public function handle(array $record): bool
     {
         if ($this->processors) {
             /** @var Record $record */
@@ -70,7 +70,7 @@ class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implem
     /**
      * {@inheritDoc}
      */
-    public function handleBatch(array $records) : void
+    public function handleBatch(array $records): void
     {
         if ($this->processors) {
             $processed = [];
@@ -88,12 +88,12 @@ class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implem
     {
         $this->resetProcessors();
         foreach ($this->handlers as $handler) {
-            if ($handler instanceof \FlexibleCouponsVendor\Monolog\ResettableInterface) {
+            if ($handler instanceof ResettableInterface) {
                 $handler->reset();
             }
         }
     }
-    public function close() : void
+    public function close(): void
     {
         parent::close();
         foreach ($this->handlers as $handler) {
@@ -103,10 +103,10 @@ class GroupHandler extends \FlexibleCouponsVendor\Monolog\Handler\Handler implem
     /**
      * {@inheritDoc}
      */
-    public function setFormatter(\FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface $formatter) : \FlexibleCouponsVendor\Monolog\Handler\HandlerInterface
+    public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
         foreach ($this->handlers as $handler) {
-            if ($handler instanceof \FlexibleCouponsVendor\Monolog\Handler\FormattableHandlerInterface) {
+            if ($handler instanceof FormattableHandlerInterface) {
                 $handler->setFormatter($formatter);
             }
         }

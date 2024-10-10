@@ -62,7 +62,7 @@ class PDF
      * @param PostMeta          $post_meta      Post meta.
      * @param array             $shortcodes
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorIntegration $editor, \FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer $renderer, \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields $product_fields, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $post_meta, array $shortcodes)
+    public function __construct(EditorIntegration $editor, Renderer $renderer, ProductFields $product_fields, PostMeta $post_meta, array $shortcodes)
     {
         $this->editor = $editor;
         $this->renderer = $renderer;
@@ -77,18 +77,18 @@ class PDF
      * @return array
      * @throws Exception Throw exception if item doesn't exists.
      */
-    private function get_order_item_meta(\WC_Order $order, int $item_id) : array
+    private function get_order_item_meta(WC_Order $order, int $item_id): array
     {
         $item = $order->get_item($item_id);
         if (!$item) {
-            throw new \RuntimeException('Item doesn\'t exists');
+            throw new RuntimeException('Item doesn\'t exists');
         }
         $meta = [];
-        if ($item instanceof \WC_Order_Item_Product) {
-            $is_coupon_item = 'yes' === $this->postmeta->get_private($item->get_product_id(), \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\ProductEditPage::PRODUCT_COUPON_SLUG, \true);
+        if ($item instanceof WC_Order_Item_Product) {
+            $is_coupon_item = 'yes' === $this->postmeta->get_private($item->get_product_id(), ProductEditPage::PRODUCT_COUPON_SLUG, \true);
             if ($is_coupon_item && $this->product_fields->is_premium()) {
                 foreach ($this->product_fields->get() as $id => $field) {
-                    $meta[$id] = \wc_get_order_item_meta($item->get_id(), $id, \true);
+                    $meta[$id] = wc_get_order_item_meta($item->get_id(), $id, \true);
                 }
             }
         }
@@ -103,12 +103,12 @@ class PDF
      *
      * @return array
      */
-    private function match_shortcode_values(\WC_Order $order, \WC_Order_Item $item, \WC_Product $product, \WC_Coupon $coupon, array $product_fields_values, string $coupon_code) : array
+    private function match_shortcode_values(WC_Order $order, WC_Order_Item $item, WC_Product $product, WC_Coupon $coupon, array $product_fields_values, string $coupon_code): array
     {
         $shortcodes = [];
         foreach ($this->shortcodes as $shortcode) {
-            if ($shortcode instanceof \FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\Shortcode) {
-                $data_container = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Shortcodes\ShortcodeDataContainer();
+            if ($shortcode instanceof Shortcode) {
+                $data_container = new ShortcodeDataContainer();
                 $data_container->set_order($order);
                 $data_container->set_product($product);
                 $data_container->set_product_fields_values($product_fields_values);
@@ -131,24 +131,24 @@ class PDF
      * @return array
      * @throws Exception Throw error if product doesn't exists.
      */
-    private function prepare_template_data(int $template_id, \WC_Order $order, \WC_Order_Item $item, array $product_fields_values) : array
+    private function prepare_template_data(int $template_id, WC_Order $order, WC_Order_Item $item, array $product_fields_values): array
     {
         $template_meta = $this->editor->get_post_meta($template_id);
-        if ($item instanceof \WC_Order_Item_Product) {
+        if ($item instanceof WC_Order_Item_Product) {
             $coupon_id = (int) $order->get_meta('fcpdf_order_item_' . $item->get_id() . '_coupon_id');
             if (!$coupon_id) {
                 $coupon_id = (int) $order->get_meta('_fcpdf_order_item_' . $item->get_id() . '_coupon_id');
             }
-            if (empty($template_meta) || !\is_array($template_meta)) {
-                throw new \RuntimeException(\esc_html__('Unknown template', 'flexible-coupons'));
+            if (empty($template_meta) || !is_array($template_meta)) {
+                throw new RuntimeException(esc_html__('Unknown template', 'flexible-coupons'));
             }
             $product = $item->get_product();
-            $coupon = new \WC_Coupon($coupon_id);
+            $coupon = new WC_Coupon($coupon_id);
             if (!$coupon->get_id()) {
-                throw new \RuntimeException(\esc_html__('Coupon doesn\'t exists.', 'flexible-coupons'));
+                throw new RuntimeException(esc_html__('Coupon doesn\'t exists.', 'flexible-coupons'));
             }
             $shortcodes_to_replace = $this->match_shortcode_values($order, $item, $product, $coupon, $product_fields_values, $coupon->get_code());
-            $replacer = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\ShortCodeReplacer($shortcodes_to_replace);
+            $replacer = new ShortCodeReplacer($shortcodes_to_replace);
             if (isset($template_meta[self::AREA_OBJECTS])) {
                 foreach ($template_meta[self::AREA_OBJECTS] as $id => $data) {
                     if (isset($template_meta[self::AREA_OBJECTS][$id]['text'])) {
@@ -169,23 +169,23 @@ class PDF
      * @throws RuntimeException Throw exception if order id or item id doesn't exists.
      * @throws Exception
      */
-    public function string_output($order_id, $item_id) : string
+    public function string_output($order_id, $item_id): string
     {
         if (!$order_id || !$item_id) {
-            throw new \RuntimeException('Order ID or item ID doesn\'t exists.');
+            throw new RuntimeException('Order ID or item ID doesn\'t exists.');
         }
-        $order = \wc_get_order($order_id);
+        $order = wc_get_order($order_id);
         $item = $order->get_item($item_id);
         $item_meta = $this->get_order_item_meta($order, $item_id);
-        $template_id = (int) $this->postmeta->get_private(\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item), 'flexible_coupon_product_template');
+        $template_id = (int) $this->postmeta->get_private(Helper::get_product_id($item), 'flexible_coupon_product_template');
         $template_data = $this->prepare_template_data($template_id, $order, $item, $item_meta);
-        $editor_objects = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\Items($template_data);
+        $editor_objects = new Items($template_data);
         $area_properties = $this->editor->get_area_properties($template_id);
         $data = ['editor_width' => $area_properties->get_width(), 'editor_height' => $area_properties->get_height(), 'editor_bgcolor' => $area_properties->get_background_color(), 'html' => $editor_objects->get_html()];
         $html = $this->renderer->render('html-pdf', $data);
-        $pdf_library = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\PDFWrapper();
+        $pdf_library = new PDFWrapper();
         $pdf_library->set_editor_data($area_properties);
-        if (\defined('FLEXIBLE_COUPONS_DEBUG')) {
+        if (defined('FLEXIBLE_COUPONS_DEBUG')) {
             $this->debug_before_render_pdf($html);
         }
         return $pdf_library->render($html);

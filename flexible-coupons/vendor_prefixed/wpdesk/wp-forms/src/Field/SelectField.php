@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class SelectField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class SelectField extends BasicField
 {
     public function get_template_name()
     {

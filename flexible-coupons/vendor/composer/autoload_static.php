@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita882e19ff594e663edea16648f8959cc
+class ComposerStaticInit304209805d9d9be13344c9b326d56de2
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -526,6 +526,8 @@ class ComposerStaticInita882e19ff594e663edea16648f8959cc
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Coupon\\CouponMeta' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/CouponMeta.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Coupon\\GenerateCoupon' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/GenerateCoupon.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\CouponsIntegration' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/CouponsIntegration.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Data\\Email\\EmailMeta' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Data/Email/EmailMeta.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\Email' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/Email.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\FlexibleCouponsBaseEmail' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/FlexibleCouponsBaseEmail.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Exception\\EmailException' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Exception/EmailException.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Helpers\\EmailStrings' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Helpers/EmailStrings.php',
@@ -629,9 +631,15 @@ class ComposerStaticInita882e19ff594e663edea16648f8959cc
         'FlexibleCouponsVendor\\WPDesk\\Plugin\\Flow\\Initialization\\Simple\\SimplePaidStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/Simple/SimplePaidStrategy.php',
         'FlexibleCouponsVendor\\WPDesk\\Plugin\\Flow\\Initialization\\Simple\\TrackerInstanceAsFilterTrait' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/Initialization/TrackerInstanceAsFilterTrait.php',
         'FlexibleCouponsVendor\\WPDesk\\Plugin\\Flow\\PluginBootstrap' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-plugin-flow-common/src/PluginBootstrap.php',
+        'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\AndStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/AndStrategy.php',
+        'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\ConstantDefinedStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/ConstantDefinedStrategy.php',
+        'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\ConstantNotDefinedStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/ConstantNotDefinedStrategy.php',
         'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\GetStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/GetStrategy.php',
+        'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\OrStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/OrStrategy.php',
         'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\PostTypeStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/PostTypeStrategy.php',
         'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\ShouldShowStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/ShouldShowStrategy.php',
+        'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\WooCommerce\\ShippingMethodInstanceStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/WooCommerce/ShippingMethodInstanceStrategy.php',
+        'FlexibleCouponsVendor\\WPDesk\\ShowDecision\\WooCommerce\\ShippingMethodStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-show-decision/src/WooCommerce/ShippingMethodStrategy.php',
         'FlexibleCouponsVendor\\WPDesk\\Tracker\\Assets' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/PSR/WPDesk/Tracker/Assets.php',
         'FlexibleCouponsVendor\\WPDesk\\Tracker\\OptInOptOut' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/PSR/WPDesk/Tracker/OptInOptOut.php',
         'FlexibleCouponsVendor\\WPDesk\\Tracker\\OptInPage' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/PSR/WPDesk/Tracker/OptInPage.php',
@@ -783,9 +791,9 @@ class ComposerStaticInita882e19ff594e663edea16648f8959cc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita882e19ff594e663edea16648f8959cc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita882e19ff594e663edea16648f8959cc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita882e19ff594e663edea16648f8959cc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit304209805d9d9be13344c9b326d56de2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit304209805d9d9be13344c9b326d56de2::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit304209805d9d9be13344c9b326d56de2::$classMap;
 
         }, null, ClassLoader::class);
     }

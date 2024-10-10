@@ -18,6 +18,6 @@ class CommandProvider implements \FlexibleCouponsVendor\Composer\Plugin\Capabili
 {
     public function getCommands()
     {
-        return [new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\CreateCodeceptionTests(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\RunCodeceptionTests(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\RunLocalCodeceptionTests(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\RunLocalCodeceptionTestsWithCoverage(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\PrepareCodeceptionDb(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\PrepareWordpressForCodeception(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\PrepareLocalCodeceptionTests(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\PrepareLocalCodeceptionTestsWithCoverage(), new \FlexibleCouponsVendor\WPDesk\Composer\Codeception\Commands\PrepareParallelCodeceptionTests()];
+        return [new CreateCodeceptionTests(), new RunCodeceptionTests(), new RunLocalCodeceptionTests(), new RunLocalCodeceptionTestsWithCoverage(), new PrepareCodeceptionDb(), new PrepareWordpressForCodeception(), new PrepareLocalCodeceptionTests(), new PrepareLocalCodeceptionTestsWithCoverage(), new PrepareParallelCodeceptionTests()];
     }
 }

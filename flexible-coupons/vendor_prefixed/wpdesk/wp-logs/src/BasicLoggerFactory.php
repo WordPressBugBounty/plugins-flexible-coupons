@@ -10,7 +10,7 @@ use FlexibleCouponsVendor\Monolog\Registry;
  *
  * @package WPDesk\Logger
  */
-class BasicLoggerFactory implements \FlexibleCouponsVendor\WPDesk\Logger\LoggerFactory
+class BasicLoggerFactory implements LoggerFactory
 {
     /** @var string Last created logger name/channel */
     private static $lastLoggerChannel;
@@ -24,12 +24,12 @@ class BasicLoggerFactory implements \FlexibleCouponsVendor\WPDesk\Logger\LoggerF
      */
     public function createLogger($name, $handlers = array(), array $processors = array())
     {
-        if (\FlexibleCouponsVendor\Monolog\Registry::hasLogger($name)) {
-            return \FlexibleCouponsVendor\Monolog\Registry::getInstance($name);
+        if (Registry::hasLogger($name)) {
+            return Registry::getInstance($name);
         }
         self::$lastLoggerChannel = $name;
-        $logger = new \FlexibleCouponsVendor\Monolog\Logger($name, $handlers, $processors);
-        \FlexibleCouponsVendor\Monolog\Registry::addLogger($logger);
+        $logger = new Logger($name, $handlers, $processors);
+        Registry::addLogger($logger);
         return $logger;
     }
     /**
@@ -44,6 +44,6 @@ class BasicLoggerFactory implements \FlexibleCouponsVendor\WPDesk\Logger\LoggerF
         if ($name === null) {
             $name = self::$lastLoggerChannel;
         }
-        return \FlexibleCouponsVendor\Monolog\Registry::getInstance($name);
+        return Registry::getInstance($name);
     }
 }

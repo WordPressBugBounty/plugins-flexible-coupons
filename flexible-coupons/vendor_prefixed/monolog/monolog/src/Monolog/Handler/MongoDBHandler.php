@@ -30,7 +30,7 @@ use FlexibleCouponsVendor\Monolog\Formatter\MongoDBFormatter;
  * The above examples uses the MongoDB PHP library's client class; however, the
  * MongoDB\Driver\Manager class from ext-mongodb is also supported.
  */
-class MongoDBHandler extends \FlexibleCouponsVendor\Monolog\Handler\AbstractProcessingHandler
+class MongoDBHandler extends AbstractProcessingHandler
 {
     /** @var \MongoDB\Collection */
     private $collection;
@@ -45,12 +45,12 @@ class MongoDBHandler extends \FlexibleCouponsVendor\Monolog\Handler\AbstractProc
      * @param string         $database   Database name
      * @param string         $collection Collection name
      */
-    public function __construct($mongodb, string $database, string $collection, $level = \FlexibleCouponsVendor\Monolog\Logger::DEBUG, bool $bubble = \true)
+    public function __construct($mongodb, string $database, string $collection, $level = Logger::DEBUG, bool $bubble = \true)
     {
-        if (!($mongodb instanceof \FlexibleCouponsVendor\MongoDB\Client || $mongodb instanceof \MongoDB\Driver\Manager)) {
-            throw new \InvalidArgumentException('MongoDB\\Client or MongoDB\\Driver\\Manager instance required');
+        if (!($mongodb instanceof Client || $mongodb instanceof Manager)) {
+            throw new \InvalidArgumentException('MongoDB\Client or MongoDB\Driver\Manager instance required');
         }
-        if ($mongodb instanceof \FlexibleCouponsVendor\MongoDB\Client) {
+        if ($mongodb instanceof Client) {
             $this->collection = $mongodb->selectCollection($database, $collection);
         } else {
             $this->manager = $mongodb;
@@ -58,13 +58,13 @@ class MongoDBHandler extends \FlexibleCouponsVendor\Monolog\Handler\AbstractProc
         }
         parent::__construct($level, $bubble);
     }
-    protected function write(array $record) : void
+    protected function write(array $record): void
     {
         if (isset($this->collection)) {
             $this->collection->insertOne($record['formatted']);
         }
         if (isset($this->manager, $this->namespace)) {
-            $bulk = new \MongoDB\Driver\BulkWrite();
+            $bulk = new BulkWrite();
             $bulk->insert($record["formatted"]);
             $this->manager->executeBulkWrite($this->namespace, $bulk);
         }
@@ -72,8 +72,8 @@ class MongoDBHandler extends \FlexibleCouponsVendor\Monolog\Handler\AbstractProc
     /**
      * {@inheritDoc}
      */
-    protected function getDefaultFormatter() : \FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface
+    protected function getDefaultFormatter(): FormatterInterface
     {
-        return new \FlexibleCouponsVendor\Monolog\Formatter\MongoDBFormatter();
+        return new MongoDBFormatter();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings;
 
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\CouponsIntegration;
 use FlexibleCouponsVendor\WPDesk\Notice\Notice;
 use FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer;
 use FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver;
@@ -16,7 +17,7 @@ use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\SettingsTab;
  *
  * @package WPDesk\Library\WPCoupons\Settings
  */
-class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class SettingsForm implements Hookable
 {
     const MENU_PAGE_URL = 'edit.php?post_type=wpdesk-coupons';
     const SETTINGS_SLUG = 'fc-settings';
@@ -34,7 +35,7 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
     /**
      * @param PersistentContainer $options_container
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Persistence\PersistentContainer $options_container, \FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer $renderer)
+    public function __construct(PersistentContainer $options_container, Renderer $renderer)
     {
         $this->options_container = $options_container;
         $this->renderer = $renderer;
@@ -44,10 +45,15 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
      */
     public function hooks()
     {
-        \add_action('admin_menu', function () {
-            \add_submenu_page(self::MENU_PAGE_URL, \esc_html__('Settings', 'flexible-coupons'), \esc_html__('Settings', 'flexible-coupons'), 'manage_options', self::SETTINGS_SLUG, [$this, 'render_page_action'], 40);
+        add_action('admin_menu', function () {
+            add_submenu_page(self::MENU_PAGE_URL, esc_html__('Settings', 'flexible-coupons'), esc_html__('Settings', 'flexible-coupons'), 'manage_options', self::SETTINGS_SLUG, [$this, 'render_page_action'], 40);
         }, 999);
-        \add_action('admin_init', [$this, 'save_settings_action'], 5);
+        add_action('admin_init', [$this, 'save_settings_action'], 5);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts'], 5);
+    }
+    public function enqueue_scripts()
+    {
+        wp_enqueue_style('fc-core-admin-styles', CouponsIntegration::get_assets_url() . '/css/admin-fc-core-styles.css');
     }
     /**
      * Save POST tab data. Before render.
@@ -60,10 +66,10 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
             return;
         }
         $tab = $this->get_active_tab();
-        $tab_data = isset($_POST[$tab::get_tab_slug()]) ? \wp_unslash($_POST[$tab::get_tab_slug()]) : '';
+        $tab_data = isset($_POST[$tab::get_tab_slug()]) ? wp_unslash($_POST[$tab::get_tab_slug()]) : '';
         //phpcs:ignore
         $nonce_value = $tab_data[self::NONCE_NAME] ?? '';
-        $nonce = \wp_verify_nonce($nonce_value, self::NONCE_ACTION);
+        $nonce = wp_verify_nonce($nonce_value, self::NONCE_ACTION);
         if (!empty($tab_data) && $nonce) {
             $tab->handle_request($tab_data);
             $this->save_tab_data($tab_data);
@@ -75,8 +81,8 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
              *
              * @since 1.6.0
              */
-            \do_action('fc/core/settings/tabs/saved', $tab, $this->options_container);
-            new \FlexibleCouponsVendor\WPDesk\Notice\Notice(\esc_html__('Your settings have been saved.', 'flexible-coupons'), \FlexibleCouponsVendor\WPDesk\Notice\Notice::NOTICE_TYPE_SUCCESS);
+            do_action('fc/core/settings/tabs/saved', $tab, $this->options_container);
+            new Notice(esc_html__('Your settings have been saved.', 'flexible-coupons'), Notice::NOTICE_TYPE_SUCCESS);
         } else {
             $tab->set_data($this->options_container);
         }
@@ -85,7 +91,7 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
          *
          * @since 1.6.0
          */
-        \do_action('fc/core/settings/ready');
+        do_action('fc/core/settings/ready');
     }
     /**
      * Save data from tab to persistent container.
@@ -99,15 +105,15 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
                 continue;
                 // Prevent save values for pro field.
             }
-            if (\is_array($value)) {
-                $value = \array_filter($value, static function ($v) {
+            if (is_array($value)) {
+                $value = array_filter($value, static function ($v) {
                     return !empty($v);
                 });
             }
             $this->options_container->set($key, $value);
         }
         if (!empty($_SERVER['REQUEST_URI'])) {
-            \wp_safe_redirect(\wp_unslash($_SERVER['REQUEST_URI']), 301);
+            wp_safe_redirect(wp_unslash($_SERVER['REQUEST_URI']), 301);
             exit;
         }
     }
@@ -118,11 +124,11 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
      *
      * @return string
      */
-    public static function get_url(string $tab_slug = null) : string
+    public static function get_url(string $tab_slug = null): string
     {
-        $url = \admin_url(\add_query_arg(['page' => self::SETTINGS_SLUG], self::MENU_PAGE_URL));
+        $url = admin_url(add_query_arg(['page' => self::SETTINGS_SLUG], self::MENU_PAGE_URL));
         if ($tab_slug !== null) {
-            $url = \add_query_arg(['tab' => $tab_slug], $url);
+            $url = add_query_arg(['tab' => $tab_slug], $url);
         }
         return $url;
     }
@@ -142,25 +148,25 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
     /**
      * @return SettingsTab
      */
-    private function get_active_tab() : \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\SettingsTab
+    private function get_active_tab(): SettingsTab
     {
-        $selected_tab = isset($_GET['tab']) ? \sanitize_key($_GET['tab']) : null;
+        $selected_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : null;
         //phpcs:ignore
         $tabs = $this->get_settings_tabs();
         if (!empty($selected_tab) && isset($tabs[$selected_tab])) {
             return $tabs[$selected_tab];
         }
-        return \reset($tabs);
+        return reset($tabs);
     }
     /**
      * @return SettingsTab[]
      */
-    private function get_settings_tabs() : array
+    private function get_settings_tabs(): array
     {
         if (empty($this->tabs)) {
-            $this->tabs[\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\MainSettings::get_tab_slug()] = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\MainSettings($this->renderer);
-            $this->tabs[\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\CouponSettings::get_tab_slug()] = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\CouponSettings();
-            $this->tabs[\FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\EmailSettings::get_tab_slug()] = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\EmailSettings();
+            $this->tabs[Tabs\MainSettings::get_tab_slug()] = new Tabs\MainSettings($this->renderer);
+            $this->tabs[Tabs\CouponSettings::get_tab_slug()] = new Tabs\CouponSettings();
+            $this->tabs[Tabs\EmailSettings::get_tab_slug()] = new Tabs\EmailSettings();
             /**
              * Filters setting tabs.
              *
@@ -170,7 +176,7 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
              *
              * @since 1.6.0
              */
-            $this->tabs = \apply_filters('fc/core/settings/tabs', $this->tabs);
+            $this->tabs = apply_filters('fc/core/settings/tabs', $this->tabs);
         }
         return $this->tabs;
     }
@@ -179,17 +185,17 @@ class SettingsForm implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin
      */
     private function get_renderer()
     {
-        $chain = new \FlexibleCouponsVendor\WPDesk\View\Resolver\ChainResolver();
-        $resolver_list = (array) \apply_filters('fcpdf/settings/template_resolvers', [new \FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver(__DIR__ . '/Views'), new \FlexibleCouponsVendor\WPDesk\Forms\Resolver\DefaultFormFieldResolver()]);
+        $chain = new ChainResolver();
+        $resolver_list = (array) apply_filters('fcpdf/settings/template_resolvers', [new DirResolver(__DIR__ . '/Views'), new DefaultFormFieldResolver()]);
         foreach ($resolver_list as $resolver) {
             $chain->appendResolver($resolver);
         }
-        return new \FlexibleCouponsVendor\WPDesk\View\Renderer\SimplePhpRenderer($chain);
+        return new SimplePhpRenderer($chain);
     }
     /**
      * @return string[]
      */
-    private function get_tabs_menu_items() : array
+    private function get_tabs_menu_items(): array
     {
         $menu_items = [];
         foreach ($this->get_settings_tabs() as $tab) {

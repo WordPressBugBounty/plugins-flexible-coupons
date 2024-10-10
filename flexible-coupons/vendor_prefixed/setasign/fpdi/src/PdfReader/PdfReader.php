@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfReader;
@@ -43,7 +43,7 @@ class PdfReader
      *
      * @param PdfParser $parser
      */
-    public function __construct(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\PdfParser $parser)
+    public function __construct(PdfParser $parser)
     {
         $this->parser = $parser;
     }
@@ -87,9 +87,9 @@ class PdfReader
     {
         if ($this->pageCount === null) {
             $catalog = $this->parser->getCatalog();
-            $pages = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($catalog, 'Pages'), $this->parser);
-            $count = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($pages, 'Count'), $this->parser);
-            $this->pageCount = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfNumeric::ensure($count)->value;
+            $pages = PdfType::resolve(PdfDictionary::get($catalog, 'Pages'), $this->parser);
+            $count = PdfType::resolve(PdfDictionary::get($pages, 'Count'), $this->parser);
+            $this->pageCount = PdfNumeric::ensure($count)->value;
         }
         return $this->pageCount;
     }
@@ -113,30 +113,30 @@ class PdfReader
         }
         $this->readPages();
         $page = $this->pages[$pageNumber - 1];
-        if ($page instanceof \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfIndirectObjectReference) {
-            $readPages = function ($kids) use(&$readPages) {
-                $kids = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure($kids);
+        if ($page instanceof PdfIndirectObjectReference) {
+            $readPages = function ($kids) use (&$readPages) {
+                $kids = PdfArray::ensure($kids);
                 /** @noinspection LoopWhichDoesNotLoopInspection */
                 foreach ($kids->value as $reference) {
-                    $reference = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfIndirectObjectReference::ensure($reference);
+                    $reference = PdfIndirectObjectReference::ensure($reference);
                     $object = $this->parser->getIndirectObject($reference->value);
-                    $type = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($object->value, 'Type');
+                    $type = PdfDictionary::get($object->value, 'Type');
                     if ($type->value === 'Pages') {
-                        return $readPages(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($object->value, 'Kids'));
+                        return $readPages(PdfDictionary::get($object->value, 'Kids'));
                     }
                     return $object;
                 }
-                throw new \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PdfReaderException('Kids array cannot be empty.', \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PdfReaderException::KIDS_EMPTY);
+                throw new PdfReaderException('Kids array cannot be empty.', PdfReaderException::KIDS_EMPTY);
             };
             $page = $this->parser->getIndirectObject($page->value);
-            $dict = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve($page, $this->parser);
-            $type = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($dict, 'Type');
+            $dict = PdfType::resolve($page, $this->parser);
+            $type = PdfDictionary::get($dict, 'Type');
             if ($type->value === 'Pages') {
-                $kids = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($dict, 'Kids'), $this->parser);
+                $kids = PdfType::resolve(PdfDictionary::get($dict, 'Kids'), $this->parser);
                 try {
                     $page = $this->pages[$pageNumber - 1] = $readPages($kids);
-                } catch (\FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PdfReaderException $e) {
-                    if ($e->getCode() !== \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\PdfReaderException::KIDS_EMPTY) {
+                } catch (PdfReaderException $e) {
+                    if ($e->getCode() !== PdfReaderException::KIDS_EMPTY) {
                         throw $e;
                     }
                     // let's reset the pages array and read all page objects
@@ -149,7 +149,7 @@ class PdfReader
                 $this->pages[$pageNumber - 1] = $page;
             }
         }
-        return new \FlexibleCouponsVendor\setasign\Fpdi\PdfReader\Page($page, $this->parser);
+        return new Page($page, $this->parser);
     }
     /**
      * Walk the page tree and resolve all indirect objects of all pages.
@@ -165,32 +165,32 @@ class PdfReader
             return;
         }
         $expectedPageCount = $this->getPageCount();
-        $readPages = function ($kids, $count) use(&$readPages, $readAll, $expectedPageCount) {
-            $kids = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfArray::ensure($kids);
+        $readPages = function ($kids, $count) use (&$readPages, $readAll, $expectedPageCount) {
+            $kids = PdfArray::ensure($kids);
             $isLeaf = $count->value === \count($kids->value);
             foreach ($kids->value as $reference) {
-                $reference = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfIndirectObjectReference::ensure($reference);
+                $reference = PdfIndirectObjectReference::ensure($reference);
                 if (!$readAll && $isLeaf) {
                     $this->pages[] = $reference;
                     continue;
                 }
                 $object = $this->parser->getIndirectObject($reference->value);
-                $type = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($object->value, 'Type');
+                $type = PdfDictionary::get($object->value, 'Type');
                 if ($type->value === 'Pages') {
-                    $readPages(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($object->value, 'Kids'), \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($object->value, 'Count'));
+                    $readPages(PdfDictionary::get($object->value, 'Kids'), PdfDictionary::get($object->value, 'Count'));
                 } else {
                     $this->pages[] = $object;
                 }
                 // stop if all pages are read - faulty documents exists with additional entries with invalid data.
-                if (\count($this->pages) === $expectedPageCount) {
+                if (count($this->pages) === $expectedPageCount) {
                     break;
                 }
             }
         };
         $catalog = $this->parser->getCatalog();
-        $pages = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($catalog, 'Pages'), $this->parser);
-        $count = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($pages, 'Count'), $this->parser);
-        $kids = \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::resolve(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfDictionary::get($pages, 'Kids'), $this->parser);
+        $pages = PdfType::resolve(PdfDictionary::get($catalog, 'Pages'), $this->parser);
+        $count = PdfType::resolve(PdfDictionary::get($pages, 'Count'), $this->parser);
+        $kids = PdfType::resolve(PdfDictionary::get($pages, 'Kids'), $this->parser);
         $readPages($kids, $count);
     }
 }

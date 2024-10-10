@@ -2,6 +2,6 @@
 
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
-class FigCaption extends \FlexibleCouponsVendor\Mpdf\Tag\BlockTag
+class FigCaption extends BlockTag
 {
 }

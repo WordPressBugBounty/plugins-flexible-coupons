@@ -9,7 +9,7 @@ use FlexibleCouponsVendor\WPDesk\View\Resolver\Exception\CanNotResolve;
  *
  * @package WPDesk\View\Resolver
  */
-class DirResolver implements \FlexibleCouponsVendor\WPDesk\View\Resolver\Resolver
+class DirResolver implements Resolver
 {
     /** @var string */
     private $dir;
@@ -30,13 +30,13 @@ class DirResolver implements \FlexibleCouponsVendor\WPDesk\View\Resolver\Resolve
      *
      * @return string
      */
-    public function resolve($name, \FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer $renderer = null)
+    public function resolve($name, Renderer $renderer = null)
     {
-        $dir = \rtrim($this->dir, '/');
+        $dir = rtrim($this->dir, '/');
         $fullName = $dir . '/' . $name;
-        if (\file_exists($fullName)) {
+        if (file_exists($fullName)) {
             return $fullName;
         }
-        throw new \FlexibleCouponsVendor\WPDesk\View\Resolver\Exception\CanNotResolve("Cannot resolve {$name}");
+        throw new CanNotResolve("Cannot resolve {$name}");
     }
 }

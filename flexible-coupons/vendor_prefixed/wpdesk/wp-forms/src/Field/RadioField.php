@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
-class RadioField extends \FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField
+class RadioField extends BasicField
 {
     public function get_template_name()
     {

@@ -24,7 +24,7 @@ use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
  *
  * @package WPDesk\Library\WPCoupons\Cart
  */
-class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable
+class Cart implements Hookable
 {
     const PRODUCT_TYPE_GROUPED = 'grouped';
     const PRODUCT_TYPE_VARIABLE = 'variable';
@@ -47,11 +47,11 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     private $logger;
     /**
-     * @param ProductFields             $product_fields Product fields.
-     * @param PostMeta                  $post_meta      Product post meta.
-     * @param WordpressOptionsContainer $settings       Plugin settings.
+     * @param ProductFields $product_fields Product fields.
+     * @param PostMeta $post_meta Product post meta.
+     * @param WordpressOptionsContainer $settings Plugin settings.
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields $product_fields, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta $post_meta, \FlexibleCouponsVendor\WPDesk\Persistence\Adapter\WordPress\WordpressOptionsContainer $settings, \Psr\Log\LoggerInterface $logger)
+    public function __construct(ProductFields $product_fields, PostMeta $post_meta, WordpressOptionsContainer $settings, LoggerInterface $logger)
     {
         $this->product_fields = $product_fields;
         $this->post_meta = $post_meta;
@@ -66,31 +66,31 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
         if (!empty($this->product_fields)) {
             $position = $this->settings->get_fallback('coupon_product_position', self::PRODUCT_FIELDS_POSITION);
             if ($position === self::PRODUCT_FIELDS_POSITION) {
-                \add_action('woocommerce_after_add_to_cart_button', [$this, 'add_fields_to_product_action']);
+                add_action('woocommerce_after_add_to_cart_button', [$this, 'add_fields_to_product_action']);
             } else {
-                \add_action('woocommerce_before_add_to_cart_button', [$this, 'add_fields_to_product_action']);
+                add_action('woocommerce_before_add_to_cart_button', [$this, 'add_fields_to_product_action']);
             }
-            \add_filter('woocommerce_add_to_cart_validation', [$this, 'add_to_cart_validation_filter'], 30, 3);
-            \add_action('woocommerce_new_order_item', [$this, 'new_order_item_action'], 10, 2);
-            \add_filter('woocommerce_add_cart_item_data', [$this, 'add_cart_item_data_filter'], 30, 3);
-            \add_filter('woocommerce_get_item_data', [$this, 'get_item_data_filter'], 30, 3);
-            \add_filter('woocommerce_order_item_display_meta_key', [$this, 'replace_item_meta_key_filter'], 20, 3);
-            \add_action('wp_ajax_get_variation_fields', [$this, 'get_variation_fields']);
-            \add_action('wp_ajax_nopriv_get_variation_fields', [$this, 'get_variation_fields']);
+            add_filter('woocommerce_add_to_cart_validation', [$this, 'add_to_cart_validation_filter'], 30, 3);
+            add_action('woocommerce_new_order_item', [$this, 'new_order_item_action'], 10, 2);
+            add_filter('woocommerce_add_cart_item_data', [$this, 'add_cart_item_data_filter'], 30, 3);
+            add_filter('woocommerce_get_item_data', [$this, 'get_item_data_filter'], 30, 3);
+            add_filter('woocommerce_order_item_display_meta_key', [$this, 'replace_item_meta_key_filter'], 20, 3);
+            add_action('wp_ajax_get_variation_fields', [$this, 'get_variation_fields']);
+            add_action('wp_ajax_nopriv_get_variation_fields', [$this, 'get_variation_fields']);
         }
     }
     /**
      * Replace item meta keys.
      *
-     * @param string        $key  Key.
-     * @param object        $meta Meta.
+     * @param string $key Key.
+     * @param object $meta Meta.
      * @param WC_Order_Item $item Item Product.
      *
      * @return mixed
      */
-    public function replace_item_meta_key_filter($key, $meta, $item) : string
+    public function replace_item_meta_key_filter($key, $meta, $item): string
     {
-        if ($item instanceof \WC_Order_Item_Product) {
+        if ($item instanceof WC_Order_Item_Product) {
             $fields = $this->get_fields($item->get_product_id());
             if (isset($fields[$meta->key]['title'])) {
                 return $fields[$meta->key]['title'];
@@ -105,21 +105,22 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      *
      * @return bool
      */
-    private function is_voucher_type(\WC_Product $product) : bool
+    private function is_voucher_type(WC_Product $product): bool
     {
         $product_id = $product->get_id();
         if ($product->is_type(self::PRODUCT_TYPE_VARIATION)) {
             $product_id = $product->get_parent_id();
         }
-        return 'yes' === $this->post_meta->get_private($product_id, \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\ProductEditPage::PRODUCT_COUPON_SLUG);
+        return 'yes' === $this->post_meta->get_private($product_id, ProductEditPage::PRODUCT_COUPON_SLUG);
     }
     /**
      * Checks if product is disabled. Variable product only.
      *
      * @param WC_Product $product
+     *
      * @return boolean
      */
-    private function is_disabled(\WC_Product $product) : bool
+    private function is_disabled(WC_Product $product): bool
     {
         if (!$product->is_type(self::PRODUCT_TYPE_VARIATION)) {
             return \false;
@@ -131,7 +132,7 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      *
      * @return array
      */
-    private function get_fields(int $product_id) : array
+    private function get_fields(int $product_id): array
     {
         $fields = [];
         if ($this->product_fields->is_premium()) {
@@ -150,21 +151,21 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      * @return WC_Product
      * @throws Exception Invalid product type.
      */
-    private function get_product_type(int $product_id) : \WC_Product
+    private function get_product_type(int $product_id): WC_Product
     {
-        $product = \wc_get_product($product_id);
+        $product = wc_get_product($product_id);
         if ($product->is_type(self::PRODUCT_TYPE_GROUPED)) {
             return $product;
         }
         if ($product->is_type(self::PRODUCT_TYPE_VARIABLE)) {
             $default_attributes = $product->get_default_attributes();
-            $atrribute_keys = \array_keys($default_attributes);
+            $atrribute_keys = array_keys($default_attributes);
             if (isset($atrribute_keys[0])) {
-                $attribute_name = \str_replace('pa_', '', $atrribute_keys[0]);
+                $attribute_name = str_replace('pa_', '', $atrribute_keys[0]);
                 $attribute_key = $atrribute_keys[0];
                 $attribute_value = $default_attributes[$attribute_key];
                 foreach ($product->get_children() as $children_id) {
-                    $children = \wc_get_product($children_id);
+                    $children = wc_get_product($children_id);
                     $children_attr_value = $children->get_attributes($attribute_name);
                     if ($attribute_value === $children_attr_value) {
                         return $children;
@@ -179,7 +180,7 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      *
      * @return string
      */
-    private function field_wrapper(string $html = '') : string
+    private function field_wrapper(string $html = ''): string
     {
         return '<div class="pdf-coupon-fields" style="clear: both;">' . $html . '</div>';
     }
@@ -195,16 +196,16 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
             $post_data = $_POST;
             $variation_id = isset($post_data['variation_id']) ? (int) $post_data['variation_id'] : 0;
             if ($variation_id) {
-                $own_product = \wc_get_product($variation_id);
+                $own_product = wc_get_product($variation_id);
             }
-            if ($variation_id && $own_product instanceof \WC_Product_Variable) {
+            if ($variation_id && $own_product instanceof WC_Product_Variable) {
                 echo $this->field_wrapper($this->get_fields_as_html($own_product));
-            } elseif ($own_product instanceof \WC_Product_Simple) {
+            } elseif ($own_product instanceof WC_Product_Simple) {
                 echo $this->field_wrapper($this->get_fields_as_html($own_product));
             } else {
                 echo $this->field_wrapper();
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage(), ['product_id' => $own_product->get_id()]);
         }
     }
@@ -213,17 +214,17 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      *
      * @return array
      */
-    private function field_defaults(array $field) : array
+    private function field_defaults(array $field): array
     {
         $defaults = ['type' => 'text', 'label' => '', 'description' => '', 'placeholder' => '', 'maxlength' => \false, 'required' => \false, 'autocomplete' => \false, 'id' => '', 'class' => [], 'label_class' => [], 'input_class' => [], 'return' => \true, 'options' => [], 'custom_attributes' => [], 'validate' => [], 'default' => '', 'autofocus' => '', 'priority' => ''];
-        return (array) \wp_parse_args($field, $defaults);
+        return (array) wp_parse_args($field, $defaults);
     }
     /**
      * @param int $variation_id
      *
      * @return bool
      */
-    private function has_variation_own_settings(int $variation_id) : bool
+    private function has_variation_own_settings(int $variation_id): bool
     {
         return 'yes' === $this->post_meta->get_private($variation_id, 'flexible_coupon_variation_base_on');
     }
@@ -232,29 +233,29 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     public function get_variation_fields()
     {
-        if (!\check_ajax_referer('fc-security-nonce', 'security', \false)) {
-            \wp_send_json_error(['error' => 'Invalid security token sent.']);
+        if (!check_ajax_referer('fc-security-nonce', 'security', \false)) {
+            wp_send_json_error(['error' => 'Invalid security token sent.']);
         }
         $_post = $_POST;
         $variation_id = isset($_post['variation_id']) ? (int) $_post['variation_id'] : 0;
-        $product = \wc_get_product($variation_id);
+        $product = wc_get_product($variation_id);
         $has_own_settings = $this->has_variation_own_settings($variation_id);
         if (!$has_own_settings) {
-            $product = \wc_get_product($product->get_parent_id());
+            $product = wc_get_product($product->get_parent_id());
         }
         if (!$this->is_voucher_type($product)) {
-            \wp_send_json_error('This is not a coupon product.');
+            wp_send_json_error('This is not a coupon product.');
         }
         if ($product) {
             try {
                 $html = $this->get_fields_as_html($product);
-                \wp_send_json_success($html);
-            } catch (\Exception $e) {
+                wp_send_json_success($html);
+            } catch (Exception $e) {
                 $this->logger->error($e->getMessage(), ['product_id' => $product->get_id()]);
-                \wp_send_json_error($e->getMessage());
+                wp_send_json_error($e->getMessage());
             }
         }
-        \wp_send_json_error('Unknown error');
+        wp_send_json_error('Unknown error');
     }
     /**
      * Show fields.
@@ -263,7 +264,7 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      *
      * @return string
      */
-    private function get_fields_as_html(\WC_Product $product) : string
+    private function get_fields_as_html(WC_Product $product): string
     {
         $output = '';
         if ($this->is_voucher_type($product) && !$this->is_disabled($product)) {
@@ -277,19 +278,25 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
                 $product_required = $this->post_meta->get_private($product->get_id(), $field['id'] . '_required');
                 if ($product_required) {
                     $field['required'] = 'yes' === $product_required;
+                    $field['custom_attributes']['required'] = 'yes' === $product_required;
                 }
                 if (isset($field['validation']['minlength']) && (int) $field['validation']['minlength'] > 0) {
                     $field['minlength'] = $field['validation']['minlength'];
-                    $field['custom_attributes']['data-description'] = \sprintf($field['custom_attributes']['data-description'], (int) $field['validation']['minlength']);
+                    $field['custom_attributes']['data-description'] = sprintf($field['custom_attributes']['data-description'], (int) $field['validation']['minlength']);
                 }
                 if (isset($field['validation']['maxlength']) && (int) $field['validation']['maxlength'] > 0) {
                     $field['maxlength'] = $field['validation']['maxlength'];
                 }
                 $field['label'] = $field['title'] ?? '';
-                $output .= \woocommerce_form_field($field['id'], $field, $data[$field['id']] ?? '');
+                $output .= woocommerce_form_field(
+                    $field['name'] ?? $field['id'],
+                    $field,
+                    // TODO: $data[ $field['id'] ] ?? ''
+                    ''
+                );
             }
         }
-        \ob_start();
+        ob_start();
         $coupon_tips = $this->settings->get_fallback('coupon_tips', \false);
         if ($coupon_tips === 'yes') {
             ?>
@@ -375,23 +382,23 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
 			</style>
 			<?php 
         }
-        $scripts = \ob_get_clean();
+        $scripts = ob_get_clean();
         return $output . $scripts;
     }
     /**
-     * @param bool       $passed     Is passed.
-     * @param int        $product_id Product ID.
-     * @param int        $qty        Stock.
-     * @param array|null $post_data  Post data.
+     * @param bool $passed Is passed.
+     * @param int $product_id Product ID.
+     * @param int $qty Stock.
+     * @param array|null $post_data Post data.
      *
      * @return bool
      */
-    public function add_to_cart_validation_filter($passed, $product_id, $qty, $post_data = null) : bool
+    public function add_to_cart_validation_filter($passed, $product_id, $qty, $post_data = null): bool
     {
         try {
-            if (\is_null($post_data)) {
+            if (is_null($post_data)) {
                 $post_data = $_POST;
-                $post_data = \wp_unslash($post_data);
+                $post_data = wp_unslash($post_data);
             }
             $variation_id = isset($post_data['variation_id']) ? (int) $post_data['variation_id'] : 0;
             if ($variation_id) {
@@ -411,20 +418,20 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
                     $value = null;
                     if (isset($post_data[$field['id']])) {
                         if (isset($field['type']) && 'textarea' === $field['type']) {
-                            $value = \sanitize_textarea_field($post_data[$field['id']]);
+                            $value = sanitize_textarea_field($post_data[$field['id']]);
                         } else {
-                            $value = \sanitize_text_field($post_data[$field['id']]);
+                            $value = sanitize_text_field($post_data[$field['id']]);
                         }
                     }
                     try {
                         $this->validate_field($product_id, $field, $value);
-                    } catch (\Exception $e) {
-                        \wc_add_notice($e->getMessage(), 'error');
+                    } catch (Exception $e) {
+                        wc_add_notice($e->getMessage(), 'error');
                         $passed = \false;
                     }
                 }
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage(), ['product_id' => $product_id]);
         } finally {
             return $passed;
@@ -433,9 +440,9 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
     /**
      * Validate product fields before add to cart.
      *
-     * @param int   $product_id Product ID.
-     * @param array $field      Field.
-     * @param mixed $value      Value.
+     * @param int $product_id Product ID.
+     * @param array $field Field.
+     * @param mixed $value Value.
      *
      * @throws Exception Throw exception on error.
      */
@@ -451,7 +458,7 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
             } else {
                 $is_required = $required === 'yes';
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage(), ['product_id' => $product_id, 'fields' => $field]);
         }
         if ($is_required) {
@@ -474,7 +481,7 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
     {
         if (empty($value)) {
             // translators: field title.
-            throw new \Exception(\sprintf(\__('<strong>%s</strong>  is required field.', 'flexible-coupons'), $field['title']));
+            throw new Exception(sprintf(__('<strong>%s</strong>  is required field.', 'flexible-coupons'), $field['title']));
         }
     }
     /**
@@ -482,9 +489,9 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     private function should_throw_exception_for_minlength($field, $value)
     {
-        if (isset($field['validation']['minlength']) && \mb_strlen(\trim($value)) < (int) $field['validation']['minlength']) {
+        if (isset($field['validation']['minlength']) && mb_strlen(trim($value)) < (int) $field['validation']['minlength']) {
             // translators: field title.
-            throw new \Exception(\sprintf(\__('<strong>%1$s</strong>  is to short. Minimum length: %2$d.', 'flexible-coupons'), $field['title'], $field['validation']['minlength']));
+            throw new Exception(sprintf(__('<strong>%1$s</strong>  is to short. Minimum length: %2$d.', 'flexible-coupons'), $field['title'], $field['validation']['minlength']));
         }
     }
     /**
@@ -492,9 +499,9 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     private function should_throw_exception_for_maxlength($field, $value)
     {
-        if (isset($field['validation']['maxlength']) && \mb_strlen(\trim($value)) > (int) $field['validation']['maxlength']) {
+        if (isset($field['validation']['maxlength']) && mb_strlen(trim($value)) > (int) $field['validation']['maxlength']) {
             // translators: field title.
-            throw new \Exception(\sprintf(\__('<strong>%1$s</strong>  is to long. Maximum length: %2$d.', 'flexible-coupons'), $field['title'], $field['validation']['maxlength']));
+            throw new Exception(sprintf(__('<strong>%1$s</strong>  is to long. Maximum length: %2$d.', 'flexible-coupons'), $field['title'], $field['validation']['maxlength']));
         }
     }
     /**
@@ -502,9 +509,9 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     private function should_throw_exception_for_email($field, $value)
     {
-        if (isset($field['validation']['email']) && !\is_email($value)) {
+        if (isset($field['validation']['email']) && !is_email($value)) {
             // translators: field title.
-            throw new \Exception(\sprintf(\__('<strong>%s</strong>  has invalid email.', 'flexible-coupons'), $field['title']));
+            throw new Exception(sprintf(__('<strong>%s</strong>  has invalid email.', 'flexible-coupons'), $field['title']));
         }
     }
     /**
@@ -512,9 +519,9 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     private function should_throw_exception_for_invalid_date($field, $value)
     {
-        if (isset($field['validation']['date']) && \strtotime($value) === \false) {
+        if (isset($field['validation']['date']) && strtotime($value) === \false) {
             // translators: field title.
-            throw new \Exception(\sprintf(\__('<strong>%s</strong> has an invalid date.', 'flexible-coupons'), $field['title']));
+            throw new Exception(sprintf(__('<strong>%s</strong> has an invalid date.', 'flexible-coupons'), $field['title']));
         }
     }
     /**
@@ -522,25 +529,25 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      */
     private function should_throw_exception_for_past_date($field, $value)
     {
-        if (isset($field['validation']['past_date']) && \strtotime($value) < \time()) {
+        if (isset($field['validation']['past_date']) && strtotime($value) < \time()) {
             // translators: field title.
-            throw new \Exception(\sprintf(\__('<strong>%s</strong> has a date from the past.', 'flexible-coupons'), $field['title']));
+            throw new Exception(sprintf(__('<strong>%s</strong> has a date from the past.', 'flexible-coupons'), $field['title']));
         }
     }
     /**
      * Save product fields.
      *
-     * @param int           $item_id Item ID.
-     * @param WC_Order_Item $item    Item.
+     * @param int $item_id Item ID.
+     * @param WC_Order_Item $item Item.
      *
      * @throws Exception
      */
     public function new_order_item_action($item_id, $item)
     {
-        if ($item instanceof \WC_Order_Item_Product && !empty($item->legacy_values) && !empty($item->legacy_values['flexible_coupons'])) {
+        if ($item instanceof WC_Order_Item_Product && !empty($item->legacy_values) && !empty($item->legacy_values['flexible_coupons'])) {
             foreach ($item->legacy_values['flexible_coupons'] as $field) {
                 $name = $field['id'];
-                \wc_add_order_item_meta($item_id, $name, $field['value']);
+                wc_add_order_item_meta($item_id, $name, $field['value']);
             }
         }
     }
@@ -548,8 +555,8 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      * Add cart item data.
      *
      * @param array $cart_item_data Cart item data.
-     * @param int   $product_id     Product ID.
-     * @param int   $variation_id   Variation ID.
+     * @param int $product_id Product ID.
+     * @param int $variation_id Variation ID.
      *
      * @return array
      */
@@ -564,29 +571,61 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
                 return $cart_item_data;
             }
             $fields = $this->get_fields($product->get_id());
-            $post_data = \wp_unslash($_POST);
+            $post_data = wp_unslash($_POST);
             //phpcs:ignore
-            $fields = \apply_filters('flexible_coupons_apply_logic_rules', $fields, $post_data);
+            $fields = apply_filters('flexible_coupons_apply_logic_rules', $fields, $post_data);
+            $clone_items_data = $this->get_clone_items_data($post_data);
+            $cart_item_data['flexible_coupons_multiple_pdfs'] = $clone_items_data;
             foreach ($fields as $field) {
-                if ('no' === $this->post_meta->get_private($product->get_id(), $field['id'], 'yes')) {
+                if ($this->is_field_disabled($product, $field)) {
                     continue;
                 }
-                $data = $fields;
-                if ($data) {
-                    if (!isset($cart_item_data['flexible_coupons'])) {
-                        $cart_item_data['flexible_coupons'] = [];
+                if (!isset($cart_item_data['flexible_coupons'])) {
+                    $cart_item_data['flexible_coupons'] = [];
+                }
+                if (isset($post_data[$field['id']])) {
+                    $field['value'] = wp_strip_all_tags($post_data[$field['id']]);
+                    $should_add_field = \true;
+                    foreach ($cart_item_data['flexible_coupons'] as $defined_field) {
+                        if ($defined_field['id'] === $field['id']) {
+                            $should_add_field = \false;
+                            break;
+                        }
                     }
-                    if (isset($post_data[$field['id']])) {
-                        $field['value'] = \wp_strip_all_tags($post_data[$field['id']]);
+                    if ($should_add_field) {
                         $cart_item_data['flexible_coupons'][] = $field;
                     }
                 }
             }
             return $cart_item_data;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
         return $cart_item_data;
+    }
+    private function is_field_disabled(\WC_Product $product, $field): bool
+    {
+        return 'no' === $this->post_meta->get_private($product->get_id(), $field['id'], 'yes');
+    }
+    private function get_clone_items_data($post_data): array
+    {
+        $clone_items_data = [];
+        if (isset($post_data['flexible_coupon_recipient_name-clone'])) {
+            foreach ($post_data['flexible_coupon_recipient_name-clone'] as $key => $value) {
+                $clone_items_data[$key]['flexible_coupon_recipient_name'] = $value;
+            }
+        }
+        if (isset($post_data['flexible_coupon_recipient_email-clone'])) {
+            foreach ($post_data['flexible_coupon_recipient_email-clone'] as $key => $value) {
+                $clone_items_data[$key]['flexible_coupon_recipient_email'] = $value;
+            }
+        }
+        if (isset($post_data['flexible_coupon_recipient_message-clone'])) {
+            foreach ($post_data['flexible_coupon_recipient_message-clone'] as $key => $value) {
+                $clone_items_data[$key]['flexible_coupon_recipient_message'] = $value;
+            }
+        }
+        return $clone_items_data;
     }
     /**
      * Display values defined product fields in cart and checkout.
@@ -596,7 +635,7 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
      *
      * @return array
      */
-    public function get_item_data_filter($item_data, $cart_item) : array
+    public function get_item_data_filter($item_data, $cart_item): array
     {
         try {
             $product_id = (int) $cart_item['product_id'];
@@ -611,18 +650,18 @@ class Cart implements \FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookabl
             $fields = $this->get_fields($product->get_id());
             if (!empty($cart_item['flexible_coupons'])) {
                 foreach ($cart_item['flexible_coupons'] as $field) {
-                    if ('no' === $this->post_meta->get_private($product->get_id(), $field['id'], 'yes')) {
+                    if (!isset($field['id']) || $this->is_field_disabled($product, $field)) {
                         continue;
                     }
                     $name = $fields[$field['id']]['title'] ?? '';
                     $value = $field['value'];
                     if (!empty($value)) {
-                        $item_data[] = ['name' => $name, 'value' => \wp_strip_all_tags($field['value']), 'display' => $field['display'] ?? ''];
+                        $item_data[] = ['name' => $name, 'value' => wp_strip_all_tags($field['value']), 'display' => $field['display'] ?? ''];
                     }
                 }
             }
             return $item_data;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
         return $item_data;

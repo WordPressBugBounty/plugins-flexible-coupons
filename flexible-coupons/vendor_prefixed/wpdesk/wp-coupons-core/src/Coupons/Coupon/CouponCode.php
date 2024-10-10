@@ -34,27 +34,27 @@ class CouponCode
      * @param WordpressOptionsContainer $settings
      * @param                           $item
      */
-    public function __construct(\FlexibleCouponsVendor\WPDesk\Persistence\Adapter\WordPress\WordpressOptionsContainer $settings, $item)
+    public function __construct(WordpressOptionsContainer $settings, $item)
     {
         $this->settings = $settings;
         $this->item = $item;
-        $this->post_meta = new \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta();
-        $product_id = \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper::get_product_id($item);
-        $this->product = \wc_get_product($product_id);
+        $this->post_meta = new PostMeta();
+        $product_id = Helper::get_product_id($item);
+        $this->product = wc_get_product($product_id);
     }
     /**
      * @param $product_id
      *
      * @return bool
      */
-    public function has_own_prefix($product_id) : bool
+    public function has_own_prefix($product_id): bool
     {
         return 'yes' === $this->post_meta->get_private($product_id, 'flexible_coupon_coupon_code', 'no');
     }
     /**
      * @return string
      */
-    private function get_random_length() : string
+    private function get_random_length(): string
     {
         $length = $this->settings->get_fallback('coupon_code_random_length', 5);
         if ($this->product->is_type('variation')) {
@@ -75,13 +75,13 @@ class CouponCode
          *
          * @since 1.2.4
          */
-        $length = (int) \apply_filters('fcpdf/core/coupon/code/length', $length);
-        return \substr(\str_shuffle(\str_repeat('0123456789abcdefghijklmnopqrstuvwxyz', $length)), 0, $length);
+        $length = (int) apply_filters('fcpdf/core/coupon/code/length', $length);
+        return substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyz', $length)), 0, $length);
     }
     /**
      * @return string
      */
-    private function get_prefix() : string
+    private function get_prefix(): string
     {
         $prefix = $this->settings->get_fallback('coupon_code_prefix', 5);
         if ($this->product->is_type('variation')) {
@@ -92,7 +92,7 @@ class CouponCode
         if ($this->has_own_prefix($this->product->get_id())) {
             $prefix = $this->post_meta->get_private($this->product->get_id(), 'flexible_coupon_coupon_code_prefix', $prefix);
         }
-        $prefix = \str_replace('{order_id}', $this->item->get_order_id(), $prefix);
+        $prefix = str_replace('{order_id}', $this->item->get_order_id(), $prefix);
         /**
          * Defines coupon code prefix.
          *
@@ -100,12 +100,12 @@ class CouponCode
          *
          * @since 1.4.0
          */
-        return \apply_filters('fcpdf/core/coupon/code/prefix', $prefix, $this->item, $this->product);
+        return apply_filters('fcpdf/core/coupon/code/prefix', $prefix, $this->item, $this->product);
     }
     /**
      * @return string
      */
-    private function get_suffix() : string
+    private function get_suffix(): string
     {
         $suffix = $this->settings->get_fallback('coupon_code_suffix', 5);
         if ($this->product->is_type('variation')) {
@@ -116,7 +116,7 @@ class CouponCode
         if ($this->has_own_prefix($this->product->get_id())) {
             $suffix = $this->post_meta->get_private($this->product->get_id(), 'flexible_coupon_coupon_code_suffix', $suffix);
         }
-        $suffix = \str_replace('{order_id}', $this->item->get_order_id(), $suffix);
+        $suffix = str_replace('{order_id}', $this->item->get_order_id(), $suffix);
         /**
          * Define coupon code suffix.
          *
@@ -124,14 +124,14 @@ class CouponCode
          *
          * @since 1.4.0
          */
-        return \apply_filters('fcpdf/core/coupon/code/suffix', $suffix, $this->item, $this->product);
+        return apply_filters('fcpdf/core/coupon/code/suffix', $suffix, $this->item, $this->product);
     }
     /**
      * Generate coupon code.
      *
      * @return string
      */
-    public function get() : string
+    public function get(): string
     {
         $coupon_code = $this->get_prefix() . $this->get_random_length() . $this->get_suffix();
         /**
@@ -143,6 +143,6 @@ class CouponCode
          *
          * @since 1.4.0
          */
-        return \apply_filters('fcpdf/core/coupon/code', $coupon_code, $this->get_prefix(), $this->get_suffix(), $this->item, $this->product);
+        return apply_filters('fcpdf/core/coupon/code', $coupon_code, $this->get_prefix(), $this->get_suffix(), $this->item, $this->product);
     }
 }

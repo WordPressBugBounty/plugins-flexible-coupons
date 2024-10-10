@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter;
@@ -12,7 +12,7 @@ namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter;
 /**
  * Class for handling LZW encoded data
  */
-class Lzw implements \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter\FilterInterface
+class Lzw implements FilterInterface
 {
     /**
      * @var null|string
@@ -60,7 +60,7 @@ class Lzw implements \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter\Filte
     public function decode($data)
     {
         if ($data[0] === "\x00" && $data[1] === "\x01") {
-            throw new \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter\LzwException('LZW flavour not supported.', \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Filter\LzwException::LZW_FLAVOUR_NOT_SUPPORTED);
+            throw new LzwException('LZW flavour not supported.', LzwException::LZW_FLAVOUR_NOT_SUPPORTED);
         }
         $this->initsTable();
         $this->data = $data;

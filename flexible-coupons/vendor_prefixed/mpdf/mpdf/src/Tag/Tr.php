@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\Mpdf\Tag;
 
 use FlexibleCouponsVendor\Mpdf\Css\Border;
-class Tr extends \FlexibleCouponsVendor\Mpdf\Tag\Tag
+class Tr extends Tag
 {
     public function open($attr, &$ahtml, &$ihtml)
     {
@@ -71,7 +71,7 @@ class Tr extends \FlexibleCouponsVendor\Mpdf\Tag\Tag
                         $cell = $c;
                     }
                     $cell['border_details']['R'] = $this->mpdf->border_details($this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['trborder-right'][$this->mpdf->row]);
-                    $this->mpdf->setBorder($cell['border'], \FlexibleCouponsVendor\Mpdf\Css\Border::RIGHT, $cell['border_details']['R']['s']);
+                    $this->mpdf->setBorder($cell['border'], Border::RIGHT, $cell['border_details']['R']['s']);
                     if ($this->mpdf->packTableData) {
                         $c['borderbin'] = $this->mpdf->_packCellBorder($cell);
                         unset($c['border'], $c['border_details']);

@@ -7,7 +7,7 @@
  */
 namespace FlexibleCouponsVendor\WPDesk\Library\Marketing\Boxes\BoxType;
 
-class VideoBox extends \FlexibleCouponsVendor\WPDesk\Library\Marketing\Boxes\BoxType\Box
+class VideoBox extends Box
 {
     const TYPE = 'video';
 }

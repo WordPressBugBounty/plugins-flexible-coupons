@@ -4,7 +4,7 @@
  * This file is part of FPDI
  *
  * @package   setasign\Fpdi
- * @copyright Copyright (c) 2023 Setasign GmbH & Co. KG (https://www.setasign.com)
+ * @copyright Copyright (c) 2024 Setasign GmbH & Co. KG (https://www.setasign.com)
  * @license   http://opensource.org/licenses/mit-license The MIT License
  */
 namespace FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type;
@@ -13,7 +13,7 @@ use FlexibleCouponsVendor\setasign\Fpdi\PdfParser\StreamReader;
 /**
  * Class representing a hexadecimal encoded PDF string object
  */
-class PdfHexString extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType
+class PdfHexString extends PdfType
 {
     /**
      * Parses a hexadecimal string object from the stream reader.
@@ -21,7 +21,7 @@ class PdfHexString extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\P
      * @param StreamReader $streamReader
      * @return false|self
      */
-    public static function parse(\FlexibleCouponsVendor\setasign\Fpdi\PdfParser\StreamReader $streamReader)
+    public static function parse(StreamReader $streamReader)
     {
         $bufferOffset = $streamReader->getOffset();
         while (\true) {
@@ -62,6 +62,6 @@ class PdfHexString extends \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\P
      */
     public static function ensure($hexString)
     {
-        return \FlexibleCouponsVendor\setasign\Fpdi\PdfParser\Type\PdfType::ensureType(self::class, $hexString, 'Hex string value expected.');
+        return PdfType::ensureType(self::class, $hexString, 'Hex string value expected.');
     }
 }
