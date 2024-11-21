@@ -6,7 +6,7 @@
  * @var string                                                               $email_heading
  * @var \FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Data\Email\EmailMeta $meta
  * @var bool                                                                 $email
- * @var int                                                                  $order_number
+ * @var string                                                               $order_number
  * @var string                                                               $date_order
  * @var bool                                                                 $sent_to_admin
  * @var bool                                                                 $plain_text

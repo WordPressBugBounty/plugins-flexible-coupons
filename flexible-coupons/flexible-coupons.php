@@ -4,16 +4,16 @@
  * Plugin URI: https://www.wpdesk.net/products/flexible-coupons/
  * Description: Flexible PDF Coupons for WooCommerce is a WooCommerce plugin with which you can create your gift cards, vouchers, or coupons in PDF format. Use it for your future marketing campaigns.
  * Product: Flexible PDF Coupons for WooCommerce
- * Version: 1.10.0
+ * Version: 1.10.1
  * Author: WP Desk
  * Author URI: https://www.wpdesk.net/
  * Text Domain: flexible-coupons
  * Domain Path: /lang/
  * Requires at least: 6.4
  * Requires at least: 6.4
- * Tested up to: 6.6
- * WC requires at least: 9.0
- * WC tested up to: 9.4
+ * Tested up to: 6.7
+ * WC requires at least: 9.1
+ * WC tested up to: 9.5
  * Requires PHP: 7.4
  * Copyright 2017 WP Desk Ltd.
  * This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 /* Plugin version */
-$plugin_version = '1.10.0';
+$plugin_version = '1.10.1';
 /* Plugin release */
 $plugin_release_timestamp = '2023-06-21 15:45';
 
@@ -47,12 +47,6 @@ $plugin_class_name  = '\WPDesk\FlexibleCoupons\Plugin';
 $plugin_text_domain = 'flexible-coupons';
 $plugin_file        = __FILE__;
 $plugin_dir         = dirname( __FILE__ );
-
-/** Dummy plugin name and description - for translations only. */
-$dummy_name       = __( 'Flexible PDF Coupons for WooCommerce', 'flexible-coupons' );
-$dummy_desc       = __( 'Flexible PDF Coupons for WooCommerce is a WooCommerce plugin with which you can create your gift cards, vouchers, or coupons in PDF format. Use it for your future marketing campaigns.', 'flexible-coupons' );
-$dummy_plugin_uri = __( 'https://www.wpdesk.net/products/flexible-coupons-woocommerce/', 'flexible-coupons' );
-$dummy_author_uri = __( 'https://www.wpdesk.net/', 'flexible-coupons' );
 
 $requirements = [
 	'php'     => '7.4',

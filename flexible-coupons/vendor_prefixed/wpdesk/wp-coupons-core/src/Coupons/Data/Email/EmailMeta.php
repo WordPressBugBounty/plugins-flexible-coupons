@@ -114,7 +114,7 @@ class EmailMeta implements \ArrayAccess
     {
         return isset($this->meta[self::COUPONS_ARRAY_KEY][self::FIRST_ARRAY_KEY][$offset]);
     }
-    public function offsetGet($offset): mixed
+    public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {
             return $this->meta[self::COUPONS_ARRAY_KEY][self::FIRST_ARRAY_KEY][$offset];

@@ -122,8 +122,9 @@ class PDFWrapper
     public function render($html)
     {
         $mpdf = new Mpdf($this->get_config());
-        // sometimes clients has problem displaying images, becouse of ssl certificate (not trusted)
+        // sometimes clients has problem displaying images, becouse of ssl certificate (not trusted).
         $mpdf->curlAllowUnsafeSslRequests = \true;
+        // phpcs:ignore
         $mpdf->pdf_version = '1.5';
         $mpdf->WriteHTML($html);
         return $mpdf->Output('', Destination::STRING_RETURN);

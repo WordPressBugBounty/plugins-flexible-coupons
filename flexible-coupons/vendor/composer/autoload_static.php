@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit304209805d9d9be13344c9b326d56de2
+class ComposerStaticInitfc38975fa507938fac824a6625542639
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -512,14 +512,14 @@ class ComposerStaticInit304209805d9d9be13344c9b326d56de2
         'FlexibleCouponsVendor\\WPDesk\\Library\\Marketing\\Boxes\\Helpers\\Markers' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-marketing/src/Boxes/Helpers/Markers.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\Marketing\\Boxes\\MarketingBoxes' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-marketing/src/Boxes/MarketingBoxes.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\Marketing\\RatePlugin\\RateBox' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-marketing/src/RatePlugin/RateBox.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\Abstracts\\EditorProperties' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/Abstracts/EditorProperties.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\AjaxHandler' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/AjaxHandler.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\AreaProperties' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/AreaProperties.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\Assets' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\CustomizeEditPage' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/CustomizeEditPage.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\EditorImplementation' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/EditorImplementation.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\Exceptions\\EditorException' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/Exceptions/EditorException.php',
-        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\RegisterPostType' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/canva-editor/src/Editor/RegisterPostType.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\Abstracts\\EditorProperties' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Abstracts/EditorProperties.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\AjaxHandler' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/AjaxHandler.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\AreaProperties' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/AreaProperties.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\Assets' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\CustomizeEditPage' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/CustomizeEditPage.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\EditorImplementation' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/EditorImplementation.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\Exceptions\\EditorException' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Exceptions/EditorException.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCanvaEditor\\RegisterPostType' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/RegisterPostType.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Cart\\Cart' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Coupon\\Coupon' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/Coupon.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Coupon\\CouponCode' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Coupon/CouponCode.php',
@@ -791,9 +791,9 @@ class ComposerStaticInit304209805d9d9be13344c9b326d56de2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit304209805d9d9be13344c9b326d56de2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit304209805d9d9be13344c9b326d56de2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit304209805d9d9be13344c9b326d56de2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfc38975fa507938fac824a6625542639::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfc38975fa507938fac824a6625542639::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfc38975fa507938fac824a6625542639::$classMap;
 
         }, null, ClassLoader::class);
     }

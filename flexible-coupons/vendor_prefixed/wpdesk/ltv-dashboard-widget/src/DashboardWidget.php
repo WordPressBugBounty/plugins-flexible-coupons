@@ -56,10 +56,13 @@ final class DashboardWidget
     private $utm_base = 'utm_source=dashboard-metabox&utm_campaign=dashboard-metabox';
     public function __construct()
     {
-        $this->widget_title = __('Grow your business with WP Desk', 'flexible-coupons');
         $this->cache_timeout = 24 * 60 * 60;
         $this->cache_retry_timeout = 6 * 60 * 60;
         $this->locale = get_user_locale();
+    }
+    private static function get_default_widget_title(): string
+    {
+        return __('Grow your business with WP Desk', 'flexible-coupons');
     }
     public function set_widget_title(string $title)
     {
@@ -101,7 +104,7 @@ final class DashboardWidget
     }
     public function add_widget()
     {
-        wp_add_dashboard_widget(self::ID, $this->widget_title, [$this, 'widget_output'], null, null, 'normal', 'high');
+        wp_add_dashboard_widget(self::ID, $this->widget_title ?: self::get_default_widget_title(), [$this, 'widget_output'], null, null, 'normal', 'high');
     }
     private function get_all_plugins_dirs(): array
     {
@@ -114,6 +117,8 @@ final class DashboardWidget
             return [];
         }
         usort($plugins, static function ($a, $b) {
+            $a['priority'] = $a['priority'] ?? '0';
+            $b['priority'] = $b['priority'] ?? '0';
             return strnatcmp($a['priority'], $b['priority']);
         });
         $installed_plugins_dir = $this->get_all_plugins_dirs();

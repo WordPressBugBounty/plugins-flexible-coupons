@@ -51,7 +51,7 @@
 		"hoa/console": "^3.17",
 		"monolog/monolog": "*",
 		"phpunit/phpunit": "^7|^8|^9",
-		"wpdesk/canva-editor": "^1.4.3",
+		"wpdesk/wp-canva-editor": "^1.4",
 		"wpdesk/ltv-dashboard-widget": "^1.5",
 		"wpdesk/phpstan-rules": "^1.1",
 		"wpdesk/wp-codeception": "^2",

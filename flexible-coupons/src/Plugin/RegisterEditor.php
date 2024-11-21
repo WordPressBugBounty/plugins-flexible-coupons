@@ -21,7 +21,7 @@ class RegisterEditor extends EditorImplementation {
 	 *
 	 * @return array
 	 */
-	protected function post_type_args_definition() {
+	public function post_type_args_definition() {
 		$labels = array(
 			'name'               => __( 'PDF Coupons', 'flexible-coupons' ),
 			'singular_name'      => __( 'PDF Coupons', 'flexible-coupons' ),

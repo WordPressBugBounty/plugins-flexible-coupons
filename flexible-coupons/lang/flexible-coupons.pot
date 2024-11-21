@@ -2,21 +2,20 @@
 # This file is distributed under the same license as the Flexible PDF Coupons for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.10.0\n"
+"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.10.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-coupons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-10T07:11:54+00:00\n"
+"POT-Creation-Date: 2024-11-21T14:16:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-coupons\n"
 
 #. Plugin Name of the plugin
 #: flexible-coupons.php
-#: flexible-coupons.php:52
 msgid "Flexible PDF Coupons for WooCommerce"
 msgstr ""
 
@@ -27,7 +26,6 @@ msgstr ""
 
 #. Description of the plugin
 #: flexible-coupons.php
-#: flexible-coupons.php:53
 msgid "Flexible PDF Coupons for WooCommerce is a WooCommerce plugin with which you can create your gift cards, vouchers, or coupons in PDF format. Use it for your future marketing campaigns."
 msgstr ""
 
@@ -38,12 +36,7 @@ msgstr ""
 
 #. Author URI of the plugin
 #: flexible-coupons.php
-#: flexible-coupons.php:55
 msgid "https://www.wpdesk.net/"
-msgstr ""
-
-#: flexible-coupons.php:54
-msgid "https://www.wpdesk.net/products/flexible-coupons-woocommerce/"
 msgstr ""
 
 #: src/Plugin/Email/FlexibleCouponsEmail.php:19
@@ -110,14 +103,14 @@ msgid "Created with %1$s by Sailors from %2$sWP Desk%3$s - if you like Flexible 
 msgstr ""
 
 #: src/Plugin/Plugin.php:164
-#: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:198
+#: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:188
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:49
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/settings-menu-page-html.php:11
 msgid "Settings"
 msgstr ""
 
 #: src/Plugin/Plugin.php:165
-#: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:194
+#: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:184
 msgid "Docs"
 msgstr ""
 
@@ -155,7 +148,7 @@ msgid "New"
 msgstr ""
 
 #: src/Plugin/RegisterEditor.php:33
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
 msgid "Edit"
 msgstr ""
 
@@ -357,282 +350,282 @@ msgstr ""
 msgid "Coupon information"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/AjaxHandler.php:45
-msgid "Saved"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/AjaxHandler.php:84
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/CustomizeEditPage.php:91
-msgid "Enter template title"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/AjaxHandler.php:88
-msgid "Template does not contain [coupon_code] shortcode"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/AjaxHandler.php:96
-msgid "Data cannot be saved"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "General"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Images"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Text"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Shortcodes"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "QR Code"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Select format"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Page orientation"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Vertical"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Horizontal"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Background color"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Color"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Select"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Select images"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Add to area"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Remove from project"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Fit to screen"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Crop"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Layer up"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Layer down"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Clone element"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Delete element"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Change image"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Align right"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Align left"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Align center"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Justify"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Font size"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Change font size"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Font family"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Change font family"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Double click to edit"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Font color"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Header 1"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Header 2"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Header 3"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:70
-msgid "Content"
-msgstr ""
-
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:72
-msgid "%1$sUpgrade to PRO →%2$s and enable more shortcodes"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:75
-msgid "Flexible Coupons PRO"
-msgstr ""
-
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:77
-msgid "This is an add-on for the PRO version. %1$sUpgrade to PRO →%2$s"
-msgstr ""
-
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:82
-msgid "Add custom shortcodes with Flexible PDF Coupons PRO addon: %1$sCustom Shortcodes →%2$s"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Place a generated QR code on the template. Enable users to manage QR codes with the Event Ticket QR Scanner."
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Read more in plugin docs"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Add QR codes with Flexible PDF Coupons PRO addon"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Event Ticket QR Scanner"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "To use QR codes you need"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Send coupons by email and schedule gift card delivery with Flexible PDF Coupons PRO addon"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Advanced Sending"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Send coupons by email and schedule gift card delivery"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Assets.php:85
-msgid "Sending"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/CustomizeEditPage.php:53
-msgid "Editor"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/RegisterPostType.php:53
-msgctxt "post type general name"
-msgid "Editor"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/RegisterPostType.php:53
-msgctxt "post type singular name"
-msgid "Editor"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/RegisterPostType.php:53
-msgctxt "admin menu"
-msgid "Editor"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/RegisterPostType.php:53
-msgctxt "add new on admin bar"
-msgid "Editor"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/RegisterPostType.php:54
-msgid "Manage editor templates."
-msgstr ""
-
-#. translators: %1$s: break line, %2$s: anchor opening tag, %3$s: anchor closing tag
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Views/html-editor-meta-box.php:18
-msgid "%1$sUpgrade to PRO →%2$s to fully unlock all the features"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/canva-editor/src/Editor/Views/html-editor-meta-box.php:26
-msgid "Save template"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:59
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:65
 msgid "Grow your business with WP Desk"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:286
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:291
 msgid "Buy now"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:288
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:293
 msgid "Learn more"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:291
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:296
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-order-coupon-generated.php:35
 msgid "Download"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:302
+#: vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php:307
 msgid "More info"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:191
+#: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:181
 msgid "Support"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/AjaxHandler.php:45
+msgid "Saved"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/AjaxHandler.php:84
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/CustomizeEditPage.php:91
+msgid "Enter template title"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/AjaxHandler.php:88
+msgid "Template does not contain [coupon_code] shortcode"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/AjaxHandler.php:96
+msgid "Data cannot be saved"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "General"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Images"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Text"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Shortcodes"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "QR Code"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Select format"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Page orientation"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Vertical"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Horizontal"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Background color"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Color"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Select"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Select images"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Add to area"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Remove from project"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Fit to screen"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Crop"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Layer up"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Layer down"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Clone element"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Delete element"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Change image"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Align right"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Align left"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Align center"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Justify"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Font size"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Change font size"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Font family"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Change font family"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Double click to edit"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Font color"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Header 1"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Header 2"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Header 3"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Content"
+msgstr ""
+
+#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:72
+msgid "%1$sUpgrade to PRO →%2$s and enable more shortcodes"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:75
+msgid "Flexible Coupons PRO"
+msgstr ""
+
+#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:77
+msgid "This is an add-on for the PRO version. %1$sUpgrade to PRO →%2$s"
+msgstr ""
+
+#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:82
+msgid "Add custom shortcodes with Flexible PDF Coupons PRO addon: %1$sCustom Shortcodes →%2$s"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Place a generated QR code on the template. Enable users to manage QR codes with the Event Ticket QR Scanner."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Read more in plugin docs"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Add QR codes with Flexible PDF Coupons PRO addon"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Event Ticket QR Scanner"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "To use QR codes you need"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Send coupons by email and schedule gift card delivery with Flexible PDF Coupons PRO addon"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Advanced Sending"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Send coupons by email and schedule gift card delivery"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+msgid "Sending"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/CustomizeEditPage.php:53
+msgid "Editor"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/RegisterPostType.php:41
+msgctxt "post type general name"
+msgid "Editor"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/RegisterPostType.php:41
+msgctxt "post type singular name"
+msgid "Editor"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/RegisterPostType.php:41
+msgctxt "admin menu"
+msgid "Editor"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/RegisterPostType.php:41
+msgctxt "add new on admin bar"
+msgid "Editor"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/RegisterPostType.php:42
+msgid "Manage editor templates."
+msgstr ""
+
+#. translators: %1$s: break line, %2$s: anchor opening tag, %3$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Views/html-editor-meta-box.php:18
+msgid "%1$sUpgrade to PRO →%2$s to fully unlock all the features"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Views/html-editor-meta-box.php:26
+msgid "Save template"
 msgstr ""
 
 #. translators: field title.
