@@ -3,10 +3,22 @@
 namespace FlexibleCouponsVendor;
 
 $editor_data = isset($editor_data) ? $editor_data : [];
+$editor_data['areaObjects'] = isset($editor_data['areaObjects']) ? \array_map(function ($object) {
+    switch ($object['type']) {
+        case 'image':
+            $object['url'] = \esc_url($object['url']);
+            break;
+        case 'text':
+        default:
+            $object['text'] = \wp_kses_post($object['text']);
+            break;
+    }
+    return $object;
+}, $editor_data['areaObjects']) : [];
 ?>
 <script>
 	window.WPDeskCanvaEditorData = <?php 
-echo \json_encode($editor_data, \JSON_NUMERIC_CHECK);
+echo \wp_json_encode($editor_data, \JSON_NUMERIC_CHECK);
 ?>;
 </script>
 <div class="publishing-actions-box">
@@ -30,9 +42,4 @@ echo \json_encode($editor_data, \JSON_NUMERIC_CHECK);
 <input type="hidden" id="editor_post_id" name="post_ID" value="<?php 
 echo isset($post->ID) ? $post->ID : '';
 ?>"/>
-<div class="editor-objects-dev" style="display:none">
-	<?php 
-\print_r($editor_data);
-?>
-</div>
 <?php 

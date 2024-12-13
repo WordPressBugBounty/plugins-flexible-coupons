@@ -106,7 +106,7 @@ class AjaxHandler implements Hookable
     protected function get_request_value($name, $default = '')
     {
         if (isset($_POST[$name])) {
-            return $_POST[$name];
+            return \wc_clean(\wp_unslash($_POST[$name]));
         }
         return $default;
     }

@@ -41,7 +41,7 @@ class CouponMeta
         $order->save();
         $coupon = new WC_Coupon($coupon_id);
         $order = wc_get_order($order_id);
-        $coupon_data['hash'] = md5(\NONCE_SALT . $coupon_code);
+        $coupon_data['hash'] = \wp_hash($coupon_code, 'nonce');
         $coupon_data['order_id'] = $order_id;
         $coupon_data['coupon_id'] = $coupon->get_id();
         $coupon_data['coupon_code'] = $coupon->get_code();

@@ -225,6 +225,26 @@ jQuery(function ($) {
                 });
             });
         },
+
+        /**
+         * Removes the "variation-needs-update" class / marker from variations after loading.
+         *
+         * The "variation-needs-update" class triggers a save variations AJAX request just before a bulk update variations AJAX request.
+         * Both requests operate asynchronously on the same data (variations), which can cause issues and unexpected results.
+         * (WooCommerce should ideally control this, but it does not.)
+         *
+         * This fix is not perfect. We should probably change how we add fields to variations to prevent the "variation-needs-update" class from being added in the first place.
+         * However, WooCommerce is planning to introduce new product page settings soon, so this is likely a temporary solution.
+         *
+         * @since 2.2.2
+         */
+        fixNotNeedForUpdateOnVariationsLoad: function() {
+            $( '#woocommerce-product-data' ).on( 'woocommerce_variations_loaded', function() {
+                $( '#variable_product_options' )
+                    .find( '.woocommerce_variations .variation-needs-update' )
+                    .removeClass( 'variation-needs-update' );
+            } );
+        }
     };
 
     FCMetaboxes.productPage();
@@ -233,6 +253,7 @@ jQuery(function ($) {
     FCMetaboxes.initVariableCheckbox();
     FCMetaboxes.initSimpleCouponCodeCheckbox();
     FCMetaboxes.initDelaySendingFields();
+    FCMetaboxes.fixNotNeedForUpdateOnVariationsLoad()
 
     function toggleFCMultiplePDFOptions( $checkboxElement ) {
         let $closestWrapper = $checkboxElement.closest('.fc-multiple-pdfs-options-wrapper');
