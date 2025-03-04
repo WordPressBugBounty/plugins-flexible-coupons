@@ -13,7 +13,7 @@ namespace FlexibleCouponsVendor\Monolog\Handler;
 
 use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\Utils;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * Sends notifications through the pushover api to mobile phones
  *

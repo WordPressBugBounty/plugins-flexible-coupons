@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Logger;
 
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * @deprecated
  */

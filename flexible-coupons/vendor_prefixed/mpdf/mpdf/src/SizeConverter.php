@@ -2,9 +2,9 @@
 
 namespace FlexibleCouponsVendor\Mpdf;
 
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use FlexibleCouponsVendor\Mpdf\Log\Context as LogContext;
-class SizeConverter implements \Psr\Log\LoggerAwareInterface
+class SizeConverter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     private $dpi;
     private $defaultFontSize;

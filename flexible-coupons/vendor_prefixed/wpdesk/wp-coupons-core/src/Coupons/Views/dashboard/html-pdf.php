@@ -59,6 +59,7 @@ echo \esc_attr($data['editor_bgcolor']);
 <div class="wrapper"></div>
 <?php 
 echo $data['html'];
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, (Ensure base64 content -tickets addon - is generated. 
 \do_action('flexible_coupons_body_after');
 ?>
 </body>

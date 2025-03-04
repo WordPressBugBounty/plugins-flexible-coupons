@@ -7,8 +7,8 @@
  */
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons;
 
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\NullLogger;
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorIntegration;
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\Shortcode;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Coupon\GenerateCoupon;
@@ -62,14 +62,12 @@ class CouponsIntegration implements Hookable, HookableCollection
      * @var string
      */
     private string $plugin_version;
-    /**
-     * @var GenerateCoupon
-     */
-    public function __construct(EditorIntegration $editor, string $plugin_version)
+    public function __construct(EditorIntegration $editor, string $plugin_version, LoggerInterface $logger)
     {
         $this->editor = $editor;
-        $this->set_product_fields(new NullProductFields());
         $this->plugin_version = $plugin_version;
+        $this->logger = $logger;
+        $this->set_product_fields(new NullProductFields());
     }
     public static function set_pro()
     {
@@ -87,7 +85,7 @@ class CouponsIntegration implements Hookable, HookableCollection
      */
     protected function get_logger(): LoggerInterface
     {
-        return new NullLogger();
+        return $this->logger;
     }
     /**
      * @return Renderer

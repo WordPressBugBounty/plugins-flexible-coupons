@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Persistence;
 
-use Psr\Container\NotFoundExceptionInterface;
+use FlexibleCouponsVendor\Psr\Container\NotFoundExceptionInterface;
 use FlexibleCouponsVendor\WPDesk\Forms\FieldProvider;
 use FlexibleCouponsVendor\WPDesk\Persistence\PersistentContainer;
 /**

@@ -16,7 +16,7 @@ use FlexibleCouponsVendor\Monolog\Handler\FingersCrossed\ActivationStrategyInter
 use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\ResettableInterface;
 use FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * Buffers all records until a certain level is reached
  *

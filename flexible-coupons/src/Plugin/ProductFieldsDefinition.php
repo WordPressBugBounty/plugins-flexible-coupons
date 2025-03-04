@@ -64,5 +64,4 @@ class ProductFieldsDefinition implements ProductFields {
 	public function is_premium() {
 		return false;
 	}
-
 }

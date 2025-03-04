@@ -11,7 +11,7 @@ namespace FlexibleCouponsVendor;
  * @category    Class
  * @author        WP Desk
  */
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 if (!\defined('ABSPATH')) {
     exit;
 }

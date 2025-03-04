@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms;
 
-use Psr\Container\ContainerInterface;
+use FlexibleCouponsVendor\Psr\Container\ContainerInterface;
 use FlexibleCouponsVendor\WPDesk\Persistence\PersistentContainer;
 /**
  * Persistent container support for forms.

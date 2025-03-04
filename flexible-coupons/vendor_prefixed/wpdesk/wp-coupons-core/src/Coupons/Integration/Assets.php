@@ -72,7 +72,7 @@ class Assets implements Hookable
      */
     private function get_assets_url(): string
     {
-        return trailingslashit(plugin_dir_url(dirname(__FILE__, 3))) . 'assets/';
+        return trailingslashit(plugin_dir_url(dirname(__DIR__, 2))) . 'assets/';
     }
     /**
      * Enqueue admin scripts.

@@ -56,7 +56,7 @@ class PDFWrapper
      */
     private function get_fonts_dir(): array
     {
-        $default_font_dir = [trailingslashit(dirname(__FILE__, 4)) . 'assets/fonts/'];
+        $default_font_dir = [trailingslashit(dirname(__DIR__, 3)) . 'assets/fonts/'];
         /**
          * Define your own font directory or add to an existing one.
          *

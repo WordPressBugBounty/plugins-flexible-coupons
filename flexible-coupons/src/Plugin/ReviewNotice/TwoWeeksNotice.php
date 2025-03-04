@@ -16,9 +16,9 @@ use FlexibleCouponsVendor\WPDesk\ShowDecision\ShouldShowStrategy;
  */
 class TwoWeeksNotice {
 
-	const NOTICE_NAME = 'flexible_coupons_two_week_rate_notice';
-	const CLOSE_TEMPORARY_NOTICE = 'close-temporary-notice-date';
-	const PLUGIN_ACTIVATION_DATE_OPTION = 'plugin_activation_flexible-coupons/flexible-coupons.php';
+	const NOTICE_NAME                     = 'flexible_coupons_two_week_rate_notice';
+	const CLOSE_TEMPORARY_NOTICE          = 'close-temporary-notice-date';
+	const PLUGIN_ACTIVATION_DATE_OPTION   = 'plugin_activation_flexible-coupons/flexible-coupons.php';
 	const PERSISTENT_KEY_NEVER_SHOW_AGAIN = '_two-weeks-permanent';
 	const PERSISTENT_KEY_LAST_TIME_HIDDEN = '_two-weeks-last-date';
 
@@ -63,13 +63,13 @@ class TwoWeeksNotice {
 		add_action(
 			'admin_enqueue_scripts',
 			function () {
-				wp_enqueue_script( 'flexible_coupons-rate-notice', $this->assets_url . '/js/two-weeks-notice.js', array( 'jquery' ), '1.2.0', true );
+				wp_enqueue_script( 'flexible_coupons-rate-notice', $this->assets_url . '/js/two-weeks-notice.js', [ 'jquery' ], '1.2.0', true );
 			}
 		);
 		add_action(
 			'wp_ajax_flexible_coupon_close_temporary',
 			function () {
-				$source = isset( $_REQUEST['source'] ) ?  $_REQUEST['source'] : '';
+				$source = isset( $_REQUEST['source'] ) ? \sanitize_text_field( \wp_unslash( $_REQUEST['source'] ) ) : '';
 				if ( $source === 'already-did' ) {
 					$this->persistence->set( self::PERSISTENT_KEY_NEVER_SHOW_AGAIN, true );
 				} else {
@@ -152,10 +152,10 @@ class TwoWeeksNotice {
 			self::NOTICE_NAME,
 			Notice::NOTICE_TYPE_INFO,
 			10,
-			array(
+			[
 				'class' => self::NOTICE_NAME,
 				'id'    => self::NOTICE_NAME,
-			)
+			]
 		);
 	}
 
@@ -165,7 +165,7 @@ class TwoWeeksNotice {
 	 * @return string
 	 */
 	private function get_message() {
-		$message = __(
+		$message  = __(
 			'Amazing! You\'ve been using Flexible PDF Coupons for Woocommerce for two weeks. I hope it meets your expectations! If so, may I ask you for a big favor and a 5-star rating on the plugin\'s site?',
 			'flexible-coupons'
 		);
@@ -174,5 +174,4 @@ class TwoWeeksNotice {
 
 		return $message;
 	}
-
 }

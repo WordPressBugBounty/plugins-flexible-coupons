@@ -15,8 +15,8 @@ use FlexibleCouponsVendor\Mpdf\Mpdf;
 use FlexibleCouponsVendor\Mpdf\Otl;
 use FlexibleCouponsVendor\Mpdf\RemoteContentFetcher;
 use FlexibleCouponsVendor\Mpdf\SizeConverter;
-use Psr\Log\LoggerInterface;
-class ImageProcessor implements \Psr\Log\LoggerAwareInterface
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+class ImageProcessor implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     /**
      * @var \Mpdf\Mpdf

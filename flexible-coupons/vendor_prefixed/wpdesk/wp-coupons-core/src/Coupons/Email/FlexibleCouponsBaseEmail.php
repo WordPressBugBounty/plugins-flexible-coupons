@@ -64,7 +64,9 @@ class FlexibleCouponsBaseEmail extends WC_Email implements Email
      */
     public function init_form_fields()
     {
+        // phpcs:disable WordPress.WP.I18n.TextDomainMismatch
         $this->form_fields = ['subject' => ['title' => esc_html__('Subject', 'woocommerce'), 'type' => 'text', 'placeholder' => $this->subject, 'default' => ''], 'heading' => ['title' => esc_html__('Email Heading', 'woocommerce'), 'type' => 'text', 'placeholder' => $this->heading, 'default' => ''], 'email_type' => ['title' => esc_html__('Email type', 'woocommerce'), 'type' => 'select', 'description' => esc_html__('Choose which format of email to send.', 'woocommerce'), 'default' => 'html', 'class' => 'email_type', 'options' => ['plain' => esc_html__('Plain text', 'woocommerce'), 'html' => esc_html__('HTML', 'woocommerce'), 'multipart' => esc_html__('Multipart', 'woocommerce')]]];
+        // phpcs:enable WordPress.WP.I18n.TextDomainMismatch
     }
     /**
      * @param int $order_id
@@ -91,10 +93,8 @@ class FlexibleCouponsBaseEmail extends WC_Email implements Email
         }
         $this->setup_placeholders();
         $this->setup_locale();
-        // TODO: Check if it is necessary
         \add_action('phpmailer_init', [$this, 'add_string_attachments']);
         $result = $this->send($recipient, $this->get_subject(), $this->get_content(), $this->get_headers(), []);
-        // TODO: Check if it is necessary
         \remove_action('phpmailer_init', [$this, 'add_string_attachments']);
         $this->restore_locale();
         return $result;
@@ -128,7 +128,7 @@ class FlexibleCouponsBaseEmail extends WC_Email implements Email
      *
      * String attachments are not possible with the default WC_Email class.
      *
-     * @return string[]
+     * @return array<array{pdf: array{fileName: string, content: string}}> An array of PDF attachments.
      */
     protected function get_string_attachments(): array
     {

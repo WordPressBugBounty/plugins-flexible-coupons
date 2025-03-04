@@ -186,6 +186,14 @@ class SettingsForm implements Hookable
     private function get_renderer()
     {
         $chain = new ChainResolver();
+        /**
+         * Filters resolvers for setting templates.
+         *
+         * @param Resolver $resolvers Resolvers.
+         *
+         * @return array Array of Resolvers.
+         * @since 3.0.0
+         */
         $resolver_list = (array) apply_filters('fcpdf/settings/template_resolvers', [new DirResolver(__DIR__ . '/Views'), new DefaultFormFieldResolver()]);
         foreach ($resolver_list as $resolver) {
             $chain->appendResolver($resolver);

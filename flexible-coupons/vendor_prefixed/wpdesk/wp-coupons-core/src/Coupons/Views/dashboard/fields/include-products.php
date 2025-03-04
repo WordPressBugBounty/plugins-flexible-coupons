@@ -13,28 +13,28 @@ $params = isset($params) ? (array) $params : [];
  * @var PostMeta $meta
  */
 $meta = $params['post_meta'];
-$post_id = $params['post_id'];
+$prod_post_id = $params['post_id'];
 $is_premium = $params['is_premium'];
 $loop_id = isset($params['loop']) ? '_variation' . $params['loop'] : '';
 $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
 $parent_id = isset($params['parent_id']) ? $params['parent_id'] : null;
 // Get the parent default meta value for variable.
 $default = $meta->get_private($parent_id, 'flexible_coupon_product_ids', []);
-$product_ids = $meta->get_private($post_id, 'flexible_coupon_product_ids', $default);
+$product_ids = $meta->get_private($prod_post_id, 'flexible_coupon_product_ids', $default);
 ?>
 <p class="form-field">
 	<label for="fc_product_ids<?php 
-echo $loop_id;
+echo \esc_attr($loop_id);
 ?>"><?php 
 \esc_html_e('Products', 'flexible-coupons');
 ?></label>
 	<select
 		id="fc_product_ids<?php 
-echo $loop_id;
+echo \esc_attr($loop_id);
 ?>"
 		class="wc-product-search" multiple="multiple"
 		name="fc_product_ids<?php 
-echo $loop_name;
+echo \esc_attr($loop_name);
 ?>[]"
 		style="width: 80% !important;"
 		data-placeholder="<?php 
@@ -48,7 +48,7 @@ if (!\is_array($product_ids)) {
 foreach ($product_ids as $product_id) {
     $product = \wc_get_product($product_id);
     if (\is_object($product)) {
-        echo '<option value="' . \esc_attr($product_id) . '" ' . \selected(\true, \true, \false) . '>' . \htmlspecialchars(\wp_kses_post($product->get_formatted_name())) . '</option>';
+        echo '<option value="' . \esc_attr($product_id) . '" ' . \selected(\true, \true, \false) . '>' . \wp_kses_post(\htmlspecialchars($product->get_formatted_name())) . '</option>';
     }
 }
 ?>

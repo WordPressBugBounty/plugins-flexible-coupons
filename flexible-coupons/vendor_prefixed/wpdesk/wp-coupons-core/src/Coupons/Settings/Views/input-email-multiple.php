@@ -21,7 +21,7 @@ foreach ($input_values as $text_value) {
     if (!\in_array($field->get_type(), ['number', 'text', 'hidden'])) {
         ?>
 			<input type="hidden" name="<?php 
-        echo $name_prefix . '[' . $field->get_name() . ']';
+        echo \esc_attr($name_prefix . '[' . $field->get_name() . ']');
         ?>" value="no"/>
 		<?php 
     }
@@ -67,7 +67,7 @@ foreach ($input_values as $text_value) {
 
 				<?php 
     foreach ($field->get_attributes() as $key => $atr_val) {
-        echo $key . '="' . \esc_attr($atr_val) . '"';
+        echo \esc_attr($key . '="' . $atr_val . '"');
         ?>
 				<?php 
     }

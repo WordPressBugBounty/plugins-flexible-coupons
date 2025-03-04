@@ -113,9 +113,8 @@ class ProductEditPage implements Hookable
      */
     public function update_product_type(int $product_id)
     {
-        if (isset($_POST[self::NONCE_NAME]) && wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION)) {
+        if (isset($_POST[self::NONCE_NAME]) && \wp_verify_nonce(\sanitize_key(\wp_unslash($_POST[self::NONCE_NAME])), self::NONCE_ACTION)) {
             $this->post_meta->update_private($product_id, self::PRODUCT_COUPON_SLUG, isset($_POST[self::PRODUCT_COUPON_SLUG]) ? 'yes' : 'no');
-            //phpcs:ignore
         }
     }
     /**

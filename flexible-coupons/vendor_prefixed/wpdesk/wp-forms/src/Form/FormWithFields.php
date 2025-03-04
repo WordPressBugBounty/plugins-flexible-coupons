@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Form;
 
-use Psr\Container\ContainerInterface;
+use FlexibleCouponsVendor\Psr\Container\ContainerInterface;
 use FlexibleCouponsVendor\WPDesk\Forms\ContainerForm;
 use FlexibleCouponsVendor\WPDesk\Forms\Field;
 use FlexibleCouponsVendor\WPDesk\Forms\FieldProvider;

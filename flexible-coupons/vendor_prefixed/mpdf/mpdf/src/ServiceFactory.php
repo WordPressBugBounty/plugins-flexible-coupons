@@ -22,7 +22,7 @@ use FlexibleCouponsVendor\Mpdf\Writer\MetadataWriter;
 use FlexibleCouponsVendor\Mpdf\Writer\OptionalContentWriter;
 use FlexibleCouponsVendor\Mpdf\Writer\PageWriter;
 use FlexibleCouponsVendor\Mpdf\Writer\ResourceWriter;
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 class ServiceFactory
 {
     public function getServices(Mpdf $mpdf, LoggerInterface $logger, $config, $restrictColorSpace, $languageToFont, $scriptToLanguage, $fontDescriptor, $bmp, $directWrite, $wmf)

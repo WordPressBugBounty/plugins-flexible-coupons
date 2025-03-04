@@ -8,7 +8,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Cart;
 
 use Exception;
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use WC_Order_Item;
 use WC_Order_Item_Product;
 use WC_Product;
@@ -193,11 +193,13 @@ class Cart implements Hookable
         $own_product = $product;
         try {
             $own_product = $this->get_product_type($own_product->get_id());
-            $post_data = $_POST;
-            $variation_id = isset($post_data['variation_id']) ? (int) $post_data['variation_id'] : 0;
+            $variation_id = isset($_POST['variation_id']) ? (int) $_POST['variation_id'] : 0;
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
             if ($variation_id) {
-                $own_product = wc_get_product($variation_id);
+                $own_product = \wc_get_product($variation_id);
             }
+            // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+            // content should already be escaped.
             if ($variation_id && $own_product instanceof WC_Product_Variable) {
                 echo $this->field_wrapper($this->get_fields_as_html($own_product));
             } elseif ($own_product instanceof WC_Product_Simple) {
@@ -205,6 +207,7 @@ class Cart implements Hookable
             } else {
                 echo $this->field_wrapper();
             }
+            // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
         } catch (Exception $e) {
             $this->logger->error($e->getMessage(), ['product_id' => $own_product->get_id()]);
         }
@@ -397,8 +400,8 @@ class Cart implements Hookable
     {
         try {
             if (is_null($post_data)) {
-                $post_data = $_POST;
-                $post_data = wp_unslash($post_data);
+                $post_data = \wp_unslash($_POST);
+                // phpcs:ignore WordPress.Security.NonceVerification.Missing
             }
             $variation_id = isset($post_data['variation_id']) ? (int) $post_data['variation_id'] : 0;
             if ($variation_id) {

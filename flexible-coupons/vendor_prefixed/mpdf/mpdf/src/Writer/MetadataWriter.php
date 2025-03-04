@@ -7,8 +7,8 @@ use FlexibleCouponsVendor\Mpdf\Form;
 use FlexibleCouponsVendor\Mpdf\Mpdf;
 use FlexibleCouponsVendor\Mpdf\Pdf\Protection;
 use FlexibleCouponsVendor\Mpdf\Utils\PdfDate;
-use Psr\Log\LoggerInterface;
-class MetadataWriter implements \Psr\Log\LoggerAwareInterface
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     use Strict;
     /**

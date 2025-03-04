@@ -53,7 +53,7 @@ class SaveProductVariationData implements Hookable
      */
     public function save_product_coupons_field($variation_id, $i)
     {
-        if (isset($_POST[self::NONCE_NAME]) && wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION)) {
+        if (isset($_POST[self::NONCE_NAME]) && \wp_verify_nonce(\sanitize_key(\wp_unslash($_POST[self::NONCE_NAME])), self::NONCE_ACTION)) {
             $variation_id = (int) $variation_id;
             $base_on = $this->post_data('fc_variation_base_on_variation', $i, '');
             $disable_pdf = $this->post_data('fc_disable_pdf_variation', $i, '');
@@ -81,7 +81,7 @@ class SaveProductVariationData implements Hookable
     public function post_data(string $key, int $i, $default = null)
     {
         if (isset($_REQUEST[$key][$i])) {
-            return wp_unslash($_REQUEST[$key][$i]);
+            return \wc_clean(\wp_unslash($_REQUEST[$key][$i]));
         }
         return $default;
     }

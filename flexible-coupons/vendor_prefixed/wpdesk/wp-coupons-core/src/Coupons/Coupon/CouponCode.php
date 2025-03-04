@@ -140,6 +140,8 @@ class CouponCode
          * @param string $coupon_code Coupon code.
          * @param string $coupon_code Coupon code.
          * @param string $suffix      Suffix.
+         * @param object $item        Order item.
+         * @param object $product      Product.
          *
          * @since 1.4.0
          */

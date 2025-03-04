@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Persistence;
 
-use Psr\Container\NotFoundExceptionInterface;
+use FlexibleCouponsVendor\Psr\Container\NotFoundExceptionInterface;
 trait FallbackFromGetTrait
 {
     public function get_fallback(string $id, $fallback = null)

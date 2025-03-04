@@ -198,6 +198,7 @@ class PDF
     private function debug_before_render_pdf(string $html)
     {
         echo $html;
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         die;
     }
 }

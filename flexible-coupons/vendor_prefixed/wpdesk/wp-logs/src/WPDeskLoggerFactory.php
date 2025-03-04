@@ -9,7 +9,7 @@ use FlexibleCouponsVendor\Monolog\Handler\NullHandler;
 use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\Registry;
 use FlexibleCouponsVendor\Monolog\Handler\StreamHandler;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 use FlexibleCouponsVendor\WPDesk\Logger\WC\WooCommerceCapture;
 use FlexibleCouponsVendor\WPDesk\Logger\WP\WPCapture;
 /**

@@ -105,9 +105,11 @@ class AjaxHandler implements Hookable
      */
     protected function get_request_value($name, $default = '')
     {
+        // phpcs:disable WordPress.Security.NonceVerification.Missing
         if (isset($_POST[$name])) {
             return \wc_clean(\wp_unslash($_POST[$name]));
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
         return $default;
     }
 }

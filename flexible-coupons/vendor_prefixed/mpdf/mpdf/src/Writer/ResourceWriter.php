@@ -4,8 +4,8 @@ namespace FlexibleCouponsVendor\Mpdf\Writer;
 
 use FlexibleCouponsVendor\Mpdf\Strict;
 use FlexibleCouponsVendor\Mpdf\Mpdf;
-use Psr\Log\LoggerInterface;
-final class ResourceWriter implements \Psr\Log\LoggerAwareInterface
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+final class ResourceWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     use Strict;
     /**

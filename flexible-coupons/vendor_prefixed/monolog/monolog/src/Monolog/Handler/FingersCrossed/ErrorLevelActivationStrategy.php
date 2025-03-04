@@ -12,7 +12,7 @@ declare (strict_types=1);
 namespace FlexibleCouponsVendor\Monolog\Handler\FingersCrossed;
 
 use FlexibleCouponsVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * Error level based activation strategy.
  *

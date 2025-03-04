@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons;
 
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\Download;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF\PDF;

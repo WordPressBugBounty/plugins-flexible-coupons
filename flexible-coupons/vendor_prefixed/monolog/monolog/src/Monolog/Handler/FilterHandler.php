@@ -14,7 +14,7 @@ namespace FlexibleCouponsVendor\Monolog\Handler;
 use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\ResettableInterface;
 use FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * Simple handler wrapper that filters records based on a list of levels
  *

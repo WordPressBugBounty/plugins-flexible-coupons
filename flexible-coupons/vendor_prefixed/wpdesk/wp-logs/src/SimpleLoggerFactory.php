@@ -9,7 +9,7 @@ use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\Handler\ErrorLogHandler;
 use FlexibleCouponsVendor\Monolog\Processor\PsrLogMessageProcessor;
 use FlexibleCouponsVendor\Monolog\Processor\UidProcessor;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 use FlexibleCouponsVendor\WPDesk\Logger\WC\WooCommerceHandler;
 final class SimpleLoggerFactory implements LoggerFactory
 {

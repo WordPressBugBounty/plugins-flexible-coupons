@@ -3,9 +3,9 @@
 namespace FlexibleCouponsVendor\Mpdf;
 
 use FlexibleCouponsVendor\Mpdf\Utils\Arrays;
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use FlexibleCouponsVendor\Mpdf\Log\Context as LogContext;
-class RemoteContentFetcher implements \Psr\Log\LoggerAwareInterface
+class RemoteContentFetcher implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     /**
      * @var \Mpdf\Mpdf

@@ -13,13 +13,13 @@ $params = isset($params) ? (array) $params : [];
  * @var PostMeta $meta
  */
 $meta = $params['post_meta'];
-$post_id = $params['post_id'];
+$prod_post_id = $params['post_id'];
 $is_sending = $params['is_sending'];
 $loop_id = isset($params['loop']) ? '_variation' . $params['loop'] : '';
 $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
 $parent_id = isset($params['parent_id']) ? $params['parent_id'] : null;
 $default = '';
-$value = $meta->get_private($post_id, 'fc_sending_delay_fixed_date', $default);
+$value = $meta->get_private($prod_post_id, 'fc_sending_delay_fixed_date', $default);
 $custom_attributes = [];
 if (!$is_sending) {
     $custom_attributes = ['disabled' => 'disabled'];

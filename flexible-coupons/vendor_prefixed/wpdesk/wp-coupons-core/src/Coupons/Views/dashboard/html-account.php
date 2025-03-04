@@ -14,11 +14,11 @@ if (!empty($coupons)) {
         ?>
 	<p>
 		<a href="<?php 
-        echo $coupon['download_url'];
+        echo \esc_attr($coupon['download_url']);
         ?>"><?php 
-        echo $coupon['product_name'];
+        echo \esc_attr($coupon['product_name']);
         ?></a> (<?php 
-        echo $coupon['coupon_code'];
+        echo \esc_attr($coupon['coupon_code']);
         ?>)
 	</p>
 	<?php 

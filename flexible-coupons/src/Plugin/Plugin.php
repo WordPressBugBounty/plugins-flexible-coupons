@@ -7,9 +7,8 @@
 
 namespace WPDesk\FlexibleCoupons;
 
-use Psr\Log\NullLogger;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\LoggerAwareInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerAwareTrait;
+use FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface;
 use WPDesk\FlexibleCoupons\Tracker\Tracker;
 use FlexibleCouponsVendor\WPDesk_Plugin_Info;
 use WPDesk\FlexibleCoupons\Email\RegisterEmails;
@@ -61,7 +60,7 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 
 	public const EDITOR_POST_TYPE = 'wpdesk-coupons';
 
-	private const LOGGER_CHANNEL = 'wpdesk-flexible-coupons';
+	private const LOGGER_CHANNEL = 'flexible-coupons';
 
 	/**
 	 * Plugin constructor.
@@ -94,22 +93,9 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 	 */
 	public function init() {
 		$this->setLogger(
-			$this->is_debug_mode()
-				? ( new SimpleLoggerFactory( self::LOGGER_CHANNEL ) )->getLogger()
-				: new NullLogger()
+			( new SimpleLoggerFactory( self::LOGGER_CHANNEL ) )->getLogger()
 		);
 		$this->hooks();
-	}
-
-	/**
-	 * Returns true when debug mode is on.
-	 *
-	 * @return bool
-	 */
-	private function is_debug_mode(): bool {
-		$helper_options = get_option( 'wpdesk_helper_options', [] );
-
-		return isset( $helper_options['debug_log'] ) && '1' === $helper_options['debug_log'];
 	}
 
 	/**
@@ -119,7 +105,11 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 		parent::hooks();
 
 		$editor = new RegisterEditor( self::EDITOR_POST_TYPE );
-		$coupon = new CouponIntegration( $editor, $this->plugin_info->get_version() );
+		$coupon = new CouponIntegration(
+			$editor,
+			$this->plugin_info->get_version(),
+			$this->logger
+		);
 		$this->add_hookable( $editor );
 		$this->add_hookable( $coupon );
 		$this->add_hookable( new RegisterEmails( $this->plugin_info ) );
@@ -171,5 +161,4 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 
 		return $plugin_links;
 	}
-
 }

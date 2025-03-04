@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Logger\WC;
 
 use FlexibleCouponsVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 use WC_Log_Levels;
 /**
  * Can decorate monolog with WC_Logger_Interface

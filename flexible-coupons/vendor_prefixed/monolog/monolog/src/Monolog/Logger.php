@@ -13,9 +13,9 @@ namespace FlexibleCouponsVendor\Monolog;
 
 use DateTimeZone;
 use FlexibleCouponsVendor\Monolog\Handler\HandlerInterface;
-use Psr\Log\LoggerInterface;
-use Psr\Log\InvalidArgumentException;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\InvalidArgumentException;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 use Throwable;
 use Stringable;
 /**

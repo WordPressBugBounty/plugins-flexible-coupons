@@ -13,7 +13,7 @@ namespace FlexibleCouponsVendor\Monolog\Handler;
 
 use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\ResettableInterface;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * Base Handler class providing basic level/bubble support
  *

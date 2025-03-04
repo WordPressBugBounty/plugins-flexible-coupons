@@ -23,11 +23,11 @@ class Tracker implements Hookable {
 	}
 
 	public function hooks() {
-		add_filter( 'wpdesk_tracker_data', array( $this, 'wpdesk_tracker_data' ), 11 );
-		add_filter( 'wpdesk_tracker_notice_screens', array( $this, 'wpdesk_tracker_notice_screens' ) );
-		add_filter( 'wpdesk_track_plugin_deactivation', array( $this, 'wpdesk_track_plugin_deactivation' ) );
+		add_filter( 'wpdesk_tracker_data', [ $this, 'wpdesk_tracker_data' ], 11 );
+		add_filter( 'wpdesk_tracker_notice_screens', [ $this, 'wpdesk_tracker_notice_screens' ] );
+		add_filter( 'wpdesk_track_plugin_deactivation', [ $this, 'wpdesk_track_plugin_deactivation' ] );
 
-		add_filter( self::PLUGIN_ACTION_LINKS_FILTER_NAME, array( $this, 'plugin_action_links' ), 1 );
+		add_filter( self::PLUGIN_ACTION_LINKS_FILTER_NAME, [ $this, 'plugin_action_links' ], 1 );
 	}
 
 	public function wpdesk_track_plugin_deactivation( $plugins ) {
@@ -42,35 +42,33 @@ class Tracker implements Hookable {
 
 	public function wpdesk_tracker_notice_screens( $screens ) {
 		$current_screen = get_current_screen();
-		if ( in_array( $current_screen->id, array( 'fpf_fields', 'edit-fpf_fields' ) ) ) {
+		if ( in_array( $current_screen->id, [ 'fpf_fields', 'edit-fpf_fields' ] ) ) {
 			$screens[] = $current_screen->id;
 		}
 		return $screens;
 	}
 
 	public function plugin_action_links( $links ) {
-		if ( !wpdesk_tracker_enabled() || apply_filters( 'wpdesk_tracker_do_not_ask', false ) ) {
+		if ( ! wpdesk_tracker_enabled() || apply_filters( 'wpdesk_tracker_do_not_ask', false ) ) {
 			return $links;
 		}
-		$options = get_option('wpdesk_helper_options', array() );
-		if ( !is_array( $options ) ) {
-			$options = array();
+		$options = get_option( 'wpdesk_helper_options', [] );
+		if ( ! is_array( $options ) ) {
+			$options = [];
 		}
 		if ( empty( $options['wpdesk_tracker_agree'] ) ) {
 			$options['wpdesk_tracker_agree'] = '0';
 		}
-		$plugin_links = array();
+		$plugin_links = [];
 		if ( $options['wpdesk_tracker_agree'] == '0' ) {
-			$opt_in_link = admin_url( 'admin.php?page=wpdesk_tracker&plugin=' . self::FLEXIBLE_COUPONS_PLUGIN_FILE );
-			$plugin_links[] = '<a href="' . $opt_in_link . '">' . __( 'Opt-in', 'flexible-product-fields' ) . '</a>';
-		}
-		else {
-			$opt_in_link = admin_url( 'plugins.php?wpdesk_tracker_opt_out=1&plugin=' . self::FLEXIBLE_COUPONS_PLUGIN_FILE );
-			$plugin_links[] = '<a href="' . $opt_in_link . '">' . __( 'Opt-out', 'flexible-product-fields' ) . '</a>';
+			$opt_in_link    = admin_url( 'admin.php?page=wpdesk_tracker&plugin=' . self::FLEXIBLE_COUPONS_PLUGIN_FILE );
+			$plugin_links[] = '<a href="' . $opt_in_link . '">' . __( 'Opt-in', 'flexible-coupons' ) . '</a>';
+		} else {
+			$opt_in_link    = admin_url( 'plugins.php?wpdesk_tracker_opt_out=1&plugin=' . self::FLEXIBLE_COUPONS_PLUGIN_FILE );
+			$plugin_links[] = '<a href="' . $opt_in_link . '">' . __( 'Opt-out', 'flexible-coupons' ) . '</a>';
 		}
 		return array_merge( $plugin_links, $links );
 	}
-
 }
 
 if ( ! function_exists( 'wpdesk_tracker_enabled' ) ) {
@@ -79,7 +77,7 @@ if ( ! function_exists( 'wpdesk_tracker_enabled' ) ) {
 	 *
 	 * @return bool
 	 */
-	function wpdesk_tracker_enabled() {
+	function wpdesk_tracker_enabled() { // phpcs:ignore Universal.Files.SeparateFunctionsFromOO.Mixed
 		$tracker_enabled = true;
 		if ( ! empty( $_SERVER['SERVER_ADDR'] ) && '127.0.0.1' === $_SERVER['SERVER_ADDR'] ) {
 			$tracker_enabled = false;
@@ -87,5 +85,3 @@ if ( ! function_exists( 'wpdesk_tracker_enabled' ) ) {
 		return apply_filters( 'wpdesk_tracker_enabled', $tracker_enabled );
 	}
 }
-
-

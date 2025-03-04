@@ -11,7 +11,7 @@ use Exception;
 use WC_Coupon;
 use WC_Order;
 use WC_Order_Item;
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Data\Email\EmailMeta;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Plugin;
 use FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer;
@@ -137,7 +137,7 @@ class GenerateCoupon implements Hookable
                     $email->send_mail($order_id, $meta_data);
                 }
             } catch (EmailException $e) {
-                $this->logger->warning(sprintf('Failed to send email. Reason: %s, Meta: $s', $e->getMessage(), json_encode(['meta' => $meta])));
+                $this->logger->warning(sprintf('Failed to send email. Reason: %s', $e->getMessage()), ['meta' => $meta]);
             }
         }
     }

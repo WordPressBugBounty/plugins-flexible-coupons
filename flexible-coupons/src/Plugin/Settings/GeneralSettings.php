@@ -111,21 +111,20 @@ class GeneralSettings implements Hookable {
 				->set_readonly(),
 			( new CheckboxField() )
 				->set_name( self::SHOW_TIPS_FIELD )
-				->set_label( esc_html__( 'Show field tips', 'flexible-coupons-pro' ) )
-				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons-pro' ) )
-				->set_description( esc_html__( 'Show tooltips for fields.', 'flexible-coupons-pro' ) )
+				->set_label( esc_html__( 'Show field tips', 'flexible-coupons' ) )
+				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
+				->set_description( esc_html__( 'Show tooltips for fields.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),
 			( new CheckboxField() )
 				->set_name( self::SHOW_TEXTAREA_COUNTER_FIELD )
-				->set_label( esc_html__( 'Show textarea counter', 'flexible-coupons-pro' ) )
-				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons-pro' ) )
-				->set_description( esc_html__( 'Show character counter below textarea.', 'flexible-coupons-pro' ) )
+				->set_label( esc_html__( 'Show textarea counter', 'flexible-coupons' ) )
+				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
+				->set_description( esc_html__( 'Show character counter below textarea.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),
 		];
 
 		return array_merge( $fields, $pro_fields, [ $submit_field ] );
 	}
-
 }

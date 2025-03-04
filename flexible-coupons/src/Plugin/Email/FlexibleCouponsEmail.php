@@ -33,5 +33,4 @@ class FlexibleCouponsEmail extends FlexibleCouponsBaseEmail {
 		// run it through the WC_Email filter.
 		return parent::get_recipient();
 	}
-
 }

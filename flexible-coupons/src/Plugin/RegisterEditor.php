@@ -22,7 +22,7 @@ class RegisterEditor extends EditorImplementation {
 	 * @return array
 	 */
 	public function post_type_args_definition() {
-		$labels = array(
+		$labels = [
 			'name'               => __( 'PDF Coupons', 'flexible-coupons' ),
 			'singular_name'      => __( 'PDF Coupons', 'flexible-coupons' ),
 			'menu_name'          => __( 'PDF Coupons', 'flexible-coupons' ),
@@ -37,8 +37,8 @@ class RegisterEditor extends EditorImplementation {
 			'parent_item_colon'  => __( 'Parent:', 'flexible-coupons' ),
 			'not_found'          => __( 'No found.', 'flexible-coupons' ),
 			'not_found_in_trash' => __( 'No found in Trash.', 'flexible-coupons' ),
-		);
-		$args   = array(
+		];
+		$args   = [
 			'labels'             => $labels,
 			'description'        => __( 'Manage coupons templates.', 'flexible-coupons' ),
 			'public'             => false,
@@ -49,12 +49,11 @@ class RegisterEditor extends EditorImplementation {
 			'has_archive'        => false,
 			'hierarchical'       => false,
 			'show_in_menu'       => true,
-			'supports'           => array( 'title' ),
+			'supports'           => [ 'title' ],
 			'show_in_rest'       => false,
 			'menu_icon'          => 'dashicons-tickets-alt',
-		);
+		];
 
 		return $args;
 	}
-
 }

@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Persistence;
 
-use Psr\Container\ContainerInterface;
+use FlexibleCouponsVendor\Psr\Container\ContainerInterface;
 /**
  * Container that allows to get all data stored by container.
  *

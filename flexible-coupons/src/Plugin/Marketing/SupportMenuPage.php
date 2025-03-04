@@ -26,17 +26,21 @@ class SupportMenuPage implements Hookable {
 	}
 
 	public function hooks() {
-		add_action( 'admin_menu', function () {
-			add_submenu_page(
-				'edit.php?post_type=wpdesk-coupons',
-				esc_html__( 'Start Here', 'flexible-coupons' ),
-				'<span style="color: #00FFC2">' . esc_html__( 'Start Here', 'flexible-coupons' ) . '</span>',
-				'manage_options',
-				'wpdesk-fc-marketing',
-				[ $this, 'render_page_action' ],
-				11
-			);
-		}, 9999 );
+		add_action(
+			'admin_menu',
+			function () {
+				add_submenu_page(
+					'edit.php?post_type=wpdesk-coupons',
+					esc_html__( 'Start Here', 'flexible-coupons' ),
+					'<span style="color: #00FFC2">' . esc_html__( 'Start Here', 'flexible-coupons' ) . '</span>',
+					'manage_options',
+					'wpdesk-fc-marketing',
+					[ $this, 'render_page_action' ],
+					11
+				);
+			},
+			9999
+		);
 
 		add_action( 'admin_footer', [ $this, 'append_plugin_rate' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
@@ -60,7 +64,7 @@ class SupportMenuPage implements Hookable {
 			$local = 'en';
 		}
 		$boxes = new MarketingBoxes( self::PLUGIN_SLUG, $local );
-		echo $this->renderer->render( 'marketing-page', [ 'boxes' => $boxes ] );
+		echo $this->renderer->render( 'marketing-page', [ 'boxes' => $boxes ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -78,7 +82,7 @@ class SupportMenuPage implements Hookable {
 	public function append_plugin_rate() {
 		if ( $this->should_show_rate_notice() ) {
 			$rate_box = new RateBox();
-			echo $this->renderer->render( 'rate-box-footer', [ 'rate_box' => $rate_box ] );
+			echo $this->renderer->render( 'rate-box-footer', [ 'rate_box' => $rate_box ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 
@@ -92,5 +96,4 @@ class SupportMenuPage implements Hookable {
 			wp_enqueue_script( 'wpdesk-marketing', plugin_dir_url( __FILE__ ) . 'assets/js/modal.js', [ 'jquery' ], self::SCRIPTS_VERSION, true );
 		}
 	}
-
 }

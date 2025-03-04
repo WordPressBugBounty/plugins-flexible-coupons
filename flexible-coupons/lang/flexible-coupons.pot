@@ -1,15 +1,15 @@
-# Copyright (C) 2024 WP Desk
+# Copyright (C) 2025 WP Desk
 # This file is distributed under the same license as the Flexible PDF Coupons for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.10.5\n"
+"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.10.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-coupons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-23T13:50:30+00:00\n"
+"POT-Creation-Date: 2025-03-04T14:10:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-coupons\n"
@@ -58,15 +58,15 @@ msgstr ""
 msgid "[{site_title}] You have received a coupon"
 msgstr ""
 
-#: src/Plugin/Marketing/SupportLinks.php:33
-#: src/Plugin/Marketing/SupportLinks.php:50
-#: src/Plugin/Marketing/SupportLinks.php:67
+#: src/Plugin/Marketing/SupportLinks.php:34
+#: src/Plugin/Marketing/SupportLinks.php:51
+#: src/Plugin/Marketing/SupportLinks.php:68
 msgid "Read user's manual &rarr;"
 msgstr ""
 
-#: src/Plugin/Marketing/SupportMenuPage.php:32
-#: src/Plugin/Marketing/SupportMenuPage.php:33
-#: src/Plugin/Plugin.php:163
+#: src/Plugin/Marketing/SupportMenuPage.php:34
+#: src/Plugin/Marketing/SupportMenuPage.php:35
+#: src/Plugin/Plugin.php:153
 msgid "Start Here"
 msgstr ""
 
@@ -102,19 +102,18 @@ msgstr ""
 msgid "Created with %1$s by Sailors from %2$sWP Desk%3$s - if you like Flexible Coupons rate us &rarr;"
 msgstr ""
 
-#: src/Plugin/Plugin.php:164
+#: src/Plugin/Plugin.php:154
 #: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:188
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:49
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/settings-menu-page-html.php:11
 msgid "Settings"
 msgstr ""
 
-#: src/Plugin/Plugin.php:165
+#: src/Plugin/Plugin.php:155
 #: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:184
 msgid "Docs"
 msgstr ""
 
-#: src/Plugin/Plugin.php:166
+#: src/Plugin/Plugin.php:156
 msgid "Upgrade to PRO"
 msgstr ""
 
@@ -219,6 +218,8 @@ msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:64
 #: src/Plugin/Settings/GeneralSettings.php:108
+#: src/Plugin/Settings/GeneralSettings.php:115
+#: src/Plugin/Settings/GeneralSettings.php:122
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
 msgid "Enable"
 msgstr ""
@@ -298,6 +299,34 @@ msgstr ""
 #: src/Plugin/Settings/GeneralSettings.php:109
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
 msgid "Always use the regular price of the product for the coupon value."
+msgstr ""
+
+#: src/Plugin/Settings/GeneralSettings.php:114
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
+msgid "Show field tips"
+msgstr ""
+
+#: src/Plugin/Settings/GeneralSettings.php:116
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
+msgid "Show tooltips for fields."
+msgstr ""
+
+#: src/Plugin/Settings/GeneralSettings.php:121
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
+msgid "Show textarea counter"
+msgstr ""
+
+#: src/Plugin/Settings/GeneralSettings.php:123
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
+msgid "Show character counter below textarea."
+msgstr ""
+
+#: src/Plugin/Tracker/Tracker.php:65
+msgid "Opt-in"
+msgstr ""
+
+#: src/Plugin/Tracker/Tracker.php:68
+msgid "Opt-out"
 msgstr ""
 
 #. translators: %s: Customer full name.
@@ -629,32 +658,32 @@ msgid "Save template"
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:484
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:487
 msgid "<strong>%s</strong>  is required field."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:494
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:497
 msgid "<strong>%1$s</strong>  is to short. Minimum length: %2$d."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:504
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:507
 msgid "<strong>%1$s</strong>  is to long. Maximum length: %2$d."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:514
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:517
 msgid "<strong>%s</strong>  has invalid email."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:524
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:527
 msgid "<strong>%s</strong> has an invalid date."
 msgstr ""
 
 #. translators: field title.
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:534
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:537
 msgid "<strong>%s</strong> has a date from the past."
 msgstr ""
 
@@ -754,22 +783,6 @@ msgstr ""
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:68
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-variation-select.php:17
 msgid "%1$sUpgrade to PRO →%2$s and enable options below"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
-msgid "Show field tips"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
-msgid "Show tooltips for fields."
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
-msgid "Show textarea counter"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
-msgid "Show character counter below textarea."
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
@@ -1093,10 +1106,6 @@ msgstr ""
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:57
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:83
 msgid "Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/settings-menu-page-html.php:21
-msgid "Save"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-variation-select.php:23

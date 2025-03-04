@@ -12,7 +12,7 @@ declare (strict_types=1);
 namespace FlexibleCouponsVendor\Monolog\Processor;
 
 use FlexibleCouponsVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 /**
  * Injects line/file:class/function where the log message came from
  *

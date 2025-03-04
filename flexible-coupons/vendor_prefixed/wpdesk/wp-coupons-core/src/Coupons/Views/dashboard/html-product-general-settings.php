@@ -21,7 +21,7 @@ $product_fields = $params['product_fields'];
 $is_premium = $params['is_premium'];
 $product_templates = $params['product_templates'];
 $custom_attributes = $params['custom_attributes'];
-$post_id = (int) $params['post_id'];
+$prod_post_id = (int) $params['post_id'];
 $settings = $params['settings'];
 $pro_url = Links::get_pro_link();
 ?>
@@ -30,7 +30,7 @@ $pro_url = Links::get_pro_link();
 	<div class="fc-options-group">
 		<?php 
 \wp_nonce_field($nonce_action, $nonce_name);
-$renderer->output_render('fields/product-template', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'product_templates' => $product_templates]);
+$renderer->output_render('fields/product-template', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'product_templates' => $product_templates]);
 ?>
 	</div>
 	<div class="fc-options-group fc-custom-fields-group">
@@ -45,7 +45,7 @@ if (!$is_premium) {
     );
     echo '</p>';
 }
-$renderer->output_render('fields/coupon-code-enable', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/coupon-code-enable', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
 ?>
 		<div class="fc-options-group fc-custom-fields-group fc-multiple-pdfs-options-wrapper">
 		<?php 
@@ -60,29 +60,29 @@ if (!$is_multiple_pdfs) {
     );
     echo '</p>';
 }
-$renderer->output_render('fields/multiple-pdfs/multiple-coupons-enable', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/multiple-pdfs/multiple-coupons-enable', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
 ?>
 			<div class="fc-options-group fc-custom-fields-group fc-multiple-pdfs-advanced-options">
 				<?php 
-$renderer->output_render('fields/multiple-pdfs/multiple-coupons-send-to-first-email', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
-$renderer->output_render('fields/multiple-pdfs/multiple-coupons-forms-limit', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/multiple-pdfs/multiple-coupons-send-to-first-email', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/multiple-pdfs/multiple-coupons-forms-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
 ?>
 			</div>
 		</div>
 		<div class="show_if_variation_manage_prefix">
 			<?php 
-$renderer->output_render('fields/coupon-code-prefix', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
-$renderer->output_render('fields/coupon-code-suffix', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
-$renderer->output_render('fields/coupon-code-length', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/coupon-code-prefix', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/coupon-code-suffix', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/coupon-code-length', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
 ?>
 		</div>
 		<?php 
-$renderer->output_render('fields/product-fields', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'product_fields' => $product_fields, 'custom_attributes' => $custom_attributes]);
+$renderer->output_render('fields/product-fields', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'product_fields' => $product_fields, 'custom_attributes' => $custom_attributes]);
 ?>
 	</div>
 	<div class="fc-options-group">
 		<?php 
-$renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes]);
+$renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'custom_attributes' => $custom_attributes]);
 $is_sending = Plugin::is_fcs_pro_addon_enabled();
 if (!$is_sending) {
     echo '<p class="form-field marketing-content">';
@@ -94,25 +94,25 @@ if (!$is_sending) {
     );
     echo '</p>';
 }
-$renderer->output_render('fields/delay-type', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending, 'is_variation' => \false, 'custom_attributes' => $custom_attributes]);
+$renderer->output_render('fields/delay-type', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending, 'is_variation' => \false, 'custom_attributes' => $custom_attributes]);
 ?>
 		<div class="show_if_simple_delay">
 			<?php 
-$renderer->output_render('fields/delay-interval', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending]);
-$renderer->output_render('fields/delay-value', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending]);
+$renderer->output_render('fields/delay-interval', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending]);
+$renderer->output_render('fields/delay-value', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending]);
 ?>
 		</div>
 		<div class="show_if_fixed_date_delay">
 			<?php 
-$renderer->output_render('fields/delay-fixed-date', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_sending' => $is_sending]);
+$renderer->output_render('fields/delay-fixed-date', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending]);
 ?>
 		</div>
 		<?php 
-$renderer->output_render('fields/expiring-date', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium]);
-$renderer->output_render('fields/expiring-date-own', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium]);
-$renderer->output_render('fields/free-shipping', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium]);
-$renderer->output_render('fields/include-products', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium]);
-$renderer->output_render('fields/include-categories', ['post_meta' => $post_meta, 'post_id' => $post_id, 'is_premium' => $is_premium]);
+$renderer->output_render('fields/expiring-date', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium]);
+$renderer->output_render('fields/expiring-date-own', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium]);
+$renderer->output_render('fields/free-shipping', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium]);
+$renderer->output_render('fields/include-products', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium]);
+$renderer->output_render('fields/include-categories', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium]);
 ?>
 	</div>
 </div>

@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Logger;
 
 use FlexibleCouponsVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 use WP_Error;
 use Exception;
 /**

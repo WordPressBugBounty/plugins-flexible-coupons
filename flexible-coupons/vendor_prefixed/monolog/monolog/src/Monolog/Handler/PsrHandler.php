@@ -12,7 +12,7 @@ declare (strict_types=1);
 namespace FlexibleCouponsVendor\Monolog\Handler;
 
 use FlexibleCouponsVendor\Monolog\Logger;
-use Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface;
 /**
  * Proxies log messages to an existing PSR-3 compliant logger.

@@ -14,13 +14,13 @@ if ( ! $rate_box ) {
 	<?php
 	$is_PL       = get_locale() === 'pl_PL' ? 'https://wpdesk.pl' : 'https://wpdesk.net';
 	$review_link = 'https://wordpress.org/support/plugin/flexible-coupons/reviews/#new-post';
-	echo $rate_box->render(
+	echo $rate_box->render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		$review_link,
 		sprintf(
 			// translator: %1$s icon,  %2$s open url tag, %3$s close url tag.
-			__( 'Created with %1$s by Sailors from %2$sWP Desk%3$s - if you like Flexible Coupons rate us &rarr;', 'flexible-coupons' ),
+			__( 'Created with %1$s by Sailors from %2$sWP Desk%3$s - if you like Flexible Coupons rate us &rarr;', 'flexible-coupons' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'<span class="love"><span class="dashicons dashicons-heart"></span></span>',
-			'<a target="_blank" href="' . $is_PL . '">',
+			'<a target="_blank" href="' . \esc_url( $is_PL ) . '">',
 			'</a>'
 		)
 	);

@@ -96,9 +96,9 @@ class OrderMetaBox implements Hookable
         if (\is_object($post) && property_exists($post, 'ID')) {
             $post_id = $post->ID;
         } elseif (isset($_REQUEST['post']) && \is_numeric($_REQUEST['post'])) {
-            $post_id = wc_clean($_REQUEST['post']);
+            $post_id = \wc_clean(\wp_unslash($_REQUEST['post']));
         } elseif (isset($_REQUEST['id']) && \is_numeric($_REQUEST['id'])) {
-            $post_id = wc_clean($_REQUEST['id']);
+            $post_id = \wc_clean(\wp_unslash($_REQUEST['id']));
         }
         return (int) $post_id;
     }

@@ -54,7 +54,7 @@ class SaveProductSimpleData implements Hookable
     public function post_data(string $key, $default = null)
     {
         if (isset($_REQUEST[$key])) {
-            return wp_unslash($_REQUEST[$key]);
+            return \wc_clean(\wp_unslash($_REQUEST[$key]));
         }
         return $default;
     }
@@ -65,7 +65,7 @@ class SaveProductSimpleData implements Hookable
      */
     public function save_product_coupons_field(int $product_id)
     {
-        if (isset($_POST[self::NONCE_NAME]) && wp_verify_nonce($_POST[self::NONCE_NAME], self::NONCE_ACTION) && $product_id) {
+        if (isset($_POST[self::NONCE_NAME]) && \wp_verify_nonce(\sanitize_key(\wp_unslash($_POST[self::NONCE_NAME])), self::NONCE_ACTION) && $product_id) {
             $this->save_public_fields($product_id);
             $this->save_premium_fields($product_id);
             /**

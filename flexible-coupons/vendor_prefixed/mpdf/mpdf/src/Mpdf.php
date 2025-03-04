@@ -14,8 +14,8 @@ use FlexibleCouponsVendor\Mpdf\QrCode;
 use FlexibleCouponsVendor\Mpdf\Utils\Arrays;
 use FlexibleCouponsVendor\Mpdf\Utils\NumericString;
 use FlexibleCouponsVendor\Mpdf\Utils\UtfString;
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\NullLogger;
 /**
  * mPDF, PHP library generating PDF files from UTF-8 encoded HTML
  *
@@ -24,7 +24,7 @@ use Psr\Log\NullLogger;
  *
  * @license GPL-2.0
  */
-class Mpdf implements \Psr\Log\LoggerAwareInterface
+class Mpdf implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     use Strict;
     use FpdiTrait;
@@ -1339,7 +1339,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
     {
         $this->logger = $logger;
         foreach ($this->services as $name) {
-            if ($this->{$name} && $this->{$name} instanceof \Psr\Log\LoggerAwareInterface) {
+            if ($this->{$name} && $this->{$name} instanceof \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface) {
                 $this->{$name}->setLogger($logger);
             }
         }

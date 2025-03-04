@@ -52,7 +52,7 @@ class MakeOrder implements Hookable
             $coupon_code = $coupon->get_id() ? $coupon->get_code() : '';
             $download_url = $coupon->get_id() ? Helper::make_coupon_url($coupon_data) : '';
             if ($download_url && $coupon_code) {
-                echo '<p><a href="' . $download_url . '"><strong>' . esc_html__('Download PDF coupon', 'flexible-coupons') . '</strong></a></p>';
+                echo '<p><a href="' . \esc_url($download_url) . '"><strong>' . esc_html__('Download PDF coupon', 'flexible-coupons') . '</strong></a></p>';
             }
         }
     }
@@ -67,8 +67,11 @@ class MakeOrder implements Hookable
         foreach ($coupon_items as $coupon_item) {
             if ($coupon_item instanceof WC_Order_Item_Coupon) {
                 $total = (float) $coupon_item->get_discount() + (float) $coupon_item->get_discount_tax();
-                $coupon_post_object = get_page_by_title($coupon_item->get_code(), \OBJECT, 'shop_coupon');
-                $coupon_id = $coupon_post_object->ID;
+                $coupon_code = $coupon_item->get_code();
+                $args = ['post_type' => 'shop_coupon', 'title' => $coupon_code, 'posts_per_page' => 1, 'fields' => 'ids'];
+                $query = new \WP_Query($args);
+                $coupon_ids = $query->posts;
+                $coupon_id = !empty($coupon_ids) ? $coupon_ids[0] : 0;
                 $coupon_data = $this->postmeta->get_private($coupon_id, 'fcpdf_coupon_data');
                 if (!empty($coupon_data)) {
                     $coupon_object = new WC_Coupon($coupon_id);

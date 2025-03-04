@@ -11,8 +11,8 @@ declare (strict_types=1);
  */
 namespace FlexibleCouponsVendor\Monolog;
 
-use Psr\Log\LoggerInterface;
-use Psr\Log\LogLevel;
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\LogLevel;
 use ReflectionExtension;
 /**
  * Monolog POSIX signal handler

@@ -57,5 +57,4 @@ class RegisterEmails implements Hookable {
 
 		return $emails;
 	}
-
 }

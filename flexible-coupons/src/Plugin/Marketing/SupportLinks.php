@@ -6,13 +6,14 @@ use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 
 /**
  * Deprecated Class - functionality moved to wp-coupons-core.
+ *
  * @deprecated Deprecated since versio 1.9.5
  */
 class SupportLinks implements Hookable {
 
 	const COUPON_LISTING_PAGE = 'edit-wpdesk-coupons';
-	const COUPON_EDIT_PAGE  = 'wpdesk-coupons';
-	const COUPON_ADD_ACTION = 'add';
+	const COUPON_EDIT_PAGE    = 'wpdesk-coupons';
+	const COUPON_ADD_ACTION   = 'add';
 
 	public function hooks() {
 		add_action( 'admin_footer', [ $this, 'add_support_link_on_invoice_listing' ] );
@@ -70,5 +71,4 @@ class SupportLinks implements Hookable {
 			<?php
 		}
 	}
-
 }

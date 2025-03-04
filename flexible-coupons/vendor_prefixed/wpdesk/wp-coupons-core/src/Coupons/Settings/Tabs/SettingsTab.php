@@ -2,7 +2,7 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs;
 
-use Psr\Container\ContainerInterface;
+use FlexibleCouponsVendor\Psr\Container\ContainerInterface;
 use FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer;
 /**
  * Tab than can be rendered on settings page.

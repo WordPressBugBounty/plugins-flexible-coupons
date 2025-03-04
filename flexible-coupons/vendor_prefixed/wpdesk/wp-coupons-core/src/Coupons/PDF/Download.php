@@ -92,7 +92,7 @@ class Download implements Hookable
             echo $pdf;
             //phpcs:ignore
         } catch (\Exception $e) {
-            wp_die($e->getMessage());
+            wp_die(esc_html($e->getMessage()));
         }
         exit;
     }

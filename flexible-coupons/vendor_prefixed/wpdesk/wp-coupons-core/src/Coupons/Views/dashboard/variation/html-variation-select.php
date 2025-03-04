@@ -3,7 +3,7 @@
 namespace FlexibleCouponsVendor;
 
 $params = isset($params) ? (array) $params : [];
-$post_id = (int) $params['post_id'];
+$prod_post_id = (int) $params['post_id'];
 $custom_attributes = $params['custom_attributes'];
 $loop_id = isset($params['loop']) ? '_variation' . $params['loop'] : '';
 $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
@@ -20,5 +20,5 @@ if (!$is_premium) {
     );
     echo '</p>';
 }
-\woocommerce_wp_checkbox(['id' => "fc_variation_base_on{$loop_id}", 'name' => "fc_variation_base_on{$loop_name}", 'value' => \get_post_meta($post_id, '_flexible_coupon_variation_base_on', \true), 'label' => \esc_html__('Manage Flexible PDF Coupons settings for variation', 'flexible-coupons'), 'desc_tip' => \true, 'description' => \esc_html__('Enable individual Flexible PDF Coupons options at variation level', 'flexible-coupons'), 'wrapper_class' => 'form-row form-row-full options show_if_pdf_coupon', 'class' => 'fc_variation_base_on', 'custom_attributes' => $custom_attributes]);
+\woocommerce_wp_checkbox(['id' => "fc_variation_base_on{$loop_id}", 'name' => "fc_variation_base_on{$loop_name}", 'value' => \get_post_meta($prod_post_id, '_flexible_coupon_variation_base_on', \true), 'label' => \esc_html__('Manage Flexible PDF Coupons settings for variation', 'flexible-coupons'), 'desc_tip' => \true, 'description' => \esc_html__('Enable individual Flexible PDF Coupons options at variation level', 'flexible-coupons'), 'wrapper_class' => 'form-row form-row-full options show_if_pdf_coupon', 'class' => 'fc_variation_base_on', 'custom_attributes' => $custom_attributes]);
 echo '</div>';

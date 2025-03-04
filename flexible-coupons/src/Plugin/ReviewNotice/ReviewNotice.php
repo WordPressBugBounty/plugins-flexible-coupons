@@ -24,11 +24,14 @@ class ReviewNotice {
 	public function hooks() {
 		foreach ( $this->notices as $notice ) {
 			$notice->hooks();
-			add_action( 'admin_init', static function () use ( $notice ) {
-				if ( $notice->should_show_message() ) {
-					$notice->show_message();
+			add_action(
+				'admin_init',
+				static function () use ( $notice ) {
+					if ( $notice->should_show_message() ) {
+						$notice->show_message();
+					}
 				}
-			} );
+			);
 		}
 	}
 }

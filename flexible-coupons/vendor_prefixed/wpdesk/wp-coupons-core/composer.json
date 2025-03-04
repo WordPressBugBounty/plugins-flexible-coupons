@@ -34,7 +34,6 @@
         "ext-json": "*",
         "mpdf\/mpdf": "v8.0.10",
         "psr\/log": "^1.1.0",
-        "wpdesk\/phpstan-rules": "^1.1",
         "wpdesk\/wp-builder": "^2.0",
         "wpdesk\/wp-coupons-interfaces": "1.1.0",
         "wpdesk\/wp-forms": "^2",
@@ -46,8 +45,8 @@
         "10up\/wp_mock": "*",
         "mockery\/mockery": "*",
         "phpunit\/phpunit": "^9",
-        "wp-coding-standards\/wpcs": "^2.3.0",
-        "squizlabs\/php_codesniffer": "^3.0.2"
+        "wpdesk\/phpstan-rules": "^1.2",
+        "wpdesk\/wp-code-sniffer": "^1.2"
     },
     "autoload": {
         "psr-4": {

@@ -13,7 +13,7 @@ $params = isset($params) ? (array) $params : [];
  * @var PostMeta $meta
  */
 $meta = $params['post_meta'];
-$post_id = $params['post_id'];
+$prod_post_id = $params['post_id'];
 $is_premium = $params['is_premium'];
 $custom_attributes = $params['custom_attributes'];
 $is_multiple_pdfs = $params['is_multiple_pdfs'];
@@ -22,7 +22,7 @@ $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
 $parent_id = isset($params['parent_id']) ? $params['parent_id'] : null;
 // Get the parent default meta value for variable.
 $default = $meta->get_private($parent_id, 'fc_multiple_pdf_enable', 'no');
-$value = $meta->get_private($post_id, 'fc_multiple_pdf_enable', $default);
+$value = $meta->get_private($prod_post_id, 'fc_multiple_pdf_enable', $default);
 if (!$is_multiple_pdfs) {
     $custom_attributes = ['disabled' => 'disabled'];
 }

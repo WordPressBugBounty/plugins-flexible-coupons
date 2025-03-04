@@ -28,7 +28,7 @@ if (!$coupon_id) {
     ?>
 		<button class="generate_coupon button button-secondary"
 				data-item-id="<?php 
-    echo $item_id;
+    echo \esc_attr($item_id);
     ?>"><?php 
     \esc_html_e('Generate coupon', 'flexible-coupons');
     ?></button>

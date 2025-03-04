@@ -10,11 +10,11 @@ if ( ! $boxes ) {
 	return;
 }
 
-$support_url  = 'pl_PL' === get_locale() ? 'https://www.wpdesk.pl/support/' : 'https://www.wpdesk.net/support/';
+$support_url = 'pl_PL' === get_locale() ? 'https://www.wpdesk.pl/support/' : 'https://www.wpdesk.net/support/';
 ?>
 <div class="wrap">
 	<div id="marketing-page-wrapper">
-		<?php echo $boxes->get_boxes()->get_all(); ?>
+		<?php echo $boxes->get_boxes()->get_all(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 		<div class="marketing-buttons">
 			<a class="button button-primary button-support confirm" data-confirm="confirm-support" href="#"><?php esc_html_e( 'Get support', 'flexible-coupons' ); ?></a>
