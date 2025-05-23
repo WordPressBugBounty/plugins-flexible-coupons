@@ -88,7 +88,7 @@ class TwoWeeksNotice {
 		$actions[] = sprintf(
 		// translators: %1$s url start tag, %2$s - url end tag.
 			__( '%1$sSure, it\'s worth it!%2$s', 'flexible-coupons' ),
-			'<a target="_blank" href="' . esc_url( 'https://wpde.sk/flexible-coupons-review' ) . '">',
+			'<a target="_blank" href="' . esc_url( 'https://wpdesk.link/flexible-coupons-review' ) . '">',
 			'</a>'
 		);
 		$actions[] = sprintf(
