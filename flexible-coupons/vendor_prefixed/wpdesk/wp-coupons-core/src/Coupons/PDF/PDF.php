@@ -158,6 +158,9 @@ class PDF
                 return $template_meta[self::AREA_OBJECTS];
             }
         }
+        if (!isset($template_meta[self::AREA_OBJECTS]) || !is_array($template_meta[self::AREA_OBJECTS])) {
+            throw new RuntimeException(esc_html__('Template empty or corrupted. Please check template in the editor.', 'flexible-coupons'));
+        }
         return $template_meta[self::AREA_OBJECTS];
     }
     /**

@@ -53,10 +53,10 @@ class Assets implements Hookable
         $suffix = defined('SCRIPT_DEBUG') && \SCRIPT_DEBUG ? '' : '.min';
         $is_pl = 'pl_PL' === get_locale();
         $pro_url = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=edit-template' : 'https://wpdesk.net/products/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=edit-template';
-        $shortcodes_pro_url = $is_pl ? 'https://wpde.sk/fc-codes-up-pl' : 'https://wpde.sk/fc-codes-up';
-        $tickets_buy_url = $is_pl ? 'https://wpde.sk/fc-qr-codes-pl-up' : 'https://wpde.sk/fc-qr-codes-up';
-        $tickets_docs_url = $is_pl ? 'https://wpde.sk/fc-qr-codes-pl-docs' : 'https://wpde.sk/fc-qr-codes-docs';
-        $sending_buy_url = $is_pl ? 'https://wpde.sk/as-advanced-sending-template-pl' : 'https://wpde.sk/as-advanced-sending-template';
+        $shortcodes_pro_url = $is_pl ? 'https://wpdesk.link/fc-codes-up-pl' : 'https://wpdesk.link/fc-codes-up';
+        $tickets_buy_url = $is_pl ? 'https://wpdesk.link/fc-qr-codes-pl-up' : 'https://wpdesk.link/fc-qr-codes-up';
+        $tickets_docs_url = $is_pl ? 'https://wpdesk.link/fc-qr-codes-pl-docs' : 'https://wpdesk.link/fc-qr-codes-docs';
+        $sending_buy_url = $is_pl ? 'https://wpdesk.link/as-advanced-sending-template-pl' : 'https://wpdesk.link/as-advanced-sending-template';
         $sending_settings_url = admin_url('edit.php?post_type=wpdesk-coupons&page=fc-settings&tab=emails');
         if ('post' === $screen->base && $this->post_type === $screen->post_type) {
             if (!is_rtl()) {

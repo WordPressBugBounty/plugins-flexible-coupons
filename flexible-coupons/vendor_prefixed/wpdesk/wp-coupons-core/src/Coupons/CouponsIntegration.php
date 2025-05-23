@@ -128,7 +128,7 @@ class CouponsIntegration implements Hookable, HookableCollection
     }
     public static function get_assets_url(): string
     {
-        return plugins_url('Coupons/assets', __DIR__);
+        return plugins_url('/assets', dirname(__DIR__));
     }
     /**
      * @return void
@@ -150,7 +150,7 @@ class CouponsIntegration implements Hookable, HookableCollection
         $this->add_hookable(new Order\OrderMetaBox($renderer, $post_meta));
         $this->add_hookable(new Coupon\GenerateCoupon($renderer, $product_fields, $persistence, $post_meta, $logger));
         $this->add_hookable($download);
-        $this->add_hookable(new Settings\SettingsForm($persistence, $renderer));
+        $this->add_hookable(new Settings\SettingsForm($persistence, $renderer, $this->plugin_version));
         $this->add_hookable(new Product\ProductEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
         $this->add_hookable(new Product\ProductVariationEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
         $this->add_hookable(new Product\SaveProductSimpleData($product_fields, $post_meta));

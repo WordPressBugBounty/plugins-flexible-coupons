@@ -9,7 +9,6 @@
         "pdf",
         "pdf builder"
     ],
-    "homepage": "https:\/\/gitlab.com\/wpdesk\/wp-canva-editor",
     "minimum-stability": "stable",
     "authors": [
         {
@@ -27,7 +26,10 @@
             "cweagans\/composer-patches": true,
             "wpdesk\/wp-wpdesk-composer": true,
             "phpstan\/extension-installer": true
-        }
+        },
+        "gitlab-domains": [
+            "gitlab.wpdesk.dev"
+        ]
     },
     "require": {
         "php": ">=7.4",
@@ -67,6 +69,12 @@
         "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
         "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
         "phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage",
-        "generate-pot": "wp i18n make-pot . lang\/wp-coupons-core.pot"
+        "generate-pot": "wp i18n make-pot . lang\/wp-coupons-core.pot --domain=wp-coupons-core"
+    },
+    "repositories": {
+        "wpdesk": {
+            "type": "composer",
+            "url": "https:\/\/gitlab.wpdesk.dev\/api\/v4\/group\/wpdesk\/-\/packages\/composer\/"
+        }
     }
 }

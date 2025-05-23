@@ -12,6 +12,7 @@ use FlexibleCouponsVendor\WPDesk\Persistence\PersistentContainer;
 use FlexibleCouponsVendor\WPDesk\View\Renderer\SimplePhpRenderer;
 use FlexibleCouponsVendor\WPDesk\Forms\Resolver\DefaultFormFieldResolver;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Tabs\SettingsTab;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Plugin;
 /**
  * Adds settings to the menu and manages how and what is shown on the settings page.
  *
@@ -28,6 +29,7 @@ class SettingsForm implements Hookable
      */
     private $options_container;
     private $renderer;
+    private string $plugin_version;
     /**
      * @var SettingsTab[]
      */
@@ -35,10 +37,11 @@ class SettingsForm implements Hookable
     /**
      * @param PersistentContainer $options_container
      */
-    public function __construct(PersistentContainer $options_container, Renderer $renderer)
+    public function __construct(PersistentContainer $options_container, Renderer $renderer, string $plugin_version)
     {
         $this->options_container = $options_container;
         $this->renderer = $renderer;
+        $this->plugin_version = $plugin_version;
     }
     /**
      * Fires hooks.
@@ -54,6 +57,8 @@ class SettingsForm implements Hookable
     public function enqueue_scripts()
     {
         wp_enqueue_style('fc-core-admin-styles', CouponsIntegration::get_assets_url() . '/css/admin-fc-core-styles.css');
+        wp_enqueue_script('fc-code-list', CouponsIntegration::get_assets_url() . '/js/index.js', [], $this->plugin_version, \true);
+        wp_localize_script('fc-code-list', 'fcCodeImport', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('fc-core-nonce'), 'enabled' => Plugin::is_fcci_pro_addon_enabled() && CouponsIntegration::is_pro()]);
     }
     /**
      * Save POST tab data. Before render.

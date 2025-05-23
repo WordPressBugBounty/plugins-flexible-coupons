@@ -47,7 +47,7 @@ class SaveProductSimpleData implements Hookable
     }
     /**
      * @param string $key
-     * @param null   $default
+     * @param mixed $default
      *
      * @return string|string[]|null
      */
@@ -87,12 +87,16 @@ class SaveProductSimpleData implements Hookable
         $product_ids = $this->post_data('fc_product_ids', []);
         $product_categories = $this->post_data('fc_product_categories', []);
         $free_shipping = $this->post_data('fc_product_free_shipping', 'no');
+        $import_id = $this->post_data('_product_coupon_import_id', '');
+        // Retrieve the import ID
         $this->post_meta->update_private($product_id, 'flexible_coupon_product_template', $product_template);
         $this->post_meta->update_private($product_id, 'flexible_coupon_expiring_date', $expiring_date);
         $this->post_meta->update_private($product_id, 'flexible_coupon_expiring_date_own', $expiring_date_own);
         $this->post_meta->update_private($product_id, 'flexible_coupon_product_ids', $product_ids);
         $this->post_meta->update_private($product_id, 'flexible_coupon_product_categories', $product_categories);
         $this->post_meta->update_private($product_id, 'flexible_coupon_product_free_shipping', $free_shipping);
+        $this->post_meta->update_private($product_id, '_product_coupon_import_id', $import_id);
+        // Save the import ID
     }
     /**
      * @param int $product_id

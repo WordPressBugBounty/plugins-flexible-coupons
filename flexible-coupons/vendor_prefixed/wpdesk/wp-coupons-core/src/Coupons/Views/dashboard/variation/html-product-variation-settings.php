@@ -81,7 +81,17 @@ if (!$is_multiple_pdfs) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcmpdf_link()) . '&utm_content=&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link()) . '&utm_content=&utm_content=edit-product'),
+        '</a>'
+    );
+    echo '</p>';
+}
+if ($is_multiple_pdfs && !$is_premium) {
+    echo '<p class="form-field marketing-content">';
+    \printf(
+        /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
+        \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
         '</a>'
     );
     echo '</p>';
@@ -113,18 +123,57 @@ $renderer->output_render('fields/coupon-code-suffix', ['post_meta' => $post_meta
 		</div>
 		<?php 
 $renderer->output_render('fields/product-fields', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'product_fields' => $product_fields, 'custom_attributes' => $custom_attributes]);
+$renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes]);
 ?>
 	</div>
+
 	<div class="fc-options-group">
-		<?php 
-$renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes]);
+	<?php 
+$is_code_import = Plugin::is_fcci_pro_addon_enabled();
+if (!$is_code_import) {
+    echo '<p class="form-field marketing-content">';
+    \printf(
+        /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
+        \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Coupon Codes Import →%2$s and enable option below', 'flexible-coupons'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcci_buy_link()) . '&utm_content=&utm_content=edit-product'),
+        '</a>'
+    );
+    echo '</p>';
+}
+if ($is_code_import && !$is_premium) {
+    echo '<p class="form-field marketing-content">';
+    \printf(
+        /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
+        \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
+        '</a>'
+    );
+    echo '</p>';
+}
+$renderer->output_render('fields/coupon-code-import-list', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'disabled' => !$is_code_import || !$is_premium, 'options' => \apply_filters('fc/field/code-import-list/options', ['' => \__('Disabled', 'flexible-coupons')]), 'loop' => $loop]);
+?>
+
+	</div>
+
+	<div class="fc-options-group">
+	<?php 
 $is_sending = Plugin::is_fcs_pro_addon_enabled();
 if (!$is_sending) {
     echo '<p class="form-field marketing-content">';
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link()) . '&utm_content=&utm_content=edit-variations'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link()) . '&utm_content=&utm_content=edit-product'),
+        '</a>'
+    );
+    echo '</p>';
+}
+if ($is_sending && !$is_premium) {
+    echo '<p class="form-field marketing-content">';
+    \printf(
+        /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
+        \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
         '</a>'
     );
     echo '</p>';

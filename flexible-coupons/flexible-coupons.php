@@ -4,7 +4,7 @@
  * Plugin URI: https://www.wpdesk.net/products/flexible-coupons/
  * Description: Flexible PDF Coupons for WooCommerce is a WooCommerce plugin with which you can create your gift cards, vouchers, or coupons in PDF format. Use it for your future marketing campaigns.
  * Product: Flexible PDF Coupons for WooCommerce
- * Version: 1.10.9
+ * Version: 1.10.10
  * Author: WP Desk
  * Author URI: https://www.wpdesk.net/
  * Text Domain: flexible-coupons
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 /* Plugin version */
-$plugin_version = '1.10.9';
+$plugin_version = '1.10.10';
 /* Plugin release */
 $plugin_release_timestamp = '2023-06-21 15:45';
 

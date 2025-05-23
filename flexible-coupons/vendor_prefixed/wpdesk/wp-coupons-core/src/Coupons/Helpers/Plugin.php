@@ -38,4 +38,8 @@ class Plugin
     {
         return self::is_active('flexible-coupons-multiple-pdfs/flexible-coupons-multiple-pdfs.php');
     }
+    public static function is_fcci_pro_addon_enabled(): bool
+    {
+        return self::is_active('flexible-coupons-code-import/flexible-coupons-code-import.php');
+    }
 }

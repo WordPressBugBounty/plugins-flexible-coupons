@@ -539,6 +539,8 @@ return array(
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Product\\ProductVariationEditPage' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/ProductVariationEditPage.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Product\\SaveProductSimpleData' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/SaveProductSimpleData.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Product\\SaveProductVariationData' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/SaveProductVariationData.php',
+    'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\CouponCodeList' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/CouponCodeList.php',
+    'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\DisableFieldImportAddonAdapter' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/DisableFieldImportAddonAdapter.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\DisableFieldProAdapter' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/DisableFieldProAdapter.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\LinkField' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/LinkField.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\MultipleInputTextField' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/MultipleInputTextField.php',

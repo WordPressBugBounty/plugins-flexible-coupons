@@ -64,9 +64,9 @@ class Links
      */
     public static function get_fcs_doc_delay_type_link(): string
     {
-        $docs_link = 'https://wpde.sk/as-advanced-sending-docs-product-settings';
+        $docs_link = 'https://wpdesk.link/as-advanced-sending-docs-product-settings';
         if (get_locale() === 'pl_PL') {
-            $docs_link = 'https://wpde.sk/as-advanced-sending-docs-product-settings-pl';
+            $docs_link = 'https://wpdesk.link/as-advanced-sending-docs-product-settings-pl';
         }
         return $docs_link;
     }
@@ -75,10 +75,18 @@ class Links
      */
     public static function get_fcs_doc_link(): string
     {
-        $docs_link = 'https://wpde.sk/as-advanced-sending-docs';
+        $docs_link = 'https://wpdesk.link/as-advanced-sending-docs';
         if (get_locale() === 'pl_PL') {
-            $docs_link = 'https://wpde.sk/as-advanced-sending-docs-pl';
+            $docs_link = 'https://wpdesk.link/as-advanced-sending-docs-pl';
         }
         return $docs_link;
+    }
+    public static function get_fcci_buy_link(): string
+    {
+        $sending_link = 'https://flexiblecoupons.net';
+        if (get_locale() === 'pl_PL') {
+            $sending_link = 'https://flexiblecoupons.net';
+        }
+        return $sending_link;
     }
 }
