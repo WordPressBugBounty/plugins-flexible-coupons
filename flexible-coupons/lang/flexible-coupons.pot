@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Flexible PDF Coupons for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.10.10\n"
+"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-coupons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-23T18:06:49+00:00\n"
+"POT-Creation-Date: 2025-06-03T15:25:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: flexible-coupons\n"
 
 #. Plugin Name of the plugin
@@ -99,6 +99,7 @@ msgid "No, I'll wait"
 msgstr ""
 
 #: src/Plugin/Marketing/Views/rate-box-footer.php:21
+#, php-format
 msgid "Created with %1$s by Sailors from %2$sWP Desk%3$s - if you like Flexible Coupons rate us &rarr;"
 msgstr ""
 
@@ -181,16 +182,19 @@ msgstr ""
 
 #. translators: %1$s url start tag, %2$s - url end tag.
 #: src/Plugin/ReviewNotice/TwoWeeksNotice.php:90
+#, php-format
 msgid "%1$sSure, it's worth it!%2$s"
 msgstr ""
 
 #. translators: %1$s url start tag, %2$s - url end tag.
 #: src/Plugin/ReviewNotice/TwoWeeksNotice.php:96
+#, php-format
 msgid "%1$sNope, maybe later%2$s"
 msgstr ""
 
 #. translators: %1$s url start tag, %2$s - url end tag.
 #: src/Plugin/ReviewNotice/TwoWeeksNotice.php:102
+#, php-format
 msgid "%1$sNo, never!%2$s"
 msgstr ""
 
@@ -209,6 +213,7 @@ msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:57
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#, php-format
 msgid "Define coupon expiry date format according to %1$sWordPress date formatting%2$s."
 msgstr ""
 
@@ -332,12 +337,14 @@ msgstr ""
 #. translators: %s: Customer full name.
 #: src/Views/emails/coupon.php:25
 #: src/Views/emails/plain/coupon.php:27
+#, php-format
 msgid "Hi %s,"
 msgstr ""
 
 #. translators: %1$s: Order number. %2$s: Order date.
 #: src/Views/emails/coupon.php:34
 #: src/Views/emails/plain/coupon.php:35
+#, php-format
 msgid "In response to an order %1$s placed %2$s, we are sending you a coupon for shopping in our shop."
 msgstr ""
 
@@ -348,18 +355,21 @@ msgstr ""
 #. translators: %s: Coupon code.
 #: src/Views/emails/coupon.php:48
 #: src/Views/emails/plain/coupon.php:57
+#, php-format
 msgid "Coupon code: %s"
 msgstr ""
 
 #. translators: %s: Coupon value.
 #: src/Views/emails/coupon.php:57
 #: src/Views/emails/plain/coupon.php:66
+#, php-format
 msgid "Coupon value: %s"
 msgstr ""
 
 #. translators: %s: Coupon expiry date.
 #: src/Views/emails/coupon.php:67
 #: src/Views/emails/plain/coupon.php:76
+#, php-format
 msgid "Expiry date: %s"
 msgstr ""
 
@@ -371,6 +381,7 @@ msgstr ""
 
 #. translators: %s: Coupon URL.
 #: src/Views/emails/plain/coupon.php:45
+#, php-format
 msgid "Download PDF with the coupon from: %s"
 msgstr ""
 
@@ -567,6 +578,7 @@ msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:72
+#, php-format
 msgid "%1$sUpgrade to PRO →%2$s and enable more shortcodes"
 msgstr ""
 
@@ -576,11 +588,13 @@ msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:77
+#, php-format
 msgid "This is an add-on for the PRO version. %1$sUpgrade to PRO →%2$s"
 msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:82
+#, php-format
 msgid "Add custom shortcodes with Flexible PDF Coupons PRO addon: %1$sCustom Shortcodes →%2$s"
 msgstr ""
 
@@ -650,6 +664,7 @@ msgstr ""
 
 #. translators: %1$s: break line, %2$s: anchor opening tag, %3$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Views/html-editor-meta-box.php:39
+#, php-format
 msgid "%1$sUpgrade to PRO →%2$s to fully unlock all the features"
 msgstr ""
 
@@ -659,31 +674,37 @@ msgstr ""
 
 #. translators: field title.
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:487
+#, php-format
 msgid "<strong>%s</strong>  is required field."
 msgstr ""
 
 #. translators: field title.
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:497
+#, php-format
 msgid "<strong>%1$s</strong>  is to short. Minimum length: %2$d."
 msgstr ""
 
 #. translators: field title.
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:507
+#, php-format
 msgid "<strong>%1$s</strong>  is to long. Maximum length: %2$d."
 msgstr ""
 
 #. translators: field title.
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:517
+#, php-format
 msgid "<strong>%s</strong>  has invalid email."
 msgstr ""
 
 #. translators: field title.
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:527
+#, php-format
 msgid "<strong>%s</strong> has an invalid date."
 msgstr ""
 
 #. translators: field title.
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Cart/Cart.php:537
+#, php-format
 msgid "<strong>%s</strong> has a date from the past."
 msgstr ""
 
@@ -730,6 +751,7 @@ msgstr ""
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Integration/Assets.php:106
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:47
+#, php-format
 msgid "Read the %1$splugin documentation →%2$s"
 msgstr ""
 
@@ -776,6 +798,7 @@ msgstr ""
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:42
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:36
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:42
+#, php-format
 msgid "Read more in the %1$splugin documentation →%2$s"
 msgstr ""
 
@@ -792,16 +815,19 @@ msgstr ""
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:147
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:175
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-variation-select.php:17
+#, php-format
 msgid "%1$sUpgrade to PRO →%2$s and enable options below"
 msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:52
+#, php-format
 msgid "Buy %1$sFlexible PDF Coupons PRO - Coupon Codes Import →%2$s and enable options below"
 msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:57
+#, php-format
 msgid "%1$sGet Flexible Coupons PRO with add-ons in one Bundle →%2$s and enable options below"
 msgstr ""
 
@@ -835,11 +861,13 @@ msgstr ""
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:46
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:127
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:165
+#, php-format
 msgid "Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below"
 msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:51
+#, php-format
 msgid "%1$sGet Flexible Coupons PRO with add-ons in one Bundle →%2$s"
 msgstr ""
 
@@ -1139,12 +1167,14 @@ msgstr ""
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:54
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:83
+#, php-format
 msgid "Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below"
 msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:100
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:137
+#, php-format
 msgid "Buy %1$sFlexible PDF Coupons PRO - Coupon Codes Import →%2$s and enable option below"
 msgstr ""
 
@@ -1206,15 +1236,18 @@ msgstr ""
 
 #. Translators: directory.
 #: vendor_prefixed/wpdesk/wp-logs/src/WP/WPCapture.php:23
+#, php-format
 msgid "Can not enable WP Desk Debug log! Cannot create directory %s or this directory is not writeable!"
 msgstr ""
 
 #. Translators: directory.
 #: vendor_prefixed/wpdesk/wp-logs/src/WP/WPCapture.php:36
+#, php-format
 msgid "Can not enable WP Desk Debug log! Cannot create file %s!"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/PSR/WPDesk/Tracker/OptOut.php:41
+#, php-format
 msgid "You successfully opted out of collecting usage data by %1$s. If you change your mind, you can always opt in later in the plugin's quick links."
 msgstr ""
 
@@ -1230,6 +1263,7 @@ msgstr ""
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/PSR/WPDesk/Tracker/views/tracker-connect.php:23
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-connect.php:15
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-notice.php:19
+#, php-format
 msgid "Hey %s,"
 msgstr ""
 
@@ -1269,6 +1303,7 @@ msgid "Plugin Usage"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/PSR/WPDesk/Tracker/views/tracker-connect.php:70
+#, php-format
 msgid "Current settings and usage information of %1$s plugins"
 msgstr ""
 
@@ -1293,6 +1328,7 @@ msgid "Current settings and usage information of WP Desk plugins"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-deactivate.php:11
+#, php-format
 msgid "You are deactivating %s plugin."
 msgstr ""
 
@@ -1342,6 +1378,10 @@ msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-deactivate.php:110
 msgid "Skip &amp; Deactivate"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-deactivate.php:126
+msgid "Submit &amp; Deactivate"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-notice.php:22

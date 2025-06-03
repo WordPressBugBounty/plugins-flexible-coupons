@@ -39,8 +39,8 @@
         "lucatume\/wp-browser": "<3.5",
         "symfony\/yaml": "^5",
         "vlucas\/phpdotenv": "^4",
-        "wp-cli\/admin-command": "^2.0.2",
-        "wp-cli\/wp-cli-bundle": "^2.7.1"
+        "wp-cli\/admin-command": "^2",
+        "wp-cli\/wp-cli-bundle": "^2"
     },
     "require-dev": {
         "10up\/wp_mock": "*"

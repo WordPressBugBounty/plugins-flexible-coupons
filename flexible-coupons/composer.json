@@ -55,7 +55,7 @@
 		"wpdesk/ltv-dashboard-widget": "^1.5",
 		"wpdesk/phpstan-rules": "^1.1",
 		"wpdesk/wp-codeception": "^2",
-		"wpdesk/wp-coupons-core": "^2.2",
+		"wpdesk/wp-coupons-core": "^2.4.0",
 		"wpdesk/wp-logs": "^1.13",
 		"wpdesk/wp-plugin-flow-free": "*",
 		"wpdesk/wp-show-decision": "^1.0",
