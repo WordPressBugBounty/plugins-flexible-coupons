@@ -198,16 +198,16 @@ jQuery(function ($) {
         },
 
         handleDelaySendingFields: function (select) {
-            let select_wrapper = select.parent().parent();
-            select_wrapper.find('.show_if_simple_delay, .show_if_fixed_date_delay').hide();
+            let wrapper = $('.woocommerce_options_panel');
+            wrapper.find('.show_if_simple_delay, .show_if_fixed_date_delay').hide();
 
             if (!select.length) {
                 return;
             }
             if (select.val() === 'simple_delay') {
-                select_wrapper.find('.show_if_simple_delay').show();
+                wrapper.find('.show_if_simple_delay').show();
             } else if (select.val() === 'fixed_date_delay') {
-                select_wrapper.find('.show_if_fixed_date_delay').show();
+                wrapper.find('.show_if_fixed_date_delay').show();
             }
         },
 

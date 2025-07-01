@@ -26,6 +26,7 @@ use FlexibleCouponsVendor\WPDesk\View\Renderer\SimplePhpRenderer;
 use FlexibleCouponsVendor\WPDesk\View\Resolver\ChainResolver;
 use FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Defaults;
 /**
  * Main class for the implementation of the coupon library.
  *
@@ -155,6 +156,7 @@ class CouponsIntegration implements Hookable, HookableCollection
         $this->add_hookable(new Product\ProductVariationEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
         $this->add_hookable(new Product\SaveProductSimpleData($product_fields, $post_meta));
         $this->add_hookable(new Product\SaveProductVariationData($product_fields, $post_meta));
+        $this->add_hookable(new Defaults\DefaultEmailTemplateAjax());
         do_action('fc/core/init', new PluginAccess($renderer, $logger, $persistence, $pdf, $download, $shortcodes, $post_meta, $product_fields, $this->plugin_version));
     }
 }

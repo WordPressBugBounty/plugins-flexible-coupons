@@ -15,6 +15,8 @@ use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\LinkField;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\WysiwygField;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\DisableFieldProAdapter;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\MultipleInputTextField;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\DisableFieldSendingAddonAdapter;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\CouponEmailTemplatesList;
 /**
  * Main Settings Tab Page.
  *
@@ -41,17 +43,17 @@ class EmailSettings extends FieldSettingsTab
             __('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
             sprintf('<a href="%s" target="_blank" class="pro-link">', esc_url(Links::get_pro_link() . '&utm_content=emails-settings')),
             '</a>'
-        ))))->get_field(), (new DisableFieldProAdapter(self::ATTACH_COUPON_FIELD, (new CheckboxField())->set_name('')->set_label(\esc_html__('Attachments in the e-mail', 'flexible-coupons'))->set_sublabel(\esc_html__('Attach PDF file to coupon email', 'flexible-coupons'))))->get_field(), (new LinkField())->set_label(sprintf(
+        ))))->get_field(), (new DisableFieldProAdapter(self::ATTACH_COUPON_FIELD, (new CheckboxField())->set_name('')->set_label(\esc_html__('Attachments in the e-mail', 'flexible-coupons'))->set_sublabel(\esc_html__('Attach PDF file to coupon email', 'flexible-coupons'))))->get_field(), (new NoOnceField(SettingsForm::NONCE_ACTION))->set_name(SettingsForm::NONCE_NAME), (new SubmitField())->set_attribute('id', 'save_settings')->set_name('save_settings')->set_label(\esc_html__('Save Changes', 'flexible-coupons'))->add_class('button-primary'), (new DisableFieldSendingAddonAdapter('', (new LinkField())->set_label(sprintf(
             /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
             __('Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below', 'flexible-coupons'),
             sprintf('<a href="%s" target="_blank" class="sending-link">', esc_url(Links::get_fcs_link() . '&utm_content=emails-settings')),
             '</a>'
-        ))->set_disabled(), (new DisableFieldProAdapter('', (new LinkField())->set_label(sprintf(
+        ))))->get_field(), (new DisableFieldProAdapter('', (new LinkField())->set_label(sprintf(
             /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
             __('%1$sGet Flexible Coupons PRO with add-ons in one Bundle →%2$s', 'flexible-coupons'),
             sprintf('<a href="%s" target="_blank" class="pro-link">', esc_url(Links::get_bundle_link() . '&utm_content=emails-settings')),
             '</a>'
-        ))->add_class('pro-link-wrapper')))->get_field(), (new MultipleInputTextField())->set_name('')->set_label(\esc_html__('Additional recipients', 'flexible-coupons'))->set_placeholder(\esc_html__('E-mail address', 'flexible-coupons'))->set_description(\esc_html__('Add additional recipients', 'flexible-coupons'))->set_disabled()->set_readonly()->add_class('form-table-field'), (new InputTextField())->set_name('')->set_label(__('Email subject', 'flexible-coupons'))->set_placeholder(EmailStrings::get_default_email_subject())->set_default_value(EmailStrings::get_default_email_subject())->set_description(__('You can use the following placeholders: {recipient_name}, {recipient_message}, {recipient_email}, {buyer_name}, {coupon_url}, {coupon_code}, {coupon_value}, {coupon_expiry}, {site_title}, {site_url}, {admin_email}, {current_date}, {site_description}', 'flexible-coupons'))->set_disabled()->set_readonly(), (new WysiwygField())->set_name('')->set_label(__('E-mail body', 'flexible-coupons'))->set_default_value(EmailStrings::get_default_email_body())->set_description(__('You can use the following placeholders: {recipient_name}, {recipient_message}, {recipient_email}, {buyer_name}, {coupon_url}, {coupon_code}, {coupon_value}, {coupon_expiry}, {site_title}, {site_url}, {admin_email}, {current_date}, {site_description}', 'flexible-coupons'))->set_disabled()->set_readonly(), (new NoOnceField(SettingsForm::NONCE_ACTION))->set_name(SettingsForm::NONCE_NAME), (new SubmitField())->set_attribute('id', 'save_settings')->set_name('save_settings')->set_label(\esc_html__('Save Changes', 'flexible-coupons'))->add_class('button-primary')];
+        ))->add_class('pro-link-wrapper')))->get_field(), (new DisableFieldSendingAddonAdapter('', (new CouponEmailTemplatesList())->set_name('')->set_label(esc_html__('Email templates', 'flexible-coupons'))))->get_field()];
         return \apply_filters('fcpdf/settings/general/fields', $fields, $this->get_tab_slug());
     }
     /**

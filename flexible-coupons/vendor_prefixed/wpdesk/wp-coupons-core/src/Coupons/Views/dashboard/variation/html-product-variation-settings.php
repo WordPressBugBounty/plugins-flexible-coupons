@@ -71,9 +71,12 @@ if (!$is_premium) {
     );
     echo '</p>';
 }
-$renderer->output_render('fields/coupon-code-enable', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+$renderer->output_render('fields/product-fields', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'product_fields' => $product_fields, 'custom_attributes' => $custom_attributes]);
+$renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes]);
 ?>
-		<div class="fc-options-group fc-custom-fields-group fc-multiple-pdfs-options-wrapper">
+	</div>
+
+	<div class="fc-options-group fc-multiple-pdfs-options-wrapper">
 		<?php 
 $is_multiple_pdfs = Plugin::is_fc_multiple_pdfs_pro_addon_enabled();
 if (!$is_multiple_pdfs) {
@@ -98,13 +101,19 @@ if ($is_multiple_pdfs && !$is_premium) {
 }
 $renderer->output_render('fields/multiple-pdfs/multiple-coupons-enable', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings, 'loop' => $loop]);
 ?>
-			<div class="fc-options-group fc-custom-fields-group fc-multiple-pdfs-advanced-options">
-				<?php 
+		<div class="fc-options-group fc-multiple-pdfs-advanced-options">
+			<?php 
 $renderer->output_render('fields/multiple-pdfs/multiple-coupons-send-to-first-email', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings, 'loop' => $loop]);
 $renderer->output_render('fields/multiple-pdfs/multiple-coupons-forms-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_premium' => $is_premium, 'is_multiple_pdfs' => $is_multiple_pdfs, 'custom_attributes' => $custom_attributes, 'settings' => $settings, 'loop' => $loop]);
 ?>
-			</div>
 		</div>
+	</div>
+
+	<div class="fc-options-group">
+		<?php 
+$renderer->output_render('fields/coupon-code-enable', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
+?>
+
 		<?php 
 $style = 'display: none;';
 $is_enabled = 'yes' === $post_meta->get_private($prod_post_id, 'flexible_coupon_coupon_code', $post_meta->get_private($parent_id, 'flexible_coupon_coupon_code', 'no'));
@@ -121,13 +130,6 @@ $renderer->output_render('fields/coupon-code-length', ['post_meta' => $post_meta
 $renderer->output_render('fields/coupon-code-suffix', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes, 'settings' => $settings]);
 ?>
 		</div>
-		<?php 
-$renderer->output_render('fields/product-fields', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'product_fields' => $product_fields, 'custom_attributes' => $custom_attributes]);
-$renderer->output_render('fields/usage-limit', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop, 'custom_attributes' => $custom_attributes]);
-?>
-	</div>
-
-	<div class="fc-options-group">
 	<?php 
 $is_code_import = Plugin::is_fcci_pro_addon_enabled();
 if (!$is_code_import) {
@@ -191,6 +193,11 @@ $renderer->output_render('fields/delay-value', ['post_meta' => $post_meta, 'post
 $renderer->output_render('fields/delay-fixed-date', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending, 'loop' => $loop]);
 ?>
 		</div>
+		<?php 
+$renderer->output_render('fields/email-template-list', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'disabled' => !$is_sending || !$is_premium, 'options' => \apply_filters('fc/field/email-template-list/options', ['' => \__('Disabled', 'flexible-coupons')]), 'loop' => $loop]);
+?>
+	</div>
+	<div class="fc-options-group">
 		<?php 
 $renderer->output_render('fields/expiring-date', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop]);
 $renderer->output_render('fields/expiring-date-own', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'parent_id' => $parent_id, 'is_premium' => $is_premium, 'loop' => $loop]);

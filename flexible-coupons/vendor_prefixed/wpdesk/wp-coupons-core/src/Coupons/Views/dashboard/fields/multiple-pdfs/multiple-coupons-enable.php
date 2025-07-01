@@ -26,4 +26,4 @@ $value = $meta->get_private($prod_post_id, 'fc_multiple_pdf_enable', $default);
 if (!$is_multiple_pdfs) {
     $custom_attributes = ['disabled' => 'disabled'];
 }
-\woocommerce_wp_checkbox(['id' => "fc_multiple_pdf_enable{$loop_id}", 'name' => "fc_multiple_pdf_enable{$loop_name}", 'value' => $value, 'label' => \esc_html__('Split coupons by product quantity', 'flexible-coupons'), 'desc_tip' => \true, 'description' => \esc_html__('Enable this option to split coupons as different products in cart.', 'flexible-coupons'), 'wrapper_class' => 'multiple-pdf-settings', 'class' => 'fc_multiple_pdf_enable', 'custom_attributes' => $custom_attributes]);
+\woocommerce_wp_checkbox(['id' => "fc_multiple_pdf_enable{$loop_id}", 'name' => "fc_multiple_pdf_enable{$loop_name}", 'value' => $value, 'label' => \esc_html__('Split coupons by product quantity', 'flexible-coupons'), 'desc_tip' => \true, 'description' => \esc_html__('Enable this option to split coupons as different products in cart.', 'flexible-coupons'), 'wrapper_class' => 'multiple-pdf-settings', 'class' => 'fc_multiple_pdf_enable checkbox', 'custom_attributes' => $custom_attributes]);

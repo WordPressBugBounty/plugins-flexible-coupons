@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	mode: 'development', // Use 'production' for optimized builds
+	mode: 'production',
 	entry: {
 		index: './assets-src/js/index.tsx',
 	},
@@ -19,7 +19,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
+				use: ['style-loader', 'css-loader', 'postcss-loader'],
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -30,10 +30,13 @@ module.exports = {
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js'],
 		modules: [path.resolve(__dirname, 'node_modules')],
+		alias: {
+			'@': path.resolve(__dirname, 'assets-src/js'),
+		},
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: './assets-src/js/components/FileUploadTest.html', // Path to your HTML template
+			template: './assets-src/js/index.html',
 		}),
 	],
 	devServer: {

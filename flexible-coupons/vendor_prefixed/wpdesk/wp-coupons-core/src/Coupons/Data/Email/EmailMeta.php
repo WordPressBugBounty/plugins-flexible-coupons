@@ -16,6 +16,7 @@ class EmailMeta implements \ArrayAccess
     private const COUPON_VALUE_KEY = 'coupon_value';
     private const COUPON_CODE_KEY = 'coupon_code';
     private const COUPON_URL_KEY = 'coupon_url';
+    private const COUPON_ID_KEY = 'coupon_id';
     private const PRODUCT_ID_KEY = 'product_id';
     private const VARIATION_ID_KEY = 'variation_id';
     private const ORDER_ID_KEY = 'order_id';
@@ -69,6 +70,10 @@ class EmailMeta implements \ArrayAccess
     public function get_coupon_hash(): string
     {
         return $this->meta[self::COUPONS_ARRAY_KEY][self::FIRST_ARRAY_KEY][self::HASH_KEY] ?? '';
+    }
+    public function get_coupon_id(): int
+    {
+        return $this->meta[self::COUPONS_ARRAY_KEY][self::FIRST_ARRAY_KEY][self::COUPON_ID_KEY] ?? 0;
     }
     public function get_product_id(): int
     {

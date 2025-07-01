@@ -5,7 +5,7 @@ Donate link: https://flexiblecoupons.net/products/flexible-coupons-woocommerce
 Tags: gift card, voucher, coupon, pdf ticket, qr code
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -302,6 +302,7 @@ You may use the following add-ons:
 * [**Flexible Coupons PRO - Event Ticket QR Scanner**](https://flexiblecoupons.net/products/flexible-coupons-pro-tickets-add-on/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=qr-codes)
 * [**Flexible Coupons PRO - Custom Shortcodes**](https://flexiblecoupons.net/products/flexible-coupons-pro-custom-shortcodes/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=custom-shortcodes)
 * [**Flexible Coupons PRO - Multiple PDFs**](https://flexiblecoupons.net/products/flexible-pdf-coupons-pro-multiple-pdfs/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=multile-pdf)
+* [**Flexible PDF Coupons PRO – Coupon Codes Import**](https://flexiblecoupons.net/products/flexible-pdf-coupons-pro-coupon-codes-import/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=codes-import)
 
 
 **Note**: They will work with [**Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce PRO**](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro) ⭐!
@@ -477,8 +478,14 @@ Yes 😊.
 55. QR code on WooCommerce PDF tickets (PRO add-on).
 56. Placing a QR code in the graphic editor of the PDF coupon template (PRO add-on).
 57. A QR code generator and scanner for your beautiful PDF gift cards, vouchers, and tickets in WooCommerce (PRO add-on).
+58. Import predefined coupon code list from from CSV, XLS, XLSX, ODS files (PRO add-on).
+59. Use imported coupon codes for products (PRO add-on).
 
 == Changelog ==
+
+= 1.12.0 - 2025-07-01 =
+* Added Flexible Coupons Advanced Sending v2.0 add-on settings
+* Added Flexible Coupons Advanced Sending v2.0 add-on marketing content
 
 = 1.11.0 - 2025-06-03 =
 * Added Flexible Coupons PDF - Coupon Code Import addon marketing content

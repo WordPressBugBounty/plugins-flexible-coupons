@@ -31,7 +31,7 @@ foreach ($product_fields->get() as $pf_id => $product_field) {
         \woocommerce_wp_checkbox(['id' => $pf_id . $loop_id, 'name' => $pf_id . $loop_name, 'value' => \esc_attr($meta->get_private($prod_post_id, $pf_id, $meta->get_private($parent_id, $pf_id, $default))), 'label' => $product_field['title'], 'desc_tip' => \true, 'description' => \esc_html__('Show or hide this field in product page.', 'flexible-coupons'), 'wrapper_class' => !$is_premium ? 'read-only' : '', 'custom_attributes' => $custom_attributes]);
         echo '</div>';
         echo '<div class="checkbox-wrapper-right">';
-        \woocommerce_wp_checkbox(['id' => $pf_id . '_required' . $loop_id, 'name' => $pf_id . '_required' . $loop_name, 'value' => \esc_attr($meta->get_private($prod_post_id, $pf_id . '_required', $meta->get_private($parent_id, $pf_id . '_required', $default))), 'label' => \esc_html__('Required', 'flexible-coupons'), 'desc_tip' => \true, 'description' => \esc_html__('If checked field will be set as required.', 'flexible-coupons'), 'wrapper_class' => !$is_premium ? 'read-only' : '', 'custom_attributes' => $custom_attributes]);
+        \woocommerce_wp_checkbox(['id' => $pf_id . '_required' . $loop_id, 'name' => $pf_id . '_required' . $loop_name, 'value' => \esc_attr($meta->get_private($prod_post_id, $pf_id . '_required', $meta->get_private($parent_id, $pf_id . '_required', $default))), 'label' => \esc_html__('Required', 'flexible-coupons'), 'wrapper_class' => !$is_premium ? 'read-only' : '', 'custom_attributes' => $custom_attributes]);
         echo '</div>';
         echo '</div>';
     }

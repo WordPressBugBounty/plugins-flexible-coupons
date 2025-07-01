@@ -75,10 +75,12 @@ class Coupon
              * Set coupon data before save.
              *
              * @param WC_Coupon $coupon
+             * @param int $order_id
+             * @param WC_Order_Item $item
              *
              * @since 1.2.4
              */
-            $coupon = apply_filters('fcpdf/core/coupon/before/create', $coupon, $order_id);
+            $coupon = apply_filters('fcpdf/core/coupon/before/create', $coupon, $order_id, $item);
             if ($coupon instanceof WC_Coupon) {
                 $coupon = $coupon->save();
             } else {

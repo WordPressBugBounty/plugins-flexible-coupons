@@ -24,7 +24,7 @@ class FlexibleCouponsBaseEmail extends WC_Email implements Email
      *
      * @var EmailMeta
      */
-    protected $meta;
+    protected $meta = null;
     /**
      * @param string $template_path Email template path.
      */
@@ -98,6 +98,11 @@ class FlexibleCouponsBaseEmail extends WC_Email implements Email
         \remove_action('phpmailer_init', [$this, 'add_string_attachments']);
         $this->restore_locale();
         return $result;
+    }
+    public function setup_preview(EmailMeta $meta): void
+    {
+        $this->meta = $meta;
+        $this->setup_placeholders();
     }
     protected function setup_placeholders()
     {

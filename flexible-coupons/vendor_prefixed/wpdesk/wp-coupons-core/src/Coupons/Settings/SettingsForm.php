@@ -56,9 +56,13 @@ class SettingsForm implements Hookable
     }
     public function enqueue_scripts()
     {
-        wp_enqueue_style('fc-core-admin-styles', CouponsIntegration::get_assets_url() . '/css/admin-fc-core-styles.css');
-        wp_enqueue_script('fc-code-list', CouponsIntegration::get_assets_url() . '/js/index.js', [], $this->plugin_version, \true);
-        wp_localize_script('fc-code-list', 'fcCodeImport', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('fc-core-nonce'), 'enabled' => Plugin::is_fcci_pro_addon_enabled() && CouponsIntegration::is_pro()]);
+        if (!isset($_GET['page']) || $_GET['page'] !== self::SETTINGS_SLUG) {
+            return;
+        }
+        wp_enqueue_editor();
+        wp_enqueue_script('fc-settings', CouponsIntegration::get_assets_url() . '/js/index.js', [], $this->plugin_version, \true);
+        wp_localize_script('fc-settings', 'fcCodeImport', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('fc-core-nonce'), 'enabled' => Plugin::is_fcci_pro_addon_enabled() && CouponsIntegration::is_pro()]);
+        wp_localize_script('fc-settings', 'fcSendingSettings', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('fc-email-templates-nonce'), 'enabled' => Plugin::is_fcs_pro_addon_enabled() && CouponsIntegration::is_pro()]);
     }
     /**
      * Save POST tab data. Before render.
@@ -67,7 +71,7 @@ class SettingsForm implements Hookable
      */
     public function save_settings_action()
     {
-        if (isset($_GET['page']) && $_GET['page'] !== self::SETTINGS_SLUG) {
+        if (!isset($_GET['page']) || $_GET['page'] !== self::SETTINGS_SLUG) {
             return;
         }
         $tab = $this->get_active_tab();
