@@ -514,6 +514,7 @@ return array(
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\CouponsIntegration' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/CouponsIntegration.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Data\\Email\\EmailMeta' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Data/Email/EmailMeta.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\Email' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/Email.php',
+    'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\EmailPreview' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/EmailPreview.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\FlexibleCouponsBaseEmail' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/FlexibleCouponsBaseEmail.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Exception\\EmailException' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Exception/EmailException.php',
     'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Helpers\\EmailStrings' => $baseDir . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Helpers/EmailStrings.php',

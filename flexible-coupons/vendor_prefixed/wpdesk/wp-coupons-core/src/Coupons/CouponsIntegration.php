@@ -8,10 +8,8 @@
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons;
 
 use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
-use FlexibleCouponsVendor\Psr\Log\NullLogger;
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\EditorIntegration;
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\Shortcode;
-use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Coupon\GenerateCoupon;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\NullProductFields;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\ProductFields;
@@ -27,6 +25,7 @@ use FlexibleCouponsVendor\WPDesk\View\Resolver\ChainResolver;
 use FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Defaults;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Email\EmailPreview;
 /**
  * Main class for the implementation of the coupon library.
  *
@@ -157,6 +156,7 @@ class CouponsIntegration implements Hookable, HookableCollection
         $this->add_hookable(new Product\SaveProductSimpleData($product_fields, $post_meta));
         $this->add_hookable(new Product\SaveProductVariationData($product_fields, $post_meta));
         $this->add_hookable(new Defaults\DefaultEmailTemplateAjax());
+        $this->add_hookable(new EmailPreview());
         do_action('fc/core/init', new PluginAccess($renderer, $logger, $persistence, $pdf, $download, $shortcodes, $post_meta, $product_fields, $this->plugin_version));
     }
 }

@@ -567,6 +567,7 @@ class ComposerStaticInitb9e21125b968621db547e648a68d5dcb
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\CouponsIntegration' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/CouponsIntegration.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Data\\Email\\EmailMeta' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Data/Email/EmailMeta.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\Email' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/Email.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\EmailPreview' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/EmailPreview.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Email\\FlexibleCouponsBaseEmail' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Email/FlexibleCouponsBaseEmail.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Exception\\EmailException' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Exception/EmailException.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Helpers\\EmailStrings' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Helpers/EmailStrings.php',
