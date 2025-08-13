@@ -51,11 +51,11 @@
 		"hoa/console": "^3.17",
 		"monolog/monolog": "*",
 		"phpunit/phpunit": "^7|^8|^9",
-		"wpdesk/wp-canva-editor": "^1.4",
 		"wpdesk/ltv-dashboard-widget": "^1.5",
 		"wpdesk/phpstan-rules": "^1.1",
+		"wpdesk/wp-canva-editor": "^1.4",
 		"wpdesk/wp-codeception": "^2",
-		"wpdesk/wp-coupons-core": "^2.4.0",
+		"wpdesk/wp-coupons-core": "^2.5",
 		"wpdesk/wp-logs": "^1.13",
 		"wpdesk/wp-plugin-flow-free": "*",
 		"wpdesk/wp-show-decision": "^1.0",
@@ -86,5 +86,7 @@
 			"type": "composer",
 			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
 		}
-	}
+	},
+	"version": "1.12.2",
+	"type": "wordpress-plugin"
 }

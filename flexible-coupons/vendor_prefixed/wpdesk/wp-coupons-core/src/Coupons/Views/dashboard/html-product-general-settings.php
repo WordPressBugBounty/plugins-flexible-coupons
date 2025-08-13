@@ -56,7 +56,7 @@ if (!$is_multiple_pdfs) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link()) . '&utm_content=&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcmpdf_link()) . '&utm_content=&utm_content=edit-product'),
         '</a>'
     );
     echo '</p>';

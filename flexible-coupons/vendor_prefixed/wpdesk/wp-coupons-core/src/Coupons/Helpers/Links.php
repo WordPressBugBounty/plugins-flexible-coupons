@@ -83,9 +83,9 @@ class Links
     }
     public static function get_fcci_buy_link(): string
     {
-        $sending_link = 'https://flexiblecoupons.net';
+        $sending_link = 'https://flexiblecoupons.net/products/flexible-pdf-coupons-pro-coupon-codes-import/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-code-import';
         if (get_locale() === 'pl_PL') {
-            $sending_link = 'https://flexiblecoupons.net';
+            $sending_link = 'https://www.wpdesk.pl/sklep/kupony-pdf-woocommerce-pro-import-kodow/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-code-import';
         }
         return $sending_link;
     }
