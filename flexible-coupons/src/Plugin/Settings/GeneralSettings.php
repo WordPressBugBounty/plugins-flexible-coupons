@@ -14,6 +14,7 @@ use FlexibleCouponsVendor\WPDesk\Forms\Field\InputTextField;
 use FlexibleCouponsVendor\WPDesk\Forms\Field\Paragraph;
 use FlexibleCouponsVendor\WPDesk\Forms\Field\SelectField;
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
+use WPDesk\Forms\Field\ToggleField;
 
 /**
  * Define pro fields for general settings.
@@ -58,23 +59,28 @@ class GeneralSettings implements Hookable {
 				->set_default_value( get_option( 'date_format' ) )
 				->set_disabled()
 				->set_readonly(),
-			( new CheckboxField() )
+			( new ToggleField() )
+				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_name( self::ATTACH_COUPON )
 				->set_label( esc_html__( 'PDF as attachment', 'flexible-coupons' ) )
-				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_description( esc_html__( 'Enable to add PDF coupons as email attachments. If this option is disabled, recipients will only be able to download the coupon via a link in the email.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),
 			( new SelectField() )
-				->set_name( self::PRODUCT_PAGE_POSITION )
-				->set_label( esc_html__( 'Coupon fields position on the product page', 'flexible-coupons' ) )
 				->set_options(
 					[
 						'below' => esc_html__( 'Below Add to cart button', 'flexible-coupons' ),
 						'above' => esc_html__( 'Above Add to cart button', 'flexible-coupons' ),
 					]
 				)
-				->set_description( esc_html__( 'Select where the coupon fields will be displayed on the product page.', 'flexible-coupons' ) )
+				->set_name( self::PRODUCT_PAGE_POSITION )
+				->set_label( esc_html__( 'Coupon fields position on the product page', 'flexible-coupons' ) )
+				->set_description(
+					esc_html__(
+						'Select where the coupon fields will be displayed on the product page.',
+						'flexible-coupons'
+					)
+				)
 				->set_disabled()
 				->set_readonly(),
 			( new Header() )
@@ -93,7 +99,7 @@ class GeneralSettings implements Hookable {
 				->set_name( self::COUPON_CODE_LENGTH )
 				->set_label( esc_html__( 'Number of random characters', 'flexible-coupons' ) )
 				->set_description( esc_html__( 'The number of random characters in the coupon code. Random characters will be used for generating unique coupon codes. Choose the number between 5 and 30.', 'flexible-coupons' ) )
-				->set_default_value( 5 )
+				->set_default_value( '5' )
 				->set_disabled()
 				->set_readonly(),
 			( new InputTextField() )
@@ -102,24 +108,24 @@ class GeneralSettings implements Hookable {
 				->set_description( __( 'Define the suffix which will be used as a end of your coupon code. Leave empty if you don’t want to use the suffix. Use <code>{order_id}</code> shortcode if you want to use the order number.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),
-			( new CheckboxField() )
+			( new ToggleField() )
+				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_name( self::USE_REGULAR_PRICE )
 				->set_label( esc_html__( 'Coupon value', 'flexible-coupons' ) )
-				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_description( esc_html__( 'Always use the regular price of the product for the coupon value.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),
-			( new CheckboxField() )
+			( new ToggleField() )
+				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_name( self::SHOW_TIPS_FIELD )
 				->set_label( esc_html__( 'Show field tips', 'flexible-coupons' ) )
-				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_description( esc_html__( 'Show tooltips for fields.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),
-			( new CheckboxField() )
+			( new ToggleField() )
+				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_name( self::SHOW_TEXTAREA_COUNTER_FIELD )
 				->set_label( esc_html__( 'Show textarea counter', 'flexible-coupons' ) )
-				->set_sublabel( esc_html__( 'Enable', 'flexible-coupons' ) )
 				->set_description( esc_html__( 'Show character counter below textarea.', 'flexible-coupons' ) )
 				->set_disabled()
 				->set_readonly(),

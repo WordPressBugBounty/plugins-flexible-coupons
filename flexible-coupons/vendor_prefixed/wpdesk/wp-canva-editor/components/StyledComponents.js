@@ -173,6 +173,7 @@ export const DivWrapper = styled.div`
 
   .ro {
     margin-right: -3px;
+    cursor: grab;
   }
 `
 

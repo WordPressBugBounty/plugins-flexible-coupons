@@ -67,7 +67,18 @@
 .fc-options-group {
     float: none;
     width: 100%;
-    max-width: 724px
+    border-bottom: 1px solid #eee;
+    padding-left: 0.8rem;
+    padding-bottom: 0.6rem;
+}
+
+.fc-options-group .input-container{
+    position: relative;
+    max-width: 724px;
+}
+
+.fc-options-group h3{
+    font-size: 0.9rem;
 }
 
 .fc-options-group .short {
@@ -85,8 +96,7 @@
 }
 
 .fc-custom-fields-group {
-    width: 640px;
-    max-width: 640px;
+
 }
 
 .checkbox-wrapper {
@@ -217,7 +227,7 @@ a.sending-link {
 }
 
 #pdfcoupon_product_data {
-    padding: 20px 5px;
+    padding: 20px 0;
 }
 
 #pdfcoupon_product_data p.form-field {
@@ -227,4 +237,98 @@ a.sending-link {
 
 #pdfcoupon_product_data .checkbox {
     margin: 5px 0 !important;
+}
+
+.addon-pill-container {
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    display: inline-block;
+}
+
+.addon-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 2rem;
+    background-color: #a3339f;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.addon-pill:hover {
+    background-color: rgba(163,51,159,0.9);
+    color: white;
+}
+
+.addon-pill-text {
+    margin-right: 8px;
+}
+
+.addon-pill-arrow {
+    display: none;
+    transition: opacity 0.3s ease;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+    line-height: 0;
+    margin-right: 0.3rem;
+}
+
+.addon-pill:hover .addon-pill-arrow {
+    display: block;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 220px;
+    background-color: rgba(51,51,51,0.9);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 120%;
+    right: 0;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.addon-pill-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 80%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent rgba(51,51,51,0.9) transparent;
+}
+
+.addon-pill-container.addon-pill-container__settings {
+    position: absolute;
+    left: 210px;
+    top: -2.8rem;
+}
+
+.addon-pill-container.cupon-code-pill {
+    left: 230px;
+    top: -4.5rem;
+}
+
+.addon-pill-container.email-pill {
+    top: -6.4rem;
+}
+
+.addon-pill-container.sending-pill{
+    left: auto;
 }

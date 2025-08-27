@@ -5,7 +5,7 @@ Donate link: https://flexiblecoupons.net/products/flexible-coupons-woocommerce
 Tags: gift card, voucher, coupon, pdf ticket, qr code
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.12.2
+Stable tag: 1.13.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -482,6 +482,10 @@ Yes 😊.
 59. Use imported coupon codes for products (PRO add-on).
 
 == Changelog ==
+
+= 1.13.0 - 2025-08-27 =
+* Added UI improvements
+* Added Bold and italic fonts in editor
 
 = 1.12.2 - 2025-08-13 =
 * Added support for WooCommerce 10.1

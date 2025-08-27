@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b
+class ComposerStaticInite91b31d17fe88795de439c09d2d1baac
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -490,6 +490,7 @@ class ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\Header' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/Header.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\HiddenField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/HiddenField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\ImageInputField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/ImageInputField.php',
+        'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\InputEmailField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/InputEmailField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\InputNumberField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/InputNumberField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\InputTextField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/InputTextField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\MultipleInputTextField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/MultipleInputTextField.php',
@@ -502,24 +503,24 @@ class ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\SubmitField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/SubmitField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\TextAreaField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/TextAreaField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\TimepickerField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/TimepickerField.php',
+        'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\ToggleField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/ToggleField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\Traits\\HtmlAttributes' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/Traits/HtmlAttributes.php',
+        'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\WPEditorField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/WPEditorField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\WooSelect' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/WooSelect.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Field\\WyswigField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Field/WyswigField.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\FieldsDataReceiver' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/FieldsDataReceiver.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Form' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Form.php',
-        'FlexibleCouponsVendor\\WPDesk\\Forms\\Form\\AbstractForm' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Form/AbstractForm.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Form\\FormWithFields' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Form/FormWithFields.php',
-        'FlexibleCouponsVendor\\WPDesk\\Forms\\Form\\FormsCollection' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Form/FormsCollection.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Persistence\\FieldPersistenceStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Persistence/FieldPersistenceStrategy.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Renderer\\JsonNormalizedRenderer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Renderer/JsonNormalizedRenderer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Resolver\\DefaultFormFieldResolver' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Resolver/DefaultFormFieldResolver.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Sanitizer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Sanitizer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Sanitizer\\CallableSanitizer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Sanitizer/CallableSanitizer.php',
+        'FlexibleCouponsVendor\\WPDesk\\Forms\\Sanitizer\\EmailSanitizer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Sanitizer/EmailSanitizer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Sanitizer\\NoSanitize' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Sanitizer/NoSanitize.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Sanitizer\\TextFieldSanitizer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Sanitizer/TextFieldSanitizer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Serializer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Serializer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Serializer\\JsonSerializer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Serializer/JsonSerializer.php',
-        'FlexibleCouponsVendor\\WPDesk\\Forms\\Serializer\\NoSerialize' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Serializer/NoSerialize.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Serializer\\ProductSelectSerializer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Serializer/ProductSelectSerializer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Serializer\\SerializeSerializer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Serializer/SerializeSerializer.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Validator' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Validator.php',
@@ -585,6 +586,7 @@ class ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\Config' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/Config.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\Download' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/Download.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\FontsData' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/FontsData.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\ImageHandler' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/ImageHandler.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\Items' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/Items.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\PDF' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/PDF.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\PDFWrapper' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/PDFWrapper.php',
@@ -594,6 +596,7 @@ class ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Product\\SaveProductSimpleData' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/SaveProductSimpleData.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Product\\SaveProductVariationData' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Product/SaveProductVariationData.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Defaults\\DefaultEmailTemplateAjax' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Defaults/DefaultEmailTemplateAjax.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\AddonField' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/AddonField.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\CouponCodeList' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/CouponCodeList.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\CouponEmailTemplatesList' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/CouponEmailTemplatesList.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Settings\\Fields\\DisableFieldImportAddonAdapter' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Fields/DisableFieldImportAddonAdapter.php',
@@ -836,9 +839,9 @@ class ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1a5e4ed4439e723b8a9400a44a8d505b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite91b31d17fe88795de439c09d2d1baac::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite91b31d17fe88795de439c09d2d1baac::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite91b31d17fe88795de439c09d2d1baac::$classMap;
 
         }, null, ClassLoader::class);
     }

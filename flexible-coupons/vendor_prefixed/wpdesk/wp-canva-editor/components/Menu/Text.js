@@ -23,6 +23,7 @@ class Text extends React.Component {
                     key={key}
                     fontSize={text_props.fontSize}
                     fontWeight={text_props.fontWeight}
+                    fontStyle={text_props.fontStyle}
                     title={lang('add_to_area')}
                     onClick={ (event) => this.addText( event, { ...text_props })}>
                         {text_props.name}

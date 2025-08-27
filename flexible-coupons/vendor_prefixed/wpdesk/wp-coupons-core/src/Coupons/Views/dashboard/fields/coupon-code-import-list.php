@@ -16,7 +16,7 @@ use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
  */
 $meta = $params['post_meta'];
 $product_id = $params['post_id'];
-$is_code_import = $params['is_code_import'];
+$is_code_import = $params['is_code_import'] ?? [];
 $options = $params['options'];
 $loop_id = isset($params['loop']) ? '_variation' . $params['loop'] : '';
 $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';

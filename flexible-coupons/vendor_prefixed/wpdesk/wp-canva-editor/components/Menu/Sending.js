@@ -18,7 +18,7 @@ class Sending extends React.Component {
         if (lang('sending_plugin_enabled') === 'no') {
             SendingLink = (
                 <QRHeader>
-                    {lang('sending_plugin_buy_label')}: <a target="_blank" class="sending-link" href={lang('sending_buy_url')}>{lang('sending_plugin_name')} &rarr;</a>
+                    {lang('sending_plugin_buy_label')}: <a target="_blank" className="sending-link" href={lang('sending_buy_url')}>{lang('sending_plugin_name')} &rarr;</a>
                 </QRHeader>
             );
         }
@@ -42,7 +42,7 @@ class Sending extends React.Component {
         return (
             <React.Fragment>
                 <QRHeader>
-                    <a target="_blank" class="sending-link" href={lang('sending_settings_url')}>{lang('sending_plugin_label')} &rarr;</a>
+                    <a target="_blank" className="sending-link" href={lang('sending_settings_url')}>{lang('sending_plugin_label')} &rarr;</a>
                 </QRHeader>
             </React.Fragment>
         );

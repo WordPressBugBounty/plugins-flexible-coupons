@@ -12,13 +12,12 @@ class LinkField extends BasicField
 {
     public function __construct()
     {
-        parent::__construct();
         $this->set_name('');
     }
     /**
      * @return string
      */
-    public function get_template_name()
+    public function get_template_name(): string
     {
         return 'link';
     }

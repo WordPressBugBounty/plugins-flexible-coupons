@@ -64,8 +64,14 @@ class MyAccount implements Hookable
             $coupon_data = $this->postmeta->get_private($coupon_id, 'fcpdf_coupon_data', []);
             $coupon_code = $coupon->get_id() ? $coupon->get_code() : '';
             $download_url = $coupon->get_id() ? Helper::make_coupon_url($coupon_data) : '';
+            $expiration_date = $coupon->get_date_expires() ? $coupon->get_date_expires()->date('d-m-Y') : '';
+            $coupon_value = wc_price($coupon->get_amount(), ['currency' => $order->get_currency()]);
+            // @phpstan-ignore-line
+            $recipient_name = $item->get_meta('flexible_coupon_recipient_name');
+            $recipient_email = $item->get_meta('flexible_coupon_recipient_email');
+            $usage_limit = $this->postmeta->get_private($product_id, 'flexible_coupon_remove_usage_limit');
             if ($download_url && $coupon_code) {
-                $data[] = ['product_name' => $item->get_name(), 'coupon_code' => $coupon_code, 'coupon_is_used' => $this->is_coupon_limit_reached($coupon), 'download_url' => $download_url];
+                $data[] = ['product_name' => $item->get_name(), 'product_url' => get_permalink($product_id), 'coupon_code' => $coupon_code, 'coupon_is_used' => $this->is_coupon_limit_reached($coupon), 'download_url' => $download_url, 'coupon_value' => $coupon_value, 'coupon_initial_value' => $coupon_data['coupon_value'], 'expiration_date' => $expiration_date, 'recipient_name' => $recipient_name, 'recipient_email' => $recipient_email, 'usage_limit' => $usage_limit];
             }
         }
         $this->renderer->output_render('html-account', ['coupons' => $data]);

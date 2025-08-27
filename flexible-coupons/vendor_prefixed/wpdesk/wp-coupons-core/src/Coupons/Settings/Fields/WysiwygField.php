@@ -8,12 +8,13 @@ use FlexibleCouponsVendor\WPDesk\Forms\Field;
  *
  * @package WPDesk\Library\WPCoupons\Settings\Fields
  */
+// @phpstan-ignore-next-line
 class WysiwygField extends Field\WyswigField
 {
     /**
      * @return string
      */
-    public function get_template_name()
+    public function get_template_name(): string
     {
         return 'wysiwyg';
     }

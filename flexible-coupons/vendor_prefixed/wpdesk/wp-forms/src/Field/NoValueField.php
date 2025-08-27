@@ -9,8 +9,8 @@ namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
  */
 abstract class NoValueField extends BasicField
 {
-    public function get_name()
+    public function __construct()
     {
-        return '';
+        $this->set_name('');
     }
 }

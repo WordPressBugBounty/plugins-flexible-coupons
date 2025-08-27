@@ -284,12 +284,12 @@ class EditorObject extends React.Component {
     }
 
     render() {
-        const {textAlign, text, zIndex, fontFamily, fontSize, fontWeight, backgroundColor, color, width, top, left, height, rotateAngle } = this.state;
+        const {textAlign, text, zIndex, fontFamily, fontSize, fontWeight, backgroundColor, color, width, top, left, height, rotateAngle, fontStyle } = this.state;
 
         let fontColor = this.getColor( color );
 
         let font_family = "'" + fontFamily + "', serif";
-        const objectStyle = { zIndex: zIndex, margin: 0, padding: 0, width, textAlign: textAlign, fontWeight: fontWeight, fontFamily: font_family, color: fontColor, fontSize: fontSize + 'px', height, top, left, transform: `rotate(${rotateAngle}deg)`, position: 'absolute' }
+        const objectStyle = { zIndex: zIndex, margin: 0, padding: 0, width, textAlign: textAlign, fontWeight: fontWeight, fontStyle: fontStyle, fontFamily: font_family, color: fontColor, fontSize: fontSize + 'px', height, top, left, transform: `rotate(${rotateAngle}deg)`, position: 'absolute' }
         const { type, url, tag } = this.props.objectProps;
         let AreaObject;
 
@@ -319,7 +319,7 @@ class EditorObject extends React.Component {
                     minWidth={20}
                     minHeight={20}
                     zoomable='n, w, s, e, nw, ne, se, sw'
-                    rotatable={false}
+                    rotatable={ type === 'image' }
                     // onRotateStart={this.handleRotateStart}
                     onRotate={this.handleRotate}
                     onRotateEnd={this.handleRotateEnd}

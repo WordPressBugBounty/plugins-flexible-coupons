@@ -38,7 +38,7 @@
         "psr\/log": "^1.1.0",
         "wpdesk\/wp-builder": "^2.0",
         "wpdesk\/wp-coupons-interfaces": "1.1.0",
-        "wpdesk\/wp-forms": "^2",
+        "wpdesk\/wp-forms": "^3",
         "wpdesk\/wp-notice": "^3.1.1",
         "wpdesk\/wp-persistence": "3.0",
         "wpdesk\/wp-view": "^2"
@@ -64,7 +64,9 @@
         }
     },
     "scripts": {
-        "phpcs": "phpcs",
+        "phpcs": "phpcs --warning-severity=0",
+        "phpcbf": "phpcbf src",
+        "phpstan": "vendor\/bin\/phpstan",
         "phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
         "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
         "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",

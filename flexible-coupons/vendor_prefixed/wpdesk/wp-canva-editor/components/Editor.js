@@ -318,6 +318,7 @@ class Editor extends React.Component {
 			url: properties.type === 'image' ? '' : '',
 			tag: properties.tag ? properties.tag : '',
 			fontWeight: properties.tag === 'h1' || properties.tag === 'h2' || properties.tag === 'h3' ? '700' : '400',
+            fontStyle: properties.fontStyle ? properties.fontStyle : 'normal',
 			color: '#000',
 			zIndex: '0',
 			active: 0,

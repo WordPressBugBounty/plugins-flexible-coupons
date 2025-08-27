@@ -31,7 +31,7 @@ class Items
      */
     private function default_object_data(): array
     {
-        return ['title' => '', 'width' => '', 'realWidth' => '', 'height' => '', 'realHeight' => '', 'top' => '', 'left' => '', 'rotate' => '0', 'url' => '', 'type' => 'image', 'rotateAngle' => 'image', 'textAlign' => 'left'];
+        return ['title' => '', 'width' => '', 'realWidth' => '', 'height' => '', 'realHeight' => '', 'top' => '', 'left' => '', 'rotate' => '0', 'url' => '', 'type' => 'image', 'rotateAngle' => 'image', 'textAlign' => 'left', 'fontWeight' => 'normal', 'fontStyle' => 'normal'];
     }
     /**
      * @return string
@@ -43,26 +43,16 @@ class Items
         }
         return '';
     }
-    /**
-     * Define inline styles for object and return HTML.
-     *
-     * @param array $object
-     *
-     * @return string
-     */
     private function get_image_html(array $object): string
     {
-        $styles = '
-		transform: rotate(' . $object['rotateAngle'] . 'deg);
-		position: absolute;
-		top: ' . $object['top'] . 'px;
-		left: ' . $object['left'] . 'px;
-		width: ' . $object['width'] . 'px;
-		height: ' . $object['height'] . 'px;
-		background: transparent url(' . $object['url'] . ') 0 0 no-repeat;
-		background-size: ' . $object['width'] . 'px ' . $object['height'] . 'px;
-		';
-        return '<div ' . $this->rtl_dir() . ' class="image" style="' . $styles . '"></div>';
+        if (empty($object['rotateAngle']) || (int) $object['rotateAngle'] === 0 || !extension_loaded('gd')) {
+            return ImageHandler::get_simple_image_html($object);
+        }
+        try {
+            return ImageHandler::get_prerotated_image_html($object);
+        } catch (Exception $e) {
+            return ImageHandler::get_simple_image_html($object);
+        }
     }
     /**
      * Define inline styles for text item and return HTML.
@@ -83,6 +73,8 @@ class Items
 		position: absolute;
 		top: ' . $object['top'] . 'px;
 		left: ' . $object['left'] . 'px;
+		font-weight: ' . $object['fontWeight'] . ';
+		font-style: ' . $object['fontStyle'] . ';
 		font-size: ' . $object['fontSize'] . 'px;
 		color: ' . $color . ';
 		width: ' . $object['width'] . 'px;

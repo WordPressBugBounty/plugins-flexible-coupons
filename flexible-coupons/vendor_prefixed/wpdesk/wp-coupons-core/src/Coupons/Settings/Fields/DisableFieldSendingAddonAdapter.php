@@ -3,6 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields;
 
 use FlexibleCouponsVendor\WPDesk\Forms\Field\BasicField;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\CouponsIntegration;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Plugin;
 class DisableFieldSendingAddonAdapter
 {
@@ -18,7 +19,7 @@ class DisableFieldSendingAddonAdapter
      */
     public function get_field()
     {
-        if (!Plugin::is_fcs_pro_addon_enabled()) {
+        if (!Plugin::is_fcs_pro_addon_enabled() && CouponsIntegration::is_pro()) {
             $this->field->set_disabled();
             $this->field->set_readonly();
             return $this->field;

@@ -26,15 +26,15 @@ class PDFWrapper
         $default_font_data = $default_font_config['fontdata'];
         $fonts_data = new FontsData();
         $fonts_data->set_font('lato', 'Lato');
-        $fonts_data->set_font_without_italic('nunito', 'Nunito');
-        $fonts_data->set_font_without_italic('rubik', 'Rubik');
-        $fonts_data->set_font_without_italic('montserrat', 'Montserrat');
-        $fonts_data->set_font_without_italic('opensans', 'OpenSans');
-        $fonts_data->set_font_without_italic('quicksand', 'Quicksand');
-        $fonts_data->set_font_without_italic('roboto', 'Roboto');
-        $fonts_data->set_font_without_italic('raleway', 'Raleway');
-        $fonts_data->set_font_without_italic('titilliumweb', 'TitilliumWeb');
-        $fonts_data->set_font_without_italic('robotoslab', 'RobotoSlab');
+        $fonts_data->set_font('nunito', 'Nunito');
+        $fonts_data->set_font('rubik', 'Rubik');
+        $fonts_data->set_font('montserrat', 'Montserrat');
+        $fonts_data->set_font('opensans', 'OpenSans');
+        $fonts_data->set_font('quicksand', 'Quicksand');
+        $fonts_data->set_font('roboto', 'Roboto');
+        $fonts_data->set_font('raleway', 'Raleway');
+        $fonts_data->set_font('titilliumweb', 'TitilliumWeb');
+        $fonts_data->set_font('robotoslab', 'RobotoSlab');
         $fonts_data->set_font_without_italic('opensanscondensed', 'OpenSansCondensed');
         $fonts = $fonts_data->get();
         /**

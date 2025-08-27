@@ -1,6 +1,6 @@
 {
     "name": "wpdesk\/wp-canva-editor",
-    "version": "1.5.1",
+    "version": "1.5.0",
     "description": "Visual editor",
     "license": "MIT",
     "keywords": [
@@ -57,6 +57,7 @@
     },
     "scripts": {
         "phpcs": "phpcs",
+        "phpcbf": "phpcbf src",
         "phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
         "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
         "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",

@@ -2,20 +2,19 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
+use FlexibleCouponsVendor\WPDesk\Forms\Sanitizer;
 use FlexibleCouponsVendor\WPDesk\Forms\Sanitizer\TextFieldSanitizer;
 class InputNumberField extends BasicField
 {
-    public function __construct()
+    public function get_type(): string
     {
-        parent::__construct();
-        $this->set_default_value('');
-        $this->set_attribute('type', 'number');
+        return 'number';
     }
-    public function get_sanitizer()
+    public function get_sanitizer(): Sanitizer
     {
         return new TextFieldSanitizer();
     }
-    public function get_template_name()
+    public function get_template_name(): string
     {
         return 'input-number';
     }

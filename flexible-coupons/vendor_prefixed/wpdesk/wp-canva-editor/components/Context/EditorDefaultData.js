@@ -28,6 +28,7 @@ export const ObjectData = {
         a: 1000,
     },
     fontWeight: 400,
+    fontStyle: 'normal',
     backgroundColor: 'transparent',
     textAlign: 'left',
     zIndex: 'auto',
@@ -53,6 +54,7 @@ export const TextData = {
     width: 200,
     top: 150,
     fontWeight: 400,
+    fontStyle: 'normal',
     fontSize: 16,
     left: 20,
 }

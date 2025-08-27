@@ -2,7 +2,6 @@ import React from 'react';
 import {CloseMenuRight, ControlSelect, IconButton, PropModal} from '../StyledComponents';
 import {
     BsArrowsFullscreen,
-    FiRotateCw,
     FiHelpCircle,
     FaSortAmountUpAlt,
     FaSortAmountDownAlt,
@@ -13,7 +12,9 @@ import {
     FaAlignRight,
     FaRegTrashAlt,
     FaRegClone,
-    MdClose
+    MdClose,
+    FiBold,
+    FiItalic
 } from '../Context/Icons';
 import {SketchPicker} from 'react-color';
 import {fonts_list, lang} from '../Helpers';
@@ -51,7 +52,9 @@ class ObjectsProperties extends React.Component {
                 b: 255,
                 a: 100,
             },
-            fontFamily: 'Open Sans'
+            fontFamily: 'Open Sans',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
         }
 
         this.isWhiteColor = false;
@@ -74,6 +77,16 @@ class ObjectsProperties extends React.Component {
     textAlign = (e, align) => {
         e.preventDefault();
         this.props.updateObjectProperties('textAlign', align);
+    }
+
+    bold = (e, current) => {
+        e.preventDefault();
+        this.props.updateObjectProperties('fontWeight', current === 'bold' ? 'normal' : 'bold');
+    }
+
+    italic = (e, current) => {
+        e.preventDefault();
+        this.props.updateObjectProperties('fontStyle', current === 'italic' ? 'normal' : 'italic');
     }
 
     handleCloseModal = (index) => {
@@ -140,7 +153,7 @@ class ObjectsProperties extends React.Component {
         }
 
         if (this.props.selectedObject.e !== null && this.props.selectedObject.type === 'text') {
-            const {fontFamily, textAlign, fontSize, color} = this.props.selectedObject.e;
+            const {fontFamily, textAlign, fontSize, color, fontStyle, fontWeight} = this.props.selectedObject.e;
             let buttonBgColor = '#FFF';
             let fontColor = this.getColor(color);
             if (fontColor === 'rgba(255,255,255,1)') {
@@ -170,6 +183,8 @@ class ObjectsProperties extends React.Component {
                                 <SketchPicker key={1} width="200" presetColors={this.state.fontColors} color={color} onChangeComplete={this.handleColorComplete}/>
                             </PropModal>
                         </span>
+                        <IconButton title={lang('font_bold')} className={fontWeight === 'bold' ? 'active' : ''} onClick={(event) => this.bold(event, fontWeight)}><FiBold/></IconButton>
+                        <IconButton title={lang('font_italic')} className={fontStyle === 'italic' ? 'active' : ''} onClick={(event) => this.italic(event, fontStyle)}><FiItalic/></IconButton>
                     </div>
                     <div className="right">
                         <IconButton title={lang('layer_up')} className="layer-up" onClick={(event) => this.props.fireAction(event, 'object_layer_up')}><FaSortAmountUpAlt/></IconButton>

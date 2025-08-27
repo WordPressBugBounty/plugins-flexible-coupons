@@ -439,7 +439,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.QRHeader = exports.ProVersion = exports.AuxLineHorizontal = exports.AuxLineVertical = exports.PropModal = exports.IconButton = exports.ControlSelect = exports.BackgroundSquare = exports.Modal = exports.Header = exports.Label = exports.CloseMenuRight = exports.MenuItemBody = exports.MenuItem = exports.EditorMenuRight = exports.EditorMenuLeft = exports.EditorMenu = exports.EditorImagesWrapper = exports.QRCodeContainer = exports.ImageContainer = exports.ListItem = exports.ListParent = exports.MenuTextWrapperItem = exports.MenuTextWrapper = exports.DivWrapper = exports.EditorWrapper = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n\twidth: 100%;\n\toverflow: hidden;\n\tposition: relative;\n\tflex: 1;\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: nowrap;\n\tz-index: 0;\n\tbox-sizing: border-box;\n'], ['\n\twidth: 100%;\n\toverflow: hidden;\n\tposition: relative;\n\tflex: 1;\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: nowrap;\n\tz-index: 0;\n\tbox-sizing: border-box;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  border: 1px dashed #7ddbf0;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  cursor: move;\n\n  &.active {\n    border: 1px solid #7ddbf0;\n  }\n\n  &.active:hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  :hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  .square {\n    position: absolute;\n    width: 9px;\n    height: 9px;\n    background: white;\n    border: 1px solid #7ddbf0;\n    border-radius: 1px;\n    border-radius: 50%;\n    display: none;\n  }\n\n   :hover .square {\n        display: block;\n    }\n\n  &.active .square {\n    display: block;\n    }\n\n  .resizable-handler {\n    position: absolute;\n    width: 14px;\n    height: 14px;\n    cursor: pointer;\n    z-index: 1;\n\n    &.tl,\n    &.t,\n    &.tr {\n      top: -7px;\n    }\n\n    &.tl,\n    &.l,\n    &.bl {\n      left: -7px;\n    }\n\n    &.bl,\n    &.b,\n    &.br {\n      bottom: -7px;\n    }\n\n    &.br,\n    &.r,\n    &.tr {\n      right: -7px;\n    }\n\n    &.l,\n    &.r {\n      margin-top: -7px;\n    }\n\n    &.t,\n    &.b {\n      margin-left: -7px;\n    }\n  }\n\n  .rotate {\n    position: absolute;\n    left: 50%;\n    top: -36px;\n    width: 18px;\n    height: 18px;\n    margin-left: -9px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n\n\n    :before {\n      content: "";\n      width: 1px;\n      height: 30px;\n      background-color: #7ddbf0;\n      position: absolute;\n      left: 50%;\n      margin-top: 23px;\n      margin-left: 1px;\n      display: none;\n    }\n\n    .square {\n      width: 11px;\n      height: 11px;\n    }\n  }\n\n  :hover .rotate,\n  &.active .rotate {\n\n    :before {\n        display: block;\n        }\n  }\n\n\n\n  .t,\n  .tl,\n  .tr {\n    top: -5px;\n  }\n\n  .b,\n  .bl,\n  .br {\n    bottom: -5px;\n  }\n\n  .r,\n  .tr,\n  .br {\n    right: -3px;\n  }\n\n  .tl,\n  .l,\n  .bl {\n    left: -3px;\n  }\n\n  .l,\n  .r {\n    top: 50%;\n    margin-top: -3px;\n  }\n\n  .t,\n  .b {\n    left: 50%;\n    margin-left: -5px;\n  }\n\n  .ro {\n    margin-right: -3px;\n  }\n'], ['\n  position: absolute;\n  border: 1px dashed #7ddbf0;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  cursor: move;\n\n  &.active {\n    border: 1px solid #7ddbf0;\n  }\n\n  &.active:hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  :hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  .square {\n    position: absolute;\n    width: 9px;\n    height: 9px;\n    background: white;\n    border: 1px solid #7ddbf0;\n    border-radius: 1px;\n    border-radius: 50%;\n    display: none;\n  }\n\n   :hover .square {\n        display: block;\n    }\n\n  &.active .square {\n    display: block;\n    }\n\n  .resizable-handler {\n    position: absolute;\n    width: 14px;\n    height: 14px;\n    cursor: pointer;\n    z-index: 1;\n\n    &.tl,\n    &.t,\n    &.tr {\n      top: -7px;\n    }\n\n    &.tl,\n    &.l,\n    &.bl {\n      left: -7px;\n    }\n\n    &.bl,\n    &.b,\n    &.br {\n      bottom: -7px;\n    }\n\n    &.br,\n    &.r,\n    &.tr {\n      right: -7px;\n    }\n\n    &.l,\n    &.r {\n      margin-top: -7px;\n    }\n\n    &.t,\n    &.b {\n      margin-left: -7px;\n    }\n  }\n\n  .rotate {\n    position: absolute;\n    left: 50%;\n    top: -36px;\n    width: 18px;\n    height: 18px;\n    margin-left: -9px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n\n\n    :before {\n      content: "";\n      width: 1px;\n      height: 30px;\n      background-color: #7ddbf0;\n      position: absolute;\n      left: 50%;\n      margin-top: 23px;\n      margin-left: 1px;\n      display: none;\n    }\n\n    .square {\n      width: 11px;\n      height: 11px;\n    }\n  }\n\n  :hover .rotate,\n  &.active .rotate {\n\n    :before {\n        display: block;\n        }\n  }\n\n\n\n  .t,\n  .tl,\n  .tr {\n    top: -5px;\n  }\n\n  .b,\n  .bl,\n  .br {\n    bottom: -5px;\n  }\n\n  .r,\n  .tr,\n  .br {\n    right: -3px;\n  }\n\n  .tl,\n  .l,\n  .bl {\n    left: -3px;\n  }\n\n  .l,\n  .r {\n    top: 50%;\n    margin-top: -3px;\n  }\n\n  .t,\n  .b {\n    left: 50%;\n    margin-left: -5px;\n  }\n\n  .ro {\n    margin-right: -3px;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  border: 1px dashed #7ddbf0;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  cursor: move;\n\n  &.active {\n    border: 1px solid #7ddbf0;\n  }\n\n  &.active:hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  :hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  .square {\n    position: absolute;\n    width: 9px;\n    height: 9px;\n    background: white;\n    border: 1px solid #7ddbf0;\n    border-radius: 1px;\n    border-radius: 50%;\n    display: none;\n  }\n\n   :hover .square {\n        display: block;\n    }\n\n  &.active .square {\n    display: block;\n    }\n\n  .resizable-handler {\n    position: absolute;\n    width: 14px;\n    height: 14px;\n    cursor: pointer;\n    z-index: 1;\n\n    &.tl,\n    &.t,\n    &.tr {\n      top: -7px;\n    }\n\n    &.tl,\n    &.l,\n    &.bl {\n      left: -7px;\n    }\n\n    &.bl,\n    &.b,\n    &.br {\n      bottom: -7px;\n    }\n\n    &.br,\n    &.r,\n    &.tr {\n      right: -7px;\n    }\n\n    &.l,\n    &.r {\n      margin-top: -7px;\n    }\n\n    &.t,\n    &.b {\n      margin-left: -7px;\n    }\n  }\n\n  .rotate {\n    position: absolute;\n    left: 50%;\n    top: -36px;\n    width: 18px;\n    height: 18px;\n    margin-left: -9px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n\n\n    :before {\n      content: "";\n      width: 1px;\n      height: 30px;\n      background-color: #7ddbf0;\n      position: absolute;\n      left: 50%;\n      margin-top: 23px;\n      margin-left: 1px;\n      display: none;\n    }\n\n    .square {\n      width: 11px;\n      height: 11px;\n    }\n  }\n\n  :hover .rotate,\n  &.active .rotate {\n\n    :before {\n        display: block;\n        }\n  }\n\n\n\n  .t,\n  .tl,\n  .tr {\n    top: -5px;\n  }\n\n  .b,\n  .bl,\n  .br {\n    bottom: -5px;\n  }\n\n  .r,\n  .tr,\n  .br {\n    right: -3px;\n  }\n\n  .tl,\n  .l,\n  .bl {\n    left: -3px;\n  }\n\n  .l,\n  .r {\n    top: 50%;\n    margin-top: -3px;\n  }\n\n  .t,\n  .b {\n    left: 50%;\n    margin-left: -5px;\n  }\n\n  .ro {\n    margin-right: -3px;\n    cursor: grab;\n  }\n'], ['\n  position: absolute;\n  border: 1px dashed #7ddbf0;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  cursor: move;\n\n  &.active {\n    border: 1px solid #7ddbf0;\n  }\n\n  &.active:hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  :hover {\n    border: 1px solid #7ddbf0;\n  }\n\n  .square {\n    position: absolute;\n    width: 9px;\n    height: 9px;\n    background: white;\n    border: 1px solid #7ddbf0;\n    border-radius: 1px;\n    border-radius: 50%;\n    display: none;\n  }\n\n   :hover .square {\n        display: block;\n    }\n\n  &.active .square {\n    display: block;\n    }\n\n  .resizable-handler {\n    position: absolute;\n    width: 14px;\n    height: 14px;\n    cursor: pointer;\n    z-index: 1;\n\n    &.tl,\n    &.t,\n    &.tr {\n      top: -7px;\n    }\n\n    &.tl,\n    &.l,\n    &.bl {\n      left: -7px;\n    }\n\n    &.bl,\n    &.b,\n    &.br {\n      bottom: -7px;\n    }\n\n    &.br,\n    &.r,\n    &.tr {\n      right: -7px;\n    }\n\n    &.l,\n    &.r {\n      margin-top: -7px;\n    }\n\n    &.t,\n    &.b {\n      margin-left: -7px;\n    }\n  }\n\n  .rotate {\n    position: absolute;\n    left: 50%;\n    top: -36px;\n    width: 18px;\n    height: 18px;\n    margin-left: -9px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n\n\n    :before {\n      content: "";\n      width: 1px;\n      height: 30px;\n      background-color: #7ddbf0;\n      position: absolute;\n      left: 50%;\n      margin-top: 23px;\n      margin-left: 1px;\n      display: none;\n    }\n\n    .square {\n      width: 11px;\n      height: 11px;\n    }\n  }\n\n  :hover .rotate,\n  &.active .rotate {\n\n    :before {\n        display: block;\n        }\n  }\n\n\n\n  .t,\n  .tl,\n  .tr {\n    top: -5px;\n  }\n\n  .b,\n  .bl,\n  .br {\n    bottom: -5px;\n  }\n\n  .r,\n  .tr,\n  .br {\n    right: -3px;\n  }\n\n  .tl,\n  .l,\n  .bl {\n    left: -3px;\n  }\n\n  .l,\n  .r {\n    top: 50%;\n    margin-top: -3px;\n  }\n\n  .t,\n  .b {\n    left: 50%;\n    margin-left: -5px;\n  }\n\n  .ro {\n    margin-right: -3px;\n    cursor: grab;\n  }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    border: 0;\n'], ['\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    border: 0;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    border: 0;\n    padding: 10px 10px;\n    margin: 0 0;\n    font-size: ', ';\n    font-weight: ', ';\n    cursor: pointer;\n'], ['\n    border: 0;\n    padding: 10px 10px;\n    margin: 0 0;\n    font-size: ', ';\n    font-weight: ', ';\n    cursor: pointer;\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n  border: 0;\n  padding: 8px 6px;\n  background-color: transparent;\n  color: #eee;\n  line-height: 1;\n  position: relative;\n\n  :hover {\n    color: #fff;\n    cursor: pointer;\n    cursor: hand;\n  }\n'], ['\n  border: 0;\n  padding: 8px 6px;\n  background-color: transparent;\n  color: #eee;\n  line-height: 1;\n  position: relative;\n\n  :hover {\n    color: #fff;\n    cursor: pointer;\n    cursor: hand;\n  }\n']),
@@ -1216,6 +1216,7 @@ var ObjectData = exports.ObjectData = {
         a: 1000
     },
     fontWeight: 400,
+    fontStyle: 'normal',
     backgroundColor: 'transparent',
     textAlign: 'left',
     zIndex: 'auto',
@@ -1241,6 +1242,7 @@ var TextData = exports.TextData = {
     width: 200,
     top: 150,
     fontWeight: 400,
+    fontStyle: 'normal',
     fontSize: 16,
     left: 20
 };
@@ -2310,8 +2312,9 @@ var FaSortAmountDownAlt = exports.FaSortAmountDownAlt = function FaSortAmountDow
 var FaFont = exports.FaFont = function FaFont() {
     return React.createElement(
         "svg",
-        { stroke: "currentColor", fill: "currentColor", strokeWidth: "0", viewBox: "0 0 448 512", height: "1em", width: "1em", xmlns: "http://www.w3.org/2000/svg" },
-        React.createElement("path", { d: "M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z" })
+        { stroke: "currentColor", fill: "currentColor", "stroke-width": "0", viewBox: "0 0 24 24", height: "1em", width: "1em", xmlns: "http://www.w3.org/2000/svg" },
+        React.createElement("path", { fill: "none", d: "M0 0h24v24H0z" }),
+        React.createElement("path", { d: "M2 20h20v4H2v-4zm3.49-3h2.42l1.27-3.58h5.65L16.09 17h2.42L13.25 3h-2.5L5.49 17zm4.42-5.61 2.03-5.79h.12l2.03 5.79H9.91z" })
     );
 };
 
@@ -2399,6 +2402,25 @@ var MdClose = exports.MdClose = function MdClose() {
         "svg",
         { stroke: "currentColor", fill: "currentColor", strokeWidth: "0", viewBox: "0 0 24 24", height: "1em", width: "1em", xmlns: "http://www.w3.org/2000/svg" },
         React.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" })
+    );
+};
+
+var FiBold = exports.FiBold = function FiBold() {
+    return React.createElement(
+        "svg",
+        { xmlns: "http://www.w3.org/2000/svg", height: "1em", width: "1em", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" },
+        React.createElement("path", { d: "M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" }),
+        React.createElement("path", { d: "M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" })
+    );
+};
+
+var FiItalic = exports.FiItalic = function FiItalic() {
+    return React.createElement(
+        "svg",
+        { xmlns: "http://www.w3.org/2000/svg", height: "1em", width: "1em", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" },
+        React.createElement("line", { x1: "19", y1: "4", x2: "10", y2: "4" }),
+        React.createElement("line", { x1: "14", y1: "20", x2: "5", y2: "20" }),
+        React.createElement("line", { x1: "15", y1: "4", x2: "9", y2: "20" })
     );
 };
 
@@ -34806,6 +34828,7 @@ var Editor = function (_React$Component) {
 				url: properties.type === 'image' ? '' : '',
 				tag: properties.tag ? properties.tag : '',
 				fontWeight: properties.tag === 'h1' || properties.tag === 'h2' || properties.tag === 'h3' ? '700' : '400',
+				fontStyle: properties.fontStyle ? properties.fontStyle : 'normal',
 				color: '#000',
 				zIndex: '0',
 				active: 0
@@ -35511,13 +35534,14 @@ var EditorObject = function (_React$Component) {
                 top = _state.top,
                 left = _state.left,
                 height = _state.height,
-                rotateAngle = _state.rotateAngle;
+                rotateAngle = _state.rotateAngle,
+                fontStyle = _state.fontStyle;
 
 
             var fontColor = this.getColor(color);
 
             var font_family = "'" + fontFamily + "', serif";
-            var objectStyle = { zIndex: zIndex, margin: 0, padding: 0, width: width, textAlign: textAlign, fontWeight: fontWeight, fontFamily: font_family, color: fontColor, fontSize: fontSize + 'px', height: height, top: top, left: left, transform: 'rotate(' + rotateAngle + 'deg)', position: 'absolute' };
+            var objectStyle = { zIndex: zIndex, margin: 0, padding: 0, width: width, textAlign: textAlign, fontWeight: fontWeight, fontStyle: fontStyle, fontFamily: font_family, color: fontColor, fontSize: fontSize + 'px', height: height, top: top, left: left, transform: 'rotate(' + rotateAngle + 'deg)', position: 'absolute' };
             var _props$objectProps = this.props.objectProps,
                 type = _props$objectProps.type,
                 url = _props$objectProps.url,
@@ -35554,7 +35578,7 @@ var EditorObject = function (_React$Component) {
                     minWidth: 20,
                     minHeight: 20,
                     zoomable: 'n, w, s, e, nw, ne, se, sw',
-                    rotatable: false
+                    rotatable: type === 'image'
                     // onRotateStart={this.handleRotateStart}
                     , onRotate: this.handleRotate,
                     onRotateEnd: this.handleRotateEnd
@@ -35712,7 +35736,7 @@ var ResizableRect = function (_Component) {
         className: this.props.className,
         styles: styles,
         zoomable: zoomable,
-        rotatable: Boolean(rotatable && onRotate),
+        rotatable: rotatable,
         parentRotateAngle: parentRotateAngle,
 
         onResizeStart: onResizeStart,
@@ -38538,6 +38562,16 @@ var ObjectsProperties = function (_React$Component) {
             _this.props.updateObjectProperties('textAlign', align);
         };
 
+        _this.bold = function (e, current) {
+            e.preventDefault();
+            _this.props.updateObjectProperties('fontWeight', current === 'bold' ? 'normal' : 'bold');
+        };
+
+        _this.italic = function (e, current) {
+            e.preventDefault();
+            _this.props.updateObjectProperties('fontStyle', current === 'italic' ? 'normal' : 'italic');
+        };
+
         _this.handleCloseModal = function (index) {
             _this.setState({ colorModal: false });
         };
@@ -38570,7 +38604,9 @@ var ObjectsProperties = function (_React$Component) {
                 b: 255,
                 a: 100
             },
-            fontFamily: 'Open Sans'
+            fontFamily: 'Open Sans',
+            fontStyle: 'normal',
+            fontWeight: 'normal'
         };
 
         _this.isWhiteColor = false;
@@ -38691,7 +38727,9 @@ var ObjectsProperties = function (_React$Component) {
                     fontFamily = _props$selectedObject.fontFamily,
                     textAlign = _props$selectedObject.textAlign,
                     fontSize = _props$selectedObject.fontSize,
-                    color = _props$selectedObject.color;
+                    color = _props$selectedObject.color,
+                    fontStyle = _props$selectedObject.fontStyle,
+                    fontWeight = _props$selectedObject.fontWeight;
 
                 var buttonBgColor = '#FFF';
                 var fontColor = this.getColor(color);
@@ -38768,6 +38806,20 @@ var ObjectsProperties = function (_React$Component) {
                                 ),
                                 _react2.default.createElement(_reactColor.SketchPicker, { key: 1, width: '200', presetColors: this.state.fontColors, color: color, onChangeComplete: this.handleColorComplete })
                             )
+                        ),
+                        _react2.default.createElement(
+                            _StyledComponents.IconButton,
+                            { title: (0, _Helpers.lang)('font_bold'), className: fontWeight === 'bold' ? 'active' : '', onClick: function onClick(event) {
+                                    return _this2.bold(event, fontWeight);
+                                } },
+                            _react2.default.createElement(_Icons.FiBold, null)
+                        ),
+                        _react2.default.createElement(
+                            _StyledComponents.IconButton,
+                            { title: (0, _Helpers.lang)('font_italic'), className: fontStyle === 'italic' ? 'active' : '', onClick: function onClick(event) {
+                                    return _this2.italic(event, fontStyle);
+                                } },
+                            _react2.default.createElement(_Icons.FiItalic, null)
                         )
                     ),
                     _react2.default.createElement(
@@ -53692,6 +53744,7 @@ var Text = function (_React$Component) {
                         key: key,
                         fontSize: text_props.fontSize,
                         fontWeight: text_props.fontWeight,
+                        fontStyle: text_props.fontStyle,
                         title: (0, _Helpers.lang)('add_to_area'),
                         onClick: function onClick(event) {
                             return _this2.addText(event, _extends({}, text_props));
@@ -53874,7 +53927,7 @@ var QRCode = function (_React$Component) {
                     ': ',
                     _react2.default.createElement(
                         'a',
-                        { target: '_blank', 'class': 'tickets-link', href: (0, _Helpers.lang)('tickets_buy_url') },
+                        { target: '_blank', className: 'tickets-link', href: (0, _Helpers.lang)('tickets_buy_url') },
                         (0, _Helpers.lang)('tickets_plugin_name'),
                         ' \u2192'
                     )
@@ -53930,7 +53983,7 @@ var QRCode = function (_React$Component) {
                         ' ',
                         _react2.default.createElement(
                             'a',
-                            { target: '_blank', 'class': 'tickets-link', href: (0, _Helpers.lang)('tickets_docs_url') },
+                            { target: '_blank', className: 'tickets-link', href: (0, _Helpers.lang)('tickets_docs_url') },
                             (0, _Helpers.lang)('tickets_docs_label'),
                             ' \u2192'
                         )
@@ -54003,7 +54056,7 @@ var Sending = function (_React$Component) {
                     ': ',
                     _react2.default.createElement(
                         'a',
-                        { target: '_blank', 'class': 'sending-link', href: (0, _Helpers.lang)('sending_buy_url') },
+                        { target: '_blank', className: 'sending-link', href: (0, _Helpers.lang)('sending_buy_url') },
                         (0, _Helpers.lang)('sending_plugin_name'),
                         ' \u2192'
                     )
@@ -54032,7 +54085,7 @@ var Sending = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         'a',
-                        { target: '_blank', 'class': 'sending-link', href: (0, _Helpers.lang)('sending_settings_url') },
+                        { target: '_blank', className: 'sending-link', href: (0, _Helpers.lang)('sending_settings_url') },
                         (0, _Helpers.lang)('sending_plugin_label'),
                         ' \u2192'
                     )
@@ -54103,19 +54156,19 @@ if(false) {
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(448);
 exports = ___CSS_LOADER_API_IMPORT___(false);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open Sans+Condensed:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap);"]);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Parisienne:wght@400&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap);"]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Parisienne:ital,wght@0,400;1,400&display=swap);"]);
 // Module
-exports.push([module.i, "[contenteditable] {\n    -webkit-user-select: text;\n    user-select: text;\n}\n\n#wpdesk-canva-area {\n    position: relative;\n    width: 100%;\n    overflow: hidden;\n    background-color: #EEE;\n    box-sizing: border-box;\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -khtml-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n\n.editor-area p, .editor-area h1, .editor-area h2, .editor-area h3 {\n    font-family: 'Open Sans', sans-serif;\n}\n\n#editor-area {\n    background-color: #FFF;\n    width: 595px;\n    height: 842px;\n    margin: 20px auto;\n    position: relative;\n    overflow: hidden;\n    box-sizing: border-box;\n}\n\n#editor-area .area-border-center-vertical {\n    position: absolute;\n    z-index: 999;\n    top: 0;\n    bottom: 0;\n    left: 50%;\n    border-left: 1px dashed #EF93FC;\n    content: \"\";\n    width: 1px;\n    height: 100%;\n}\n\n#editor-area .area-border-center-vertical-for-object {\n    position: absolute;\n    z-index: 100;\n    top: 0;\n    bottom: 0;\n    left: 70%;\n    border-left: 1px dashed #EF93FC;\n    content: \"\";\n    width: 1px;\n    height: 100%;\n}\n\n\n#editor-area .area-border-center-horizontal {\n    position: absolute;\n    z-index: 100;\n    left: 0;\n    right: 0;\n    top: 50%;\n    border-top: 1px dashed #EF93FC;\n    content: \"\";\n    height: 1px;\n    width: 100%;\n}\n\n#editor-area .area-border-top {\n    position: absolute;\n    z-index: 100;\n    right: 0;\n    left: 0;\n    top: 0;\n    border-top: 1px dashed #EF93FC;\n}\n\n#editor-area .area-border-left {\n    position: absolute;\n    z-index: 100;\n    top: 0;\n    left: 0px;\n    bottom: 0;\n    border-left: 1px dashed #EF93FC;\n    width: 0px;\n}\n\n#editor-area .area-border-right {\n    position: absolute;\n    z-index: 100;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    border-right: 1px dashed #EF93FC;\n    width: 0px;\n}\n\n\n#editor-area .area-border-bottom {\n    position: absolute;\n    z-index: 100;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    border-top: 1px dashed #EF93FC;\n    box-sizing: border-box;\n}\n\n#editor-object-properties {\n    width: 100%;\n    padding: 10px;\n    background-color: #FFF;\n    border-bottom: 1px solid #EEE;\n    box-sizing: border-box;\n    z-index: 200;\n    position: relative;\n}\n\n.editor-menu-image img {\n    max-width: 100%;\n}\n\n#editor-area img {\n    -khtml-user-select: none;\n    -o-user-select: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    user-select: none;\n}\n\n#editor-area .grid {\n    display: none;\n}\n\n.objectProperties {\n    display: flex;\n    box-sizing: border-box;\n}\n\n.objectProperties > div {\n    position: relative;\n    width: 50%;\n}\n\n.objectProperties > div.right {\n    text-align: right;\n}\n", ""]);
+exports.push([module.i, "[contenteditable] {\r\n    -webkit-user-select: text;\r\n    user-select: text;\r\n}\r\n\r\n#wpdesk-canva-area {\r\n    position: relative;\r\n    width: 100%;\r\n    overflow: hidden;\r\n    background-color: #EEE;\r\n    box-sizing: border-box;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.editor-area p, .editor-area h1, .editor-area h2, .editor-area h3 {\r\n    font-family: 'Open Sans', sans-serif;\r\n}\r\n\r\n#editor-area {\r\n    background-color: #FFF;\r\n    width: 595px;\r\n    height: 842px;\r\n    margin: 20px auto;\r\n    position: relative;\r\n    overflow: hidden;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#editor-area .area-border-center-vertical {\r\n    position: absolute;\r\n    z-index: 999;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 50%;\r\n    border-left: 1px dashed #EF93FC;\r\n    content: \"\";\r\n    width: 1px;\r\n    height: 100%;\r\n}\r\n\r\n#editor-area .area-border-center-vertical-for-object {\r\n    position: absolute;\r\n    z-index: 100;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 70%;\r\n    border-left: 1px dashed #EF93FC;\r\n    content: \"\";\r\n    width: 1px;\r\n    height: 100%;\r\n}\r\n\r\n\r\n#editor-area .area-border-center-horizontal {\r\n    position: absolute;\r\n    z-index: 100;\r\n    left: 0;\r\n    right: 0;\r\n    top: 50%;\r\n    border-top: 1px dashed #EF93FC;\r\n    content: \"\";\r\n    height: 1px;\r\n    width: 100%;\r\n}\r\n\r\n#editor-area .area-border-top {\r\n    position: absolute;\r\n    z-index: 100;\r\n    right: 0;\r\n    left: 0;\r\n    top: 0;\r\n    border-top: 1px dashed #EF93FC;\r\n}\r\n\r\n#editor-area .area-border-left {\r\n    position: absolute;\r\n    z-index: 100;\r\n    top: 0;\r\n    left: 0px;\r\n    bottom: 0;\r\n    border-left: 1px dashed #EF93FC;\r\n    width: 0px;\r\n}\r\n\r\n#editor-area .area-border-right {\r\n    position: absolute;\r\n    z-index: 100;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    border-right: 1px dashed #EF93FC;\r\n    width: 0px;\r\n}\r\n\r\n\r\n#editor-area .area-border-bottom {\r\n    position: absolute;\r\n    z-index: 100;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    border-top: 1px dashed #EF93FC;\r\n    box-sizing: border-box;\r\n}\r\n\r\n#editor-object-properties {\r\n    width: 100%;\r\n    padding: 10px;\r\n    background-color: #FFF;\r\n    border-bottom: 1px solid #EEE;\r\n    box-sizing: border-box;\r\n    z-index: 200;\r\n    position: relative;\r\n}\r\n\r\n.editor-menu-image img {\r\n    max-width: 100%;\r\n}\r\n\r\n#editor-area img {\r\n    -khtml-user-select: none;\r\n    -o-user-select: none;\r\n    -moz-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n#editor-area .grid {\r\n    display: none;\r\n}\r\n\r\n.objectProperties {\r\n    display: flex;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.objectProperties > div {\r\n    position: relative;\r\n    width: 50%;\r\n}\r\n\r\n.objectProperties > div.right {\r\n    text-align: right;\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

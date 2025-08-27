@@ -4,10 +4,6 @@ namespace FlexibleCouponsVendor\WPDesk\Forms;
 
 interface Escaper
 {
-    /**
-     * @param mixed $value
-     *
-     * @return string
-     */
-    public function escape($value);
+    /** @param mixed $value */
+    public function escape($value): string;
 }

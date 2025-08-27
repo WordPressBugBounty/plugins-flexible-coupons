@@ -2,12 +2,23 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Forms\Field;
 
+use FlexibleCouponsVendor\WPDesk\Forms\Serializer;
+use FlexibleCouponsVendor\WPDesk\Forms\Serializer\JsonSerializer;
 class TimepickerField extends BasicField
 {
-    /**
-     * @inheritDoc
-     */
-    public function get_template_name()
+    public function get_type(): string
+    {
+        return 'time';
+    }
+    public function has_serializer(): bool
+    {
+        return \true;
+    }
+    public function get_serializer(): Serializer
+    {
+        return new JsonSerializer();
+    }
+    public function get_template_name(): string
     {
         return 'timepicker';
     }

@@ -94,7 +94,7 @@ class ResizableRect extends Component {
             className={this.props.className}
             styles={styles}
             zoomable={zoomable}
-            rotatable={Boolean(rotatable && onRotate)}
+            rotatable={rotatable}
             parentRotateAngle={parentRotateAngle}
 
             onResizeStart={onResizeStart}

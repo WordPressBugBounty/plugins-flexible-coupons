@@ -19,7 +19,7 @@ class QRCode extends React.Component {
         if (lang('tickets_plugin_enabled') === 'no') {
             TicketsLink = (
                 <QRHeader>
-                    {lang('tickets_plugin_buy_label')}: <a target="_blank" class="tickets-link" href={lang('tickets_buy_url')}>{lang('tickets_plugin_name')} &rarr;</a>
+                    {lang('tickets_plugin_buy_label')}: <a target="_blank" className="tickets-link" href={lang('tickets_buy_url')}>{lang('tickets_plugin_name')} &rarr;</a>
                 </QRHeader>
             );
         }
@@ -60,7 +60,7 @@ class QRCode extends React.Component {
             <div className="editor-menu-image">
                 <EditorImagesWrapper>
                     <QRHeader>
-                        {lang('tickets_plugin_label')} <a target="_blank" class="tickets-link" href={lang('tickets_docs_url')}>{lang('tickets_docs_label')} &rarr;</a>
+                        {lang('tickets_plugin_label')} <a target="_blank" className="tickets-link" href={lang('tickets_docs_url')}>{lang('tickets_docs_label')} &rarr;</a>
                     </QRHeader>
                     {QRCodeItems}
                 </EditorImagesWrapper>

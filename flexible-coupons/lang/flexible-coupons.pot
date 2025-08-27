@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible PDF Coupons for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.12.2\n"
+"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.13.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-coupons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-13T06:36:31+00:00\n"
+"POT-Creation-Date: 2025-08-27T12:10:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: flexible-coupons\n"
@@ -49,7 +49,9 @@ msgstr ""
 
 #: src/Plugin/Email/FlexibleCouponsEmail.php:21
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/Download.php:70
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:75
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:61
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:26
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:65
 msgid "Coupon"
 msgstr ""
 
@@ -115,6 +117,12 @@ msgid "Docs"
 msgstr ""
 
 #: src/Plugin/Plugin.php:156
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:32
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:26
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-form-fields.php:21
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-purchase.php:27
 msgid "Upgrade to PRO"
 msgstr ""
 
@@ -134,7 +142,7 @@ msgstr ""
 #: src/Plugin/RegisterEditor.php:27
 #: src/Plugin/RegisterEditor.php:28
 #: src/Plugin/RegisterEditor.php:29
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:10
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:17
 msgid "PDF Coupons"
 msgstr ""
 
@@ -202,127 +210,130 @@ msgstr ""
 msgid "Amazing! You've been using Flexible PDF Coupons for Woocommerce for two weeks. I hope it meets your expectations! If so, may I ask you for a big favor and a 5-star rating on the plugin's site?"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:46
+#: src/Plugin/Settings/GeneralSettings.php:47
 msgid "Upgrade to PRO and enable options below →"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:56
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:57
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Expiry date format"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:57
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:58
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 #, php-format
 msgid "Define coupon expiry date format according to %1$sWordPress date formatting%2$s."
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:63
-msgid "PDF as attachment"
-msgstr ""
-
-#: src/Plugin/Settings/GeneralSettings.php:64
-#: src/Plugin/Settings/GeneralSettings.php:108
-#: src/Plugin/Settings/GeneralSettings.php:115
-#: src/Plugin/Settings/GeneralSettings.php:122
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:112
+#: src/Plugin/Settings/GeneralSettings.php:119
+#: src/Plugin/Settings/GeneralSettings.php:126
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Enable"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:65
+msgid "PDF as attachment"
+msgstr ""
+
+#: src/Plugin/Settings/GeneralSettings.php:66
 msgid "Enable to add PDF coupons as email attachments. If this option is disabled, recipients will only be able to download the coupon via a link in the email."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:70
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
-msgid "Coupon fields position on the product page"
-msgstr ""
-
-#: src/Plugin/Settings/GeneralSettings.php:73
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:72
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Below Add to cart button"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:74
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:73
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Above Add to cart button"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:77
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
+msgid "Coupon fields position on the product page"
+msgstr ""
+
+#: src/Plugin/Settings/GeneralSettings.php:79
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Select where the coupon fields will be displayed on the product page."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:81
+#: src/Plugin/Settings/GeneralSettings.php:87
 msgid "Coupon code"
 msgstr ""
 
 #. translators: %1$s start url, %2$s close url.
-#: src/Plugin/Settings/GeneralSettings.php:84
+#: src/Plugin/Settings/GeneralSettings.php:90
 msgid "In this section you can define your own settings for coupon code."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:88
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:94
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/coupon-code-prefix.php:31
 msgid "Coupon code prefix"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:89
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:95
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Define the prefix which will be used as a beginning of your coupon code. Leave empty if you don’t want to use the prefix. Use <code>{order_id}</code> shortcode if you want to use the order number."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:94
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:100
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/coupon-code-length.php:30
 msgid "Number of random characters"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:95
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:101
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/coupon-code-length.php:30
 msgid "The number of random characters in the coupon code. Random characters will be used for generating unique coupon codes. Choose the number between 5 and 30."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:101
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:107
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/coupon-code-suffix.php:30
 msgid "Coupon code suffix"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:102
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:108
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Define the suffix which will be used as a end of your coupon code. Leave empty if you don’t want to use the suffix. Use <code>{order_id}</code> shortcode if you want to use the order number."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:107
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:114
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:42
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:106
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:118
 msgid "Coupon value"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:109
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:115
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Always use the regular price of the product for the coupon value."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:114
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:121
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Show field tips"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:116
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:122
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Show tooltips for fields."
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:121
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:128
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Show textarea counter"
 msgstr ""
 
-#: src/Plugin/Settings/GeneralSettings.php:123
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:50
+#: src/Plugin/Settings/GeneralSettings.php:129
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Show character counter below textarea."
 msgstr ""
 
@@ -616,6 +627,14 @@ msgid "Font color"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Bold text"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+msgid "Italic text"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
 msgid "Header 1"
 msgstr ""
 
@@ -678,6 +697,8 @@ msgid "Send coupons by email and schedule gift card delivery with Flexible PDF C
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:85
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:23
 msgid "Advanced Sending"
 msgstr ""
 
@@ -857,123 +878,147 @@ msgstr ""
 msgid "Your settings have been saved."
 msgstr ""
 
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:41
+msgid "Coupon Code Format"
+msgstr ""
+
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:42
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:38
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:42
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:43
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:43
 #, php-format
 msgid "Read more in the %1$splugin documentation →%2$s"
 msgstr ""
 
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:47
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:43
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:39
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:68
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:111
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:138
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:68
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:96
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:149
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:177
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-variation-select.php:17
-#, php-format
-msgid "%1$sUpgrade to PRO →%2$s and enable options below"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:32
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:26
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-form-fields.php:21
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-purchase.php:27
+msgid "Upgrade to PRO and enable options below"
 msgstr ""
 
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:52
-#, php-format
-msgid "Buy %1$sFlexible PDF Coupons PRO - Coupon Codes Import →%2$s and enable options below"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+msgid "UI Settings"
 msgstr ""
 
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:57
-#, php-format
-msgid "%1$sGet Flexible Coupons PRO with add-ons in one Bundle →%2$s and enable options below"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+msgid "Codes Import"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:60
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:29
+msgid "Coupon Codes Import"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+msgid "Buy Flexible PDF Coupons PRO - Coupon Codes Import and enable options below"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+msgid "Add-on Bundle"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+msgid "Get Flexible Coupons PRO with add-ons in one Bundle and enable options below"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
 msgid "Predefined coupon codes"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:60
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:46
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Save Changes"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:41
-msgid "Email settings"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:33
+msgid "Email Settings"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:41
+#. translators: %1$s: first sentence, %2$s: anchor opening tag, %3$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:35
+#, php-format
+msgid "Read more in the %2$splugin documentation →%3$s"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:36
 msgid "For more specific email delay settings, visit the product edit page."
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:46
-msgid "Attachments in the e-mail"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:46
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
 msgid "Attach PDF file to coupon email"
 msgstr ""
 
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:48
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:128
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:167
-#, php-format
-msgid "Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+msgid "Attachments in the e-mail"
 msgstr ""
 
-#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:53
-#, php-format
-msgid "%1$sGet Flexible Coupons PRO with add-ons in one Bundle →%2$s"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+msgid "Email Templates"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:56
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
+msgid "Buy Flexible PDF Coupons PRO - Advanced Sending and enable options below"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:39
 msgid "Email templates"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:71
-msgid "Emails"
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:54
+msgid "Email"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:45
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:41
+msgid "Automatic Coupon Generation"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Automatically generate coupons"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:45
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "If you want the coupon to be generated automatically, select order status. Coupon will be generated and sent automatically when order status is changed to selected status."
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:50
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Allow URL Fopen"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:57
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
+msgid "Display Formating"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:53
 msgid "Do not generate"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:66
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:62
 msgid "Enabled"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:66
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:62
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/delay-type.php:24
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:117
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:158
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:34
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:28
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:155
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:197
 #: vendor_prefixed/wpdesk/wp-logs/src/deprecated/wpdesk-logger.php:59
 msgid "Disabled"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:80
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:76
 msgid "Main settings"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Views/addon.php:27
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/addon.php:14
+msgid "Add-on - "
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/coupon-code-enable.php:25
@@ -1193,6 +1238,28 @@ msgstr ""
 msgid "Check this option if you want to allow customer to spread the coupon value over several purchases. For example, a coupon worth $100 for two purchases of $50."
 msgstr ""
 
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:34
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:89
+msgid "Coupon recipient"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:47
+msgid "Value to use"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:52
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:133
+msgid "Expiration date"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:79
+msgid "Coupon Code:"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-account.php:126
+msgid "One-time use coupon"
+msgstr ""
+
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-order-coupon-generated.php:14
 msgid "Coupon code:"
 msgstr ""
@@ -1213,18 +1280,68 @@ msgstr ""
 msgid "Generate coupon"
 msgstr ""
 
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:21
+msgid "Coupon code settings"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:29
+msgid "Buy Flexible PDF Coupons PRO - Coupon Codes Import and enable options"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:21
+msgid "Email settings"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:23
+msgid "Buy Flexible PDF Coupons PRO - Advanced Sending and enable options"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-form-fields.php:19
+msgid "Product Form Fields"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-purchase.php:22
+msgid "Product purchase settings"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-purchase.php:24
+msgid "Multiple PDFs"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-purchase.php:24
+msgid "Buy Flexible PDF Coupons PRO - Multiple PDFs and enable options"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-usage.php:17
+msgid "Coupon usage settings"
+msgstr ""
+
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:58
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:68
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:96
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:149
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:177
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-variation-select.php:17
+#, php-format
+msgid "%1$sUpgrade to PRO →%2$s and enable options below"
+msgstr ""
+
+#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:86
 #, php-format
 msgid "Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below"
 msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/html-product-general-settings.php:101
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:139
 #, php-format
 msgid "Buy %1$sFlexible PDF Coupons PRO - Coupon Codes Import →%2$s and enable option below"
+msgstr ""
+
+#. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-product-variation-settings.php:167
+#, php-format
+msgid "Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/variation/html-variation-select.php:23
