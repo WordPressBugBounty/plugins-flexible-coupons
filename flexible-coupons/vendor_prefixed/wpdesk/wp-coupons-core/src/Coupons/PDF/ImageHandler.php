@@ -8,24 +8,17 @@ class ImageHandler
     // @phpstan-ignore-next-line
     public static function get_simple_image_html(array $object): string
     {
-        $w = $object['width'];
-        $h = $object['height'];
-        $angle = $object['rotateAngle'] ?? 0;
-        $left = $object['left'];
-        $top = $object['top'];
-        if ((int) $angle === 0) {
-            $containerStyles = 'position: absolute; left: ' . $left . 'px; top: ' . $top . 'px; width: ' . $w . 'px; height: ' . $h . 'px;';
-            $imageStyles = 'width: 100%; height: 100%;';
-            return '<div style="' . $containerStyles . '"><img src="' . $object['url'] . '" style="' . $imageStyles . '" /></div>';
-        }
-        $angleRad = deg2rad($angle);
-        $bboxWidth = abs($w * cos($angleRad)) + abs($h * sin($angleRad));
-        $bboxHeight = abs($w * sin($angleRad)) + abs($h * cos($angleRad));
-        $newLeft = $left + ($w - $bboxWidth) / 2;
-        $newTop = $top + ($h - $bboxHeight) / 2;
-        $containerStyles = 'position: absolute; left: ' . $newLeft . 'px; top: ' . $newTop . 'px; width: ' . $bboxWidth . 'px; height: ' . $bboxHeight . 'px; text-align: center; line-height: ' . $bboxHeight . 'px;';
-        $imageStyles = 'width: ' . $w . 'px; height: ' . $h . 'px; transform: rotate(' . $angle . 'deg); vertical-align: middle;';
-        return '<div style="' . $containerStyles . '"><img src="' . $object['url'] . '" style="' . $imageStyles . '" /></div>';
+        $styles = '
+		transform: rotate(' . $object['rotateAngle'] . 'deg);
+		position: absolute;
+		top: ' . $object['top'] . 'px;
+		left: ' . $object['left'] . 'px;
+		width: ' . $object['width'] . 'px;
+		height: ' . $object['height'] . 'px;
+		background: transparent url(' . $object['url'] . ') 0 0 no-repeat;
+		background-size: ' . $object['width'] . 'px ' . $object['height'] . 'px;
+		';
+        return '<div ' . Items::rtl_dir() . ' class="image" style="' . $styles . '"></div>';
     }
     /**
      * Pre-renders a rotated image using the GD library and returns a simple <img> tag.

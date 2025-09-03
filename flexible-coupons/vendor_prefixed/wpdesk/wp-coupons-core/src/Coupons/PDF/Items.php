@@ -36,7 +36,7 @@ class Items
     /**
      * @return string
      */
-    private function rtl_dir(): string
+    public static function rtl_dir(): string
     {
         if (is_rtl()) {
             return 'dir = "rtl"';
@@ -79,7 +79,7 @@ class Items
 		color: ' . $color . ';
 		width: ' . $object['width'] . 'px;
 		height: ' . $object['height'] . 'px';
-        return '<' . $object['tag'] . ' ' . $this->rtl_dir() . ' style="' . $styles . '">' . nl2br($object['text']) . '</' . $object['tag'] . '>';
+        return '<' . $object['tag'] . ' ' . self::rtl_dir() . ' style="' . $styles . '">' . nl2br($object['text']) . '</' . $object['tag'] . '>';
     }
     /**
      * Sanitize font name. All font names must be lowecase.
