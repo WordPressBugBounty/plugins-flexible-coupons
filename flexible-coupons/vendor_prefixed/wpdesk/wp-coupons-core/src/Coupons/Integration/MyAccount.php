@@ -3,6 +3,7 @@
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration;
 
 use WC_Coupon;
+use WC_Order;
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 use FlexibleCouponsVendor\WPDesk\View\Renderer\Renderer;
 /**
@@ -45,6 +46,7 @@ class MyAccount implements Hookable
         $order = wc_get_order($order_id);
         $data = [];
         $items = $order->get_items();
+        $has_recipient = \false;
         foreach ($items as $item) {
             $product_id = $item->get_product_id();
             $is_coupon_item = 'yes' === $this->postmeta->get_private((int) $product_id, self::PRODUCT_TYPE);
@@ -65,16 +67,18 @@ class MyAccount implements Hookable
             $coupon_code = $coupon->get_id() ? $coupon->get_code() : '';
             $download_url = $coupon->get_id() ? Helper::make_coupon_url($coupon_data) : '';
             $expiration_date = $coupon->get_date_expires() ? $coupon->get_date_expires()->date('d-m-Y') : '';
-            $coupon_value = wc_price($coupon->get_amount(), ['currency' => $order->get_currency()]);
-            // @phpstan-ignore-line
+            $coupon_value = $this->get_coupon_amount($coupon, $order);
             $recipient_name = $item->get_meta('flexible_coupon_recipient_name');
             $recipient_email = $item->get_meta('flexible_coupon_recipient_email');
             $usage_limit = $this->postmeta->get_private($product_id, 'flexible_coupon_remove_usage_limit');
+            if (!empty($recipient_name) || !empty($recipient_email)) {
+                $has_recipient = \true;
+            }
             if ($download_url && $coupon_code) {
                 $data[] = ['product_name' => $item->get_name(), 'product_url' => get_permalink($product_id), 'coupon_code' => $coupon_code, 'coupon_is_used' => $this->is_coupon_limit_reached($coupon), 'download_url' => $download_url, 'coupon_value' => $coupon_value, 'coupon_initial_value' => $coupon_data['coupon_value'], 'expiration_date' => $expiration_date, 'recipient_name' => $recipient_name, 'recipient_email' => $recipient_email, 'usage_limit' => $usage_limit];
             }
         }
-        $this->renderer->output_render('html-account', ['coupons' => $data]);
+        $this->renderer->output_render('html-account', ['coupons' => $data, 'has_recipient' => $has_recipient]);
         //phpcs:ignore
     }
     /**
@@ -85,5 +89,16 @@ class MyAccount implements Hookable
     private function is_coupon_limit_reached(WC_Coupon $coupon): bool
     {
         return $coupon->get_usage_limit() > 0 && $coupon->get_usage_count() >= $coupon->get_usage_limit();
+    }
+    private function get_coupon_amount(WC_Coupon $coupon, WC_Order $order): string
+    {
+        $wcml_settings = get_option('_wcml_settings');
+        $default_currency = $wcml_settings['currency_options']['default_currency'] ?? get_option('woocommerce_currency');
+        $coupon_data = $coupon->get_data();
+        $amount = $coupon_data['amount'];
+        if (WpmlHelper::is_active() && $order->get_currency() !== $default_currency) {
+            $amount = WpmlHelper::get_amount_by_coupon_exchange_rate((float) $amount, $coupon, WpmlHelper::OTHER_CURRENCY);
+        }
+        return wc_price($amount, ['currency' => $order->get_currency()]);
     }
 }

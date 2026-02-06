@@ -27,4 +27,11 @@ if ($is_sending && !$is_premium) {
 }
 $renderer->output_render('fields/email-template-list', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'disabled' => !$is_sending || !$is_premium, 'options' => \apply_filters('fc/field/email-template-list/options', ['' => \__('Disabled', 'flexible-coupons')])]);
 $renderer->output_render('fields/delay-type', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending, 'is_variation' => \false, 'custom_attributes' => $custom_attributes]);
+echo '<div class="show_if_simple_delay">';
+$renderer->output_render('fields/delay-interval', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending]);
+$renderer->output_render('fields/delay-value', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending]);
+echo '</div>';
+echo '<div class="show_if_fixed_date_delay">';
+$renderer->output_render('fields/delay-fixed-date', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'is_sending' => $is_sending]);
+echo '</div>';
 echo '</div></div>';

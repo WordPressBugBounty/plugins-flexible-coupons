@@ -74,7 +74,7 @@ class SaveProductVariationData implements Hookable
     /**
      * @param string $key
      * @param int    $i
-     * @param null   $default
+     * @param mixed  $default
      *
      * @return string|string[]|null
      */
@@ -97,12 +97,14 @@ class SaveProductVariationData implements Hookable
         $variation_ids = $this->post_data('fc_product_ids_variation', $i, []);
         $product_categories = $this->post_data('fc_product_categories_variation', $i, []);
         $free_shipping = $this->post_data('fc_product_free_shipping_variation', $i, 'no');
+        $import_id = $this->post_data('_product_coupon_import_id_variation', $i, '');
         $this->post_meta->update_private($variation_id, 'flexible_coupon_product_template', $product_template);
         $this->post_meta->update_private($variation_id, 'flexible_coupon_expiring_date', $expiring_date);
         $this->post_meta->update_private($variation_id, 'flexible_coupon_expiring_date_own', $expiring_date_own);
         $this->post_meta->update_private($variation_id, 'flexible_coupon_product_ids', $variation_ids);
         $this->post_meta->update_private($variation_id, 'flexible_coupon_product_categories', $product_categories);
         $this->post_meta->update_private($variation_id, 'flexible_coupon_product_free_shipping', $free_shipping);
+        $this->post_meta->update_private($variation_id, '_product_coupon_import_id', $import_id);
     }
     /**
      * @param int $variation_id

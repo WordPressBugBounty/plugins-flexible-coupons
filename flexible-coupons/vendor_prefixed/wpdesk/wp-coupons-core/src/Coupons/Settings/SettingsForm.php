@@ -133,7 +133,7 @@ class SettingsForm implements Hookable
      *
      * @return string
      */
-    public static function get_url(string $tab_slug = null): string
+    public static function get_url(?string $tab_slug = null): string
     {
         $url = admin_url(add_query_arg(['page' => self::SETTINGS_SLUG], self::MENU_PAGE_URL));
         if ($tab_slug !== null) {

@@ -26,8 +26,8 @@ $prod_post_id = (int) $params['post_id'];
 $parent_id = (int) $params['parent_id'];
 $settings = $params['settings'];
 $is_pl = 'pl_PL' === \get_locale();
-$pro_url = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/?utm_source=flexible-coupons-product-edition&amp;utm_medium=link&amp;utm_campaign=flexible-coupons-pro' : 'https://www.wpdesk.net/products/flexible-coupons-woocommerce/?utm_source=flexible-coupons-product-edition&amp;utm_medium=link&amp;utm_campaign=flexible-coupons-pro';
-$docs_url = $is_pl ? 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=flexible-coupons-settings&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-simple-product#edycja-produktu' : 'https://www.wpdesk.net/docs/flexible-coupons-pro/?utm_source=flexible-coupons-settings&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-simple-product#Product_edit_screen';
+$pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-pro-var-pl' : 'https://www.wpdesk.net/sk/wp-coupons-pro-var-en';
+$docs_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-docs-var-pl' : 'https://www.wpdesk.net/sk/wp-coupons-docs-var-en';
 $style = 'display: none;';
 $is_enabled = 'yes' === \get_post_meta($prod_post_id, '_flexible_coupon_variation_base_on', \true);
 if ($is_enabled) {
@@ -45,7 +45,7 @@ echo \esc_attr($style);
 \printf(
     /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
     \esc_html__('Read the %1$splugin documentation →%2$s', 'flexible-coupons'),
-    '<a href="' . \esc_url($docs_url . '&utm_content=edit-product') . '" target="_blank" class="docs-link">',
+    '<a href="' . \esc_url($docs_url) . '" target="_blank" class="docs-link">',
     '</a>'
 );
 ?>
@@ -66,7 +66,7 @@ if (!$is_premium) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url)),
         '</a>'
     );
     echo '</p>';
@@ -84,7 +84,7 @@ if (!$is_multiple_pdfs) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Multiple PDFs →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcmpdf_link()) . '&utm_content=&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcmpdf_link())),
         '</a>'
     );
     echo '</p>';
@@ -94,7 +94,7 @@ if ($is_multiple_pdfs && !$is_premium) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url)),
         '</a>'
     );
     echo '</p>';
@@ -137,7 +137,7 @@ if (!$is_code_import) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Coupon Codes Import →%2$s and enable option below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcci_buy_link()) . '&utm_content=&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcci_buy_link())),
         '</a>'
     );
     echo '</p>';
@@ -147,12 +147,12 @@ if ($is_code_import && !$is_premium) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url)),
         '</a>'
     );
     echo '</p>';
 }
-$renderer->output_render('fields/coupon-code-import-list', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'disabled' => !$is_code_import || !$is_premium, 'options' => \apply_filters('fc/field/code-import-list/options', ['' => \__('Disabled', 'flexible-coupons')]), 'loop' => $loop]);
+$renderer->output_render('fields/coupon-code-import-list', ['post_meta' => $post_meta, 'post_id' => $prod_post_id, 'disabled' => !$is_code_import || !$is_premium, 'options' => \apply_filters('fc/field/code-import-list/options', ['' => \__('Disabled', 'flexible-coupons')]), 'loop' => $loop, 'parent_id' => $parent_id]);
 ?>
 
 	</div>
@@ -165,7 +165,7 @@ if (!$is_sending) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('Buy %1$sFlexible PDF Coupons PRO - Advanced Sending →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link()) . '&utm_content=&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="sending-link">', \esc_url(Links::get_fcs_link())),
         '</a>'
     );
     echo '</p>';
@@ -175,7 +175,7 @@ if ($is_sending && !$is_premium) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=edit-product'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url)),
         '</a>'
     );
     echo '</p>';

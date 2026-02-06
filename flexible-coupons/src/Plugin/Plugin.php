@@ -77,9 +77,9 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 
 		$is_pl                    = 'pl_PL' === get_locale();
 		$this->settings_url       = admin_url( 'edit.php?post_type=' . self::EDITOR_POST_TYPE . '&page=fc-settings' );
-		$this->docs_url           = $is_pl ? 'https://www.wpdesk.pl/docs/flexible-coupons-pro/' : 'https://www.wpdesk.net/docs/flexible-coupons-pro/';
-		$this->support_url        = $is_pl ? 'https://www.wpdesk.pl/support/' : 'https://www.wpdesk.net/support/';
-		$this->upgrade_to_pro_url = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=plugin-list' : 'https://wpdesk.net/products/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=plugin-list';
+		$this->docs_url           = $is_pl ? 'https://www.wpdesk.pl/sk/flexible-coupons-free-docs-pl/' : 'https://www.wpdesk.net/sk/flexible-coupons-free-docs-en/';
+		$this->support_url        = $is_pl ? 'https://www.wpdesk.pl/sk/flexible-coupons-free-support-pl/' : 'https://www.wpdesk.net/sk/flexible-coupons-free-support-en/';
+		$this->upgrade_to_pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/flexible-coupons-free-pro-pl' : 'https://flexiblecoupons.net/sk/flexible-coupons-free-pro-en';
 		$this->start_here_url     = admin_url( 'edit.php?post_type=wpdesk-coupons&page=wpdesk-fc-marketing' );
 	}
 

@@ -43,7 +43,7 @@ class GeneralSettings implements Hookable {
 	 */
 	public function add_pro_fields( $fields ): array {
 		$is_pl          = 'pl_PL' === get_locale();
-		$pro_url        = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/?utm_source=flexible-coupons-product-edition&amp;utm_medium=link&amp;utm_campaign=flexible-coupons-pro' : 'https://www.wpdesk.net/products/flexible-coupons-woocommerce/?utm_source=flexible-coupons-product-edition&amp;utm_medium=link&amp;utm_campaign=flexible-coupons-pro';
+		$pro_url        = $is_pl ? 'https://www.wpdesk.pl/sk/flexible-coupons-free-pro-fields-pl' : 'https://www.wpdesk.net/sk/flexible-coupons-free-pro-fields-en';
 		$upgrade_to_pro = '<a target="_blank" href="' . esc_url( $pro_url ) . '">' . esc_html__( 'Upgrade to PRO and enable options below →', 'flexible-coupons' ) . '</a>';
 		$submit_field   = array_pop( $fields );
 		$pro_fields     = [

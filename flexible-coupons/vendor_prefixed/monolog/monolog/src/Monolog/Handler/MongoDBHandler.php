@@ -11,12 +11,13 @@ declare (strict_types=1);
  */
 namespace FlexibleCouponsVendor\Monolog\Handler;
 
+use FlexibleCouponsVendor\MongoDB\Client;
+use FlexibleCouponsVendor\MongoDB\Collection;
 use MongoDB\Driver\BulkWrite;
 use MongoDB\Driver\Manager;
-use FlexibleCouponsVendor\MongoDB\Client;
-use FlexibleCouponsVendor\Monolog\Logger;
 use FlexibleCouponsVendor\Monolog\Formatter\FormatterInterface;
 use FlexibleCouponsVendor\Monolog\Formatter\MongoDBFormatter;
+use FlexibleCouponsVendor\Monolog\Logger;
 /**
  * Logs to a MongoDB database.
  *
@@ -32,12 +33,12 @@ use FlexibleCouponsVendor\Monolog\Formatter\MongoDBFormatter;
  */
 class MongoDBHandler extends AbstractProcessingHandler
 {
-    /** @var \MongoDB\Collection */
+    /** @var Collection */
     private $collection;
     /** @var Client|Manager */
     private $manager;
-    /** @var string */
-    private $namespace;
+    /** @var string|null */
+    private $namespace = null;
     /**
      * Constructor.
      *
@@ -51,7 +52,7 @@ class MongoDBHandler extends AbstractProcessingHandler
             throw new \InvalidArgumentException('MongoDB\Client or MongoDB\Driver\Manager instance required');
         }
         if ($mongodb instanceof Client) {
-            $this->collection = $mongodb->selectCollection($database, $collection);
+            $this->collection = method_exists($mongodb, 'getCollection') ? $mongodb->getCollection($database, $collection) : $mongodb->selectCollection($database, $collection);
         } else {
             $this->manager = $mongodb;
             $this->namespace = $database . '.' . $collection;

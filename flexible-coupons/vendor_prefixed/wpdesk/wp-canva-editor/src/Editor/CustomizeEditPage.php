@@ -15,8 +15,9 @@ use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
  */
 class CustomizeEditPage implements Hookable
 {
-    const META_BOX_CONTEXT_NORMAL = 'normal';
-    const META_BOX_PRIORITY_HIGH = 'high';
+    private const META_BOX_CONTEXT_NORMAL = 'normal';
+    private const META_BOX_PRIORITY_HIGH = 'high';
+    private const COUPON_POST_TYPE = 'wpdesk-coupons';
     private const SCREEN_LAYOUT_COLUMNS = 1;
     /**
      * @var string
@@ -60,7 +61,7 @@ class CustomizeEditPage implements Hookable
         $post_id = $post->ID;
         $editor_data = get_post_meta($post->ID, EditorImplementation::EDITOR_POST_META, \true);
         $is_pl = 'pl_PL' === get_locale();
-        $pro_url = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro' : 'https://wpdesk.net/products/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro';
+        $pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-canva-go-pro-pl' : 'https://wpdesk.net/sk/wp-canva-go-pro-en';
         require_once __DIR__ . '/Views/html-editor-meta-box.php';
     }
     /**
@@ -93,20 +94,25 @@ class CustomizeEditPage implements Hookable
         return $placeholder_title;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function set_single_layout_columns_filter()
     {
+        $screen = get_current_screen();
+        if ($screen && $screen->post_type !== self::COUPON_POST_TYPE) {
+            return null;
+        }
         return self::SCREEN_LAYOUT_COLUMNS;
     }
     /**
      * @param array $empty_columns
      * @param string $screen_id
+     *
      * @return array
      */
     public function screen_layout_columns($empty_columns, $screen_id)
     {
-        if (!is_string($screen_id) || !$screen_id) {
+        if (!is_string($screen_id) || !$screen_id || $screen_id !== self::COUPON_POST_TYPE) {
             return $empty_columns;
         }
         return [$screen_id => self::SCREEN_LAYOUT_COLUMNS];

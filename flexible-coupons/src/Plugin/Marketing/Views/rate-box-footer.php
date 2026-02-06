@@ -12,7 +12,7 @@ if ( ! $rate_box ) {
 ?>
 <script id="fi_rate_box" type="text/template">
 	<?php
-	$is_PL       = get_locale() === 'pl_PL' ? 'https://wpdesk.pl' : 'https://wpdesk.net';
+	$is_PL       = get_locale() === 'pl_PL' ? 'https://wpdesk.pl/sk/flexible-coupons-free-rate-pl' : 'https://wpdesk.net/sk/flexible-coupons-free-rate-en';
 	$review_link = 'https://wordpress.org/support/plugin/flexible-coupons/reviews/#new-post';
 	echo $rate_box->render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		$review_link,

@@ -5,10 +5,11 @@ namespace FlexibleCouponsVendor;
 /**
  * Szablon do wyświetlania kuponów PDF na stronie "Moje konto".
  *
- * @var array{coupons?: array<int, array<string, mixed>>} $params
+ * @var array{coupons?: array<int, array<string, mixed>>,has_recipient?: bool} $params
  * @var array<int, array<string, mixed>> $coupons
  */
 $coupons = isset($params['coupons']) ? $params['coupons'] : [];
+$has_recipient = isset($params['has_recipient']) ? $params['has_recipient'] : \false;
 if (!empty($coupons)) {
     ?>
 	<section class="woocommerce-coupons-file">
@@ -27,7 +28,7 @@ if (!empty($coupons)) {
     ?>
 				</span></th>
 				<?php 
-    if (!empty($coupon['recipient_name']) || !empty($coupon['recipient_email'])) {
+    if ($has_recipient) {
         ?>
 					<th class="coupon-initial-value"><span class="nobr">
 					<?php 
@@ -82,7 +83,7 @@ if (!empty($coupons)) {
 						</small>
 					</td>
 					<?php 
-        if (!empty($coupon['recipient_name']) || !empty($coupon['recipient_email'])) {
+        if ($has_recipient) {
             ?>
 					<td class="coupon-recipient" data-title="
 						<?php 

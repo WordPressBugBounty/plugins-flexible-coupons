@@ -14,7 +14,7 @@ if ($field->is_disabled()) {
     echo \esc_attr($field->has_classes() ? $field->get_classes() : '');
     ?>">
 			<a href="<?php 
-    echo \esc_url($field->get_link() . '&utm_content=coupon-settings');
+    echo \esc_url($field->get_link());
     ?>"
 				target="_blank"
 				class="addon-pill"

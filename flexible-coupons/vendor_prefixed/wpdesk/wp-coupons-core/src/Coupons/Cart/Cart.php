@@ -418,7 +418,7 @@ class Cart implements Hookable
                     if ('no' === $this->post_meta->get_private($product_id, $field['id'], 'yes')) {
                         continue;
                     }
-                    $value = null;
+                    $value = '';
                     if (isset($post_data[$field['id']])) {
                         if (isset($field['type']) && 'textarea' === $field['type']) {
                             $value = sanitize_textarea_field($post_data[$field['id']]);
@@ -429,7 +429,7 @@ class Cart implements Hookable
                     try {
                         $this->validate_field($product_id, $field, $value);
                     } catch (Exception $e) {
-                        wc_add_notice($e->getMessage(), 'error');
+                        wc_add_notice(wp_kses($e->getMessage(), ['strong' => []]), 'error');
                         $passed = \false;
                     }
                 }
@@ -445,11 +445,11 @@ class Cart implements Hookable
      *
      * @param int $product_id Product ID.
      * @param array $field Field.
-     * @param mixed $value Value.
+     * @param string $value Value.
      *
      * @throws Exception Throw exception on error.
      */
-    private function validate_field($product_id, array $field, $value)
+    private function validate_field($product_id, array $field, string $value): void
     {
         $is_required = \false;
         try {
@@ -473,14 +473,17 @@ class Cart implements Hookable
             $this->should_throw_exception_for_email($field, $value);
             $this->should_throw_exception_for_invalid_date($field, $value);
             $this->should_throw_exception_for_past_date($field, $value);
+            $this->should_throw_exception_for_emoji($field, $value);
         }
     }
     /**
      * Do not move the validation methods to a separate class! This will not work from the main page.
      *
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
      * @throws Exception Throw error exception.
      */
-    private function should_throw_exception_is_empty($field, $value)
+    private function should_throw_exception_is_empty(array $field, string $value): void
     {
         if (empty($value)) {
             // translators: field title.
@@ -488,9 +491,11 @@ class Cart implements Hookable
         }
     }
     /**
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
      * @throws Exception Throw error exception.
      */
-    private function should_throw_exception_for_minlength($field, $value)
+    private function should_throw_exception_for_minlength(array $field, string $value): void
     {
         if (isset($field['validation']['minlength']) && mb_strlen(trim($value)) < (int) $field['validation']['minlength']) {
             // translators: field title.
@@ -498,9 +503,11 @@ class Cart implements Hookable
         }
     }
     /**
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
      * @throws Exception Throw error exception.
      */
-    private function should_throw_exception_for_maxlength($field, $value)
+    private function should_throw_exception_for_maxlength(array $field, string $value): void
     {
         if (isset($field['validation']['maxlength']) && mb_strlen(trim($value)) > (int) $field['validation']['maxlength']) {
             // translators: field title.
@@ -508,9 +515,11 @@ class Cart implements Hookable
         }
     }
     /**
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
      * @throws Exception Throw error exception.
      */
-    private function should_throw_exception_for_email($field, $value)
+    private function should_throw_exception_for_email(array $field, string $value): void
     {
         if (isset($field['validation']['email']) && !is_email($value)) {
             // translators: field title.
@@ -518,9 +527,11 @@ class Cart implements Hookable
         }
     }
     /**
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
      * @throws Exception Throw error exception.
      */
-    private function should_throw_exception_for_invalid_date($field, $value)
+    private function should_throw_exception_for_invalid_date(array $field, string $value): void
     {
         if (isset($field['validation']['date']) && strtotime($value) === \false) {
             // translators: field title.
@@ -528,13 +539,58 @@ class Cart implements Hookable
         }
     }
     /**
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
      * @throws Exception Throw error exception.
      */
-    private function should_throw_exception_for_past_date($field, $value)
+    private function should_throw_exception_for_past_date(array $field, string $value): void
     {
         if (isset($field['validation']['past_date']) && strtotime($value) < \time()) {
             // translators: field title.
             throw new Exception(sprintf(__('<strong>%s</strong> has a date from the past.', 'flexible-coupons'), $field['title']));
+        }
+    }
+    /**
+     * @param array{title: string, id: string, validation?: array<mixed>} $field Field data.
+     *
+     * @throws Exception Throw error exception.
+     */
+    private function should_throw_exception_for_emoji(array $field, string $value): void
+    {
+        if ($this->contains_emoji($value)) {
+            // translators: field title.
+            throw new Exception(sprintf(__('<strong>%s</strong> contains unsupported characters (emojis). Please remove emojis and special symbols.', 'flexible-coupons'), $field['title']));
+        }
+    }
+    private function contains_emoji(string $text): bool
+    {
+        if (empty($text)) {
+            return \false;
+        }
+        $emoji_patterns = [
+            '[\x{1F600}-\x{1F64F}]',
+            // Emoticons
+            '[\x{1F300}-\x{1F5FF}]',
+            // Miscellaneous Symbols and Pictographs
+            '[\x{1F680}-\x{1F6FF}]',
+            // Transport and Map Symbols
+            '[\x{2600}-\x{26FF}]',
+            // Miscellaneous Symbols
+            '[\x{2700}-\x{27BF}]',
+            // Dingbats
+            '[\x{1F900}-\x{1F9FF}]',
+            // Supplemental Symbols and Pictographs
+            '[\x{1F1E0}-\x{1F1FF}]',
+            // Flags
+            '[\x{FE00}-\x{FE0F}]',
+        ];
+        $pattern = '/' . implode('|', $emoji_patterns) . '/u';
+        try {
+            \preg_match($pattern, $text, $matches);
+            return !empty($matches);
+        } catch (Exception $e) {
+            $this->logger->error('Error checking for emoji: ' . $e->getMessage());
+            return \false;
         }
     }
     /**

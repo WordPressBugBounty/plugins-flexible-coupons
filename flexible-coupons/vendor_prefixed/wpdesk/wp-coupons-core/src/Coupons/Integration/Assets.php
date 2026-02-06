@@ -113,15 +113,15 @@ class Assets implements Hookable
     {
         switch ($screen_id) {
             case self::COUPON_LISTING_PAGE:
-                $docs_url = 'https://wpdesk.net/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-list#Coupon_templates_list';
+                $docs_url = 'https://wpdesk.net/sk/wp-coupons-docs-pro-en';
                 if (get_locale() === 'pl_PL') {
-                    $docs_url = 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-list#lista-szablonow-kuponow';
+                    $docs_url = 'https://www.wpdesk.pl/sk/wp-coupons-docs-pro-pl';
                 }
                 break;
             case self::COUPON_EDIT_PAGE:
-                $docs_url = 'https://wpdesk.net/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new#New_coupon_template';
+                $docs_url = 'https://wpdesk.net/sk/wp-coupons-docs-edit-en';
                 if (get_locale() === 'pl_PL') {
-                    $docs_url = 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new#tworzenie-szablonu-kuponu';
+                    $docs_url = 'https://www.wpdesk.pl/sk/wp-coupons-docs-edit-pl';
                 }
                 break;
             default:

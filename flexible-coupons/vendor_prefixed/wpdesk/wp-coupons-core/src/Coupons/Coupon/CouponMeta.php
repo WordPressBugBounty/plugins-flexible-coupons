@@ -6,6 +6,7 @@ use WC_Coupon;
 use WC_Order_Item;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\WpmlHelper;
 /**
  * Save post meta for coupon.
  *
@@ -46,6 +47,9 @@ class CouponMeta
         $coupon_data['coupon_id'] = $coupon->get_id();
         $coupon_data['coupon_code'] = $coupon->get_code();
         $coupon_data['coupon_value'] = wc_price($coupon->get_amount(), ['currency' => $order->get_currency()]);
+        if (WpmlHelper::is_active()) {
+            $coupon_data['exchange_rate'] = WpmlHelper::get_exchange_rate($order->get_currency());
+        }
         if ($coupon->get_date_expires()) {
             $expiry_date_format = get_option('flexible_coupons_expiry_date_format', get_option('date_format', 'Y-m-d'));
             if (empty($expiry_date_format)) {

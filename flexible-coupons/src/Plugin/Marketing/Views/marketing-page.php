@@ -10,7 +10,7 @@ if ( ! $boxes ) {
 	return;
 }
 
-$support_url = 'pl_PL' === get_locale() ? 'https://www.wpdesk.pl/support/' : 'https://www.wpdesk.net/support/';
+$support_url = 'pl_PL' === get_locale() ? 'https://www.wpdesk.pl/sk/flexible-coupons-free-mk-support-pl' : 'https://www.wpdesk.net/sk/flexible-coupons-free-mk-support-en';
 ?>
 <div class="wrap">
 	<div id="marketing-page-wrapper">

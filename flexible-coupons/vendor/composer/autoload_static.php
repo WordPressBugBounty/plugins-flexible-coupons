@@ -4,55 +4,55 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite91b31d17fe88795de439c09d2d1baac
+class ComposerStaticInita0117456a8c11ebbf824139a73da6657
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'W' =>
         array (
             'WPDesk\\FlexibleCoupons\\' => 23,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'PhpOption\\' => 10,
         ),
-        'D' => 
+        'D' =>
         array (
             'Dotenv\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPDesk\\FlexibleCoupons\\' => 
+        'WPDesk\\FlexibleCoupons\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src/Plugin',
         ),
-        'Symfony\\Polyfill\\Ctype\\' => 
+        'Symfony\\Polyfill\\Ctype\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Container\\' => 
+        'Psr\\Container\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'PhpOption\\' => 
+        'PhpOption\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'Dotenv\\' => 
+        'Dotenv\\' =>
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
@@ -417,7 +417,6 @@ class ComposerStaticInite91b31d17fe88795de439c09d2d1baac
         'FlexibleCouponsVendor\\Mpdf\\Writer\\OptionalContentWriter' => __DIR__ . '/../..' . '/vendor_prefixed/mpdf/mpdf/src/Writer/OptionalContentWriter.php',
         'FlexibleCouponsVendor\\Mpdf\\Writer\\PageWriter' => __DIR__ . '/../..' . '/vendor_prefixed/mpdf/mpdf/src/Writer/PageWriter.php',
         'FlexibleCouponsVendor\\Mpdf\\Writer\\ResourceWriter' => __DIR__ . '/../..' . '/vendor_prefixed/mpdf/mpdf/src/Writer/ResourceWriter.php',
-        'FlexibleCouponsVendor\\Psr\\Clock\\ClockInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/clock/src/ClockInterface.php',
         'FlexibleCouponsVendor\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/container/src/ContainerExceptionInterface.php',
         'FlexibleCouponsVendor\\Psr\\Container\\ContainerInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/container/src/ContainerInterface.php',
         'FlexibleCouponsVendor\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/container/src/NotFoundExceptionInterface.php',
@@ -452,9 +451,6 @@ class ComposerStaticInite91b31d17fe88795de439c09d2d1baac
         'FlexibleCouponsVendor\\Psr\\Log\\Test\\DummyTest' => __DIR__ . '/../..' . '/vendor_prefixed/psr/log/Psr/Log/Test/DummyTest.php',
         'FlexibleCouponsVendor\\Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/../..' . '/vendor_prefixed/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'FlexibleCouponsVendor\\Psr\\Log\\Test\\TestLogger' => __DIR__ . '/../..' . '/vendor_prefixed/psr/log/Psr/Log/Test/TestLogger.php',
-        'FlexibleCouponsVendor\\Psr\\SimpleCache\\CacheException' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/CacheException.php',
-        'FlexibleCouponsVendor\\Psr\\SimpleCache\\CacheInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/CacheInterface.php',
-        'FlexibleCouponsVendor\\Psr\\SimpleCache\\InvalidArgumentException' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/InvalidArgumentException.php',
         'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\AcceptanceTestGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/AcceptanceTestGenerator.php',
         'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\GeneratePluginActivation' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/GeneratePluginActivation.php',
         'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\GenerateWooCommerce' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/GenerateWooCommerce.php',
@@ -581,6 +577,7 @@ class ComposerStaticInite91b31d17fe88795de439c09d2d1baac
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Integration\\PostMeta' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Integration/PostMeta.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Integration\\SampleTemplates' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Integration/SampleTemplates.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Integration\\ShortCodeReplacer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Integration/ShortCodeReplacer.php',
+        'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Integration\\WpmlHelper' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Integration/WpmlHelper.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Order\\MakeOrder' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Order/MakeOrder.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\Order\\OrderMetaBox' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Order/OrderMetaBox.php',
         'FlexibleCouponsVendor\\WPDesk\\Library\\WPCoupons\\PDF\\Config' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/PDF/Config.php',
@@ -839,9 +836,9 @@ class ComposerStaticInite91b31d17fe88795de439c09d2d1baac
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite91b31d17fe88795de439c09d2d1baac::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite91b31d17fe88795de439c09d2d1baac::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite91b31d17fe88795de439c09d2d1baac::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita0117456a8c11ebbf824139a73da6657::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita0117456a8c11ebbf824139a73da6657::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita0117456a8c11ebbf824139a73da6657::$classMap;
 
         }, null, ClassLoader::class);
     }

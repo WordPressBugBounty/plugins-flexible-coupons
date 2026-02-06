@@ -38856,9 +38856,9 @@ var ObjectsProperties = function (_React$Component) {
                     )
                 );
             }
-            var doc_url = 'https://wpdesk.net/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new-right#New_coupon_template';
+            var doc_url = 'https://wpdesk.net/sk/wp-canva-docs-js-en';
             if (wp_canva_admin.lang !== 'undefined' && wp_canva_admin.lang === 'pl_PL') {
-                doc_url = 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new-right#tworzenie-szablonu-kuponu';
+                doc_url = 'https://www.wpdesk.pl/sk/wp-canva-docs-js-pl';
             }
             return _react2.default.createElement(
                 'div',

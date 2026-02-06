@@ -1,11 +1,11 @@
 === Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce ===
 
 Contributors: wpdesk,piotrpo,marcinkolanko,amisiewicz
-Donate link: https://flexiblecoupons.net/products/flexible-coupons-woocommerce
+Donate link: https://flexiblecoupons.net/sk/flexible-coupons-donate
 Tags: gift card, voucher, coupon, pdf ticket, qr code
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 1.13.1
+Tested up to: 6.9
+Stable tag: 1.14.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -101,7 +101,7 @@ In the PRO version, you can choose whether your voucher is to be sent directly t
 
 **In the PRO version, you may also create and use your additional custom shortcodes**
 
-[**Upgrade to PRO &rarr;**](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro)
+[**Upgrade to PRO &rarr;**](https://flexiblecoupons.net/sk/flexible-coupons-rm-pro)
 
 ### Settings for the Coupon - Edit Product Page
 
@@ -133,21 +133,21 @@ You may enable fields on the product page to personalize your Gift Cards & Vouch
 * **PRO** Show tooltips for fields in PDF Coupon products,
 * **PRO** Show character counter below text area.
 
-If you would like to enhance the free version of the plugin, [upgrade to PRO now &rarr;](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro)
+If you would like to enhance the free version of the plugin, [upgrade to PRO now &rarr;](https://flexiblecoupons.net/sk/flexible-coupons-rm-pro)
 
 ### Documentation
 
-Please visit the **[official documentation of Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce](https://flexiblecoupons.net/documentation/?utm_source=wordpress-org&utm_medium=link&utm_campaign=docs)** to learn more about the plugin's features and settings.
+Please visit the **[official documentation of Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce](https://flexiblecoupons.net/sk/flexible-coupons-rm-docs)** to learn more about the plugin's features and settings.
 
 ### Support
 
 We provide limited support for the free version in the [plugin Support Forum](https://wordpress.org/plugins/flexible-coupons/). Please purchase a PRO version to get priority e-mail support as well as all e-commerce features.
 
-[**Upgrade to PRO &rarr;**](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro)
+[**Upgrade to PRO &rarr;**](https://flexiblecoupons.net/sk/flexible-coupons-rm-pro)
 
 ### Premium Live Demo
 
-You may test Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce (free and PRO) and all of our plugins in [free demo](https://demo.wpdesk.org/).
+You may test Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce (free and PRO) and all of our plugins in [free demo](https://wpdesk.link/flexible-coupons-rm-demo).
 
 ### Languages
 
@@ -169,7 +169,7 @@ In the future, we plan to add the following features to the plugin to make your 
 * Editable e-mail content,
 * Templates of coupon codes.
 
-If you have any questions about these features or you have any other interesting ideas - [let us know!](https://flexiblecoupons.net/support/?subject=Pre-sale) :)
+If you have any questions about these features or you have any other interesting ideas - [let us know!](https://flexiblecoupons.net/sk/flexible-coupons-rm-pre-sale) :)
 
 == Installation ==
 
@@ -181,7 +181,7 @@ To install the plugin and get it working:
 
 == Data use policy ==
 
-Learn about [Use of Data Policy by WP Desk Plugins](https://flexiblecoupons.net/terms/use-of-data-collected-by-wp-desk-plugins/?utm_source=wporg&utm_medium=link&utm_campaign=data-use-policy)
+Learn about [Use of Data Policy by WP Desk Plugins](https://flexiblecoupons.net/sk/flexible-coupons-rm-policy)
 
 == Frequently Asked Questions ==
 
@@ -286,11 +286,11 @@ Yes 😊. You can customize the email templates for Flexible PDF Coupons - Gift 
 
 You may also use a PRO add-on to **schedule gift card delivery and edit the email for recipients** using WYSIWYG text editor ⭐.
 
-Read the following article: [**How to set WooCommerce extended coupon features? Schedule gift card delivery.**](https://flexiblecoupons.net/blog/schedule-gift-card-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=advanced-sending)
+Read the following article: [**How to set WooCommerce extended coupon features? Schedule gift card delivery.**](https://flexiblecoupons.net/sk/flexible-coupons-rm-gift-card)
 
 = Where can I find Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce PRO? =
 
-Go to the [**Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce PRO**](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro) page to see all features of the plugin ⭐!
+Go to the [**Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce PRO**](https://flexiblecoupons.net/sk/flexible-coupons-rm-pro) page to see all features of the plugin ⭐!
 
 = Are there any add-ons for the plugin? =
 
@@ -298,14 +298,14 @@ Yes 😊.
 
 You may use the following add-ons:
 
-* [**Flexible Coupons PRO - Advanced Sending**](https://flexiblecoupons.net/products/flexible-coupons-pro-advanced-sending/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=advanced-sending)
-* [**Flexible Coupons PRO - Event Ticket QR Scanner**](https://flexiblecoupons.net/products/flexible-coupons-pro-tickets-add-on/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=qr-codes)
-* [**Flexible Coupons PRO - Custom Shortcodes**](https://flexiblecoupons.net/products/flexible-coupons-pro-custom-shortcodes/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=custom-shortcodes)
-* [**Flexible Coupons PRO - Multiple PDFs**](https://flexiblecoupons.net/products/flexible-pdf-coupons-pro-multiple-pdfs/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=multile-pdf)
-* [**Flexible PDF Coupons PRO – Coupon Codes Import**](https://flexiblecoupons.net/products/flexible-pdf-coupons-pro-coupon-codes-import/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=codes-import)
+* [**Flexible Coupons PRO - Advanced Sending**](https://flexiblecoupons.net/sk/flexible-coupons-rm-sending)
+* [**Flexible Coupons PRO - Event Ticket QR Scanner**](https://flexiblecoupons.net/sk/flexible-coupons-rm-qr)
+* [**Flexible Coupons PRO - Custom Shortcodes**](https://flexiblecoupons.net/sk/flexible-coupons-rm-shortcodes)
+* [**Flexible Coupons PRO - Multiple PDFs**](https://flexiblecoupons.net/sk/flexible-coupons-rm-pdf)
+* [**Flexible PDF Coupons PRO – Coupon Codes Import**](https://flexiblecoupons.net/sk/flexible-coupons-rm-import)
 
 
-**Note**: They will work with [**Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce PRO**](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro) ⭐!
+**Note**: They will work with [**Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce PRO**](https://flexiblecoupons.net/sk/flexible-coupons-rm-pro) ⭐!
 
 = I want to add a gift card - can I use it for every product in my shop? =
 
@@ -341,27 +341,27 @@ So, you may use the plugin as you please. If you want to read more about possibl
 
 ⭐⭐⭐⭐⭐
 
-* [WooCommerce Coupons for local shopping](https://flexiblecoupons.net/blog/use-woocommerce-coupons-local-shopping/)
-* [PDF Gift Cards in WooCommerce](https://flexiblecoupons.net/blog/pdf-gift-cards-woocommerce/)
-* [Gift Card for Course and Subscription in WooCommerce](https://flexiblecoupons.net/blog/gift-card-for-course-and-subscription-in-woocommerce/)
-* [Reusable Voucher & conditions for the Coupon in WooCommerce](https://flexiblecoupons.net/blog/reusable-voucher-conditions-for-coupon-woocommerce/)
-* [Customize WooCommerce coupons & sell PDF vouchers](https://flexiblecoupons.net/blog/customize-woocommerce-coupons-pdf-vouchers/)
-* [Sell WooCommerce tickets using a FREE plugin](https://flexiblecoupons.net/blog/sell-woocommerce-tickets/)
-* [How to add extra cost to a WooCommerce product like a gift card?](https://flexiblecoupons.net/blog/how-to-add-extra-cost-to-woocommerce-gift-card/)
-* [Sell PDF Vouchers in WooCommerce (Gift Cards for Christmas)](https://flexiblecoupons.net/blog/woocommerce-pdf-gift-vouchers/)
-* [How to use credits and vouchers in your WooCommerce store](https://flexiblecoupons.net/blog/how-to-use-credits-vouchers-in-woocommerce/)
-* [How to set up coupon variations in WooCommerce?](https://flexiblecoupons.net/blog/how-to-set-up-coupon-variations-in-woocommerce/)
-* [Gift a product with purchase & 3 FREE plugins to sell gifts in WooCommerce](https://wpdesk.net/blog/woocommerce-gift-a-product/)
-* [The Ultimate WooCommerce Gift Cards Plugin (personalized templates & custom shortcodes)](https://flexiblecoupons.net/blog/the-ultimate-woocommerce-gift-cards-plugin-personalized-templates-custom-shortcodes/)
-* [Host a summer event and experience the benefits of QR code ticketing](https://flexiblecoupons.net/blog/qr-code-ticketing/)
-* [Gift cards email delivery with delay. Discover the possible ways to do it.](https://flexiblecoupons.net/blog/gift-cards-email-delivery-with-delay/)
-* [How to set WooCommerce extended coupon features? Schedule gift card delivery.](https://flexiblecoupons.net/blog/schedule-gift-card-woocommerce/)
+* [WooCommerce Coupons for local shopping](https://flexiblecoupons.net/sk/flexible-coupons-use-woocommerce-coupons-local-shopping)
+* [PDF Gift Cards in WooCommerce](https://flexiblecoupons.net/sk/flexible-coupons-pdf-gift-cards-woocommerce)
+* [Gift Card for Course and Subscription in WooCommerce](https://flexiblecoupons.net/sk/flexible-coupons-gift-card-for-course-and-subscription-in-woocommerce)
+* [Reusable Voucher & conditions for the Coupon in WooCommerce](https://flexiblecoupons.net/sk/flexible-coupons-reusable-voucher-conditions-for-coupon-woocommerce)
+* [Customize WooCommerce coupons & sell PDF vouchers](https://flexiblecoupons.net/sk/flexible-coupons-customize-woocommerce-coupons-pdf-vouchers)
+* [Sell WooCommerce tickets using a FREE plugin](https://flexiblecoupons.net/sk/flexible-coupons-sell-woocommerce-tickets)
+* [How to add extra cost to a WooCommerce product like a gift card?](https://flexiblecoupons.net/sk/flexible-coupons-how-to-add-extra-cost-to-woocommerce-gift-card)
+* [Sell PDF Vouchers in WooCommerce (Gift Cards for Christmas)](https://flexiblecoupons.net/sk/flexible-coupons-woocommerce-pdf-gift-vouchers)
+* [How to use credits and vouchers in your WooCommerce store](https://flexiblecoupons.net/sk/flexible-coupons-how-to-use-credits-vouchers-in-woocommerce)
+* [How to set up coupon variations in WooCommerce?](https://flexiblecoupons.net/sk/flexible-coupons-how-to-set-up-coupon-variations-in-woocommerce)
+* [Gift a product with purchase & 3 FREE plugins to sell gifts in WooCommerce](https://wpdesk.net/sk/flexible-coupons-woocommerce-gift-a-product)
+* [The Ultimate WooCommerce Gift Cards Plugin (personalized templates & custom shortcodes)](https://flexiblecoupons.net/sk/flexible-coupons-the-ultimate-woocommerce-gift-cards-plugin-personalized-templates-custom-shortcodes)
+* [Host a summer event and experience the benefits of QR code ticketing](https://flexiblecoupons.net/sk/flexible-coupons-qr-code-ticketing)
+* [Gift cards email delivery with delay. Discover the possible ways to do it.](https://flexiblecoupons.net/sk/flexible-coupons-gift-cards-email-delivery-with-delay)
+* [How to set WooCommerce extended coupon features? Schedule gift card delivery.](https://flexiblecoupons.net/sk/flexible-coupons-schedule-gift-card-woocommerce)
 
 ⭐⭐⭐⭐⭐
 
 = How to configure the Flexible PDF Coupons WooCommerce plugin? =
 
-We have prepared for you the detailed step-by-step guide in our [Flexible PDF Coupons Docs page ⚙️](https://flexiblecoupons.net/documentation/?utm_source=wordpress-org&utm_medium=link&utm_campaign=docs).
+We have prepared for you the detailed step-by-step guide in our [Flexible PDF Coupons Docs page ⚙️](https://flexiblecoupons.net/sk/flexible-coupons-rm-docs).
 
 = How the buyer will receive a gift card? =
 
@@ -369,7 +369,7 @@ The customer will receive an email with a link to the gift card with a coupon co
 
 = Where can I find more about WooCommerce Coupons? =
 
-The Flexible PDF Coupons WooCommerce plugin uses the built-in WooCommerce Coupons for creating discount codes in your store. Read more about [WooCommerce Coupons](https://flexiblecoupons.net/blog/woocommerce-coupons/). You will learn how to enable WooCommerce Coupons. Also, to choose the WooCommerce coupon settings and the coupon usage limitations.
+The Flexible PDF Coupons WooCommerce plugin uses the built-in WooCommerce Coupons for creating discount codes in your store. Read more about [WooCommerce Coupons](https://flexiblecoupons.net/sk/flexible-coupons-rm-woo-cpn/). You will learn how to enable WooCommerce Coupons. Also, to choose the WooCommerce coupon settings and the coupon usage limitations.
 
 = Why does the plugin use the WooCommerce Coupon codes? =
 
@@ -377,27 +377,27 @@ Because the WooCommerce coupon codes are by default the built-in feature of your
 
 = Can I let buyers name the coupon price? =
 
-Yes. You can allow your customers to define the custom price for the gift card with the [Custom Price for WooCommerce free plugin](https://wordpress.org/plugins/custom-price-for-woocommerce/). Read more and learn how to have [Custom price gift cards based on user input in WooCommerce](https://flexiblecoupons.net/blog/custom-price-based-on-user-input-in-woocommerce/).
+Yes. You can allow your customers to define the custom price for the gift card with the [Custom Price for WooCommerce free plugin](https://wordpress.org/plugins/custom-price-for-woocommerce/). Read more and learn how to have [Custom price gift cards based on user input in WooCommerce](https://flexiblecoupons.net/sk/flexible-coupons-rm-custom-price/).
 
 = Are there any alternatives to WooCommerce Coupons? =
 
-If you want to sell your products with flexible pricing & discounts based on the quantity, order value, the number of items, you could use a plugin to create such discounts for you. Many of them have an option to dynamically show better prices for specific user roles or customer groups. If you are interested in such a plugin (instead of the one that uses WooCommerce Coupons & coupon codes) check the article about [WooCommerce Pricing & Product Tables Plugins, Tools & Pro-Sales Tips](https://www.wpdesk.net/blog/woocommerce-pricing-product-tables-plugins/). I hope you'll find the right tool for your store that may work instead of or with WooCommerce Coupons & Gift Cards :)
+If you want to sell your products with flexible pricing & discounts based on the quantity, order value, the number of items, you could use a plugin to create such discounts for you. Many of them have an option to dynamically show better prices for specific user roles or customer groups. If you are interested in such a plugin (instead of the one that uses WooCommerce Coupons & coupon codes) check the article about [WooCommerce Pricing & Product Tables Plugins, Tools & Pro-Sales Tips](https://www.wpdesk.net/sk/flexible-coupons-woo-price/). I hope you'll find the right tool for your store that may work instead of or with WooCommerce Coupons & Gift Cards :)
 
 = Where can I find the plugin documentation? =
 
-Please visit the **[official documentation of Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce](https://flexiblecoupons.net/documentation/?utm_source=wordpress-org&utm_medium=link&utm_campaign=docs)** to learn more about the plugin's features and settings.
+Please visit the **[official documentation of Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce](https://flexiblecoupons.net/sk/flexible-coupons-rm-docs)** to learn more about the plugin's features and settings.
 
 = Do you offer support? =
 
 We provide limited support for the free version in the [plugin Support Forum](https://wordpress.org/plugins/flexible-coupons/). Please purchase a PRO version to get priority e-mail support as well as all e-commerce features.
 
-[**Upgrade to PRO &rarr;**](https://flexiblecoupons.net/products/flexible-coupons-woocommerce/?utm_source=wordpress-org&utm_medium=link&utm_campaign=flexible-coupons-pro)
+[**Upgrade to PRO &rarr;**](https://flexiblecoupons.net/sk/flexible-coupons-rm-pro)
 
 = Can I test the PRO version of the plugin first? =
 
 Yes 😊.
 
-You may test Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce (free and PRO) and all of our plugins in [free demo](https://demo.wpdesk.org/).
+You may test Flexible PDF Coupons - Gift Cards & Vouchers for WooCommerce (free and PRO) and all of our plugins in [free demo](https://wpdesk.link/flexible-coupons-rm-demo).
 
 = Do you have more free plugins for WooCommerce? =
 
@@ -418,6 +418,10 @@ Yes 😊.
 * [**Flexible Refund**](https://wordpress.org/plugins/flexible-refund-and-return-order-for-woocommerce/) - speed up refunds, returns, and warranty requests in WooCommerce.
 
 ⭐⭐⭐⭐⭐
+
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the Flexible PDF Coupons plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fc51c-ae97-451a-a483-eb76d7fbc1f2). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Screenshots ==
 
@@ -482,6 +486,36 @@ Yes 😊.
 59. Use imported coupon codes for products (PRO add-on).
 
 == Changelog ==
+
+= 1.14.1 - 2026-01-19 =
+* Added support for WooCommerce 10.5
+* Fixed php 8.4 deprecated warnings
+
+= 1.14.0 - 2026-01-14 =
+* Added WPML plugin support
+
+= 1.13.8 - 2026-01-07 =
+* Fixed coupon price calculation for multiple items
+
+= 1.13.7 - 2025-12-04 =
+* Added support for WordPress 6.9
+* Added support for WooCommerce 10.4
+
+= 1.13.6 - 2025-11-26 =
+* Fixed plugin promo links
+
+= 1.13.5 - 2025-11-12 =
+* Fixed column layout for products
+
+= 1.13.4 - 2025-10-29 =
+* Fixed my account coupons table
+
+= 1.13.3 - 2025-10-20 =
+* Changed plugin links
+
+= 1.13.2 - 2025-10-13 =
+* Added support for WooCommerce 10.3
+* Added Patchstack Vulnerability Disclosure Program
 
 = 1.13.1 - 2025-09-03 =
 * Fixed printing images for pdf

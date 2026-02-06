@@ -7,9 +7,11 @@
  */
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Order;
 
+use FlexibleCouponsVendor\FlexibleCouponsProVendor\WPDesk\Library\CouponInterfaces\ShortcodeData;
 use WC_Order_Item_Coupon;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\WpmlHelper;
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 use WC_Coupon;
 use WC_Order;
@@ -36,7 +38,7 @@ class MakeOrder implements Hookable
      */
     public function hooks()
     {
-        add_action('woocommerce_checkout_order_processed', [$this, 'order_processed'], 10, 3);
+        add_action('woocommerce_payment_complete', [$this, 'order_processed']);
         add_action('woocommerce_order_item_meta_end', [$this, 'display_coupons_links'], 8, 3);
     }
     public function display_coupons_links($item_id, $item, $order)
@@ -58,35 +60,42 @@ class MakeOrder implements Hookable
     }
     /**
      * @param int      $order_id
-     * @param array    $posted_data
-     * @param WC_Order $order
      */
-    public function order_processed(int $order_id, array $posted_data, WC_Order $order)
+    public function order_processed(int $order_id): void
     {
+        $order = wc_get_order($order_id);
+        if (!$order instanceof WC_Order) {
+            return;
+        }
         $coupon_items = $order->get_items('coupon');
         foreach ($coupon_items as $coupon_item) {
-            if ($coupon_item instanceof WC_Order_Item_Coupon) {
-                $total = (float) $coupon_item->get_discount() + (float) $coupon_item->get_discount_tax();
-                $coupon_code = $coupon_item->get_code();
-                $args = ['post_type' => 'shop_coupon', 'title' => $coupon_code, 'posts_per_page' => 1, 'fields' => 'ids'];
-                $query = new \WP_Query($args);
-                $coupon_ids = $query->posts;
-                $coupon_id = !empty($coupon_ids) ? $coupon_ids[0] : 0;
-                $coupon_data = $this->postmeta->get_private($coupon_id, 'fcpdf_coupon_data');
-                if (!empty($coupon_data)) {
-                    $coupon_object = new WC_Coupon($coupon_id);
-                    $usage_limit = $coupon_object->get_usage_limit();
-                    if (!$usage_limit) {
-                        $amount = $coupon_object->get_amount();
-                        if ($total > $amount) {
-                            $amount = 0;
-                        } else {
-                            $amount -= $total;
-                        }
-                        $coupon_object->set_amount(number_format($amount, 2));
-                        $coupon_object->save();
-                    }
+            if (!$coupon_item instanceof WC_Order_Item_Coupon) {
+                continue;
+            }
+            $total = (float) $coupon_item->get_discount() + (float) $coupon_item->get_discount_tax();
+            $order_currency = $order->get_currency();
+            $total = WpmlHelper::get_default_amount_by_current_exchange($total, $order_currency);
+            $coupon_code = $coupon_item->get_code();
+            $args = ['post_type' => 'shop_coupon', 'title' => $coupon_code, 'posts_per_page' => 1, 'fields' => 'ids'];
+            $query = new \WP_Query($args);
+            $coupon_ids = $query->posts;
+            $coupon_id = !empty($coupon_ids) ? $coupon_ids[0] : 0;
+            $coupon_data = $this->postmeta->get_private($coupon_id, 'fcpdf_coupon_data');
+            if (empty($coupon_data)) {
+                continue;
+            }
+            $coupon_object = new WC_Coupon($coupon_id);
+            $usage_limit = $coupon_object->get_usage_limit();
+            if (!$usage_limit) {
+                $amount = (float) $coupon_object->get_amount();
+                $amount = WpmlHelper::get_default_amount_by_current_exchange($amount, $order_currency);
+                if ($total > $amount) {
+                    $amount = 0;
+                } else {
+                    $amount -= $total;
                 }
+                $coupon_object->set_amount(number_format($amount, 2));
+                $coupon_object->save();
             }
         }
     }

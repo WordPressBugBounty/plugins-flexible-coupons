@@ -24,9 +24,9 @@ class SupportLinks implements Hookable {
 	public function add_support_link_on_invoice_listing() {
 		$screen = get_current_screen();
 		if ( isset( $screen->id ) && $screen->id === self::COUPON_LISTING_PAGE ) {
-			$url = 'https://wpdesk.net/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-list#Coupon_templates_list';
+			$url = 'https://wpdesk.net/sk/flexible-coupons-free-sl-listing-en';
 			if ( get_locale() === 'pl_PL' ) {
-				$url = 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-list#lista-szablonow-kuponow';
+				$url = 'https://www.wpdesk.pl/sk/flexible-coupons-free-sl-listing-pl';
 			}
 			?>
 			<script>
@@ -41,9 +41,9 @@ class SupportLinks implements Hookable {
 	public function add_support_link_on_invoice_add() {
 		$screen = get_current_screen();
 		if ( ( isset( $screen->id ) && $screen->id === self::COUPON_EDIT_PAGE ) && ( isset( $screen->action ) && $screen->action === self::COUPON_ADD_ACTION ) ) {
-			$url = 'https://wpdesk.net/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new#New_coupon_template';
+			$url = 'https://wpdesk.net/sk/flexible-coupons-free-sl-add-en';
 			if ( get_locale() === 'pl_PL' ) {
-				$url = 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new#tworzenie-szablonu-kuponu';
+				$url = 'https://www.wpdesk.pl/sk/flexible-coupons-free-sl-add-pl';
 			}
 			?>
 			<script>
@@ -58,9 +58,9 @@ class SupportLinks implements Hookable {
 	public function add_support_link_on_invoice_edit() {
 		$screen = get_current_screen();
 		if ( isset( $screen->id ) && $screen->id === self::COUPON_EDIT_PAGE && empty( $screen->action ) ) {
-			$url = 'https://wpdesk.net/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new#New_coupon_template';
+			$url = 'https://wpdesk.net/sk/flexible-coupons-free-sl-edit-en';
 			if ( get_locale() === 'pl_PL' ) {
-				$url = 'https://www.wpdesk.pl/docs/flexible-coupons-pro/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-docs-link&utm_content=edit-template-add-new#tworzenie-szablonu-kuponu';
+				$url = 'https://www.wpdesk.pl/sk/flexible-coupons-free-sl-edit-pl';
 			}
 			?>
 			<script>

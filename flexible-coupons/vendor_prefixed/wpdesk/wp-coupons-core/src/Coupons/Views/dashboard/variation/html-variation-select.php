@@ -15,7 +15,7 @@ if (!$is_premium) {
     \printf(
         /* translators: %1$s: anchor opening tag, %2$s: anchor closing tag */
         \esc_html__('%1$sUpgrade to PRO →%2$s and enable options below', 'flexible-coupons'),
-        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url) . '&utm_content=variations'),
+        \sprintf('<a href="%s" target="_blank" class="pro-link">', \esc_url($pro_url)),
         '</a>'
     );
     echo '</p>';

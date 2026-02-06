@@ -52,11 +52,11 @@ class Assets implements Hookable
         $screen = get_current_screen();
         $suffix = defined('SCRIPT_DEBUG') && \SCRIPT_DEBUG ? '' : '.min';
         $is_pl = 'pl_PL' === get_locale();
-        $pro_url = $is_pl ? 'https://www.wpdesk.pl/sklep/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=edit-template' : 'https://wpdesk.net/products/flexible-coupons-woocommerce/?utm_source=wp-admin-plugins&utm_medium=link&utm_campaign=flexible-coupons-pro&utm_content=edit-template';
-        $shortcodes_pro_url = $is_pl ? 'https://wpdesk.link/fc-codes-up-pl' : 'https://wpdesk.link/fc-codes-up';
-        $tickets_buy_url = $is_pl ? 'https://wpdesk.link/fc-qr-codes-pl-up' : 'https://wpdesk.link/fc-qr-codes-up';
-        $tickets_docs_url = $is_pl ? 'https://wpdesk.link/fc-qr-codes-pl-docs' : 'https://wpdesk.link/fc-qr-codes-docs';
-        $sending_buy_url = $is_pl ? 'https://wpdesk.link/as-advanced-sending-template-pl' : 'https://wpdesk.link/as-advanced-sending-template';
+        $pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-canva-pro-pl' : 'https://flexiblecoupons.net/sk/wp-canva-pro-en';
+        $shortcodes_pro_url = $is_pl ? 'https://wpdesk.pl/sk/fc-codes-up-pl' : 'https://flexiblecoupons.net/sk/fc-codes-up';
+        $tickets_buy_url = $is_pl ? 'https://wpdesk.pl/sk/fc-qr-codes-pl-up' : 'https://flexiblecoupons.net/sk/fc-qr-codes-up';
+        $tickets_docs_url = $is_pl ? 'https://wpdesk.pl/sk/fc-qr-codes-pl-docs' : 'https://flexiblecoupons.net/sk/fc-qr-codes-docs';
+        $sending_buy_url = $is_pl ? 'https://wpdesk.pl/sk/as-advanced-sending-template-pl' : 'https://flexiblecoupons.net/sk/as-advanced-sending-template';
         $sending_settings_url = admin_url('edit.php?post_type=wpdesk-coupons&page=fc-settings&tab=emails');
         if ('post' === $screen->base && $this->post_type === $screen->post_type) {
             if (!is_rtl()) {

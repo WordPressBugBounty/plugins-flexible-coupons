@@ -5,9 +5,11 @@ namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Coupon;
 use WC_Coupon;
 use WC_Order_Item;
 use WC_Order_Item_Product;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\WpmlHelper;
 use FlexibleCouponsVendor\WPDesk\Persistence\PersistentContainer;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\Helper;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\CouponsIntegration;
 /**
  * Create WooCommerce coupon.
  *
@@ -48,6 +50,10 @@ class Coupon
         $coupon = new WC_Coupon();
         if ($item instanceof WC_Order_Item_Product) {
             $amount = $this->get_price_from_oder_item($item);
+            if (WpmlHelper::is_active()) {
+                $exchange_rate = WpmlHelper::get_exchange_rate($item->get_order()->get_currency());
+                $amount /= $exchange_rate;
+            }
             $coupon->set_code($coupon_code);
             $coupon->set_date_created(current_time('mysql'));
             $product_id = Helper::get_product_id($item);
@@ -153,10 +159,12 @@ class Coupon
         if (\wc_prices_include_tax()) {
             $item_price += (float) $order_item->get_total_tax();
         }
-        if ($this->settings->get_fallback('coupon_regular_price') === 'yes') {
+        if ($this->settings->get_fallback('coupon_regular_price') === 'yes' && CouponsIntegration::is_pro()) {
             $product = wc_get_product($product_id);
-            if ((float) $product->get_regular_price() > 0) {
-                $item_price = $product->get_regular_price();
+            $quantity = $order_item->get_quantity();
+            $regular_price = (float) $product->get_regular_price();
+            if ($regular_price > 0) {
+                $item_price = $regular_price * $quantity;
             }
         }
         return wc_format_decimal($item_price, wc_get_price_decimals());
