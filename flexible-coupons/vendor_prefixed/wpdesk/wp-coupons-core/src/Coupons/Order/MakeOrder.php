@@ -22,6 +22,7 @@ use WC_Order;
  */
 class MakeOrder implements Hookable
 {
+    private const AMOUNT_ADJUSTED = '_fcpdf_multiuse_amount_adjusted';
     /**
      * @var PostMeta
      */
@@ -38,7 +39,7 @@ class MakeOrder implements Hookable
      */
     public function hooks()
     {
-        add_action('woocommerce_payment_complete', [$this, 'order_processed']);
+        add_action('woocommerce_order_status_changed', [$this, 'order_processed'], 20, 4);
         add_action('woocommerce_order_item_meta_end', [$this, 'display_coupons_links'], 8, 3);
     }
     public function display_coupons_links($item_id, $item, $order)
@@ -59,15 +60,27 @@ class MakeOrder implements Hookable
         }
     }
     /**
-     * @param int      $order_id
+     * @param int           $order_id
+     * @param string        $old_status
+     * @param string        $new_status
+     * @param WC_Order|null $order
      */
-    public function order_processed(int $order_id): void
+    public function order_processed(int $order_id, string $old_status = '', string $new_status = '', $order = null): void
     {
-        $order = wc_get_order($order_id);
+        if (!in_array($new_status, ['processing', 'completed'], \true)) {
+            return;
+        }
+        if (!$order instanceof WC_Order) {
+            $order = wc_get_order($order_id);
+        }
         if (!$order instanceof WC_Order) {
             return;
         }
+        if ($order->get_meta(self::AMOUNT_ADJUSTED, \true)) {
+            return;
+        }
         $coupon_items = $order->get_items('coupon');
+        $did_update = \false;
         foreach ($coupon_items as $coupon_item) {
             if (!$coupon_item instanceof WC_Order_Item_Coupon) {
                 continue;
@@ -76,10 +89,7 @@ class MakeOrder implements Hookable
             $order_currency = $order->get_currency();
             $total = WpmlHelper::get_default_amount_by_current_exchange($total, $order_currency);
             $coupon_code = $coupon_item->get_code();
-            $args = ['post_type' => 'shop_coupon', 'title' => $coupon_code, 'posts_per_page' => 1, 'fields' => 'ids'];
-            $query = new \WP_Query($args);
-            $coupon_ids = $query->posts;
-            $coupon_id = !empty($coupon_ids) ? $coupon_ids[0] : 0;
+            $coupon_id = (int) wc_get_coupon_id_by_code($coupon_code);
             $coupon_data = $this->postmeta->get_private($coupon_id, 'fcpdf_coupon_data');
             if (empty($coupon_data)) {
                 continue;
@@ -89,14 +99,15 @@ class MakeOrder implements Hookable
             if (!$usage_limit) {
                 $amount = (float) $coupon_object->get_amount();
                 $amount = WpmlHelper::get_default_amount_by_current_exchange($amount, $order_currency);
-                if ($total > $amount) {
-                    $amount = 0;
-                } else {
-                    $amount -= $total;
-                }
-                $coupon_object->set_amount(number_format($amount, 2));
+                $new_amount = max(0, $amount - $total);
+                $coupon_object->set_amount($new_amount);
                 $coupon_object->save();
+                $did_update = \true;
             }
+        }
+        if ($did_update) {
+            $order->update_meta_data(self::AMOUNT_ADJUSTED, '1');
+            $order->save();
         }
     }
 }

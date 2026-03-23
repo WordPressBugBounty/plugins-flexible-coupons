@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'wpdesk/flexible-coupons',
-        'pretty_version' => '1.14.2',
-        'version' => '1.14.2.0',
-        'reference' => '816f03fe8914bf45f2865d5fd7b692dc285ef4bc',
+        'pretty_version' => '1.14.3',
+        'version' => '1.14.3.0',
+        'reference' => '61c357b26b6d66424b2dc61e4be9b4d9976e1c28',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -56,9 +56,9 @@
             'dev_requirement' => false,
         ),
         'wpdesk/flexible-coupons' => array(
-            'pretty_version' => '1.14.2',
-            'version' => '1.14.2.0',
-            'reference' => '816f03fe8914bf45f2865d5fd7b692dc285ef4bc',
+            'pretty_version' => '1.14.3',
+            'version' => '1.14.3.0',
+            'reference' => '61c357b26b6d66424b2dc61e4be9b4d9976e1c28',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

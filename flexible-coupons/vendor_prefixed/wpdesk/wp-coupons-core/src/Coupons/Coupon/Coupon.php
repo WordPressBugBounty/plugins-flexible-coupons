@@ -23,7 +23,7 @@ class Coupon
      */
     private $post_meta;
     /**
-     * @var PersistentContainer;
+     * @var PersistentContainer
      */
     private $settings;
     /**

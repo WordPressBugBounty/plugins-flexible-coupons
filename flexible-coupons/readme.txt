@@ -5,7 +5,7 @@ Donate link: https://flexiblecoupons.net/sk/flexible-coupons-donate
 Tags: gift card, voucher, coupon, pdf ticket, qr code
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.14.2
+Stable tag: 1.14.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -486,6 +486,10 @@ Please report security bugs found in the source code of the Flexible PDF Coupons
 59. Use imported coupon codes for products (PRO add-on).
 
 == Changelog ==
+
+= 1.14.3 - 2026-03-23 =
+* Fixed incorrect coupon amount subtraction
+* Fixed creating coupon for non PDF product
 
 = 1.14.2 - 2026-03-07 =
 * Added support for WooCommerce 10.6

@@ -179,8 +179,6 @@ class SettingsForm implements Hookable
             /**
              * Filters setting tabs.
              *
-             * @param array $this->tabs .
-             *
              * @return SettingsTab[]
              *
              * @since 1.6.0
