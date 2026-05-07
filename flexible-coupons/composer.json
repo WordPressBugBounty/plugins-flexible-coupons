@@ -88,6 +88,6 @@
 			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
 		}
 	},
-	"version": "1.14.4",
+	"version": "1.14.5",
 	"type": "wordpress-plugin"
 }
