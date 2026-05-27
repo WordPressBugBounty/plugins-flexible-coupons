@@ -6,11 +6,13 @@ use FlexibleCouponsVendor\Mpdf\Strict;
 use FlexibleCouponsVendor\Mpdf\Form;
 use FlexibleCouponsVendor\Mpdf\Mpdf;
 use FlexibleCouponsVendor\Mpdf\Pdf\Protection;
+use FlexibleCouponsVendor\Mpdf\PsrLogAwareTrait\PsrLogAwareTrait;
 use FlexibleCouponsVendor\Mpdf\Utils\PdfDate;
 use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     use Strict;
+    use PsrLogAwareTrait;
     /**
      * @var \Mpdf\Mpdf
      */
@@ -27,10 +29,6 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
      * @var \Mpdf\Pdf\Protection
      */
     private $protection;
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
     public function __construct(Mpdf $mpdf, BaseWriter $writer, Form $form, Protection $protection, LoggerInterface $logger)
     {
         $this->mpdf = $mpdf;
@@ -43,7 +41,6 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
     {
         $this->writer->object();
         $this->mpdf->MetadataRoot = $this->mpdf->n;
-        $Producer = 'mPDF' . ($this->mpdf->exposeVersion ? ' ' . Mpdf::VERSION : '');
         $z = date('O');
         // +0200
         $offset = substr($z, 0, 3) . ':' . substr($z, 3, 2);
@@ -55,9 +52,9 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
         $m .= ' <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="3.1-701">' . "\n";
         $m .= '  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">' . "\n";
         $m .= '   <rdf:Description rdf:about="uuid:' . $uuid . '" xmlns:pdf="http://ns.adobe.com/pdf/1.3/">' . "\n";
-        $m .= '    <pdf:Producer>' . $Producer . '</pdf:Producer>' . "\n";
+        $m .= '    <pdf:Producer>' . htmlspecialchars($this->getProducerString(), \ENT_QUOTES | \ENT_XML1) . '</pdf:Producer>' . "\n";
         if (!empty($this->mpdf->keywords)) {
-            $m .= '    <pdf:Keywords>' . $this->mpdf->keywords . '</pdf:Keywords>' . "\n";
+            $m .= '    <pdf:Keywords>' . htmlspecialchars($this->mpdf->keywords, \ENT_QUOTES | \ENT_XML1) . '</pdf:Keywords>' . "\n";
         }
         $m .= '   </rdf:Description>' . "\n";
         $m .= '   <rdf:Description rdf:about="uuid:' . $uuid . '" xmlns:xmp="http://ns.adobe.com/xap/1.0/">' . "\n";
@@ -65,7 +62,7 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
         $m .= '    <xmp:ModifyDate>' . $CreationDate . '</xmp:ModifyDate>' . "\n";
         $m .= '    <xmp:MetadataDate>' . $CreationDate . '</xmp:MetadataDate>' . "\n";
         if (!empty($this->mpdf->creator)) {
-            $m .= '    <xmp:CreatorTool>' . $this->mpdf->creator . '</xmp:CreatorTool>' . "\n";
+            $m .= '    <xmp:CreatorTool>' . htmlspecialchars($this->mpdf->creator, \ENT_QUOTES | \ENT_XML1) . '</xmp:CreatorTool>' . "\n";
         }
         $m .= '   </rdf:Description>' . "\n";
         // DC elements
@@ -74,28 +71,28 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
         if (!empty($this->mpdf->title)) {
             $m .= '    <dc:title>
 	 <rdf:Alt>
-	  <rdf:li xml:lang="x-default">' . $this->mpdf->title . '</rdf:li>
+	  <rdf:li xml:lang="x-default">' . htmlspecialchars($this->mpdf->title, \ENT_QUOTES | \ENT_XML1) . '</rdf:li>
 	 </rdf:Alt>
 	</dc:title>' . "\n";
         }
         if (!empty($this->mpdf->keywords)) {
             $m .= '    <dc:subject>
 	 <rdf:Bag>
-	  <rdf:li>' . $this->mpdf->keywords . '</rdf:li>
+	  <rdf:li>' . htmlspecialchars($this->mpdf->keywords, \ENT_QUOTES | \ENT_XML1) . '</rdf:li>
 	 </rdf:Bag>
 	</dc:subject>' . "\n";
         }
         if (!empty($this->mpdf->subject)) {
             $m .= '    <dc:description>
 	 <rdf:Alt>
-	  <rdf:li xml:lang="x-default">' . $this->mpdf->subject . '</rdf:li>
+	  <rdf:li xml:lang="x-default">' . htmlspecialchars($this->mpdf->subject, \ENT_QUOTES | \ENT_XML1) . '</rdf:li>
 	 </rdf:Alt>
 	</dc:description>' . "\n";
         }
         if (!empty($this->mpdf->author)) {
             $m .= '    <dc:creator>
 	 <rdf:Seq>
-	  <rdf:li>' . $this->mpdf->author . '</rdf:li>
+	  <rdf:li>' . htmlspecialchars($this->mpdf->author, \ENT_QUOTES | \ENT_XML1) . '</rdf:li>
 	 </rdf:Seq>
 	</dc:creator>' . "\n";
         }
@@ -134,7 +131,7 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
     }
     public function writeInfo()
     {
-        $this->writer->write('/Producer ' . $this->writer->utf16BigEndianTextString('mPDF' . ($this->mpdf->exposeVersion ? ' ' . $this->getVersionString() : '')));
+        $this->writer->write('/Producer ' . $this->writer->utf16BigEndianTextString($this->getProducerString()));
         if (!empty($this->mpdf->title)) {
             $this->writer->write('/Title ' . $this->writer->utf16BigEndianTextString($this->mpdf->title));
         }
@@ -290,6 +287,11 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
     {
         $this->writer->write('/Type /Catalog');
         $this->writer->write('/Pages 1 0 R');
+        if (is_string($this->mpdf->currentLang)) {
+            $this->writer->write(sprintf('/Lang (%s)', $this->mpdf->currentLang));
+        } elseif (is_string($this->mpdf->default_lang)) {
+            $this->writer->write(sprintf('/Lang (%s)', $this->mpdf->default_lang));
+        }
         if ($this->mpdf->ZoomMode === 'fullpage') {
             $this->writer->write('/OpenAction [3 0 R /Fit]');
         } elseif ($this->mpdf->ZoomMode === 'fullwidth') {
@@ -672,13 +674,9 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
             $this->writer->write('/Encrypt ' . $this->mpdf->enc_obj_id . ' 0 R');
             $this->writer->write('/ID [<' . $this->protection->getUniqid() . '> <' . $this->protection->getUniqid() . '>]');
         } else {
-            $uniqid = md5(time() . $this->mpdf->buffer);
+            $uniqid = md5(time() . $this->mpdf->buffer->getHash());
             $this->writer->write('/ID [<' . $uniqid . '> <' . $uniqid . '>]');
         }
-    }
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
     }
     private function getVersionString()
     {
@@ -696,5 +694,9 @@ class MetadataWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterf
             }
         }
         return $return;
+    }
+    private function getProducerString()
+    {
+        return 'mPDF' . ($this->mpdf->exposeVersion ? ' ' . $this->getVersionString() : '');
     }
 }

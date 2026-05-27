@@ -33,4 +33,5 @@ interface ShortcodeData
      * @return string
      */
     public function get_coupon_code();
+    public function get_item(): \WC_Order_Item;
 }

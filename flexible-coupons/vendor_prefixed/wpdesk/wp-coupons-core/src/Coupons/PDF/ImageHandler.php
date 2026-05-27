@@ -55,12 +55,15 @@ class ImageHandler
         imagefill($high_res_image, 0, 0, $transparent_background);
         imagecopyresampled($high_res_image, $source_image, 0, 0, 0, 0, $high_res_w, $high_res_h, $source_w, $source_h);
         imagedestroy($source_image);
+        // phpcs:ignore Generic.PHP.DeprecatedFunctions.Deprecated
         $rotated_image = imagerotate($high_res_image, $angle, $transparent_background);
         if (!$rotated_image) {
             imagedestroy($high_res_image);
+            // phpcs:ignore Generic.PHP.DeprecatedFunctions.Deprecated
             throw new Exception('Image rotation failed.');
         }
         imagedestroy($high_res_image);
+        // phpcs:ignore Generic.PHP.DeprecatedFunctions.Deprecated
         imagesavealpha($rotated_image, \true);
         $final_w = imagesx($rotated_image);
         $final_h = imagesy($rotated_image);
@@ -71,6 +74,7 @@ class ImageHandler
         $temp_filepath = $temp_dir . $temp_filename;
         imagepng($rotated_image, $temp_filepath, 9);
         imagedestroy($rotated_image);
+        // phpcs:ignore Generic.PHP.DeprecatedFunctions.Deprecated
         $temp_url = trailingslashit($upload_dir['baseurl']) . 'flexible-coupons/tmp/' . $temp_filename;
         $new_left = $object['left'] + ($target_w - $final_w / $supersample_factor) / 2;
         $new_top = $object['top'] + ($target_h - $final_h / $supersample_factor) / 2;

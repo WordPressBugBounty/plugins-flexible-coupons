@@ -11,6 +11,7 @@ use Exception;
 use WC_Coupon;
 use WC_Order;
 use WC_Order_Item;
+use WC_Order_Item_Product;
 use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Data\Email\EmailMeta;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Plugin;
@@ -153,17 +154,20 @@ class GenerateCoupon implements Hookable
         $order = wc_get_order($order_id);
         $items = $order->get_items();
         foreach ($items as $item) {
+            if (!$item instanceof WC_Order_Item_Product) {
+                continue;
+            }
             $this->create_item_coupon($item);
         }
     }
     /**
-     * @param WC_Order_Item $item
+     * @param WC_Order_Item_Product $item
      *
      * @return bool
      */
-    private function is_coupon_item(WC_Order_Item $item): bool
+    private function is_coupon_item(WC_Order_Item_Product $item): bool
     {
-        $product_id = Helper::get_product_id($item);
+        $product_id = $item->get_product_id();
         $is_coupon_item = 'yes' === $this->postmeta->get_private($product_id, ProductEditPage::PRODUCT_COUPON_SLUG);
         if (!$is_coupon_item) {
             return \false;
@@ -177,12 +181,12 @@ class GenerateCoupon implements Hookable
         return \true;
     }
     /**
-     * @param WC_Order_Item $item
+     * @param WC_Order_Item_Product $item
      *
      * @return array
      * @throws Exception
      */
-    private function create_item_coupon(WC_Order_Item $item): array
+    private function create_item_coupon(WC_Order_Item_Product $item): array
     {
         $meta = [];
         if ($this->is_coupon_item($item)) {
@@ -202,13 +206,13 @@ class GenerateCoupon implements Hookable
      * Return [ 'hash', 'order_id', 'coupon_id', 'coupon_code', product_id, item_id, coupon_url' ].
      *
      * @param int $order_id Order ID.
-     * @param WC_Order_Item $item Item.
+     * @param WC_Order_Item_Product $item Item.
      * @param array $product_fields_values Product fields values.
      *
      * @return array
      * @throws Exception
      */
-    private function create_coupon(int $order_id, WC_Order_Item $item, array $product_fields_values): array
+    private function create_coupon(int $order_id, WC_Order_Item_Product $item, array $product_fields_values): array
     {
         $order = \wc_get_order($order_id);
         $has_coupon = (int) $order->get_meta('fcpdf_order_item_' . $item->get_id() . '_coupon_id');
@@ -235,7 +239,7 @@ class GenerateCoupon implements Hookable
         $order_items = $order->get_items();
         $coupon_meta = [];
         foreach ($order_items as $order_item) {
-            if (!$this->is_coupon_item($order_item)) {
+            if (!$order_item instanceof WC_Order_Item_Product || !$this->is_coupon_item($order_item)) {
                 continue;
             }
             $coupon_data = $this->create_coupon_meta($order_item, $product_fields_values, $order_id);
@@ -247,13 +251,13 @@ class GenerateCoupon implements Hookable
         return $coupon_meta;
     }
     /**
-     * @param WC_Order_Item $item
+     * @param WC_Order_Item_Product $item
      * @param array $product_fields_values
      * @param int $order_id
      *
      * @return array
      */
-    private function handle_multiple_coupon_mails(WC_Order_Item $item, array $product_fields_values, int $order_id): array
+    private function handle_multiple_coupon_mails(WC_Order_Item_Product $item, array $product_fields_values, int $order_id): array
     {
         $coupon_meta['coupons'][] = $this->create_coupon_meta($item, $product_fields_values, $order_id);
         if ($coupon_meta['coupons']) {
@@ -262,9 +266,16 @@ class GenerateCoupon implements Hookable
         }
         return [];
     }
-    private function create_coupon_meta($order_item, $product_fields_values, $order_id)
+    /**
+     * @param WC_Order_Item_Product $order_item
+     * @param array<string, mixed> $product_fields_values
+     * @param int $order_id
+     *
+     * @return false|array<string, mixed>
+     */
+    private function create_coupon_meta(WC_Order_Item_Product $order_item, $product_fields_values, $order_id)
     {
-        if ($order_item instanceof WC_Order_Item && !$this->is_coupon_item($order_item)) {
+        if (!$this->is_coupon_item($order_item)) {
             return \false;
         }
         $coupon_code = (new CouponCode($this->settings, $order_item))->get();
@@ -346,6 +357,9 @@ class GenerateCoupon implements Hookable
             }
             $order = wc_get_order($order_id);
             $item = $order->get_item($item_id);
+            if (!$item instanceof WC_Order_Item_Product) {
+                wp_send_json_error(esc_html__('Cannot generate coupon. Unknown item ID', 'flexible-coupons'));
+            }
             try {
                 $coupon = $this->create_item_coupon($item);
                 if (!empty($coupon)) {

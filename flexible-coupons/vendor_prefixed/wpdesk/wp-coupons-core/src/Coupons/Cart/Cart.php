@@ -603,7 +603,6 @@ class Cart implements Hookable
      */
     public function new_order_item_action($item_id, $item)
     {
-        // @phpstan-ignore-line
         if ($item instanceof WC_Order_Item_Product && !empty($item->legacy_values) && !empty($item->legacy_values['flexible_coupons'])) {
             // @phpstan-ignore-line
             foreach ($item->legacy_values['flexible_coupons'] as $field) {

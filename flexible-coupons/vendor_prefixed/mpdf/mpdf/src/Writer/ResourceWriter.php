@@ -4,10 +4,12 @@ namespace FlexibleCouponsVendor\Mpdf\Writer;
 
 use FlexibleCouponsVendor\Mpdf\Strict;
 use FlexibleCouponsVendor\Mpdf\Mpdf;
+use FlexibleCouponsVendor\Mpdf\PsrLogAwareTrait\PsrLogAwareTrait;
 use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
 final class ResourceWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAwareInterface
 {
     use Strict;
+    use PsrLogAwareTrait;
     /**
      * @var \Mpdf\Mpdf
      */
@@ -52,10 +54,6 @@ final class ResourceWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAware
      * @var \Mpdf\Writer\JavaScriptWriter
      */
     private $javaScriptWriter;
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
     public function __construct(Mpdf $mpdf, BaseWriter $writer, ColorWriter $colorWriter, FontWriter $fontWriter, ImageWriter $imageWriter, FormWriter $formWriter, OptionalContentWriter $optionalContentWriter, BackgroundWriter $backgroundWriter, BookmarkWriter $bookmarkWriter, MetadataWriter $metadataWriter, JavaScriptWriter $javaScriptWriter, LoggerInterface $logger)
     {
         $this->mpdf = $mpdf;
@@ -87,7 +85,7 @@ final class ResourceWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAware
         $this->backgroundWriter->writeShaders();
         $this->backgroundWriter->writePatterns();
         // Resource dictionary
-        $this->mpdf->offsets[2] = strlen($this->mpdf->buffer);
+        $this->mpdf->offsets[2] = $this->mpdf->buffer->getLength();
         $this->writer->write('2 0 obj');
         $this->writer->write('<</ProcSet [/PDF /Text /ImageB /ImageC /ImageI]');
         $this->writer->write('/Font <<');
@@ -191,14 +189,5 @@ final class ResourceWriter implements \FlexibleCouponsVendor\Psr\Log\LoggerAware
             $this->writer->write('>>');
             $this->writer->write('endobj');
         }
-    }
-    /**
-     * @param \Psr\Log\LoggerInterface $logger
-     *
-     * @return void
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
     }
 }

@@ -127,7 +127,7 @@ class FontVariables
                 "quivira" => ['R' => "Quivira.otf", 'useOTL' => 0xff],
                 "eeyekunicode" => [
                     /* Meetei Mayek */
-                    'R' => "Eeyek.ttf",
+                    'R' => "Eeyek-Regular.ttf",
                 ],
                 "lannaalif" => [
                     /* Tai Tham */

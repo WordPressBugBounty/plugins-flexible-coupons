@@ -4,6 +4,7 @@ namespace FlexibleCouponsVendor\Mpdf\Tag;
 
 use FlexibleCouponsVendor\Mpdf\Css\Border;
 use FlexibleCouponsVendor\Mpdf\Css\TextVars;
+use FlexibleCouponsVendor\Mpdf\Utils\Arrays;
 use FlexibleCouponsVendor\Mpdf\Utils\UtfString;
 class Td extends Tag
 {
@@ -138,12 +139,12 @@ class Td extends Tag
         if ($this->mpdf->trow_text_rotate) {
             $c['R'] = $this->mpdf->trow_text_rotate;
         }
-        $this->mpdf->cell_border_dominance_L = 0;
-        $this->mpdf->cell_border_dominance_R = 0;
-        $this->mpdf->cell_border_dominance_T = 0;
-        $this->mpdf->cell_border_dominance_B = 0;
+        $this->cssManager->setBorderDominance('L', 0);
+        $this->cssManager->setBorderDominance('R', 0);
+        $this->cssManager->setBorderDominance('T', 0);
+        $this->cssManager->setBorderDominance('B', 0);
         $properties = $this->cssManager->MergeCSS('TABLE', $tag, $attr);
-        $properties = $this->cssManager->array_merge_recursive_unique($this->mpdf->base_table_properties, $properties);
+        $properties = Arrays::uniqueRecursiveMerge($this->mpdf->base_table_properties, $properties);
         $this->mpdf->Reset();
         // mPDF 6   ?????????????????????
         $this->mpdf->setCSS($properties, 'TABLECELL', $tag);
@@ -236,10 +237,10 @@ class Td extends Tag
                     $c['border_details']['L'] = $bord;
                     $c['border_details']['T'] = $bord;
                     $c['border_details']['B'] = $bord;
-                    $c['border_details']['L']['dom'] = $this->mpdf->cell_border_dominance_L;
-                    $c['border_details']['R']['dom'] = $this->mpdf->cell_border_dominance_R;
-                    $c['border_details']['T']['dom'] = $this->mpdf->cell_border_dominance_T;
-                    $c['border_details']['B']['dom'] = $this->mpdf->cell_border_dominance_B;
+                    $c['border_details']['L']['dom'] = $this->cssManager->getBorderDominance('L');
+                    $c['border_details']['R']['dom'] = $this->cssManager->getBorderDominance('R');
+                    $c['border_details']['T']['dom'] = $this->cssManager->getBorderDominance('T');
+                    $c['border_details']['B']['dom'] = $this->cssManager->getBorderDominance('B');
                 } elseif ($this->mpdf->simpleTables && $this->mpdf->row == 0 && $this->mpdf->col == 0) {
                     $table['simple']['border'] = Border::ALL;
                     $table['simple']['border_details']['R'] = $bord;
@@ -253,22 +254,22 @@ class Td extends Tag
             if (!empty($properties['BORDER-RIGHT'])) {
                 $c['border_details']['R'] = $this->mpdf->border_details($properties['BORDER-RIGHT']);
                 $this->mpdf->setBorder($c['border'], Border::RIGHT, $c['border_details']['R']['s']);
-                $c['border_details']['R']['dom'] = $this->mpdf->cell_border_dominance_R;
+                $c['border_details']['R']['dom'] = $this->cssManager->getBorderDominance('R');
             }
             if (!empty($properties['BORDER-LEFT'])) {
                 $c['border_details']['L'] = $this->mpdf->border_details($properties['BORDER-LEFT']);
                 $this->mpdf->setBorder($c['border'], Border::LEFT, $c['border_details']['L']['s']);
-                $c['border_details']['L']['dom'] = $this->mpdf->cell_border_dominance_L;
+                $c['border_details']['L']['dom'] = $this->cssManager->getBorderDominance('L');
             }
             if (!empty($properties['BORDER-BOTTOM'])) {
                 $c['border_details']['B'] = $this->mpdf->border_details($properties['BORDER-BOTTOM']);
                 $this->mpdf->setBorder($c['border'], Border::BOTTOM, $c['border_details']['B']['s']);
-                $c['border_details']['B']['dom'] = $this->mpdf->cell_border_dominance_B;
+                $c['border_details']['B']['dom'] = $this->cssManager->getBorderDominance('B');
             }
             if (!empty($properties['BORDER-TOP'])) {
                 $c['border_details']['T'] = $this->mpdf->border_details($properties['BORDER-TOP']);
                 $this->mpdf->setBorder($c['border'], Border::TOP, $c['border_details']['T']['s']);
-                $c['border_details']['T']['dom'] = $this->mpdf->cell_border_dominance_T;
+                $c['border_details']['T']['dom'] = $this->cssManager->getBorderDominance('T');
             }
         } elseif ($this->mpdf->simpleTables && $this->mpdf->row == 0 && $this->mpdf->col == 0) {
             if (!empty($properties['BORDER-LEFT'])) {
@@ -349,7 +350,7 @@ class Td extends Tag
         unset($c);
         $this->mpdf->cell[$this->mpdf->row][$this->mpdf->col]['s'] = 0;
         $cs = $rs = 1;
-        if (isset($attr['COLSPAN']) && $attr['COLSPAN'] > 1) {
+        if (isset($attr['COLSPAN']) && preg_match('/^\d+$/', $attr['COLSPAN']) && $attr['COLSPAN'] > 1) {
             $cs = $this->mpdf->cell[$this->mpdf->row][$this->mpdf->col]['colspan'] = $attr['COLSPAN'];
         }
         if ($this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['nc'] < $this->mpdf->col + $cs) {
@@ -361,7 +362,7 @@ class Td extends Tag
                 $this->mpdf->cell[$this->mpdf->row][$l] = 0;
             }
         }
-        if (isset($attr['ROWSPAN']) && $attr['ROWSPAN'] > 1) {
+        if (isset($attr['ROWSPAN']) && preg_match('/^\d+$/', $attr['ROWSPAN']) && $attr['ROWSPAN'] > 1) {
             $rs = $this->mpdf->cell[$this->mpdf->row][$this->mpdf->col]['rowspan'] = $attr['ROWSPAN'];
         }
         for ($k = $this->mpdf->row; $k < $this->mpdf->row + $rs; $k++) {

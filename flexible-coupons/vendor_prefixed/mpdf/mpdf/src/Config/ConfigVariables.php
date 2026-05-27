@@ -126,6 +126,7 @@ class ConfigVariables
             'PDFA' => \false,
             // Overrides warnings making changes when possible to force PDFA1-b compliance
             'PDFAauto' => \false,
+            'PDFAversion' => '1-B',
             // Colour profile OutputIntent
             // sRGB_IEC61966-2-1 (=default if blank and PDFA), or other added .icc profile
             // Must be CMYK for PDFX, or appropriate type for PDFA(RGB or CMYK)
@@ -433,9 +434,10 @@ class ConfigVariables
             'curlAllowUnsafeSslRequests' => \false,
             'curlCaCertificate' => '',
             'curlTimeout' => 5,
+            'curlExecutionTimeout' => null,
             'curlProxy' => null,
             'curlProxyAuth' => null,
-            'curlUserAgent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.0) Gecko/20100101 Firefox/13.0.1',
+            'curlUserAgent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0',
             'exposeVersion' => \true,
         ];
     }

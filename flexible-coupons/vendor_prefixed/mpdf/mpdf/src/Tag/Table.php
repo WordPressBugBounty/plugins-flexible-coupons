@@ -166,10 +166,20 @@ class Table extends Tag
             $table['direction'] = $this->mpdf->blk[$this->mpdf->blklvl]['direction'];
         }
         if (isset($properties['BACKGROUND-COLOR'])) {
+            if ($table['bgcolor'] === \false) {
+                // @todo cleaner initialization
+                $table['bgcolor'] = [];
+            }
             $table['bgcolor'][-1] = $properties['BACKGROUND-COLOR'];
         } elseif (isset($properties['BACKGROUND'])) {
+            if ($table['bgcolor'] === \false) {
+                $table['bgcolor'] = [];
+            }
             $table['bgcolor'][-1] = $properties['BACKGROUND'];
         } elseif (isset($attr['BGCOLOR'])) {
+            if ($table['bgcolor'] === \false) {
+                $table['bgcolor'] = [];
+            }
             $table['bgcolor'][-1] = $attr['BGCOLOR'];
         }
         if (isset($properties['VERTICAL-ALIGN']) && array_key_exists(strtolower($properties['VERTICAL-ALIGN']), self::ALIGN)) {
@@ -185,7 +195,7 @@ class Table extends Tag
             }
         }
         if (!empty($properties['ROTATE']) && $this->mpdf->tableLevel == 1) {
-            $this->mpdf->table_rotate = $properties['ROTATE'];
+            $this->mpdf->table_rotate = $this->parseTableRotate($properties['ROTATE']);
         }
         if (isset($properties['TOPNTAIL'])) {
             $table['topntail'] = $properties['TOPNTAIL'];
@@ -453,7 +463,7 @@ class Table extends Tag
             }
         }
         if (isset($attr['ROTATE']) && $this->mpdf->tableLevel == 1) {
-            $this->mpdf->table_rotate = $attr['ROTATE'];
+            $this->mpdf->table_rotate = $this->parseTableRotate($attr['ROTATE']);
         }
         //++++++++++++++++++++++++++++
         if ($this->mpdf->table_rotate) {
@@ -621,7 +631,7 @@ class Table extends Tag
             $objattr['row'] = $this->mpdf->row;
             $objattr['col'] = $this->mpdf->col;
             $objattr['level'] = $this->mpdf->tableLevel;
-            $e = "\xbb\xa4\xactype=nestedtable,objattr=" . serialize($objattr) . "\xbb\xa4\xac";
+            $e = Mpdf::OBJECT_IDENTIFIER . "type=nestedtable,objattr=" . serialize($objattr) . Mpdf::OBJECT_IDENTIFIER;
             $this->mpdf->_saveCellTextBuffer($e);
             $this->mpdf->cell[$this->mpdf->row][$this->mpdf->col]['s'] += $tl;
             if (!isset($this->mpdf->cell[$this->mpdf->row][$this->mpdf->col]['maxs'])) {
@@ -1133,5 +1143,26 @@ class Table extends Tag
             $ret = 1 + ($val - 1) / $x;
         }
         return $ret;
+    }
+    /**
+     * @param string $rotate
+     * @return int
+     */
+    private function parseTableRotate($rotate)
+    {
+        if (1 !== preg_match('/^(-?[0-9]+)(?:deg)?$/', $rotate, $matches)) {
+            return 0;
+        }
+        $rotationDegrees = (int) $matches[1] % 360;
+        if ($rotationDegrees > 180) {
+            $rotationDegrees -= 360;
+        } elseif ($rotationDegrees < -180) {
+            $rotationDegrees += 360;
+        }
+        // Only 90 and -90 are supported
+        if ($rotationDegrees !== 90 && $rotationDegrees !== -90) {
+            $rotationDegrees = 0;
+        }
+        return $rotationDegrees;
     }
 }
