@@ -725,6 +725,7 @@ return array(
     'FlexibleCouponsVendor\\WPDesk_Tracker_Sender' => $baseDir . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender.php',
     'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Exception_WpError' => $baseDir . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/Exception/class-wpdesk-tracker-sender-exception-wperror.php',
     'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Logged' => $baseDir . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender-logged.php',
+    'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Resolver' => $baseDir . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender-resolver.php',
     'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Wordpress_To_WPDesk' => $baseDir . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender-wordpress-to-wpdesk.php',
     'FlexibleCouponsVendor\\WPDesk_Translable' => $baseDir . '/vendor_prefixed/wpdesk/wp-builder/src/Plugin/WithoutNamespace/Translable.php',
     'FlexibleCouponsVendor\\WPDesk_Translatable' => $baseDir . '/vendor_prefixed/wpdesk/wp-builder/src/Plugin/WithoutNamespace/Translatable.php',

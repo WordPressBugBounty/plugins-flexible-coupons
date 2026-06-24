@@ -124,7 +124,10 @@ class PDFWrapper
         $mpdf = new Mpdf($this->get_config());
         // sometimes clients has problem displaying images, becouse of ssl certificate (not trusted).
         $mpdf->curlAllowUnsafeSslRequests = \true;
-        // phpcs:ignore
+        // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+        // follow HTTP redirects (example: images saved with http get redirected to https)
+        $mpdf->curlFollowLocation = \true;
+        // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
         $mpdf->pdf_version = '1.5';
         $mpdf->WriteHTML($html);
         return $mpdf->Output('', Destination::STRING_RETURN);

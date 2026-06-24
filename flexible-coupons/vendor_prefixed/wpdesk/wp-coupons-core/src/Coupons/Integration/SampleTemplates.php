@@ -31,7 +31,7 @@ class SampleTemplates
      */
     private function get_assets_images_url(): string
     {
-        return trailingslashit(plugin_dir_url(__DIR__)) . 'assets/images/';
+        return trailingslashit(plugin_dir_url(__DIR__)) . '../../assets/images/';
     }
     /**
      * @return string

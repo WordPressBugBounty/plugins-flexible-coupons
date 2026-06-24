@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita0117456a8c11ebbf824139a73da6657
+class ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -778,6 +778,7 @@ class ComposerStaticInita0117456a8c11ebbf824139a73da6657
         'FlexibleCouponsVendor\\WPDesk_Tracker_Sender' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender.php',
         'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Exception_WpError' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/Exception/class-wpdesk-tracker-sender-exception-wperror.php',
         'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Logged' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender-logged.php',
+        'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Resolver' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender-resolver.php',
         'FlexibleCouponsVendor\\WPDesk_Tracker_Sender_Wordpress_To_WPDesk' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/sender/class-wpdesk-tracker-sender-wordpress-to-wpdesk.php',
         'FlexibleCouponsVendor\\WPDesk_Translable' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-builder/src/Plugin/WithoutNamespace/Translable.php',
         'FlexibleCouponsVendor\\WPDesk_Translatable' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-builder/src/Plugin/WithoutNamespace/Translatable.php',
@@ -873,9 +874,9 @@ class ComposerStaticInita0117456a8c11ebbf824139a73da6657
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita0117456a8c11ebbf824139a73da6657::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita0117456a8c11ebbf824139a73da6657::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita0117456a8c11ebbf824139a73da6657::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08::$classMap;
 
         }, null, ClassLoader::class);
     }
