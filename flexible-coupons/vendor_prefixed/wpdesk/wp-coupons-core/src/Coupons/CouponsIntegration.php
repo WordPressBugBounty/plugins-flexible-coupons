@@ -58,15 +58,16 @@ class CouponsIntegration implements Hookable, HookableCollection
      * @var bool
      */
     private static $is_pro = \false;
-    /**
-     * @var string
-     */
     private string $plugin_version;
-    public function __construct(EditorIntegration $editor, string $plugin_version, LoggerInterface $logger)
+    private string $text_domain;
+    private string $languages_path;
+    public function __construct(EditorIntegration $editor, string $plugin_version, LoggerInterface $logger, string $text_domain, string $languages_path)
     {
         $this->editor = $editor;
         $this->plugin_version = $plugin_version;
         $this->logger = $logger;
+        $this->text_domain = $text_domain;
+        $this->languages_path = $languages_path;
         $this->set_product_fields(new NullProductFields());
     }
     public static function set_pro()
@@ -130,6 +131,10 @@ class CouponsIntegration implements Hookable, HookableCollection
     {
         return plugins_url('/assets', dirname(__DIR__));
     }
+    public static function get_languages_path(): string
+    {
+        return trailingslashit(plugin_dir_path(dirname(__DIR__))) . 'lang';
+    }
     /**
      * @return void
      */
@@ -150,7 +155,7 @@ class CouponsIntegration implements Hookable, HookableCollection
         $this->add_hookable(new Order\OrderMetaBox($renderer, $post_meta));
         $this->add_hookable(new Coupon\GenerateCoupon($renderer, $product_fields, $persistence, $post_meta, $logger));
         $this->add_hookable($download);
-        $this->add_hookable(new Settings\SettingsForm($persistence, $renderer, $this->plugin_version));
+        $this->add_hookable(new Settings\SettingsForm($persistence, $renderer, $this->plugin_version, $this->text_domain, $this->languages_path));
         $this->add_hookable(new Product\ProductEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
         $this->add_hookable(new Product\ProductVariationEditPage($persistence, $renderer, $product_fields, $post_meta, $this->editor->get_post_type()));
         $this->add_hookable(new Product\SaveProductSimpleData($product_fields, $post_meta));

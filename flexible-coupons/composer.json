@@ -55,8 +55,8 @@
 		"php-stubs/woocommerce-stubs": "<10.9.0",
 		"wpdesk/phpstan-rules": "^1.1",
 		"wpdesk/wp-canva-editor": "^1.5",
-		"wpdesk/wp-codeception": "^2",
-		"wpdesk/wp-coupons-core": "^2.6",
+		"wpdesk/wp-codeception": "^3",
+		"wpdesk/wp-coupons-core": "^2.8",
 		"wpdesk/wp-logs": "^1.13",
 		"wpdesk/wp-plugin-flow-free": "*",
 		"wpdesk/wp-show-decision": "^1.0",
@@ -89,6 +89,6 @@
 			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
 		}
 	},
-	"version": "1.14.8",
+	"version": "1.14.9",
 	"type": "wordpress-plugin"
 }

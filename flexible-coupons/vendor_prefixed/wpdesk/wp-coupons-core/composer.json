@@ -57,8 +57,9 @@
     },
     "autoload-dev": {},
     "extra": {
-        "text-domain": "wp-coupons-core",
+        "text-domain": "flexible-coupons",
         "translations-folder": "lang",
+        "text-domain-merge-extensions": "php,js,json",
         "po-files": {
             "pl_PL": "pl_PL.po"
         }
@@ -71,7 +72,7 @@
         "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
         "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
         "phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage",
-        "generate-pot": "wp i18n make-pot . lang\/wp-coupons-core.pot --domain=wp-coupons-core"
+        "generate-pot": "wp i18n make-pot . lang\/wp-coupons-core.pot --domain=wp-coupons-core --include=src,assets\/js --exclude=node_modules,vendor,assets-src,lang"
     },
     "repositories": {
         "wpdesk": {

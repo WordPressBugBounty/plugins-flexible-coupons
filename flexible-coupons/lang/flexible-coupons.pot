@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible PDF Coupons for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.14.8\n"
+"Project-Id-Version: Flexible PDF Coupons for WooCommerce 1.14.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-coupons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-24T11:17:51+00:00\n"
+"POT-Creation-Date: 2026-08-05T15:05:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: flexible-coupons\n"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/Plugin/Marketing/SupportMenuPage.php:34
 #: src/Plugin/Marketing/SupportMenuPage.php:35
-#: src/Plugin/Plugin.php:153
+#: src/Plugin/Plugin.php:155
 msgid "Start Here"
 msgstr ""
 
@@ -105,18 +105,18 @@ msgstr ""
 msgid "Created with %1$s by Sailors from %2$sWP Desk%3$s - if you like Flexible Coupons rate us &rarr;"
 msgstr ""
 
-#: src/Plugin/Plugin.php:154
+#: src/Plugin/Plugin.php:156
 #: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:188
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:52
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:56
 msgid "Settings"
 msgstr ""
 
-#: src/Plugin/Plugin.php:155
+#: src/Plugin/Plugin.php:157
 #: vendor_prefixed/wpdesk/wp-builder/src/Plugin/AbstractPlugin.php:184
 msgid "Docs"
 msgstr ""
 
-#: src/Plugin/Plugin.php:156
+#: src/Plugin/Plugin.php:158
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:45
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:38
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:32
@@ -157,6 +157,7 @@ msgstr ""
 
 #: src/Plugin/RegisterEditor.php:33
 #: vendor_prefixed/wpdesk/wp-canva-editor/src/Editor/Assets.php:70
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
 msgid "Edit"
 msgstr ""
 
@@ -215,12 +216,12 @@ msgid "Upgrade to PRO and enable options below →"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:57
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Expiry date format"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:58
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 #, php-format
 msgid "Define coupon expiry date format according to %1$sWordPress date formatting%2$s."
 msgstr ""
@@ -230,7 +231,7 @@ msgstr ""
 #: src/Plugin/Settings/GeneralSettings.php:119
 #: src/Plugin/Settings/GeneralSettings.php:126
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:45
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Enable"
 msgstr ""
 
@@ -243,22 +244,22 @@ msgid "Enable to add PDF coupons as email attachments. If this option is disable
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:72
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Below Add to cart button"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:73
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Above Add to cart button"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:77
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Coupon fields position on the product page"
 msgstr ""
 
 #: src/Plugin/Settings/GeneralSettings.php:79
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Select where the coupon fields will be displayed on the product page."
 msgstr ""
 
@@ -885,7 +886,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:94
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/SettingsForm.php:100
 msgid "Your settings have been saved."
 msgstr ""
 
@@ -895,14 +896,14 @@ msgstr ""
 
 #. translators: %1$s: anchor opening tag, %2$s: anchor closing tag
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:42
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:44
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:43
 #, php-format
 msgid "Read more in the %1$splugin documentation →%2$s"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:45
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:38
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:32
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:26
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-form-fields.php:21
@@ -943,7 +944,7 @@ msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/CouponSettings.php:45
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/EmailSettings.php:38
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Save Changes"
 msgstr ""
 
@@ -985,43 +986,43 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:42
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:41
 msgid "Automatic Coupon Generation"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Automatically generate coupons"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "If you want the coupon to be generated automatically, select order status. Coupon will be generated and sent automatically when order status is changed to selected status."
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Allow URL Fopen"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Display Formating"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Enable WPML support"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:47
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:46
 msgid "Enable conversion of coupon value to order currency"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:54
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:53
 msgid "Do not generate"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:63
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:62
 msgid "Enabled"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:63
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:62
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/fields/delay-type.php:24
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-coupon-code.php:34
 #: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Views/dashboard/product-settings/html-email.php:28
@@ -1031,7 +1032,7 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:77
+#: vendor_prefixed/wpdesk/wp-coupons-core/src/Coupons/Settings/Tabs/MainSettings.php:76
 msgid "Main settings"
 msgstr ""
 
@@ -1562,6 +1563,7 @@ msgid "Kindly tell us the reason so we can improve"
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-deactivate.php:107
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
 msgid "Cancel"
 msgstr ""
 
@@ -1575,4 +1577,205 @@ msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-opt-out-notice.php:11
 msgid "You successfully opted out of collecting usage data by WP Desk. If you change your mind, you can always opt in later in the plugin's quick links."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Untitled"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "No subject"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Editing template:"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "New template"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Default template"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Template name"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Enter template name"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Additional recipients"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Comma-separated list of email addresses."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Email subject"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Enter message subject"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "You can use placeholders"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Email content"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Enable sending email to customer"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Template name is required."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Email subject is required."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "The 'Email recipient' field contains an invalid email address or placeholder."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Please correct the errors in the form."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Template saved successfully!"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "An error occurred while saving the template."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Save changes"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Confirm deletion"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+#, js-format
+msgid "Are you sure you want to delete the template \"%s\"? This action cannot be undone."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Delete"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Add New File"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Upload files to your dashboard"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "File Name"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Upload Date"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Records Used"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Actions"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Loading files…"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Used"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Overwrite"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Replace this file with a new version. This will add any new records to the existing ones in database."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "No files uploaded yet."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Failed to fetch templates"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Failed to load templates."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Failed to create template"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Invalid response from create API"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Failed to update template"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Invalid response from update API"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Add new"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Close"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Search templates…"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Manage email templates that will be sent after purchasing PDF Coupon product."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Subject"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "No templates found matching the search criteria."
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Failed to delete template"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "Template deleted successfully!"
+msgstr ""
+
+#: vendor_prefixed/wpdesk/wp-coupons-core/assets/js/index.js:2
+msgid "An error occurred while deleting the template."
 msgstr ""

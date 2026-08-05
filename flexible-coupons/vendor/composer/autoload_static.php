@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08
+class ComposerStaticInit3e726f7e4fceb2bac9cc94b38760a743
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -488,27 +488,31 @@ class ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08
         'FlexibleCouponsVendor\\Psr\\Log\\Test\\DummyTest' => __DIR__ . '/../..' . '/vendor_prefixed/psr/log/Psr/Log/Test/DummyTest.php',
         'FlexibleCouponsVendor\\Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/../..' . '/vendor_prefixed/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'FlexibleCouponsVendor\\Psr\\Log\\Test\\TestLogger' => __DIR__ . '/../..' . '/vendor_prefixed/psr/log/Psr/Log/Test/TestLogger.php',
-        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\AcceptanceTestGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/AcceptanceTestGenerator.php',
-        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\GeneratePluginActivation' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/GeneratePluginActivation.php',
-        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\GenerateWooCommerce' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/GenerateWooCommerce.php',
-        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\WooCommerceTestGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Codeception/Command/WooCommerceTestGenerator.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\CommandProvider' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/CommandProvider.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\BaseCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/BaseCommand.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\Configuration' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/Configuration.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\CreateCodeceptionTests' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/CreateCodeceptionTests.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\Language' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/Language.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\LocalCodeceptionTrait' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/LocalCodeceptionTrait.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\PrepareCodeceptionDb' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/PrepareCodeceptionDb.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\PrepareLocalCodeceptionTests' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/PrepareLocalCodeceptionTests.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\PrepareLocalCodeceptionTestsWithCoverage' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/PrepareLocalCodeceptionTestsWithCoverage.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\PrepareParallelCodeceptionTests' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/PrepareParallelCodeceptionTests.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\PrepareWordpressForCodeception' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/PrepareWordpressForCodeception.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\RunCodeceptionTests' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/RunCodeceptionTests.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\RunLocalCodeceptionTests' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/RunLocalCodeceptionTests.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\RunLocalCodeceptionTestsWithCoverage' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/RunLocalCodeceptionTestsWithCoverage.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\SedTrait' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/SedTrait.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Commands\\SettingsException' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Commands/SettingsException.php',
-        'FlexibleCouponsVendor\\WPDesk\\Composer\\Codeception\\Plugin' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/WPDesk/Composer/Plugin.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\AcceptanceTestGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Command/AcceptanceTestGenerator.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\GeneratePluginActivation' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Command/GeneratePluginActivation.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\GenerateWooCommerce' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Command/GenerateWooCommerce.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Command\\WooCommerceTestGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Command/WooCommerceTestGenerator.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Composer\\CommandProvider' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Composer/CommandProvider.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Composer\\Command\\LegacyCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Composer/Command/LegacyCommand.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Composer\\Plugin' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Composer/Plugin.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Config\\Configuration' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Config/Configuration.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Config\\Language' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Config/Language.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Config\\SettingsException' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Config/SettingsException.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\CodeceptionRunner' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/CodeceptionRunner.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\Command\\InitCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/Command/InitCommand.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\Command\\PullCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/Command/PullCommand.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\Command\\RunCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/Command/RunCommand.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\Command\\StopCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/Command/StopCommand.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\Command\\UpCommand' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/Command/UpCommand.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\DockerCompose' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/DockerCompose.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\PreparationOutput' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/PreparationOutput.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\ProcessRunner' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/ProcessRunner.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\ProjectConfig' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/ProjectConfig.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\ProjectConfigReader' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/ProjectConfigReader.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\ProjectPaths' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/ProjectPaths.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\RuntimeEnvironment' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/RuntimeEnvironment.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\RuntimeMode' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/RuntimeMode.php',
+        'FlexibleCouponsVendor\\WPDesk\\Codeception\\Runner\\WordPressPreparer' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-codeception/src/Runner/WordPressPreparer.php',
         'FlexibleCouponsVendor\\WPDesk\\Dashboard\\DashboardWidget' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/ltv-dashboard-widget/src/DashboardWidget.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\ContainerForm' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/ContainerForm.php',
         'FlexibleCouponsVendor\\WPDesk\\Forms\\Escaper' => __DIR__ . '/../..' . '/vendor_prefixed/wpdesk/wp-forms/src/Escaper.php',
@@ -874,9 +878,9 @@ class ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit65e95f5d773962c4753bff2cf8e98a08::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3e726f7e4fceb2bac9cc94b38760a743::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3e726f7e4fceb2bac9cc94b38760a743::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3e726f7e4fceb2bac9cc94b38760a743::$classMap;
 
         }, null, ClassLoader::class);
     }

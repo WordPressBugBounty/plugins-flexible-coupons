@@ -108,7 +108,9 @@ class Plugin extends AbstractPlugin implements LoggerAwareInterface, HookableCol
 		$coupon = new CouponIntegration(
 			$editor,
 			$this->plugin_info->get_version(),
-			$this->logger
+			$this->logger,
+			$this->plugin_info->get_text_domain(),
+			trailingslashit( $this->plugin_path ) . 'lang'
 		);
 		$this->add_hookable( $editor );
 		$this->add_hookable( $coupon );

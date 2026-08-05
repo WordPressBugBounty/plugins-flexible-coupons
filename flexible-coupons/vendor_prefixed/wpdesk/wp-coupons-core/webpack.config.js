@@ -6,6 +6,9 @@ module.exports = {
 	entry: {
 		index: './assets-src/js/index.tsx',
 	},
+	externals: {
+		'@wordpress/i18n': ['wp', 'i18n'],
+	},
 	output: {
 		path: path.resolve(__dirname, 'assets/js'),
 		filename: '[name].js',

@@ -14,7 +14,6 @@ use FlexibleCouponsVendor\WPDesk\Forms\Field\SubmitField;
 use FlexibleCouponsVendor\WPDesk\Forms\Field\InputTextField;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Helpers\Links;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\SettingsForm;
-use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\LinkField;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Settings\Fields\DisableFieldProAdapter;
 /**
  * Main Settings Tab Page.

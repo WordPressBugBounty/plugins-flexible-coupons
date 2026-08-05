@@ -30,6 +30,8 @@ class SettingsForm implements Hookable
     private $options_container;
     private $renderer;
     private string $plugin_version;
+    private string $text_domain;
+    private string $languages_path;
     /**
      * @var SettingsTab[]
      */
@@ -37,11 +39,13 @@ class SettingsForm implements Hookable
     /**
      * @param PersistentContainer $options_container
      */
-    public function __construct(PersistentContainer $options_container, Renderer $renderer, string $plugin_version)
+    public function __construct(PersistentContainer $options_container, Renderer $renderer, string $plugin_version, string $text_domain, string $languages_path)
     {
         $this->options_container = $options_container;
         $this->renderer = $renderer;
         $this->plugin_version = $plugin_version;
+        $this->text_domain = $text_domain;
+        $this->languages_path = $languages_path;
     }
     /**
      * Fires hooks.
@@ -56,11 +60,13 @@ class SettingsForm implements Hookable
     }
     public function enqueue_scripts()
     {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (!isset($_GET['page']) || $_GET['page'] !== self::SETTINGS_SLUG) {
             return;
         }
         wp_enqueue_editor();
-        wp_enqueue_script('fc-settings', CouponsIntegration::get_assets_url() . '/js/index.js', [], $this->plugin_version, \true);
+        wp_enqueue_script('fc-settings', CouponsIntegration::get_assets_url() . '/js/index.js', ['wp-i18n'], $this->plugin_version, \true);
+        wp_set_script_translations('fc-settings', $this->text_domain, $this->languages_path);
         wp_localize_script('fc-settings', 'fcCodeImport', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('fc-core-nonce'), 'enabled' => Plugin::is_fcci_pro_addon_enabled() && CouponsIntegration::is_pro()]);
         wp_localize_script('fc-settings', 'fcSendingSettings', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('fc-email-templates-nonce'), 'enabled' => Plugin::is_fcs_pro_addon_enabled() && CouponsIntegration::is_pro()]);
     }

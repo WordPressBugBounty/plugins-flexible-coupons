@@ -18,20 +18,19 @@ use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
  */
 class CouponIntegration extends CouponsIntegration {
 
-	/**
-	 * @param EditorIntegration $editor Editor integration.
-	 * @param string            $plugin_version
-	 * @param LoggerInterface    $logger Logger.
-	 */
 	public function __construct(
 		EditorIntegration $editor,
 		string $plugin_version,
-		LoggerInterface $logger
+		LoggerInterface $logger,
+		string $text_domain,
+		string $languages_path
 	) {
 		parent::__construct(
 			$editor,
 			$plugin_version,
-			$logger
+			$logger,
+			$text_domain,
+			$languages_path
 		);
 		$this->set_product_fields( new ProductFieldsDefinition() );
 	}
