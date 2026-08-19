@@ -27,7 +27,9 @@ if (!\class_exists('FlexibleCouponsVendor\WPDesk_Tracker_Data_Provider_User_Agen
          */
         public function get_data()
         {
-            return ['admin_user_agents' => \array_filter((array) \get_option('woocommerce_tracker_ua', []))];
+            return ['admin_user_agents' => \array_filter((array) \get_option('woocommerce_tracker_ua', []), static function ($value): bool {
+                return !empty($value);
+            })];
         }
     }
 }

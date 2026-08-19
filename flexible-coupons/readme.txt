@@ -2,8 +2,8 @@
 Contributors: wpdesk, piotr_po, marcinkolanko, amisiewicz
 Tags: coupons, gift cards, vouchers, pdf, woocommerce
 Requires at least: 6.0
-Tested up to: 7.0
-Stable tag: 1.14.9
+Tested up to: 7.1
+Stable tag: 1.14.10
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -502,6 +502,10 @@ We may also focus on better compatibility with invoicing plugins.
 59. Use imported coupon codes for products (PRO add-on).
 
 == Changelog ==
+
+= 1.14.10 - 2026-08-19 =
+* Added support for WordPress 7.1
+* Added support for WooCommerce 11.1
 
 **1.14.9 - 2026-08-05**
 - Added support for WooCommerce 11.0

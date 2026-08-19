@@ -2,6 +2,7 @@
 
 namespace FlexibleCouponsVendor;
 
+/** @var string $plugin_name */
 if (!\defined('ABSPATH')) {
     exit;
 }
@@ -110,4 +111,5 @@ if (!\defined('ABSPATH')) {
 \esc_html_e('Skip &amp; Deactivate', 'flexible-coupons');
 ?></a>
 	</div>
-</div><?php 
+</div>
+<?php 
