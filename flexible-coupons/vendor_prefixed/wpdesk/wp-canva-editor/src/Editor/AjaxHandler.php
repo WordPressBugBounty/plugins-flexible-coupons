@@ -75,25 +75,29 @@ class AjaxHandler implements Hookable
         $post_id = (int) $this->get_request_value('post_id');
         $post_title = $this->get_request_value('post_title');
         $editor_data = $this->get_request_value('editor_data');
-        if ($post_id) {
-            $post_args = ['ID' => $post_id ? $post_id : null, 'post_title' => $post_title, 'post_name' => sanitize_title($post_title), 'post_status' => 'publish', 'post_type' => $this->post_type];
-            try {
-                $post_id = wp_update_post($post_args);
-                update_post_meta($post_id, EditorImplementation::EDITOR_POST_META, $editor_data);
-                if (empty($post_title)) {
-                    throw new EditorException(__('Enter template title', 'flexible-coupons'));
-                }
-                if (is_array($editor_data)) {
-                    if (!$this->validate_data_from_editor($editor_data)) {
-                        throw new EditorException(__('Template does not contain [coupon_code] shortcode', 'flexible-coupons'));
-                    }
-                }
-                return $post_id;
-            } catch (\Exception $e) {
-                throw new EditorException('WordPress: ' . $e->getMessage());
-            }
+        if (!$post_id) {
+            throw new EditorException(__('Data cannot be saved', 'flexible-coupons'));
         }
-        throw new EditorException(__('Data cannot be saved', 'flexible-coupons'));
+        $post = get_post($post_id);
+        if (!$post || $post->post_type !== $this->post_type || !current_user_can('edit_post', $post_id)) {
+            throw new EditorException(__('You are not allowed to edit this template.', 'flexible-coupons'));
+        }
+        $post_args = ['ID' => $post_id, 'post_title' => $post_title, 'post_name' => sanitize_title($post_title), 'post_status' => 'publish'];
+        try {
+            $post_id = wp_update_post($post_args);
+            update_post_meta($post_id, EditorImplementation::EDITOR_POST_META, $editor_data);
+            if (empty($post_title)) {
+                throw new EditorException(__('Enter template title', 'flexible-coupons'));
+            }
+            if (is_array($editor_data)) {
+                if (!$this->validate_data_from_editor($editor_data)) {
+                    throw new EditorException(__('Template does not contain [coupon_code] shortcode', 'flexible-coupons'));
+                }
+            }
+            return $post_id;
+        } catch (\Exception $e) {
+            throw new EditorException('WordPress: ' . $e->getMessage());
+        }
     }
     /**
      * Get value from $_POST.

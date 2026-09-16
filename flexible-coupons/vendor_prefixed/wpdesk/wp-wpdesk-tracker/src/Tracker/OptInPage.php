@@ -2,7 +2,6 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Tracker;
 
-use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 use FlexibleCouponsVendor\WPDesk\View\Renderer\SimplePhpRenderer;
 use FlexibleCouponsVendor\WPDesk\View\Resolver\DirResolver;
 class OptInPage implements Hookable

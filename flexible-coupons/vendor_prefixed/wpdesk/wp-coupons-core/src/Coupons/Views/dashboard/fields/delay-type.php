@@ -21,7 +21,10 @@ $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
 $parent_id = isset($params['parent_id']) ? $params['parent_id'] : null;
 $default = $is_variation ? '' : 'disabled';
 $value = $meta->get_private($product_id, 'fc_sending_delay_type', $default);
-$delay_options = [$is_variation ?? '' => '', 'disabled' => \esc_html__('Disabled', 'flexible-coupons'), 'simple_delay' => \esc_html__('Simple Delay', 'flexible-coupons'), 'fixed_date_delay' => \esc_html__('Send email on Fixed date', 'flexible-coupons'), 'customer_date_delay' => \esc_html__('Send email on Customer defined date', 'flexible-coupons')];
+$delay_options = ['disabled' => \esc_html__('Disabled', 'flexible-coupons'), 'simple_delay' => \esc_html__('Simple Delay', 'flexible-coupons'), 'fixed_date_delay' => \esc_html__('Send email on fixed date', 'flexible-coupons'), 'customer_date_delay' => \esc_html__('Send email on Customer defined date', 'flexible-coupons')];
+if ($is_variation) {
+    $delay_options = ['' => \esc_html__('— Select —', 'flexible-coupons')] + $delay_options;
+}
 $custom_attributes = [];
 if (!$is_sending) {
     $custom_attributes = ['disabled' => 'disabled'];

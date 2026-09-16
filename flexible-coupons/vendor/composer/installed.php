@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'wpdesk/flexible-coupons',
-        'pretty_version' => '1.14.10',
-        'version' => '1.14.10.0',
-        'reference' => '7d667a375c7709d36e0f83efbf963a19ef057390',
+        'pretty_version' => '1.14.11',
+        'version' => '1.14.11.0',
+        'reference' => '66cae6a7269dfff1ce2aa8c1787fcce296cee327',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'phpoption/phpoption' => array(
-            'pretty_version' => '1.9.5',
-            'version' => '1.9.5.0',
-            'reference' => '75365b91986c2405cf5e1e012c5595cd487a98be',
+            'pretty_version' => '1.10.0',
+            'version' => '1.10.0.0',
+            'reference' => '67b192b6a42ec03944b972d6e633ddec78ad2c6d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoption/phpoption',
             'aliases' => array(),
@@ -56,9 +56,9 @@
             'dev_requirement' => false,
         ),
         'wpdesk/flexible-coupons' => array(
-            'pretty_version' => '1.14.10',
-            'version' => '1.14.10.0',
-            'reference' => '7d667a375c7709d36e0f83efbf963a19ef057390',
+            'pretty_version' => '1.14.11',
+            'version' => '1.14.11.0',
+            'reference' => '66cae6a7269dfff1ce2aa8c1787fcce296cee327',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -9,6 +9,8 @@ namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration;
 
 use RuntimeException;
 use FlexibleCouponsVendor\WPDesk\Library\CouponInterfaces\Shortcode;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\CouponsIntegration;
+use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Product\ProductEditPage;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Shortcodes\Shortcodes;
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 /**
@@ -113,13 +115,13 @@ class Assets implements Hookable
     {
         switch ($screen_id) {
             case self::COUPON_LISTING_PAGE:
-                $docs_url = 'https://wpdesk.net/sk/wp-coupons-docs-pro-en';
+                $docs_url = 'https://flexiblecoupons.net/sk/wp-coupons-docs-pro-en';
                 if (get_locale() === 'pl_PL') {
                     $docs_url = 'https://www.wpdesk.pl/sk/wp-coupons-docs-pro-pl';
                 }
                 break;
             case self::COUPON_EDIT_PAGE:
-                $docs_url = 'https://wpdesk.net/sk/wp-coupons-docs-edit-en';
+                $docs_url = 'https://flexiblecoupons.net/sk/wp-coupons-docs-edit-en';
                 if (get_locale() === 'pl_PL') {
                     $docs_url = 'https://www.wpdesk.pl/sk/wp-coupons-docs-edit-pl';
                 }
@@ -147,11 +149,21 @@ class Assets implements Hookable
      */
     public function wp_enqueue_scripts()
     {
-        global $post;
-        if (isset($post->ID) && (is_product() || is_page())) {
-            wp_enqueue_script('fc-front', $this->get_assets_url() . 'js/front.js', ['jquery'], $this->scripts_version, \true);
-            wp_localize_script('fc-front', 'fc_front', ['security' => wp_create_nonce('fc-security-nonce'), 'ajax_url' => admin_url('admin-ajax.php'), 'product_id' => $post->ID]);
+        if (!CouponsIntegration::is_pro()) {
+            return;
         }
+        global $post;
+        if (!isset($post->ID)) {
+            return;
+        }
+        if (!is_product() && !is_page()) {
+            return;
+        }
+        if (is_product() && 'yes' !== get_post_meta($post->ID, '_' . ProductEditPage::PRODUCT_COUPON_SLUG, \true)) {
+            return;
+        }
+        wp_enqueue_script('fc-front', $this->get_assets_url() . 'js/front.js', ['jquery'], $this->scripts_version, \true);
+        wp_localize_script('fc-front', 'fc_front', ['security' => wp_create_nonce('fc-security-nonce'), 'ajax_url' => admin_url('admin-ajax.php'), 'product_id' => $post->ID]);
     }
     /**
      * Define default fonts for visual editor.

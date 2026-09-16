@@ -3,7 +3,6 @@
 namespace FlexibleCouponsVendor\WPDesk\Tracker;
 
 use FlexibleCouponsVendor\WPDesk\Notice\Notice;
-use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 class OptOut implements Hookable
 {
     /**

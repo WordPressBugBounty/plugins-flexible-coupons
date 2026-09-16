@@ -195,7 +195,7 @@ class ObjectsProperties extends React.Component {
                 </div>
             );
         }
-        let doc_url = 'https://wpdesk.net/sk/wp-canva-docs-js-en';
+        let doc_url = 'https://flexiblecoupons.net/sk/wp-canva-docs-js-en';
         if (wp_canva_admin.lang !== 'undefined' && wp_canva_admin.lang === 'pl_PL') {
             doc_url = 'https://www.wpdesk.pl/sk/wp-canva-docs-js-pl';
         }

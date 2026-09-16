@@ -242,23 +242,26 @@ class Cart implements Hookable
         $_post = $_POST;
         $variation_id = isset($_post['variation_id']) ? (int) $_post['variation_id'] : 0;
         $product = wc_get_product($variation_id);
+        if (!$product) {
+            wp_send_json_error('Unknown product.');
+        }
         $has_own_settings = $this->has_variation_own_settings($variation_id);
         if (!$has_own_settings) {
             $product = wc_get_product($product->get_parent_id());
         }
+        if (!$product) {
+            wp_send_json_error('Unknown product.');
+        }
         if (!$this->is_voucher_type($product)) {
             wp_send_json_error('This is not a coupon product.');
         }
-        if ($product) {
-            try {
-                $html = $this->get_fields_as_html($product);
-                wp_send_json_success($html);
-            } catch (Exception $e) {
-                $this->logger->error($e->getMessage(), ['product_id' => $product->get_id()]);
-                wp_send_json_error($e->getMessage());
-            }
+        try {
+            $html = $this->get_fields_as_html($product);
+            wp_send_json_success($html);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage(), ['product_id' => $product->get_id()]);
+            wp_send_json_error($e->getMessage());
         }
-        wp_send_json_error('Unknown error');
     }
     /**
      * Show fields.

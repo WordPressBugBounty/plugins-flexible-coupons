@@ -147,7 +147,7 @@ class CouponsIntegration implements Hookable, HookableCollection
         $product_fields = $this->get_product_fields();
         $shortcodes = $this->get_shortcodes_definition();
         $pdf = new PDF\PDF($this->editor, $this->get_renderer(), $product_fields, $post_meta, $shortcodes);
-        $download = new PDF\Download($pdf, $post_meta);
+        $download = new PDF\Download($pdf, $post_meta, $logger);
         $this->add_hookable(new Integration\Assets($this->editor->get_post_type(), $shortcodes));
         $this->add_hookable(new Cart\Cart($product_fields, $post_meta, $persistence, $logger));
         $this->add_hookable(new Integration\MyAccount($renderer, $post_meta));

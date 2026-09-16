@@ -2,7 +2,6 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Tracker;
 
-use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 /**
  * Can enqueue assets.
  */

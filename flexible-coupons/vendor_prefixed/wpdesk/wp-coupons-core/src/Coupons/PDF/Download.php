@@ -7,6 +7,8 @@
  */
 namespace FlexibleCouponsVendor\WPDesk\Library\WPCoupons\PDF;
 
+use FlexibleCouponsVendor\Psr\Log\LoggerInterface;
+use FlexibleCouponsVendor\Psr\Log\NullLogger;
 use FlexibleCouponsVendor\WPDesk\Library\WPCoupons\Integration\PostMeta;
 use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\Hookable;
 /**
@@ -23,13 +25,19 @@ class Download implements Hookable
      */
     private $pdf;
     /**
-     * @param PDF      $pdf      PDF.
-     * @param PostMeta $postmeta PostMeta.
+     * @var LoggerInterface
      */
-    public function __construct(PDF $pdf, PostMeta $postmeta)
+    private $logger;
+    /**
+     * @param PDF             $pdf      PDF.
+     * @param PostMeta        $postmeta PostMeta.
+     * @param LoggerInterface|null $logger Logger.
+     */
+    public function __construct(PDF $pdf, PostMeta $postmeta, ?LoggerInterface $logger = null)
     {
         $this->pdf = $pdf;
         $this->postmeta = $postmeta;
+        $this->logger = $logger ?? new NullLogger();
     }
     public function hooks()
     {
@@ -58,9 +66,6 @@ class Download implements Hookable
         }
         try {
             $pdf = $this->pdf->string_output($coupon_data['order_id'], $coupon_data['item_id']);
-            if (isset($request['return']) && $request['return'] === 'string') {
-                return $pdf;
-            }
             header('Content-type: application/pdf');
             if (!isset($request['view'])) {
                 $coupon_id = $coupon_data['coupon_id'] ?: null;
@@ -91,9 +96,43 @@ class Download implements Hookable
             }
             echo $pdf;
             //phpcs:ignore
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
+            $this->logger->error('Failed to generate coupon PDF for download. Reason: ' . $e->getMessage(), $this->get_log_context($coupon_data));
             wp_die(esc_html($e->getMessage()));
         }
         exit;
+    }
+    /**
+     * Gets PDF content for an email attachment.
+     *
+     * @param array<string, mixed> $coupon Coupon metadata.
+     *
+     * @return string
+     */
+    public function get_pdf_content_for_attachment(array $coupon): string
+    {
+        $order_id = (int) ($coupon['order_id'] ?? 0);
+        $item_id = (int) ($coupon['item_id'] ?? 0);
+        try {
+            return $this->pdf->string_output($order_id, $item_id);
+        } catch (\Throwable $e) {
+            $this->logger->error('Failed to generate coupon PDF attachment. Reason: ' . $e->getMessage(), $this->get_log_context($coupon));
+            return '';
+        }
+    }
+    /**
+     * @param array<string, mixed> $coupon_data Coupon metadata.
+     *
+     * @return array<string, int>
+     */
+    private function get_log_context(array $coupon_data): array
+    {
+        $context = [];
+        foreach (['coupon_id', 'order_id', 'item_id'] as $key) {
+            if (isset($coupon_data[$key])) {
+                $context[$key] = (int) $coupon_data[$key];
+            }
+        }
+        return $context;
     }
 }

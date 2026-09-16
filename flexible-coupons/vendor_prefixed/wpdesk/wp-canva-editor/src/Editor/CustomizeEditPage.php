@@ -61,7 +61,7 @@ class CustomizeEditPage implements Hookable
         $post_id = $post->ID;
         $editor_data = get_post_meta($post->ID, EditorImplementation::EDITOR_POST_META, \true);
         $is_pl = 'pl_PL' === get_locale();
-        $pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-canva-go-pro-pl' : 'https://wpdesk.net/sk/wp-canva-go-pro-en';
+        $pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-canva-go-pro-pl' : 'https://flexiblecoupons.net/sk/wp-canva-go-pro-en';
         require_once __DIR__ . '/Views/html-editor-meta-box.php';
     }
     /**

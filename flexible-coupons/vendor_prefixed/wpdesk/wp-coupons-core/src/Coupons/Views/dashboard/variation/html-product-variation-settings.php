@@ -26,8 +26,8 @@ $prod_post_id = (int) $params['post_id'];
 $parent_id = (int) $params['parent_id'];
 $settings = $params['settings'];
 $is_pl = 'pl_PL' === \get_locale();
-$pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-pro-var-pl' : 'https://www.wpdesk.net/sk/wp-coupons-pro-var-en';
-$docs_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-docs-var-pl' : 'https://www.wpdesk.net/sk/wp-coupons-docs-var-en';
+$pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-pro-var-pl' : 'https://flexiblecoupons.net/sk/wp-coupons-pro-var-en';
+$docs_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-docs-var-pl' : 'https://flexiblecoupons.net/sk/wp-coupons-docs-var-en';
 $style = 'display: none;';
 $is_enabled = 'yes' === \get_post_meta($prod_post_id, '_flexible_coupon_variation_base_on', \true);
 if ($is_enabled) {

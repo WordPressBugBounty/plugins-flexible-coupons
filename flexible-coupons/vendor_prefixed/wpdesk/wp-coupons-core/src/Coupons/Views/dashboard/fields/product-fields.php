@@ -18,7 +18,7 @@ $is_premium = $params['is_premium'];
 $product_fields = $params['product_fields'];
 $custom_attributes = $params['custom_attributes'];
 $is_pl = 'pl_PL' === \get_locale();
-$pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-pro-pf-pl' : 'https://www.wpdesk.net/sk/wp-coupons-pro-pf-en';
+$pro_url = $is_pl ? 'https://www.wpdesk.pl/sk/wp-coupons-pro-pf-pl' : 'https://flexiblecoupons.net/sk/wp-coupons-pro-pf-en';
 $loop_id = isset($params['loop']) ? '_variation' . $params['loop'] : '';
 $loop_name = isset($params['loop']) ? "_variation[{$params['loop']}]" : '';
 $parent_id = isset($params['parent_id']) ? $params['parent_id'] : null;

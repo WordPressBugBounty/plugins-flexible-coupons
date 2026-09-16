@@ -2,8 +2,6 @@
 
 namespace FlexibleCouponsVendor\WPDesk\Tracker;
 
-use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableCollection;
-use FlexibleCouponsVendor\WPDesk\PluginBuilder\Plugin\HookableParent;
 class OptInOptOut implements HookableCollection
 {
     use HookableParent;
