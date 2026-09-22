@@ -79,7 +79,8 @@ class AjaxHandler implements Hookable
             throw new EditorException(__('Data cannot be saved', 'flexible-coupons'));
         }
         $post = get_post($post_id);
-        if (!$post || $post->post_type !== $this->post_type || !current_user_can('edit_post', $post_id)) {
+        $post_type_object = get_post_type_object($this->post_type);
+        if (!$post || !$post_type_object || $post->post_type !== $this->post_type || !current_user_can('edit_post', $post_id) || !current_user_can($post_type_object->cap->publish_posts)) {
             throw new EditorException(__('You are not allowed to edit this template.', 'flexible-coupons'));
         }
         $post_args = ['ID' => $post_id, 'post_title' => $post_title, 'post_name' => sanitize_title($post_title), 'post_status' => 'publish'];

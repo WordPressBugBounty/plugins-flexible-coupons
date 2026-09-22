@@ -33,7 +33,7 @@ class SupportMenuPage implements Hookable {
 					'edit.php?post_type=wpdesk-coupons',
 					esc_html__( 'Start Here', 'flexible-coupons' ),
 					'<span style="color: #00FFC2">' . esc_html__( 'Start Here', 'flexible-coupons' ) . '</span>',
-					'manage_options',
+					'manage_woocommerce',
 					'wpdesk-fc-marketing',
 					[ $this, 'render_page_action' ],
 					11

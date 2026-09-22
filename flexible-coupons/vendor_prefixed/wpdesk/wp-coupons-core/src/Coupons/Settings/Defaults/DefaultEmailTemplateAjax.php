@@ -27,7 +27,7 @@ class DefaultEmailTemplateAjax implements Hookable
     private function verify_request(): void
     {
         check_ajax_referer('fc-email-templates-nonce', 'nonce');
-        if (!current_user_can('manage_options')) {
+        if (!current_user_can('manage_woocommerce')) {
             wp_send_json_error(__('Unauthorized', 'flexible-coupons'), 403);
         }
     }

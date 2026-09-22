@@ -53,7 +53,7 @@ class SettingsForm implements Hookable
     public function hooks()
     {
         add_action('admin_menu', function () {
-            add_submenu_page(self::MENU_PAGE_URL, esc_html__('Settings', 'flexible-coupons'), esc_html__('Settings', 'flexible-coupons'), 'manage_options', self::SETTINGS_SLUG, [$this, 'render_page_action'], 40);
+            add_submenu_page(self::MENU_PAGE_URL, esc_html__('Settings', 'flexible-coupons'), esc_html__('Settings', 'flexible-coupons'), 'manage_woocommerce', self::SETTINGS_SLUG, [$this, 'render_page_action'], 40);
         }, 999);
         add_action('admin_init', [$this, 'save_settings_action'], 5);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts'], 5);

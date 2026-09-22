@@ -3,7 +3,7 @@ Contributors: wpdesk, piotr_po, marcinkolanko, amisiewicz
 Tags: coupons, gift cards, vouchers, pdf, woocommerce
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 1.14.11
+Stable tag: 1.14.12
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -502,6 +502,10 @@ We may also focus on better compatibility with invoicing plugins.
 59. Use imported coupon codes for products (PRO add-on).
 
 == Changelog ==
+
+= 1.14.12 - 2026-09-22 =
+- Security - restricted PDF Coupon template editor access to users with WooCommerce management permissions.
+- Fixed allow Shop Manager to access coupons settings and support page.
 
 = 1.14.11 - 2026-09-16 =
 - Fixed unnecessary variation field AJAX requests on non-coupon products.
